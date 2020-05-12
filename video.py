@@ -36,7 +36,6 @@ class Format(object):
 
         if self.fps == None:
             self.fps = cap.get(cv2.CAP_PROP_FPS)
-            print(f'fps: {self.fps}')
 
         out = cv2.VideoWriter(out_file, 0x7634706d, self.fps, dout)
 
