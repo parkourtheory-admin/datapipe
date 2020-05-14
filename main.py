@@ -94,7 +94,6 @@ def is_config(c):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--collect', '-c', action='store_true', help='Collect videos from csv')
     parser.add_argument('--config', '-cfg', type=is_config, help='Configuration file contain data source and output \directory (available: [production, test])')
     args = parser.parse_args()
 
@@ -109,13 +108,14 @@ def main():
     data_dir = cfg['data_dir']
 
     call = {
-        "clean_data": [df],
-        "format_videos": [df, data_dir, out_dir]
+        'collect': {'name': collect, 'params': [df]},
+        'clean_data': {'name': clean_data, 'params': [df]},
+        'format_videos': {'name': format_videos, 'params': [df, data_dir, out_dir]}
     }
 
-    for f in cfg['pipe']:
-        print(f)
-        locals()[f](call[f])
+    for f in cfg['pipe'].split():
+        func = call[f]
+        func['name'](*func['params'])
 
 
 if __name__ == '__main__':
