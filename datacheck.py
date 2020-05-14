@@ -39,7 +39,7 @@ class DataCheck(object):
 
             if isinstance(row['nextmove'], str):
                 for j in row['nextmove'].split(', '):
-                    b = int(table.loc[table['moveName'] == j]['id']) -1
+                    b = int(table.loc[table['moveName'] == j]['id']) - 1
                     adj[a, b] += 1
 
         return adj
@@ -51,3 +51,13 @@ class DataCheck(object):
     def check_symmetry(self, m):
         if not (m == m.T).all():
             return np.argwhere((m+m.T) == 1)+1
+
+
+    '''
+    Find duplicate rows
+
+    inputs:  df (pd.DataFrame)
+    outputs: series
+    '''
+    def duplicated(self, df):
+        return df[df.duplicated('moveName', False)]

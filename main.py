@@ -5,36 +5,63 @@ Author: Justin Chen
 Date: 5/11/2020
 '''
 import os
+import json
+import argparse
+import configparser
 import logging as log
 from time import time
 from datetime import timedelta
 import multiprocessing as mp
-from more_itertools import chunked
+
 from pprint import pformat
 import pandas as pd
+
 from datacheck import DataCheck
 from video import Format
-
+from collector import Collector
 
 from more_itertools import chunked
 
-def clean_data():
-    log.basicConfig(filename=f'errors.log',level=log.DEBUG)
+'''
+Data collection section of pipeline
+
+inputs:
+df (pd.DataFrame)
+'''
+def collect(df):
+    collector = Collector()
+
+
+'''
+Data cleaning section of pipeline
+
+inputs:
+df (pd.DataFrame)
+'''
+def clean_data(df):
+    log.basicConfig(filename='errors.log',level=log.DEBUG)
 
     dc = DataCheck()
-    file = 'database/5-10-2020/moves.csv'
-    df = pd.read_csv(file, header=0)
     adj = dc.get_adjacency(df)
     err = dc.check_symmetry(adj)
     log.debug(pformat(err))
 
+    dup = dc.duplicated(df)
+    log.debug(pformat(dup))
 
-def format_videos(out_dir=''):
+
+'''
+Data collection section of pipeline
+
+inputs:
+df (pd.DataFrame)
+data_dir (str)
+out_dir (str)
+'''
+def format_videos(df, data_dir, out_dir=''):
     if not os.path.exists(out_dir) or len(out_dir) == 0:
         os.makedirs(out_dir)
 
-    file = '../data/database/5-10-2020/testclips.csv'
-    df = pd.read_csv(file, header=0)
     f = Format(640, 480)
 
     cores = mp.cpu_count()
@@ -43,17 +70,52 @@ def format_videos(out_dir=''):
 
         for row in block:
             video = row[1]['embed']
-            file = f'../data/videos/test/{video}'
+            file = os.path.join(data_dir, video)
             procs.append(mp.Process(target=f.resize, args=(file, os.path.join(out_dir, video))))
 
         for p in procs: p.start()
         for p in procs: p.join()
 
 
+'''
+Format argparse configuration file parameter
+
+inputs:
+c (str) Configuration file name
+
+outputs:
+(str) formatted file name
+'''
+def is_config(c):
+    if not c.endswith('.ini'):
+        c = c.split('.')[0]+'.ini'
+    return os.path.join('configs', c)
+
+
 def main():
-    clean_data()
-    out_dir = '/media/ch3njus/Seagate4TB/research/parkourtheory/datapipe/output'
-    format_videos(out_dir)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--collect', '-c', action='store_true', help='Collect videos from csv')
+    parser.add_argument('--config', '-cfg', type=is_config, help='Configuration file contain data source and output \directory (available: [production, test])')
+    args = parser.parse_args()
+
+    if not os.path.exists('log'):
+        os.makedirs('log')
+
+    cfg = configparser.ConfigParser()
+    cfg.read(args.config)
+    cfg = cfg['DEFAULT']
+    df = pd.read_csv(cfg['csv'], header=0)
+    out_dir = cfg['output_dir']
+    data_dir = cfg['data_dir']
+
+    call = {
+        "clean_data": [df],
+        "format_videos": [df, data_dir, out_dir]
+    }
+
+    for f in cfg['pipe']:
+        print(f)
+        locals()[f](call[f])
 
 
 if __name__ == '__main__':
