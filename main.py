@@ -29,7 +29,8 @@ inputs:
 df (pd.DataFrame)
 '''
 def collect(df):
-    collector = Collector()
+    col = Collector()
+    col.collect()
 
 
 '''
@@ -48,6 +49,9 @@ def clean_data(df):
 
     dup = dc.duplicated(df)
     log.debug(pformat(dup))
+
+    ids = dc.valid_ids(df)
+    log.debug(f'consistent ids: {ids}')
 
 
 '''
