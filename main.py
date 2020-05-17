@@ -41,8 +41,8 @@ df (pd.DataFrame)
 '''
 def clean_data(df):
     log.basicConfig(filename='errors.log',level=log.DEBUG)
-
     dc = DataCheck()
+
     adj = dc.get_adjacency(df)
     err = dc.check_symmetry(adj)
     log.debug(pformat(err))
@@ -52,6 +52,10 @@ def clean_data(df):
 
     ids = dc.valid_ids(df)
     log.debug(f'consistent ids: {ids}')
+
+    columns = ['id', 'moveName', 'moveType', 'descript']
+    for col in columns:
+        log.debug(f'incomplete - {col}: {dc.find_empty(df, col)}')
 
 
 '''
