@@ -10,7 +10,7 @@ import argparse
 import configparser
 import logging as log
 from time import time
-from datetime import timedelta
+from datetime import timedelta, datetime
 import multiprocessing as mp
 
 from pprint import pformat
@@ -40,20 +40,22 @@ inputs:
 df (pd.DataFrame)
 '''
 def clean_data(df):
-    log.basicConfig(filename='errors.log',level=log.DEBUG)
-    dc = DataCheck()
+    logname = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
+    log.basicConfig(filename=f'log/{logname}.log',level=log.DEBUG)
+    dc = DataCheck(log)
+
+    ids = dc.invalid_ids(df)
+    log.debug(f'Invalid ids:\n{ids}\n')
+
+    dup = dc.duplicated('name', df)
+    log.debug(f'Duplicates:\n{pformat(dup)}\n')
 
     adj = dc.get_adjacency(df)
+
     err = dc.check_symmetry(adj)
-    log.debug(pformat(err))
+    log.debug(f'\nCheck symmetry() {pformat(err)}\n')
 
-    dup = dc.duplicated(df)
-    log.debug(pformat(dup))
-
-    ids = dc.valid_ids(df)
-    log.debug(f'consistent ids: {ids}')
-
-    columns = ['id', 'moveName', 'moveType', 'descript']
+    columns = ['id', 'name', 'type', 'desc']
     for col in columns:
         log.debug(f'incomplete - {col}: {dc.find_empty(df, col)}')
 

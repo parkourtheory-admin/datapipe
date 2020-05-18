@@ -14,7 +14,7 @@ class Collector(object):
 
 
     def collect(self):
-        failed = pd.DataFrame(columns=['id', 'moveName', 'vid', 'channel', 'link', 'time', 'embed'])
+        failed = pd.DataFrame(columns=['id', 'name', 'vid', 'channel', 'link', 'time', 'embed'])
         failed.reset_index()
         table = pd.read_csv('database/missing_with_link.csv')
         prj_dir = '/media/ch3njus/Seagate4TB/research/parkourtheory/data/videos'
@@ -24,7 +24,7 @@ class Collector(object):
             os.makedirs(dst)
 
         for i, row in tqdm(table.iterrows(), total=len(table)):
-            name = row['moveName'].lower().replace(' ', '_')
+            name = row['name'].lower().replace(' ', '_')
             link = row['link']
 
             try:
