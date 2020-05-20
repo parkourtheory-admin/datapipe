@@ -42,7 +42,6 @@ class DataCheck(object):
         d = len(df)
         adj = np.zeros([d, d], dtype=int)
 
-        self.log.debug('Adjacency Matrix:')
         for i, row in df.iterrows():
             a = int(row['id']) - 1
 

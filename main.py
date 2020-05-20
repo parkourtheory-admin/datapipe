@@ -5,14 +5,15 @@ Author: Justin Chen
 Date: 5/11/2020
 '''
 import os
+import sys
 import json
-import argparse
-import daemon
-import configparser
 import logging
+import argparse
+import configparser
 from time import time, sleep
 from datetime import timedelta, datetime
 import multiprocessing as mp
+from signal import signal, SIGINT
 
 from pprint import pformat
 import pandas as pd
@@ -45,14 +46,14 @@ def get_log(name):
             os.umask(orig)
 
     logname = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
-    fh = logging.FileHandler(os.path.join(sub, f'{logname}.log'))
-    fh.setLevel(logging.DEBUG)
 
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    fh.setFormatter(formatter)
+    logging.basicConfig(filename=os.path.join(sub, f'{logname}.log'),
+                        filemode='w+',
+                        format='%(asctime)s,%(msecs)d %(name)s %(message)s',
+                        datefmt='%H:%M:%S',
+                        level=logging.DEBUG)
 
     log = logging.getLogger(name)
-    log.addHandler(fh)
 
     return log
 
@@ -68,15 +69,14 @@ def clean_data(df, log=None):
     dc = DataCheck(log)
 
     ids = dc.invalid_ids(df)
-    log.debug(f'Invalid ids:\n{ids}\n')
+    log.debug(f'\nInvalid ids:{ids}\n')
 
     dup = dc.duplicated('name', df)
-    log.debug(f'Duplicates:\n{pformat(dup)}\n')
+    log.debug(f'\nDuplicates:{pformat(dup)}\n')
 
     adj = dc.get_adjacency(df)
-
     err = dc.check_symmetry(adj)
-    log.debug(f'\nCheck symmetry() {pformat(err)}\n')
+    log.debug(f'\nCheck symmetry: {pformat(err)}\n')
 
     columns = ['id', 'name', 'type', 'desc']
     for col in columns:
@@ -91,7 +91,6 @@ df  (pd.DataFrame)
 log (logging.Logger) Log file
 '''
 def collect(df, log=None):
-    print(log.handlers)
     col = Collector()
     col.collect()
 
@@ -106,7 +105,6 @@ out_dir  (str)            Output directory
 log      (logging.Logger) Log file
 '''
 def format_videos(df, data_dir, out_dir='', log=None):
-    print(log.handlers)
     if not os.path.exists(out_dir) or len(out_dir) == 0:
         os.makedirs(out_dir)
 
@@ -126,21 +124,6 @@ def format_videos(df, data_dir, out_dir='', log=None):
 
 
 '''
-Format argparse configuration file parameter
-
-inputs:
-c (str) Configuration file name
-
-outputs:
-(str) formatted file name
-'''
-def is_config(c):
-    if not c.endswith('.ini'):
-        c = c.split('.')[0]+'.ini'
-    return os.path.join('configs', c)
-
-
-'''
 Single execution of pipeline
 
 inputs:
@@ -154,32 +137,44 @@ def run(pipe, call):
 
 
 '''
-Daemonize pipeline
+Detect ctrl-c
+
+inputs:
+sig
+frame
+'''
+def handler(sig, frame):
+    sys.exit(0)
+
+
+def update_calls(calls, new_param):
+    for k, v in calls.items():
+        for i, p in enumerate(v['params']):
+            if isinstance(new_param, type(p)):
+                calls[k]['params'][i] = new_param
+    return calls
+
+
+
+'''
+Continuously check for changes and run pipeline
 
 inputs:
 pipe     (list)          Pipeline specified in config
-call     (dict)          Dictionary containing pointer to function and parameters
-daemon   (str, optional) Daemon configuration
+calls    (dict)          Dictionary containing pointer to function and parameters
+file     (str)           File to watch
 interval (int, optional) Frequency at which pipeline is run
 '''
-def daemonize(pipe, call, daemon='daemon', interval=5):
+def loop(pipe, calls, file, interval=5):
     if not isinstance(interval, int):
         raise Exception(f'daemonize()\tInvalid parameter interval {interval}. Must be type int.')
 
-    cfg = configparser.ConfigParser()
-    cfg.read(daemon)
-    cfg = cfg['DEFAULT']
+    signal(SIGINT, handler)
 
-    context = daemon.DaemonContext(
-        working_directory=cfg['dir'],
-        umask=0o002,
-        pidfile=pidfile.TimeoutPIDLockFile(cfg['pid']),
-        )
-
-    with context:
-        while 1:
-            run(pipe, call)
-            sleep(interval)
+    while 1:
+        df = pd.read_csv(file)
+        run(pipe, update_calls(calls, df))
+        sleep(interval)
 
 
 '''
@@ -212,19 +207,33 @@ def get_pipe(args):
     for api in pipe:
         calls[api]['params'].append(get_log(api))
 
-    return pipe, calls
+    return pipe, calls, cfg['csv']
+
+
+'''
+Format argparse configuration file parameter
+
+inputs:
+c (str) Configuration file name
+
+outputs:
+(str) formatted file name
+'''
+def is_config(c):
+    if not c.endswith('.ini'):
+        c = c.split('.')[0]+'.ini'
+    return os.path.join('configs', c)
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config', '-cfg', type=is_config, help='Configuration file contain data source and output \directory (available: [production, test])')
-    parser.add_argument('--daemon', '-d', action='store_true', help='Daemonize repeated execution (default: False)')
+    parser.add_argument('--config', '-cfg', type=is_config, help='Configuration file contain data source and output directory')
+    parser.add_argument('--loop', '-l', action='store_true', help='Loop execution (default: False)')
     args = parser.parse_args()
+    pipe, calls, file = get_pipe(args)
 
-    pipe, call = get_pipe(args)
-
-    if args.daemon: daemonize(pipe, call)
-    else: run(pipe, call)
+    if args.loop: loop(pipe, calls, file)
+    else: run(pipe, calls)
 
 
 if __name__ == '__main__':
