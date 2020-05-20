@@ -7,9 +7,10 @@ Date: 5/11/2020
 import os
 import json
 import argparse
+import daemon
 import configparser
-import logging as log
-from time import time
+import logging
+from time import time, sleep
 from datetime import timedelta, datetime
 import multiprocessing as mp
 
@@ -22,26 +23,48 @@ from collector import Collector
 
 from more_itertools import chunked
 
+
 '''
-Data collection section of pipeline
+Creates subdirectory for logs and logging handler
 
 inputs:
-df (pd.DataFrame)
+name (str) Log name
+
+outputs:
+log (logging.Logger) Log handler
 '''
-def collect(df):
-    col = Collector()
-    col.collect()
+def get_log(name):
+    sub = os.path.join('logs', name)
+
+    # check for subdirectory and temporarily change directory permissions to make the directory
+    if not os.path.exists(sub):
+        try:
+            orig = os.umask(0)
+            os.makedirs(sub)
+        finally:
+            os.umask(orig)
+
+    logname = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
+    fh = logging.FileHandler(os.path.join(sub, f'{logname}.log'))
+    fh.setLevel(logging.DEBUG)
+
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    fh.setFormatter(formatter)
+
+    log = logging.getLogger(name)
+    log.addHandler(fh)
+
+    return log
 
 
 '''
 Data cleaning section of pipeline
 
 inputs:
-df (pd.DataFrame)
+df  (pd.DataFrame)   Move dataframe
+log (logging.Logger) Log file
 '''
-def clean_data(df):
-    logname = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
-    log.basicConfig(filename=f'log/{logname}.log',level=log.DEBUG)
+def clean_data(df, log=None):
     dc = DataCheck(log)
 
     ids = dc.invalid_ids(df)
@@ -64,11 +87,26 @@ def clean_data(df):
 Data collection section of pipeline
 
 inputs:
-df (pd.DataFrame)
-data_dir (str)
-out_dir (str)
+df  (pd.DataFrame)
+log (logging.Logger) Log file
 '''
-def format_videos(df, data_dir, out_dir=''):
+def collect(df, log=None):
+    print(log.handlers)
+    col = Collector()
+    col.collect()
+
+
+'''
+Data collection section of pipeline
+
+inputs:
+df       (pd.DataFrame)   Table of moves
+data_dir (str)            Data directory
+out_dir  (str)            Output directory
+log      (logging.Logger) Log file
+'''
+def format_videos(df, data_dir, out_dir='', log=None):
+    print(log.handlers)
     if not os.path.exists(out_dir) or len(out_dir) == 0:
         os.makedirs(out_dir)
 
@@ -102,14 +140,59 @@ def is_config(c):
     return os.path.join('configs', c)
 
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--config', '-cfg', type=is_config, help='Configuration file contain data source and output \directory (available: [production, test])')
-    args = parser.parse_args()
+'''
+Single execution of pipeline
 
-    if not os.path.exists('log'):
-        os.makedirs('log')
+inputs:
+pipe (list) Pipeline specified in config
+call (dict) Dictionary containing pointer to function and parameters
+'''
+def run(pipe, call):
+    for f in pipe:
+        func = call[f]
+        func['name'](*func['params'])
 
+
+'''
+Daemonize pipeline
+
+inputs:
+pipe     (list)          Pipeline specified in config
+call     (dict)          Dictionary containing pointer to function and parameters
+daemon   (str, optional) Daemon configuration
+interval (int, optional) Frequency at which pipeline is run
+'''
+def daemonize(pipe, call, daemon='daemon', interval=5):
+    if not isinstance(interval, int):
+        raise Exception(f'daemonize()\tInvalid parameter interval {interval}. Must be type int.')
+
+    cfg = configparser.ConfigParser()
+    cfg.read(daemon)
+    cfg = cfg['DEFAULT']
+
+    context = daemon.DaemonContext(
+        working_directory=cfg['dir'],
+        umask=0o002,
+        pidfile=pidfile.TimeoutPIDLockFile(cfg['pid']),
+        )
+
+    with context:
+        while 1:
+            run(pipe, call)
+            sleep(interval)
+
+
+'''
+Create pipeline call dictionary and pipeline
+
+inputs:
+args (argparser.ArgumentParser) Pipeline arguments
+
+outputs:
+pipe (list) Data pipeline
+call (dict) Dictionary of function calls and parameters
+'''
+def get_pipe(args):
     cfg = configparser.ConfigParser()
     cfg.read(args.config)
     cfg = cfg['DEFAULT']
@@ -117,15 +200,31 @@ def main():
     out_dir = cfg['output_dir']
     data_dir = cfg['data_dir']
 
-    call = {
+    calls =  {
         'collect': {'name': collect, 'params': [df]},
         'clean_data': {'name': clean_data, 'params': [df]},
         'format_videos': {'name': format_videos, 'params': [df, data_dir, out_dir]}
     }
 
-    for f in cfg['pipe'].split():
-        func = call[f]
-        func['name'](*func['params'])
+    pipe = cfg['pipe'].split()
+
+    # make log for each API
+    for api in pipe:
+        calls[api]['params'].append(get_log(api))
+
+    return pipe, calls
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--config', '-cfg', type=is_config, help='Configuration file contain data source and output \directory (available: [production, test])')
+    parser.add_argument('--daemon', '-d', action='store_true', help='Daemonize repeated execution (default: False)')
+    args = parser.parse_args()
+
+    pipe, call = get_pipe(args)
+
+    if args.daemon: daemonize(pipe, call)
+    else: run(pipe, call)
 
 
 if __name__ == '__main__':

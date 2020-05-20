@@ -12,8 +12,9 @@ from pandas import isnull
 from itertools import zip_longest
 
 class DataCheck(object):
-    def __init__(self, log):
+    def __init__(self, log, whitelist=None):
         self.log = log
+        self.whitelist = whitelist
 
 
     def set_edges(self, df, adj, a, edges):
