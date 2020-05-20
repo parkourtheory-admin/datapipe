@@ -48,8 +48,8 @@ def get_log(name):
     logname = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
 
     logging.basicConfig(filename=os.path.join(sub, f'{logname}.log'),
-                        filemode='w+',
-                        format='%(asctime)s,%(msecs)d %(name)s %(message)s',
+                        filemode='w',
+                        format='%(message)s',
                         datefmt='%H:%M:%S',
                         level=logging.DEBUG)
 
@@ -69,18 +69,19 @@ def clean_data(df, log=None):
     dc = DataCheck(log)
 
     ids = dc.invalid_ids(df)
-    log.debug(f'\nInvalid ids:{ids}\n')
+    log.debug(f'\nINVALID IDS:{ids}\n')
 
     dup = dc.duplicated('name', df)
-    log.debug(f'\nDuplicates:{pformat(dup)}\n')
+    log.debug(f'\nDUPLICATES:{pformat(dup)}\n')
 
     adj = dc.get_adjacency(df)
     err = dc.check_symmetry(adj)
-    log.debug(f'\nCheck symmetry: {pformat(err)}\n')
+    log.debug(f'\nSYMMETRYS: {pformat(err)}\n')
 
     columns = ['id', 'name', 'type', 'desc']
+    log.debug('INCOMPLETE')
     for col in columns:
-        log.debug(f'incomplete - {col}: {dc.find_empty(df, col)}')
+        log.debug(f'{col}: {dc.find_empty(df, col)}')
 
 
 '''
