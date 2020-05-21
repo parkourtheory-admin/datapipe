@@ -92,11 +92,10 @@ def clean_data(df, log=None, whitelist=None):
 Data collection section of pipeline
 
 inputs:
-df  (pd.DataFrame)
 log (logging.Logger) Log file
 '''
-def collect(df, log=None):
-    col = Collector()
+def collect(src, dst, log=None):
+    col = Collector(src, dst)
     col.collect()
 
 
@@ -218,13 +217,11 @@ def get_pipe(args):
     cfg.read(args.config)
     cfg = cfg['DEFAULT']
     df = pd.read_csv(cfg['csv'], header=0)
-    out_dir = cfg['output_dir']
-    data_dir = cfg['data_dir']
 
     calls =  {
-        'collect': {'name': collect, 'params': [df]},
+        'collect': {'name': collect, 'params': [cfg['csv'], cfg['output_dir']]},
         'clean_data': {'name': clean_data, 'params': [df]},
-        'format_videos': {'name': format_videos, 'params': [df, data_dir, out_dir]}
+        'format_videos': {'name': format_videos, 'params': [df, cfg['data_dir'], cfg['output_dir']]}
     }
 
     pipe = cfg['pipe'].split()
@@ -259,8 +256,10 @@ def is_config(c):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config', '-cfg', type=is_config, help='Configuration file contain data source and output directory')
+    parser.add_argument('--config', '-cfg', type=is_config, help='Configuration file (available: production, test)')
     parser.add_argument('--loop', '-l', action='store_true', help='Loop execution (default: False)')
+    parser.add_argument('--moves', '-m', action='store_true', help='Moves config (default: False)')
+    parser.add_argument('--videos', '-v', action='store_true', help='Videos config (default: False)')
     args = parser.parse_args()
     pipe, calls, file = get_pipe(args)
 
