@@ -72,6 +72,9 @@ def clean_data(df, log=None, whitelist=None):
     ids = dc.invalid_ids(df)
     print(f'\nINVALID IDS:{ids}\n')
 
+    edges = dc.find_duplicate_edges(df)
+    print(f'\nDUP EDGES:{edges}\n')
+
     dup = dc.duplicated('name', df)
     print(f'\nDUPLICATES:{pformat(dup)}\n')
 

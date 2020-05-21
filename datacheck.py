@@ -17,9 +17,18 @@ class DataCheck(object):
         self.whitelist = whitelist
 
 
+    '''
+    Helper function to construct adjacency matrix.
+
+    inputs:
+    def
+    adj
+    a
+    edges
+    '''
     def set_edges(self, df, adj, a, edges):
-                # iterate over every edge
-        # if prereq or nextmove is not a string, it's NaN
+        # iterate over every edge
+        # if prereq or subseq is not a string, it's NaN
         if isinstance(edges, str):
             for j in edges.split(', '):
                 try:
@@ -106,8 +115,23 @@ class DataCheck(object):
 
 
     '''
-    Issue: https://github.com/parkourtheory-admin/datapipe/issues/23
-
+    Log rows with duplicate edges
     '''
     def find_duplicate_edges(self, df):
-        pass
+        for i, row in df.iterrows():
+            if isinstance(row['prereq'], str):
+                pre = row['prereq'].split(', ')
+                uniq = list(set(pre))
+
+                if uniq == pre:
+                    e = [i for i in pre if i not in uniq]
+                    self.log.debug(f'row: {i}\t extra pre: {e}')
+
+            if isinstance(row['subseq'], str):
+                sub = row['subseq'].split(', ')
+                uniq = list(set(sub))
+
+                if uniq == sub:
+                    if uniq == sub:
+                        e = [i for i in sub if i not in uniq]
+                        self.log.debug(f'row: {i}\t extra sub: {e}')
