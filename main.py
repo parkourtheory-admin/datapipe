@@ -62,26 +62,27 @@ def get_log(name):
 Data cleaning section of pipeline
 
 inputs:
-df  (pd.DataFrame)   Move dataframe
-log (logging.Logger) Log file
+df        (pd.DataFrame)   Move dataframe
+log       (logging.Logger) Log file
+whitelist (list)           Ignore rows corresponding to ids in this list
 '''
-def clean_data(df, log=None):
-    dc = DataCheck(log)
+def clean_data(df, log=None, whitelist=None):
+    dc = DataCheck(log, whitelist=whitelist)
 
     ids = dc.invalid_ids(df)
-    log.debug(f'\nINVALID IDS:{ids}\n')
+    print(f'\nINVALID IDS:{ids}\n')
 
     dup = dc.duplicated('name', df)
-    log.debug(f'\nDUPLICATES:{pformat(dup)}\n')
+    print(f'\nDUPLICATES:{pformat(dup)}\n')
 
     adj = dc.get_adjacency(df)
     err = dc.check_symmetry(adj)
-    log.debug(f'\nSYMMETRYS: {pformat(err)}\n')
+    print(f'\nSYMMETRYS: {pformat(err)}\n')
 
     columns = ['id', 'name', 'type', 'desc']
-    log.debug('INCOMPLETE')
+    print('INCOMPLETE')
     for col in columns:
-        log.debug(f'{col}: {dc.find_empty(df, col)}')
+        print(f'{col}: {dc.find_empty(df, col)}')
 
 
 '''
@@ -148,13 +149,22 @@ def handler(sig, frame):
     sys.exit(0)
 
 
+'''
+Update call map with new parameter
+
+inputs:
+calls     (dict)   Map of API calls
+new_param (object) New parameter to add to api calls
+
+outputs:
+calls (dict) Updated API map
+'''
 def update_calls(calls, new_param):
     for k, v in calls.items():
         for i, p in enumerate(v['params']):
             if isinstance(new_param, type(p)):
                 calls[k]['params'][i] = new_param
     return calls
-
 
 
 '''
@@ -179,10 +189,22 @@ def loop(pipe, calls, file, interval=5):
 
 
 '''
+Open and return white list
+
+outputs:
+ids (list) List of ids to whitelist
+'''
+def get_whitelist():
+    cfg = configparser.ConfigParser()
+    cfg.read(is_config('whitelist'))
+    return [int(i) for i in cfg['DEFAULT']['ids'].split(',')]
+
+
+'''
 Create pipeline call dictionary and pipeline
 
 inputs:
-args (argparser.ArgumentParser) Pipeline arguments
+args      (argparser.ArgumentParser) Pipeline arguments
 
 outputs:
 pipe (list) Data pipeline
@@ -204,9 +226,15 @@ def get_pipe(args):
 
     pipe = cfg['pipe'].split()
 
+    whitelist = get_whitelist() if cfg['whitelist'] else None
+
     # make log for each API
     for api in pipe:
-        calls[api]['params'].append(get_log(api))
+        params = calls[api]['params']
+        params.append(get_log(api))
+
+        if whitelist:
+            params.append(whitelist)
 
     return pipe, calls, cfg['csv']
 

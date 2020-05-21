@@ -101,7 +101,8 @@ class DataCheck(object):
     list of row indices with missing values for column
     '''
     def find_empty(self, df, col):
-        return [i+1 for i in df[df[col].isnull()].index.tolist()]
+        return [i+1 for i in df[df[col].isnull()].index.tolist() \
+                    if not i+1 in self.whitelist]
 
 
     '''
