@@ -59,78 +59,6 @@ def get_log(name):
 
 
 '''
-Data cleaning section of pipeline
-
-inputs:
-df        (pd.DataFrame)   Move dataframe
-log       (logging.Logger) Log file
-whitelist (list)           Ignore rows corresponding to ids in this list
-'''
-def clean_data(df, log=None, whitelist=None):
-    dc = DataCheck(log, whitelist=whitelist)
-
-    ids = dc.invalid_ids(df)
-    print(f'\nINVALID IDS:{ids}\n')
-
-    edges = dc.find_duplicate_edges(df)
-    print(f'\nDUP EDGES:{edges}\n')
-
-    dup = dc.duplicated('name', df)
-    print(f'\nDUPLICATES:{pformat(dup)}\n')
-
-    adj = dc.get_adjacency(df)
-    err = dc.check_symmetry(adj)
-    print(f'\nSYMMETRYS: {pformat(err)}\n')
-
-    columns = ['id', 'name', 'type', 'desc']
-    print('INCOMPLETE')
-    for col in columns:
-        print(f'{col}: {dc.find_empty(df, col)}')
-
-
-'''
-Data collection section of pipeline
-
-inputs:
-df
-src
-dst
-log (logging.Logger) Log file
-'''
-def collect(df, dst, log=None):
-    una, miss, cta = col.find_missing()
-    col.collect(miss, dst)
-
-
-'''
-Data collection section of pipeline
-
-inputs:
-df       (pd.DataFrame)   Table of moves
-data_dir (str)            Data directory
-out_dir  (str)            Output directory
-log      (logging.Logger) Log file
-'''
-def format_videos(df, data_dir, out_dir='', log=None):
-    if not os.path.exists(out_dir) or len(out_dir) == 0:
-        os.makedirs(out_dir)
-
-    f = Format(640, 480)
-
-    cores = mp.cpu_count()
-    for block in chunked(df.iterrows(), cores):
-        procs = []
-
-        for row in block:
-            video = row[1]['embed']
-            file = os.path.join(data_dir, video)
-            procs.append(mp.Process(target=f.resize, args=(file, os.path.join(out_dir, video))))
-
-        for p in procs: p.start()
-        for p in procs: p.join()
-
-
-'''
 Single execution of pipeline
 
 inputs:
@@ -206,6 +134,80 @@ def get_whitelist():
 
 
 '''
+Data cleaning section of pipeline
+
+inputs:
+df        (pd.DataFrame)   Move dataframe
+whitelist (list)           Ignore rows corresponding to ids in this list
+log       (logging.Logger) Log file
+'''
+def check_moves(df, whitelist, log=None):
+    dc = DataCheck(log, whitelist=whitelist)
+
+    ids = dc.invalid_ids(df)
+    print(f'\nINVALID IDS:{ids}\n')
+
+    edges = dc.find_duplicate_edges(df)
+    print(f'\nDUP EDGES:{edges}\n')
+
+    dup = dc.duplicated('name', df)
+    print(f'\nDUPLICATES:{pformat(dup)}\n')
+
+    adj = dc.get_adjacency(df)
+    err = dc.check_symmetry(adj)
+    print(f'\nSYMMETRYS: {pformat(err)}\n')
+
+    columns = ['id', 'name', 'type', 'desc']
+    print('INCOMPLETE')
+    for col in columns:
+        print(f'{col}: {dc.find_empty(df, col)}')
+
+
+'''
+Data collection section of pipeline
+
+inputs:
+dst         (str)            Directory where videos will be saved
+moves_path  (str)            Path to moves.csv
+videos_path (str)            Path to videos.csv
+csv_out     (str)            CSV output directory
+log         (logging.Logger) Log file
+'''
+def collect_videos(dst, moves_path, videos_path, csv_out, log=None):
+    una, miss, cta = clt.find_missing(moves_path, videos_path, csv_out)
+    clt.collect(miss, dst)
+
+
+'''
+Data collection section of pipeline
+
+inputs:
+df      (pd.DataFrame)   Table of videos
+src_dir (str)            Data directory
+dst_dir (str)            Output directory
+height  (int)            Output video height
+width   (int)            Output video width
+log     (logging.Logger) Log file
+'''
+def format_videos(df, src_dir, dst_dir, height=640, width=480, log=None):
+    if not os.path.exists(dst_dir) or len(dst_dir) == 0:
+        os.makedirs(dst_dir)
+
+    f = Format(height, width)
+
+    for block in chunked(df.iterrows(), mp.cpu_count()):
+        procs = []
+
+        for row in block:
+            video = row[1]['embed']
+            file = os.path.join(src_dir, video)
+            procs.append(mp.Process(target=f.resize, args=(file, os.path.join(dst_dir, video))))
+
+        for p in procs: p.start()
+        for p in procs: p.join()
+
+
+'''
 inputs:
 cfg  (c)
 name (str)
@@ -214,23 +216,32 @@ outputs:
 calls (dict)
 '''
 def get_call_map(cfg, name):
-    latest = cfg['DEFAULT']['latest']
-    pipe = cfg[name]
-    file = os.path.join(latest, pipe['csv'])
+    default = cfg['DEFAULT']
+    move_pipe = cfg['moves']
+    video_pipe = cfg['videos']
 
-    df = pd.read_csv(file, header=0)
+    calls = None
+    file = ''
 
     if name == 'moves':
-        return { 'clean_data': {'name': clean_data, 'params': [df]} }, file
-
+        file = move_pipe['csv']
+        df = pd.read_csv(file, header=0)
+        whitelist = get_whitelist() if default.getboolean('whitelist') else []
+        calls = { 'check_moves': {'name': check_moves, 'params': [df, whitelist]} }
     else:
-        src = pipe['src']
-        dst = pipe['dst']
+        df = pd.read_csv(video_pipe['csv'], header=0)
+        dst = video_pipe['dst']
+        file = video_pipe['csv']
+        csv_out = video_pipe['csv_out']
 
-        return {
-                'collect': {'name': collect, 'params': [df, src, dst]},
-                'format_videos': {'name': format_videos, 'params': [df, src, dst]}
-               }, file
+        calls = {
+            'collect_videos': {'name': collect_videos,
+                               'params': [dst, move_pipe['csv'], file, csv_out]},
+            'format_videos': {'name': format_videos,
+                              'params': [df, file, dst]}
+        }
+
+    return calls, file
 
 '''
 Create pipeline call dictionary and pipeline
@@ -246,19 +257,13 @@ def get_pipe(config, name):
     cfg = configparser.ConfigParser()
     cfg.read(config)
 
-    default = cfg['DEFAULT']
-
     calls, file = get_call_map(cfg, name)
     pipe = cfg[name]['pipe'].split(', ')
-    whitelist = get_whitelist() if default.getboolean('whitelist') else None
 
     # make log for each API
     for api in pipe:
         params = calls[api]['params']
         params.append(get_log(api))
-
-        if whitelist:
-            params.append(whitelist)
 
     return pipe, calls, file
 
