@@ -13,7 +13,7 @@ def main():
     parser.add_argument('--move', '-m', type=str)
     args = parser.parse_args()
 
-    file = '../data/database/5-17-2020/moves.csv'
+    file = '../data/database/latest/moves.csv'
     df = pd.read_csv(file, header=0)
     print(df.loc[df['name'] == args.move.title()])
 

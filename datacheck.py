@@ -14,7 +14,7 @@ from itertools import zip_longest
 class DataCheck(object):
     def __init__(self, log, whitelist=None):
         self.log = log
-        self.whitelist = whitelist
+        self.whitelist = whitelist if whitelist is not None else []
 
 
     '''

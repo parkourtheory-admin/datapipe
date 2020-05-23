@@ -20,7 +20,7 @@ import pandas as pd
 
 from datacheck import DataCheck
 from video import Format
-from collector import Collector
+import collector as clt
 
 from more_itertools import chunked
 
@@ -92,11 +92,14 @@ def clean_data(df, log=None, whitelist=None):
 Data collection section of pipeline
 
 inputs:
+df
+src
+dst
 log (logging.Logger) Log file
 '''
-def collect(src, dst, log=None):
-    col = Collector(src, dst)
-    col.collect()
+def collect(df, dst, log=None):
+    una, miss, cta = col.find_missing()
+    col.collect(miss, dst)
 
 
 '''
@@ -203,6 +206,33 @@ def get_whitelist():
 
 
 '''
+inputs:
+cfg  (c)
+name (str)
+
+outputs:
+calls (dict)
+'''
+def get_call_map(cfg, name):
+    latest = cfg['DEFAULT']['latest']
+    pipe = cfg[name]
+    file = os.path.join(latest, pipe['csv'])
+
+    df = pd.read_csv(file, header=0)
+
+    if name == 'moves':
+        return { 'clean_data': {'name': clean_data, 'params': [df]} }, file
+
+    else:
+        src = pipe['src']
+        dst = pipe['dst']
+
+        return {
+                'collect': {'name': collect, 'params': [df, src, dst]},
+                'format_videos': {'name': format_videos, 'params': [df, src, dst]}
+               }, file
+
+'''
 Create pipeline call dictionary and pipeline
 
 inputs:
@@ -212,21 +242,15 @@ outputs:
 pipe (list) Data pipeline
 call (dict) Dictionary of function calls and parameters
 '''
-def get_pipe(args):
+def get_pipe(config, name):
     cfg = configparser.ConfigParser()
-    cfg.read(args.config)
-    cfg = cfg['DEFAULT']
-    df = pd.read_csv(cfg['csv'], header=0)
+    cfg.read(config)
 
-    calls =  {
-        'collect': {'name': collect, 'params': [cfg['csv'], cfg['output_dir']]},
-        'clean_data': {'name': clean_data, 'params': [df]},
-        'format_videos': {'name': format_videos, 'params': [df, cfg['data_dir'], cfg['output_dir']]}
-    }
+    default = cfg['DEFAULT']
 
-    pipe = cfg['pipe'].split()
-
-    whitelist = get_whitelist() if cfg['whitelist'] else None
+    calls, file = get_call_map(cfg, name)
+    pipe = cfg[name]['pipe'].split(', ')
+    whitelist = get_whitelist() if default.getboolean('whitelist') else None
 
     # make log for each API
     for api in pipe:
@@ -236,7 +260,7 @@ def get_pipe(args):
         if whitelist:
             params.append(whitelist)
 
-    return pipe, calls, cfg['csv']
+    return pipe, calls, file
 
 
 '''
@@ -254,17 +278,36 @@ def is_config(c):
     return os.path.join('configs', c)
 
 
+'''
+Convert argparse arguments into pipeline names
+
+inputs:
+p (str) Pipeline argument
+
+outputs:
+name (str) Formatted name of pipeline
+'''
+def is_pipes(p):
+    if p == 'm' or p == 'moves' or p == 'move':
+        return 'moves'
+    elif p == 'v' or p == 'videos' or p == 'video':
+        return 'videos'
+    else:
+        raise Exception('Invalid argparse')
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--config', '-cfg', type=is_config, help='Configuration file (available: production, test)')
     parser.add_argument('--loop', '-l', action='store_true', help='Loop execution (default: False)')
-    parser.add_argument('--moves', '-m', action='store_true', help='Moves config (default: False)')
-    parser.add_argument('--videos', '-v', action='store_true', help='Videos config (default: False)')
+    parser.add_argument('--pipes', '-p', type=is_pipes, nargs='+', required=True, help='Specify pipelines to execute. Required by default. (options: m (move), v (video))')
     args = parser.parse_args()
-    pipe, calls, file = get_pipe(args)
 
-    if args.loop: loop(pipe, calls, file)
-    else: run(pipe, calls)
+    #TODO: spin off into procs
+    for name in args.pipes:
+        pipe, calls, file = get_pipe(args.config, name)
+
+        if args.loop: loop(pipe, calls, file)
+        else: run(pipe, calls)
 
 
 if __name__ == '__main__':
