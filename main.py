@@ -23,6 +23,7 @@ from video import Format
 import collector as clt
 
 from more_itertools import chunked
+from utils import format_time
 
 
 '''
@@ -67,8 +68,10 @@ call (dict) Dictionary containing pointer to function and parameters
 '''
 def run(pipe, call):
     for f in pipe:
+        start = time.time()
         func = call[f]
         func['name'](*func['params'])
+        print(f'{func['name']}() {format_time(time.time()-start)}')
 
 
 '''
