@@ -68,10 +68,10 @@ call (dict) Dictionary containing pointer to function and parameters
 '''
 def run(pipe, call):
     for f in pipe:
-        start = time.time()
+        start = time()
         func = call[f]
         func['name'](*func['params'])
-        print(f'{func['name']}() {format_time(time.time()-start)}')
+        print(f'{f}()\ttotal time: {format_time(time()-start)}')
 
 
 '''
@@ -178,7 +178,11 @@ log         (logging.Logger) Log file
 '''
 def collect_videos(dst, moves_path, videos_path, csv_out, log=None):
     una, miss, cta = clt.find_missing(moves_path, videos_path, csv_out)
-    clt.collect(miss, dst)
+    print(f'una: {len(una)}\tmiss: {len(miss)}\tcta: {len(cta)}')
+    miss.to_csv(os.path.join(csv_out, 'missing.csv'))
+    una, found = clt.collect(miss, dst, csv_out)
+    print(f'una: {len(una)}\tfound: {len(found)}')
+    clt.update_videos(videos_path, found, csv_out)
 
 
 '''

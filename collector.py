@@ -24,7 +24,7 @@ cta     (pd.DataFrame) Moves without videos without links
 '''
 def find_missing(moves_path, videos_path, csv_out):
 
-    moves = pd.read_csv(moves_path, dtype={'id': int, 'rank': int})
+    moves = pd.read_csv(moves_path, dtype={'id': int})
     clips = pd.read_csv(videos_path,  dtype={'id': int})
 
     una = clips.loc[clips['embed'] == 'unavailable.mp4']
@@ -46,15 +46,16 @@ def find_missing(moves_path, videos_path, csv_out):
 Collect missing videos that have links
 
 inputs:
-df  (pd.DataFrame) DataFrame of videos and moves
-dst (str)          Directory to save videos into
+df      (pd.DataFrame) DataFrame of videos and moves
+dst     (str)          Directory to save videos into
+csv_out (str)          CSV output directory
 
 outputs:
 failed (pd.DataFrame) DataFrame of videos that could not be downloaded. These should be merged with
                       the cta (call to action) dataframe later on.
 df     (pd.DataFrame) DataFrame of videos that were able to be downloaded.
 '''
-def collect(df, dst):
+def collect(df, dst, csv_out):
     failed = pd.DataFrame(columns=['id', 'name', 'vid', 'channel', 'link', 'time', 'embed'])
     failed.reset_index()
 
@@ -78,8 +79,26 @@ def collect(df, dst):
             failed = failed.append(row, ignore_index=True)
 
     df = df[~df.id.isin(failed.id)]
-    df = df.drop(df.columns[0], axis=1)
+    # df = df.drop(df.columns[0], axis=1)
     failed.to_csv('unavailable.csv')
     df.to_csv('found.csv')
 
     return failed, df
+
+
+'''
+Update videos table column and save to csvs
+
+inputs:
+video_path (str)
+update     (pd.DataFrame)
+csv_out    (str)          CSV output directory
+'''
+def update_videos(video_path, update, csv_out):
+    df = pd.read_csv(video_path, dtype={'id': int})
+    update.drop(columns='name')
+
+    for i, row in update.iterrows():
+        df.at[row['id']-1, 'embed'] = row['embed']
+
+    df.to_csv(os.path.join(csv_out, 'videos.csv'))
