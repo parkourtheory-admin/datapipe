@@ -90,15 +90,15 @@ def collect(df, dst, csv_out):
 Update videos table column and save to csvs
 
 inputs:
-video_path (str)
-update     (pd.DataFrame)
-csv_out    (str)          CSV output directory
+video_path (str)          Path to source video csv
+update     (pd.DataFrame) DataFrame containing found videos
+save_path  (str)          Path including file name for saving csv output
 '''
-def update_videos(video_path, update, csv_out):
+def update_videos(video_path, update, save_path):
     df = pd.read_csv(video_path, dtype={'id': int})
     update.drop(columns='name')
 
     for i, row in update.iterrows():
         df.at[row['id']-1, 'embed'] = row['embed']
 
-    df.to_csv(os.path.join(csv_out, 'videos.csv'))
+    df.to_csv(save_path)

@@ -176,13 +176,15 @@ videos_path (str)            Path to videos.csv
 csv_out     (str)            CSV output directory
 log         (logging.Logger) Log file
 '''
-def collect_videos(dst, moves_path, videos_path, csv_out, log=None):
+def collect_videos(dst, moves_path, videos_path, csv_out, save_path, log=None):
     una, miss, cta = clt.find_missing(moves_path, videos_path, csv_out)
+    
     print(f'una: {len(una)}\tmiss: {len(miss)}\tcta: {len(cta)}')
     miss.to_csv(os.path.join(csv_out, 'missing.csv'))
     una, found = clt.collect(miss, dst, csv_out)
+
     print(f'una: {len(una)}\tfound: {len(found)}')
-    clt.update_videos(videos_path, found, csv_out)
+    clt.update_videos(videos_path, found, save_path)
 
 
 '''
@@ -239,11 +241,11 @@ def get_call_map(cfg, name):
         df = pd.read_csv(video_pipe['csv'], header=0)
         dst = video_pipe['dst']
         file = video_pipe['csv']
-        csv_out = video_pipe['csv_out']
+
 
         calls = {
             'collect_videos': {'name': collect_videos,
-                               'params': [dst, move_pipe['csv'], file, csv_out]},
+                               'params': [dst, move_pipe['csv'], file, video_pipe['csv_out'], video_pipe['csv']]},
             'format_videos': {'name': format_videos,
                               'params': [df, file, dst]}
         }
