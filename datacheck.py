@@ -21,10 +21,10 @@ class DataCheck(object):
     Helper function to construct adjacency matrix.
 
     inputs:
-    def
-    adj
-    a
-    edges
+    df    (pd.Dataframe) DataFrame of moves
+    adj   (ndarray)      Adjacency matrix of moves
+    a     (int)          Move id
+    edges (list)         List of prereqs or subseqs corresponding to move id
     '''
     def set_edges(self, df, adj, a, edges):
         # iterate over every edge
@@ -42,10 +42,10 @@ class DataCheck(object):
     Create adjacency matrix from pandas dataframe
 
     inputs:
-    df (DataFrame)
+    df (DataFrame) Table of moves
 
     outputs:
-    adj (ndarray)
+    adj (ndarray) Adjacency matrix of moves
     '''
     def get_adjacency(self, df):
         d = len(df)
@@ -61,7 +61,13 @@ class DataCheck(object):
 
 
     '''
-    Check symmetry of
+    Check symmetry of adjacency matrix
+
+    inputs:
+    m (ndarray) Adjacency matrix of moves
+
+    outputs:
+    return (list, ndarray) Returns empty list if symmetric and coordinates of asymmetric values
     '''
     def check_symmetry(self, m):
         if m is None: return
@@ -116,6 +122,9 @@ class DataCheck(object):
 
     '''
     Log rows with duplicate edges
+
+    inputs:
+    df (pd.DataFrame) Table of moves
     '''
     def find_duplicate_edges(self, df):
         for i, row in df.iterrows():
@@ -135,3 +144,25 @@ class DataCheck(object):
                     if uniq == sub:
                         e = [i for i in sub if i not in uniq]
                         self.log.debug(f'row: {i}\t extra sub: {e}')
+
+
+    '''
+    Sort edges alphabetically and update by reference
+
+    inputs:
+    df (pd.DataFrame) Table of moves
+    '''
+    def sort_edges(self, df):
+        for i, row in df.iterrows():
+            if isinstance(row['prereq'], str):
+                edge = row['prereq'].split(', ')
+                edge.sort()
+                row['prereq'] = edge
+                df.at[i, 'prereq'] = ', '.join(row['prereq'])
+            
+            if isinstance(row['subseq'], str):
+                edge = row['subseq'].split(', ')
+                edge.sort()
+                row['subseq'] = edge
+                df.at[i, 'subseq'] = ', '.join(row['subseq'])
+

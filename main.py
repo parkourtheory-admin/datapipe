@@ -144,7 +144,7 @@ df        (pd.DataFrame)   Move dataframe
 whitelist (list)           Ignore rows corresponding to ids in this list
 log       (logging.Logger) Log file
 '''
-def check_moves(df, whitelist, log=None):
+def check_moves(df, whitelist, src, log=None):
     dc = DataCheck(log, whitelist=whitelist)
 
     ids = dc.invalid_ids(df)
@@ -164,6 +164,11 @@ def check_moves(df, whitelist, log=None):
     print('INCOMPLETE')
     for col in columns:
         print(f'{col}: {dc.find_empty(df, col)}')
+
+    dc.sort_edges(df)
+    df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
+    df.to_csv(src, index=False)
+    print('EDGES SORTED')
 
 
 '''
@@ -236,7 +241,7 @@ def get_call_map(cfg, name):
         file = move_pipe['csv']
         df = pd.read_csv(file, header=0)
         whitelist = get_whitelist() if default.getboolean('whitelist') else []
-        calls = { 'check_moves': {'name': check_moves, 'params': [df, whitelist]} }
+        calls = { 'check_moves': {'name': check_moves, 'params': [df, whitelist, file]} }
     else:
         df = pd.read_csv(video_pipe['csv'], header=0)
         dst = video_pipe['dst']
