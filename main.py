@@ -142,6 +142,7 @@ Data cleaning section of pipeline
 inputs:
 df        (pd.DataFrame)   Move dataframe
 whitelist (list)           Ignore rows corresponding to ids in this list
+src       (str)            Source file
 log       (logging.Logger) Log file
 '''
 def check_moves(df, whitelist, src, log=None):
@@ -313,6 +314,7 @@ def is_pipes(p):
         return 'videos'
     else:
         raise Exception('Invalid argparse')
+
 
 def main():
     parser = argparse.ArgumentParser()
