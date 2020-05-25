@@ -99,14 +99,18 @@ G        (nx.Graph) Graph
 filename (str) 		File name to save graph drawing
 '''
 def save_graph(G, filename):
-	plt.figure(num=None, figsize=(40, 40), dpi=80)
+	plt.figure(num=None, figsize=(100, 100), dpi=100)
 	plt.axis('off')
 	fig = plt.figure(1)
-	pos = nx.spring_layout(G, k=0.15, iterations=20)
-
-	nx.draw_networkx_nodes(G, pos)
-	nx.draw_networkx_edges(G, pos)
-	nx.draw_networkx_labels(G, pos)
+	
+	pos = nx.spiral_layout(G, center=[0,0])
+    pos = nx.spring_layout(G, k=2, iterations=0)
+    
+    plt.figtext(.5, .85, 'PARKOUR THEORY', fontsize=130, fontweight='bold', ha='center')
+    
+    nx.draw_networkx_nodes(G, pos, alpha=0.25)
+    nx.draw_networkx_edges(G, pos, alpha=0.1)
+    nx.draw_networkx_labels(G, pos, font_color='r', font_size=11)
 
 	plt.savefig(filename, bbox_inches="tight")
 	pylab.close()
