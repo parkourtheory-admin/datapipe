@@ -79,7 +79,7 @@ outputs:
 G (nx.Graph) Graph based on DataFrame
 '''
 def dataframe_to_graph(df):
-	edges = dataframe_to_edges(df, 'name', ['prereq', 'subseq'])
+	edges = dataframe_to_edges(df, 'name', ['prereq', 'subseq'], ', ')
 	G = nx.Graph(edges)
 
 	roots = no_prereq(df)
