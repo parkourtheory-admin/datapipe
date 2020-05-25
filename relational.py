@@ -1,8 +1,18 @@
+'''
+API for creating and manipulating networkx Graphs from pandas DataFrames
+
+Author: Justin Chen
+Date: 5/24/2020
+'''
 import networkx as nx
-from itertools import chain
+import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib import pylab
 
 
 '''
+Creates map for nodes and corresponding labels from a pandas DataFrame
+
 inputs:
 df  (pd.DataFrame) DataFrame
 key (str) 		   Column name of column values to be used as dict keys
@@ -21,19 +31,83 @@ Generates edges given a pandas DataFrame that contains edges as value-separated 
 inputs:
 df       (pd.DataFrame)  DataFrame source
 cols     (list) 		 List of columns names as strings
-edge_map (dict) 		 Map for edge values contained in columns
-						 Create from dataframe_to_dict()
 delim    (str, optional) Delimiter for edge values
 '''
-def dataframe_to_edges(df, key, cols, edge_map, delim=''):
+def dataframe_to_edges(df, key, cols, delim=''):
 	for i, row in df.iterrows():
-		src = edge_map[row[key]]
+		src = row[key]
 		for j in cols:
 		    if isinstance(row[j], str):
 		        for i in row[j].split(delim):
-		        	yield (src, edge_map[i])
+		        	yield (src, i)
 
 
-edge_map =  dataframe_to_dict(df, 'name', 'id')
-df_edges = dataframe_to_edges(df, 'name', ['prereq', 'subseq'], edge_map, delim=', ')
-G = nx.Graph(df_edges)
+'''
+Find all moves without prereq moves
+
+inputs:
+df (pd.DataFrame) DataFrame of moves
+
+outputs:
+df (pd.DataFrame) DataFrame containing only rows without prereq nodes
+'''
+def no_prereq(df):
+    return df.loc[df['prereq'].isnull()]
+
+
+
+'''
+Find all moves without subseq moves
+
+inputs:
+df (pd.DataFrame) DataFrame of moves
+
+outputs:
+df (pd.DataFrame) DataFrame containing only rows without subseq nodes
+'''
+def no_subseq(df):
+    return df.loc[df['subseq'].isnull()]
+
+
+'''
+Create undirected networkx Graph from pandas DataFrame
+
+inputs:
+df (pd.DataFrame) DataFrame of moves
+
+outputs:
+G (nx.Graph) Graph based on DataFrame
+'''
+def dataframe_to_graph(df):
+	edges = dataframe_to_edges(df, 'name', ['prereq', 'subseq'])
+	G = nx.Graph(edges)
+
+	roots = no_prereq(df)
+	singles = no_subseq(roots)
+
+	for i, node in singles.iterrows():
+    	G.add_node(node['name'])
+
+    return G
+
+
+'''
+credit: https://stackoverflow.com/a/17388676
+
+inputs:
+G        (nx.Graph) Graph
+filename (str) 		File name to save graph drawing
+'''
+def save_graph(G, filename):
+	plt.figure(num=None, figsize=(40, 40), dpi=80)
+	plt.axis('off')
+	fig = plt.figure(1)
+	pos = nx.spring_layout(G, k=0.15, iterations=20)
+
+	nx.draw_networkx_nodes(G, pos)
+	nx.draw_networkx_edges(G, pos)
+	nx.draw_networkx_labels(G, pos)
+
+	plt.savefig(filename, bbox_inches="tight")
+	pylab.close()
+	del fig
