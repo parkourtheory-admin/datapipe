@@ -115,3 +115,15 @@ def save_graph(G, filename):
 	plt.savefig(filename, bbox_inches="tight")
 	pylab.close()
 	del fig
+
+
+def main():
+ 	src='database/latest/moves.csv'
+	df = pd.read_csv(src, dtype={'id': int})
+	# edge_map =  dataframe_to_dict(df, 'name', 'id')
+ 	G = dataframe_to_graph(df)
+	save_graph(G, 'path.pdf')
+
+
+if __name__ == '__main__':
+	main()

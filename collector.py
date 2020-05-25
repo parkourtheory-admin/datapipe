@@ -73,7 +73,7 @@ def collect(df, dst, csv_out):
                 vid.streams.get_highest_resolution().download(dst, filename=name)
             elif 'instagram' in link:
                 gram = Instagram(link)
-                gram.download(dest=dst, filename=name)
+                gram.download(dst=dst, filename=name)
             df.at[i, 'embed'] = name+'.mp4'
         except Exception:
             failed = failed.append(row, ignore_index=True)
