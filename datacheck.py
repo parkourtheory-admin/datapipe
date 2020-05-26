@@ -229,7 +229,7 @@ class DataCheck(object):
     df (pd.DataFrame) DataFrame of moves
 
     outputs:
-    
+    output (list) Empty list if no errors else a list of errors
     '''
     def check_type(df):
         labels = df['type'].tolist()
@@ -246,5 +246,8 @@ class DataCheck(object):
             if k in label_map:
                 label_map[k].add(l)
                 
-        return list(label_map.values())
+        # check if any errors, return empty list if none
+        errs = list(label_map.values())
+
+        return [] if len(unique) == sum([len(s) for s in errs]) else errs
 
