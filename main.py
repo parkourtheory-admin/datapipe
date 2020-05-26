@@ -169,11 +169,11 @@ def check_moves(df, whitelist, src, log=None):
     dc.sort_edges(df)
     df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
     df.to_csv(src, index=False)
-    print('EDGES SORTED')
+    print('\nEDGES SORTED\n')
 
-    print('MOVE TYPES')
+    print('\nMOVE TYPES\n')
     errs = dc.check_type(df)
-    print(errs)
+    print(pformat(errs))
 
 
 '''

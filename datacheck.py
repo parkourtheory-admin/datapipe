@@ -103,8 +103,6 @@ class DataCheck(object):
         return [(a,b) for a, b in zip_longest(ids, correct, fillvalue='MISSING') if int(a) != b]
 
 
-
-
     '''
     Find cells with missing values
 
@@ -177,7 +175,7 @@ class DataCheck(object):
     outputs:
     clean (str) Clean and sorted move type
     '''
-    def clean_label(types):
+    def clean_label(self, types):
         clean = [t[:-1].rstrip() if t.endswith('s') else t.rstrip() for t in types.split('/') if len(t) > 0]
         clean.sort()
         return '/'.join(clean)
@@ -193,7 +191,7 @@ class DataCheck(object):
     unique (list) List of cleaned unique labels
     errors (list) List of labels with errors
     '''
-    def unique_labels(labels):
+    def unique_labels(self, labels):
         # build and clean unique map
         labels = list(set(labels))
         errors = set()
@@ -204,7 +202,7 @@ class DataCheck(object):
                 continue
                 
             try:
-                labels[i] = clean_label(types)
+                labels[i] = self.clean_label(types)
                 
                 # check for permutations, output for manual repair
                 if labels[i] not in unique:
@@ -226,14 +224,14 @@ class DataCheck(object):
     e.g. Wall/Flip/Twist == Wall/Twist/Flip == Flip/Wall/Twist, etc.
 
     inputs:
-    df (pd.DataFrame) DataFrame of moves
+    df          (pd.DataFrame)   DataFrame of moves
 
     outputs:
     output (list) Empty list if no errors else a list of errors
     '''
-    def check_type(df):
+    def check_type(self, df):
         labels = df['type'].tolist()
-        unique, errors = unique_labels(labels)
+        unique, errors = self.unique_labels(labels)
         
         label_map = {k: set() for k in unique}
         
@@ -242,12 +240,13 @@ class DataCheck(object):
             if not isinstance(l, str): 
                 continue
                 
-            k = clean_label(l)
+            k = self.clean_label(l)
+
             if k in label_map:
                 label_map[k].add(l)
-                
+
+
         # check if any errors, return empty list if none
-        errs = list(label_map.values())
+        errs = [s for s in label_map.values() if len(s) > 1]
 
         return [] if len(unique) == sum([len(s) for s in errs]) else errs
-
