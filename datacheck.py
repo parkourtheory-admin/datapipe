@@ -166,3 +166,85 @@ class DataCheck(object):
                 row['subseq'] = edge
                 df.at[i, 'subseq'] = ', '.join(row['subseq'])
 
+
+    '''
+    Check for plural types and misc white spaces
+    e.g. Parallel Bars versus Parallel Bar
+
+    inputs:
+    types (str) String of move types separated by "/"
+
+    outputs:
+    clean (str) Clean and sorted move type
+    '''
+    def clean_label(types):
+        clean = [t[:-1].rstrip() if t.endswith('s') else t.rstrip() for t in types.split('/') if len(t) > 0]
+        clean.sort()
+        return '/'.join(clean)
+
+
+    '''
+    Get and clean all unique labels
+
+    inputs:
+    labels (list) List of labels from DataFrame
+
+    outputs:
+    unique (list) List of cleaned unique labels
+    errors (list) List of labels with errors
+    '''
+    def unique_labels(labels):
+        # build and clean unique map
+        labels = list(set(labels))
+        errors = set()
+        unique = set()
+        
+        for i, types in enumerate(labels):
+            if isinstance(types, float) or len(types) == 0 or types == None:
+                continue
+                
+            try:
+                labels[i] = clean_label(types)
+                
+                # check for permutations, output for manual repair
+                if labels[i] not in unique:
+                    unique.add(labels[i])
+                else:
+                    errors.append(labels)
+            except Exception:
+                # check for empty, None, or NaN
+                errors.add(types)
+        
+        unique = list(unique)
+        unique.sort()
+        return unique, errors
+
+
+    '''
+    Check that label set does not contain permutations and fix so that they point to a canonical label.
+    e.g. Wall/Flip == Flip/Wall
+    e.g. Wall/Flip/Twist == Wall/Twist/Flip == Flip/Wall/Twist, etc.
+
+    inputs:
+    df (pd.DataFrame) DataFrame of moves
+
+    outputs:
+    
+    '''
+    def check_type(df):
+        labels = df['type'].tolist()
+        unique, errors = unique_labels(labels)
+        
+        label_map = {k: set() for k in unique}
+        
+        for l in labels:
+            
+            if not isinstance(l, str): 
+                continue
+                
+            k = clean_label(l)
+            if k in label_map:
+                label_map[k].add(l)
+                
+        return list(label_map.values())
+

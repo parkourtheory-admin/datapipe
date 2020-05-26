@@ -171,6 +171,10 @@ def check_moves(df, whitelist, src, log=None):
     df.to_csv(src, index=False)
     print('EDGES SORTED')
 
+    print('MOVE TYPES')
+    errs = dc.check_type(df)
+    print(errs)
+
 
 '''
 Data collection section of pipeline
