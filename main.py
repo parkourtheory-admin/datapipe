@@ -18,9 +18,9 @@ from signal import signal, SIGINT
 from pprint import pformat
 import pandas as pd
 
-from datacheck import DataCheck
-from video import Format
-import collector as clt
+from validate import datacheck as dck
+from preproc import video as vid
+from collect import collector as clt
 
 from more_itertools import chunked
 from utils import format_time
@@ -146,7 +146,7 @@ src       (str)            Source file
 log       (logging.Logger) Log file
 '''
 def check_moves(df, whitelist, src, log=None):
-    dc = DataCheck(log, whitelist=whitelist)
+    dc = dck.DataCheck(log, whitelist=whitelist)
 
     ids = dc.invalid_ids(df)
     print(f'\nINVALID IDS:{ids}\n')
@@ -212,7 +212,7 @@ def format_videos(df, src_dir, dst_dir, height=640, width=480, log=None):
     if not os.path.exists(dst_dir) or len(dst_dir) == 0:
         os.makedirs(dst_dir)
 
-    f = Format(height, width)
+    f = vid.Format(height, width)
 
     for block in chunked(df.iterrows(), mp.cpu_count()):
         procs = []
