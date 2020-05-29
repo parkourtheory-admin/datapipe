@@ -51,22 +51,8 @@ df (pd.DataFrame) DataFrame of moves
 outputs:
 df (pd.DataFrame) DataFrame containing only rows without prereq nodes
 '''
-def no_prereq(df):
-    return df.loc[df['prereq'].isnull()]
-
-
-
-'''
-Find all moves without subseq moves
-
-inputs:
-df (pd.DataFrame) DataFrame of moves
-
-outputs:
-df (pd.DataFrame) DataFrame containing only rows without subseq nodes
-'''
-def no_subseq(df):
-    return df.loc[df['subseq'].isnull()]
+def no_edge(df, edge_type):
+    return df.loc[df[edge_type].isnull()]
 
 
 '''
@@ -82,8 +68,8 @@ def dataframe_to_graph(df):
 	edges = dataframe_to_edges(df, 'name', ['prereq', 'subseq'], ', ')
 	G = nx.Graph(edges)
 
-	roots = no_prereq(df)
-	singles = no_subseq(roots)
+	roots = no_edge(df, 'prereq')
+	singles = no_edge(roots, 'subseq')
 
 	for i, node in singles.iterrows():
     	G.add_node(node['name'])
