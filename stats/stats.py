@@ -26,3 +26,16 @@ def label_dist(df, single=True):
 	        else:
 	        	dist[row['type']] += 1
     return dist
+
+
+'''
+Get average node degree in graph
+
+inputs:
+df (pd.DataFrame) DataFrame of moves
+
+outputs:
+avg (float) Average node degree
+'''
+ def avg_node_dgrees(df):
+ 	return sum([G.degree[i] for i in G.nodes()])/len(G.nodes())
