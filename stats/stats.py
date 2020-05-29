@@ -3,7 +3,18 @@ import numpy as np
 import networkx as nx
 from collections import defaultdict
 
-def label_dist(df):
+'''
+Count number of labels
+
+inputs:
+df 	   (pd.DataFrame)   DataFrame of moves
+single (bool, optional) If True, count individual types e.g. Wall, Vault, etc.
+						If False, count combination of types e.g. Wall/Flip, etc.
+
+outputs:
+dist (dict) Dictionary of counts of labels
+'''
+def label_dist(df, single=True):
     dist = defaultdict(int)
     
     for i, row in df.iterrows():
@@ -15,14 +26,3 @@ def label_dist(df):
 	        else:
 	        	dist[row['type']] += 1
     return dist
-
-
-def main():
-	df = pd.read_csv('/media/ch3njus/Seagate4TB/research/parkourtheory/data/database/latest/moves.csv')
-	dist = label_dist(df)
-	multiclass = [(k, v) for k, v in sorted(dist.items(), key=lambda item: item[1], reverse=True)]
-	print(pformat(multiclass))
-
-
-if __name__ == '__main__':
-	main()
