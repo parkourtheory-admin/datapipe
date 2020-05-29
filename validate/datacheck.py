@@ -6,7 +6,6 @@ Author: Justin Chen
 Date: 5/9/2020
 '''
 
-import networkx as nx
 import numpy as np
 from pandas import isnull
 from itertools import zip_longest
