@@ -47,3 +47,32 @@ def max_node degree(G):
 	d = dict(G.degree)
 	k = max(d, key=d.get)
 	return k, d[k]
+
+
+'''
+inputs:
+df (pd.DataFrame)
+
+outputs:
+avgs (defaultdict)
+'''
+def avg_degree_type(df):
+    avgs = defaultdict(float)
+    for group in df.groupby('type'):
+        pre = 0
+        sub = 0
+        total = 0
+        count = 0
+
+        for i, row in group[1].iterrows():
+            count += 1
+            if isinstance(row['prereq'], str):
+                pre = len(row['prereq'].split(', '))
+            if isinstance(row['subseq'], str):
+                sub = len(row['subseq'].split(', '))
+            total += (pre + sub)
+
+        total /= count
+        avgs[group[0]] = total
+
+    return avgs
