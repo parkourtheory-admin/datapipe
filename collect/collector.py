@@ -30,14 +30,14 @@ def find_missing(moves_path, videos_path, csv_out):
     una = clips.loc[clips['embed'] == 'unavailable.mp4']
     una = pd.merge(moves, una, on='id')
     una = una.drop(['prereq', 'subseq', 'type', 'alias', 'desc'], axis=1)
-    una.to_csv(os.path.join(csv_out, 'all_missing.csv'))
+    una.to_csv(os.path.join(csv_out, 'all_missing.csv'), index=False)
 
     miss = una.loc[una['link'].notnull()]
-    miss.to_csv(os.path.join(csv_out, 'missing_with_link.csv'))
+    miss.to_csv(os.path.join(csv_out, 'missing_with_link.csv'), index=False)
 
     cta = una.loc[una['link'].isna()]
     cta = cta.drop(['vid', 'channel', 'link', 'time', 'embed'], axis=1)
-    cta.to_csv(os.path.join(csv_out, 'call_to_action.csv'))
+    cta.to_csv(os.path.join(csv_out, 'call_to_action.csv'), index=False)
 
     return una, miss, cta
 
@@ -73,15 +73,15 @@ def collect(df, dst, csv_out):
                 vid.streams.get_highest_resolution().download(dst, filename=name)
             elif 'instagram' in link:
                 gram = Instagram(link)
-                gram.download(dest=dst, filename=name)
+                gram.download(dst=dst, filename=name)
             df.at[i, 'embed'] = name+'.mp4'
         except Exception:
             failed = failed.append(row, ignore_index=True)
 
     df = df[~df.id.isin(failed.id)]
     # df = df.drop(df.columns[0], axis=1)
-    failed.to_csv('unavailable.csv')
-    df.to_csv('found.csv')
+    failed.to_csv('unavailable.csv', index=False)
+    df.to_csv('found.csv', index=False)
 
     return failed, df
 
@@ -101,4 +101,5 @@ def update_videos(video_path, update, save_path):
     for i, row in update.iterrows():
         df.at[row['id']-1, 'embed'] = row['embed']
 
-    df.to_csv(save_path)
+    df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
+    df.to_csv(save_path, index=False)

@@ -18,9 +18,9 @@ from signal import signal, SIGINT
 from pprint import pformat
 import pandas as pd
 
-from datacheck import DataCheck
-from video import Format
-import collector as clt
+from validate import datacheck as dck
+from preproc import video as vid
+from collect import collector as clt
 
 from more_itertools import chunked
 from utils import format_time
@@ -142,10 +142,11 @@ Data cleaning section of pipeline
 inputs:
 df        (pd.DataFrame)   Move dataframe
 whitelist (list)           Ignore rows corresponding to ids in this list
+src       (str)            Source file
 log       (logging.Logger) Log file
 '''
-def check_moves(df, whitelist, log=None):
-    dc = DataCheck(log, whitelist=whitelist)
+def check_moves(df, whitelist, src, log=None):
+    dc = dck.DataCheck(log, whitelist=whitelist)
 
     ids = dc.invalid_ids(df)
     print(f'\nINVALID IDS:{ids}\n')
@@ -164,6 +165,15 @@ def check_moves(df, whitelist, log=None):
     print('INCOMPLETE')
     for col in columns:
         print(f'{col}: {dc.find_empty(df, col)}')
+
+    dc.sort_edges(df)
+    df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
+    df.to_csv(src, index=False)
+    print('\nEDGES SORTED\n')
+
+    print('\nMOVE TYPES\n')
+    errs = dc.check_type(df)
+    print(pformat(errs))
 
 
 '''
@@ -202,7 +212,7 @@ def format_videos(df, src_dir, dst_dir, height=640, width=480, log=None):
     if not os.path.exists(dst_dir) or len(dst_dir) == 0:
         os.makedirs(dst_dir)
 
-    f = Format(height, width)
+    f = vid.Format(height, width)
 
     for block in chunked(df.iterrows(), mp.cpu_count()):
         procs = []
@@ -236,7 +246,7 @@ def get_call_map(cfg, name):
         file = move_pipe['csv']
         df = pd.read_csv(file, header=0)
         whitelist = get_whitelist() if default.getboolean('whitelist') else []
-        calls = { 'check_moves': {'name': check_moves, 'params': [df, whitelist]} }
+        calls = { 'check_moves': {'name': check_moves, 'params': [df, whitelist, file]} }
     else:
         df = pd.read_csv(video_pipe['csv'], header=0)
         dst = video_pipe['dst']
@@ -308,6 +318,7 @@ def is_pipes(p):
         return 'videos'
     else:
         raise Exception('Invalid argparse')
+
 
 def main():
     parser = argparse.ArgumentParser()
