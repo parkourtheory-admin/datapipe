@@ -273,9 +273,10 @@ class DataCheck(object):
             
             if row['embed'] != 'unavailable.mp4' and curr_fn != new_fn:
                 try:
-                    os.rename(curr_fn, new_fn)
+                    if not os.path.exists(new_fn):
+                        os.rename(curr_fn, new_fn)
                 except FileNotFoundError as e:
-                    print(f'{row['embed']}')
+                    print(f"{row['embed']}")
             
             df.at[i, 'embed'] = new_embed
 
