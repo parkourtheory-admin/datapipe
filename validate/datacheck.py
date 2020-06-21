@@ -249,3 +249,47 @@ class DataCheck(object):
         errs = [s for s in label_map.values() if len(s) > 1]
 
         return [] if len(unique) == sum([len(s) for s in errs]) else errs
+
+
+    '''
+    Check video embed file names and update embed to formated move names
+
+    inputs:
+    moves     (pd.DataFrame) Move dataframe
+    videos    (pd.DataFrame) Video dataframe to be updated
+    video_dir (str)          Directory containing videos
+
+    outputs:
+    videos (pd.DataFrame) Updated video dataframe
+    '''
+    def correct_embed(self, moves, videos, video_dir):
+        df = pd.merge(moves, videos, on='id')
+        move_headers = moves.head()
+
+        for i, row in df.iterrows():
+            curr_fn = os.path.join(video_dir, row['embed'])
+            new_embed = row['name'].replace(' ', '_').lower()+'.mp4'
+            new_fn = os.path.join(video_dir, new_embed)
+            
+            if row['embed'] != 'unavailable.mp4' and curr_fn != new_fn:
+                try:
+                    os.rename(curr_fn, new_fn)
+                except FileNotFoundError as e:
+                    print(f'{row['embed']}')
+            
+            df.at[i, 'embed'] = new_embed
+
+        df = df.drop(move_headers, axis=1)
+        return df
+                
+
+
+if __name__ == '__main__':
+    dc = DataCheck(None)
+    move_path = '/media/ch3njus/Seagate4TB/research/parkourtheory/data/database/latest/moves.csv'
+    videos_path = '/media/ch3njus/Seagate4TB/research/parkourtheory/data/database/latest/video.csv'
+    videos_out = '/media/ch3njus/Seagate4TB/research/parkourtheory/data/output'
+    video_dir = '/media/ch3njus/Seagate4TB/research/parkourtheory/data/videos/production/'
+    moves = pd.read_csv(moves_path, dtype={'id': int})
+    videos = pd.read_csv(videos_path,  dtype={'id': int})
+    dc.correct_embed(moves, videos, video_dir).to_csv(videos_out, index=False)

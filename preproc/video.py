@@ -8,6 +8,9 @@ Date: 5/11/2020
 
 import cv2
 import os
+from tqdm import tqdm
+from more_itertools import chunked
+import multiprocessing as mp
 
 class Video(object):
     '''
@@ -83,17 +86,24 @@ class Video(object):
         return False
 
 
-if __name__ == '__main__':
-    src = '/media/ch3njus/Seagate4TB/research/parkourtheory/data/videos/production/'
-    dst = './thumbnails'
-    v = Video()
-    files = [i for i in os.listdir(src)]
-    failed = []
+    '''
+    Extract thumbnails in parallel
 
-    for file in tqdm(iter(files), total=len(files)):
-        success = v.thumbnail(os.path.join(src,file), dst, 300, 168)
-        
-        if not success:
-            failed.append(file)
+    inputs:
+    src (str) Source directory containing videos
+    dst (str) Destination directory for thumbnails
+    '''
+    def extract_thumbnails(self, src, dst):
+        files = [i for i in os.listdir(src)]
+        cpus = mp.cpu_count()
+        steps, _ = divmod(len(files), cpus)
 
-    print(failed)
+        for block in tqdm(chunked(iter(files), cpus), total=steps+1):
+            procs = []
+
+            for f in block:
+                procs.append(mp.Process(target=self.thumbnail, 
+                    args=(os.path.join(src,f), dst, 300, 168)))
+            
+            for p in procs: p.start()
+            for p in procs: p.join()
