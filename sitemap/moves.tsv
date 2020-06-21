@@ -1,0 +1,1093 @@
+id	name	prereq	subseq	type	alias	description
+1	Shoulder Roll		Dive Roll, Shoulder Vault	Roll	Parkour Roll	A role over a shoulder, which is typically used after dropping from a height or out of an over-rotated flip. A proper Shoulder Roll travels from the shoulder, across the back, and to the opposite hip.
+2	Dive Roll	Shoulder Roll	360 Dive Roll, Kong Dive Roll, Lache Dive Roll, Roll Bomb	Roll		A diving Shoulder Roll.
+3	360 Dive Roll	Dive Roll	270 Dive Side Sumi, 360 Dive Cartwheel, 360 Dive Front Flip, 360 Dive Handstand, 360 Dive Kong 360 Dive Roll, 360 Dive Roll Bomb, 360 Kong, 540 Dive Roll, 720 Dive Roll	Roll/Twist	Full Twisting Dive Roll, Vortex	Full twisting Dive Roll. This can be done with a full twist on the way up on the arch of the dive, half twist up and half twist down, or a full twist on the way down.
+4	540 Dive Roll	360 Dive Roll	540 Dive Front Flip, 540 Dive Roll Bomb, Kick 540 Dive Roll	Roll/Twist	One and a half twisting Dive Roll.	One-and-a-half twisting Dive Roll.
+5	720 Dive Roll	360 Dive Roll	1080 Dive Roll, 720 Dive Roll Bomb	Roll/Twist	Double Twisting Dive Roll	Double full twisting Dive Roll.
+6	1080 Dive Roll	720 Dive Roll		Roll/Twist	Triple Twisting Dive Roll	Triple full twisting Dive Roll.
+7	Wall Back Spin			Wall		Back Spin against a wall. Reference the Break Dancing move Back Spin.
+8	Back Spin			Roll		A sideways roll performed along the edge of a wall or rail.
+9	Roll Bomb	Dive Roll	Roll Bomb 360 Dive Roll, Roll Bomb Full	Roll/Flip		A roll off a ledge into a side or front tuck.
+10	360 Dive Roll Bomb	360 Dive Roll	720 Dive Roll Bomb	Roll/Flip/Twist	Morph Bomb	360 twisting Dive Roll off a ledge into a side or front tuck. This move was created by Cato Aspmo in 2012.
+11	540 Dive Roll Bomb	540 Dive Roll		Roll/Flip/Twist	540 Morph Bomb	540 twisting Dive Roll off a ledge into a side or front tuck. This move was created by Aaron Hakala in 2012.
+12	Shoulder Vault	Shoulder Roll	Shoulder Vault 360, Shoulder Vault-In Back-Out	Vault		A vault performed by rolling only over the shoulders.
+13	360 Dive Front Flip	360 Dive Roll, Front Flip	360 Dive Front Dash-Out, 360 Dive Front Unwind Half, Knee 360 Dive Front Flip, Punch Wall Full-Up Inward Front	Flip/Twist	Vortex Front, Pig Skin, Psycho Crusher	360 dive into a front tuck.
+14	Inward 360 Dive Roll		Inward 360 Dive Roll Bomb, Inward 540 Roll, Inward 720 Dive Roll, Inward Dive Touchdown Twist	Roll/Twist	Inward Vortex	A diving Masterswipe, which forms the first 180 degrees, collapsed into a roll, completing the 360 degree twist. Reference Club540.com for Masterswipe.
+15	270 Dive Side Sumi	360 Dive Roll, Side Flip		Flip/Twist	Sloppy Joe	A three-quarter dive twist into a Side Sumi.
+16	360 Dive Handstand	360 Dive Roll, Handstand	540 Dive Back Handspring	Twist/Handstand	Vortex Handstand	360 dive to Handstand.
+17	Monkey Vault		Cast Vault, Kong Vault	Vault		From standing, a two-handed vault where both legs are pulled between the arms as both hands push off the obstacle.
+18	Kong Vault	Monkey Vault	360 Kong, Dive Kong, Kash Vault, Kong 360, Kong Cat, Kong Front, Kong Gainer, Kong Precision, Kong Rebound, Kong Side, Kong Trapdoor Wall Flip, Kong Tunnel, One-Hand Kong, Slant Kong Gainer	Vault	King Kong Vault, Cat Pass	A run and dive into a Monkey Vault.
+19	Reverse Kong		Cast Bomb, Kong Reverse Kong, Reverse Double Kong	Vault	Push Kong, Push Vault, Reverse, Cat Pass, Reverse King Kong	A jump over an obstacle with a 180 turn that uses both hands to push away.
+20	Double Kong	Dive Kong	Double Kong Front, Double Kong Gainer, Double Kong Precision, Double Kong Slant Gainer, Kong 360 Side Vault, Kong 360 Side Vault, Kong Dive Roll, Kong Handstand, Kong Reverse Kong, One-Hand Double Kong, Triple Kong	Vault	Double Cat Pass	Kong Vault into a dive to a consecutive Kong.
+21	Dive Kong	Kong Vault	360 Dive Kong, Double Kong	Vault	Dive Cat Pass	An elongated Kong Vault with the body fully extended during the dive.
+22	One-Hand Kong	Kong Vault	One-Hand Double Kong, One-Hand Kong Gainer	Vault	One-Hand Cat Pass	Kong Vault using one hand.
+23	One-Hand Double Kong	Double Kong, One-Hand Kong	One-Hand Kong One-Hand Reverse	Vault	One-Hand Double Cat Pass	Double Kong using just one hand.
+24	Kong Dive Roll	Dive Roll, Double Kong	Kong 360 Dive Roll	Vault/Roll	Cat Pass Dive Roll	Kong Vault straight into a Dive Roll. The Kong is executed as the first Kong in a Double Kong.
+25	Kong Precision	Kong Vault	Kong 180 Precision, Kong Safety	Vault/Beam	Cat Pass Precision	Kong Vault to precision landing.
+26	Kong Cat	Kong Vault		Vault/Wall	Cat Pass Cat Hang	Kong Vault landing in Cat Hang position.
+27	Kong Reverse Kong	Double Kong, Reverse Kong	Kong Cast Bomb	Vault	Cat Pass Reverse Cat Pass	A vault performed over parallel walls in which a Kong Vault is executed into a dive off the first wall to a Reverse Kong off the second wall.
+28	Cast Bomb	Castaway Back, Reverse Kong	Cast Bomb Arabian, Kong Cast Bomb	Vault/Flip		Reverse Kong into a Castaway Back. This was first landed by Daniel Arroyo in 2008.
+29	Kong Handstand	Dive Handstand, Double Kong		Vault/Handstand	Cat Pass Handstand	Kong Vault landing in a Handstand. The Kong is executed as the first Kong in a Double Kong.
+30	Kong Front	Kong Vault	Double Kong Front, Frog Front, Kong Double Front, Kong Front Cat, Kong Front Dash, Kong Front Half, Kong Stall Front, One-Step Kong Front	Vault/Flip	Cat Pass Front	Kong Vault into a front tuck.
+31	Kong Stall Front	Kong Front, Stall Front Flip		Vault/Flip	Cat Pass Stall Front, Gato Stall Front	Kong Vault into a stalled front tuck.
+32	Frog Front	Kong Front		Flip		Kong Front executed from Frog position (crouching on both hands and feet).
+33	Kong One and a Half Full	Kong Front Full		Vault/Flip/Twist	Cat Pass Rudi, Kong Rudi	A one and a half full twisting Kong Front.
+34	Kong Front Full	Kong Front Half	Kong One and a Half Full	Vault/Flip/Twist	Cat Pass Front Full	Kong Vault into a Front Full.
+35	Kong Front Dash	Dash Vault, Kong Front	Kong Front Dash Bomb	Vault/Flip	Cat Pass Front Dash	A double vault in which a Kong Front off the first wall is executed to a Dash Vault off the second wall.
+36	Kong Front Dash Bomb	Kong Front Dash		Vault/Flip	Cat Pass Front Dash Bomb	A vault performed over parallel obstacles in which a Kong Vault is executed off the first wall to a Dash Bomb off the second wall.
+37	Kong Gainer	Kong Vault	Dive Kong Gainer, Double Kong Gainer, Elbow Kong Gainer, Frog Gainer, Kong Double Gainer, Kong Gainer Full, Kong Gainer Full-Down, Kong Gainer Kong, Kong Gainer Layout, Kong Gainer Pike, Kong Stall Gainer, Monkey Gainer, One-Hand Kong Gainer, Straddle Kong Gainer, Worm Gainer	Vault/Flip	Cat Pass Gainer	Kong Vault executed into a Gainer. This was first landed by Daniel Ilabaca in 2007.
+38	Double Kong Gainer	Double Kong, Kong Gainer	Kong One-Hand Kong Gainer, Triple Kong Gainer	Vault/Flip	Double Cat Pass Gainer	Kong Vault into a dive to a Kong Gainer. This was first landed by Alexander Zyulev in 2012.
+39	Kong Double Gainer	Kong Gainer		Vault/Flip	Cat Pass Double Gainer	Kong Vault executed into a Double Gainer. This was first attempted by Pat Greenall in 2012.
+40	Kong Gainer Full	Kong Gainer	Kong Gainer Double Full	Vault/Flip/Twist	Cat Pass Gainer Full, Fish	A full twisting Kong Gainer. This was first attempted by Pat Greenall in 2012. This was first landed by Calen Chan of team You Got This in 2016.
+41	One-Hand Kong Gainer	Kong Gainer, One-Hand Kong		Vault/Flip	One-Hand Cat Pass Gainer	Kong Gainer using one hand.
+42	360 Dive Kong Gainer	360 Dive Kong, Dive Kong Gainer		Vault/Flip/Twist	Vortex Cat Pass Gainer, Vortex Kong Gainer	360 dive into a Kong Gainer.
+43	Kash Vault	Dash Vault, Kong Vault	Kash Bomb	Vault		A vault performed over parallel obstacles in which a Kong is executed off the first wall to a Dash off the second wall.
+44	Frog Gainer	Kong Gainer	Frog Gainer Full, Frog Stall Gainer, Slant Frog Gainer	Flip	Pasha Gainer	Kong Gainer executed from Frog position (crouching on both hands and feet).
+45	Worm Gainer	Kong Gainer		Flip		A worm (Break Dancing move) into a gainer off a ledge. This was invented by Artyom Chernomyrdin in 2012 and first landed by Ethan Klickstein in 2017.
+46	Cast Gainer	Castaway Back	Cast Stall Gainer, One-Step Cast Gainer	Bar/Flip	Cast Gainer Tom	A cast off a rail or a wall with a drop into a Gainer over the obstacle. This was first landed by Alfred Scott of Dodo Freerunning in 2013.
+47	Kong Tunnel	Kong Vault		Vault/Flip	Cat Pass Tunnel	Kong Vault into a Tunnel Flip.
+48	Kong 360	Kong Vault	Kong 360 Dive Roll, Kong 360 Side Vault	Vault/Twist	Cat Pass 360, Screwdriver	Kong Vault into a forward traveling full twisting flat spin. This was first landed by Victor Lopez in 2007.
+49	Kong 360 Side Vault	Double Kong, Kong 360		Vault/Twist	Cat Pass 360 Side Vault, Screwdriver Side Vault	Kong 360 into a dive to a Side Vault.
+50	360 Kong 360	360 Kong		Vault/Twist	360 Cat Pass 360, Kamikaze	A 360 Kong into a 360 twist off the obstacle.
+51	Dash Vault	Thief Vault	360 Dash, Dash 360, Dash Cat, Dash Precision, Dash Roll, Double Dash Vault, Kash Vault, Kong Front Dash, Reverse Dash	Vault		A vault where the practitioner jumps over the obstacle with both feet extended forward and pushes off with both hands as they travel over the obstacle.
+52	360 Dash	Dash Vault		Vault/Twist		360 jump into a Dash Vault.
+53	Dash 360	Dash Vault		Vault/Twist		Dash Vault into a 360 twist off the obstacle.
+54	Dash Roll	Dash Vault	Dash Bomb, Dash Handstand, Gargoyle Dash Roll, Kash Roll	Vault/Roll		Dash into a roll.
+55	Dash Bomb	Dash Roll	Dash Bomb Half, Drop Dash Bomb, Kash Bomb, Sitting Dash Bomb	Vault/Flip		Dash Vault into a front tuck. This was first landed by Victor Lopez in 2007.
+56	Drop Dash Bomb	Dash Bomb		Flip	Drop Bomb	Dash Bomb executed from standing.
+57	Dash Precision	Dash Vault		Vault/Beam		Dash Vault to precision landing.
+58	Dash Cat	Dash Vault		Vault		Dash Vault landing in Cat Hang position.
+59	Dash Handstand	Dash Roll, Handstand		Vault/Handstand	Dash Rack	Dash Vault landing in a Handstand.
+60	Reverse Vault		Double Reverse Vault, One-Hand Reverse, Reverse 360, Reverse Bomb, Reverse Cat, Reverse Dash, Reverse Hyper, Reverse Precision, Reverse Safety	Vault		A vault where the practitioner pushes off the obstacle with both hands into a 360 degree rotation over the obstacle.
+61	One-Hand Reverse Double Leg	One-Hand Reverse	One-Hand Reverse Double Leg Gyro, One-Hand Reverse Double Leg Twist	Vault/Flip	Barrel Vault	One-Hand Reverse Vault set into a Double Leg. Reference Club540.com for Double Leg.
+62	One-Hand Reverse Double Leg Twist	One-Hand Reverse Double Leg	One-Hand Reverse Double Leg Double Twist	Vault/Flip/Twist	Barrel Full	A full twisting One-Hand Reverse Double Leg. Reference Club540.com for Doubleleg Twist.
+63	Reverse 360	Reverse Vault		Vault/Twist		Reverse Vault into a 360 twist off the obstacle.
+64	Reverse Cat	Reverse Vault		Vault		Reverse Vault landing in Cat Hang position.
+65	Reverse Precision	Reverse Vault		Vault/Beam		Reverse Vault to precision landing.
+66	One-Hand Reverse	Reverse Vault	One-Hand Reverse Double Leg, One-Hand Reverse Safety, Reverse Palm Spin	Vault		Reverse Vault using one hand.
+67	One-Hand Reverse Safety	One-Hand Reverse, Safety Vault		Vault	One-Hand Reverse Speed Step, One-Hand Reverse Step Vault	One-Hand Reverse into a Safety off a consecutive obstacle.
+68	Reverse Dash	Dash Vault, Reverse Vault		Vault		A vault performed over parallel obstacles in which a Reverse is executed off the first wall to a Dash off the second wall.
+69	Kong Side Full	Kong Side		Vault/Flip/Twist	Cat Pass Side Full, Helix	A full twisting Kong Side. This was first landed by Scott Maxson in 2014.
+70	Speed Vault	Safety Vault	360 Speed Vault, Double Speed, Speed Cat, Speed Pimp, Speed Precision, Speed Safety, Speed Tunnel, Speed Vault 360	Vault		A one-hand vault where the opposite-side leg rises so the other leg can quickly step over the obstacle.
+71	360 Speed Vault	Speed Vault		Vault/Twist		360 jump into a Speed Vault.
+72	Speed Precision	Speed Vault		Vault/Beam		Speed Vault to precision landing.
+73	Speed Cat	Speed Vault		Vault		Speed Vault landing in Cat Hang position.
+74	Speed Vault 360	Speed Vault	Speed Vault 540	Vault/Twist		Speed Vault into a 360 twist off the obstacle.
+75	Speed Pimp	Pimp Flip, Speed Vault		Vault/Flip		Speed Vault into a Pimp Flip. This was first landed by Gaetan Bouillet of Speeders Family in 2009.
+76	Double Speed	Speed Vault		Vault		A double vault in which the Speed Vault off the first wall is used to dive to a Speed off the second wall.
+77	Speed Tunnel	Speed Vault, Tunnel Flip	Speed Tunnel Pike	Vault/Flip		Speed Vault set into a Tunnel Flip.
+78	Precision		180 Precision, Backward Precision, Hurdle Precision, Punch Tic Tac Precision	Jump/Beam		Any move that lands precisely on an object. Generally, Precision refers to a jump to precise landing.
+79	Kong Safety	Kong Precision		Vault	Cat Pass Speed Step, Kong Speed Step, Kong Step Vault	Kong Vault into a Safety Vault off a consecutive obstacle.
+80	360 Precision	180 Precision	540 Precision, Stride 360 Precision	Jump/Twist/Beam		A full twisting jump to precision landing.
+81	720 Precision	540 Precision		Jump/Twist/Beam		A double full twisting jump to precision landing.
+82	Stride 360 Precision	360 Precision		Jump/Twist/Beam	Lunar Eclipse	A stride into a one-foot 360 Precision.
+83	Lache		360 Regrab, Lache Cat, Lache Crane, Lache Dive Roll, Lache Front, Lache Lache, Lache Precision, Lache Precision Punch Wall Flip, Lache Punch Wall Inward Front, Lache Side, Lache Two-Foot Wall Inward Side	Bar		Swing off a high bar.
+84	360 Regrab	Lache	540 Regrab	Bar/Twist		A backwards swing released into a 360 twist and then regrabbing the bar.
+85	Flyaway Full Catch	Flyaway Catch, Flyaway Full		Bar/Flip/Twist	Bar Gainer Full Lache, Pak Full, Bhardwaj, Swing Gainer Full Lache, Swing Gainer Full Catch	Flyaway Full to bar catch. This was first done by Mohini Bhardwaj in 2004.
+86	Front Flip		360 Dive Front Flip, Ankle Front, Arabian, Dive Front Flip, Double Front Flip, Front Cat, Front Flip Precision, Front Full, Front Half, Front Kong, Front Pike, Hang Toe Front, Inward Front, Knee Front Flip, One-and-a-Half Front Flip Dive Roll, Reverse Lache Two-Foot Wall Front, Single Ankle Front, Stall Front Flip, Standing Double Front Flip, Tic Tac Front	Flip	Front Tuck	A flip tucked rotating forward around the frontal axis.
+87	Front Flip Precision	Front Flip		Beam/Flip		Front Flip to a Precision landing.
+88	Front Cat	Front Flip		Flip		Front Flip landing in Cat Hang position.
+89	Stomach Webster	Webster Front		Wall/Flip	Sideways Pushup Webster	Webster performed from laying chest down on a ledge with one leg Hang off. Reference Club540.com for Webster.
+90	Double Front Flip	Front Flip	Front-In Half-Out, Inward Double Front	Flip		A double rotating Front Flip.
+91	Dive Front Flip	Front Flip		Flip	Superman Front	A dive into front tuck.
+92	Wall Inward Front	Inward Front	Two-Step Wall Inward Front, Wall Front Two-Foot Wall Flip, Wall Full-Up Inward Front, Wall Inward Front Half, Wall Inward Front Pike	Wall/Flip	Wall Loser	One step up a wall set into a front tuck.
+93	Devil Drop	Inward Front	Devil Drop Castaway Inward Front, Devil Drop Half, Devil Drop Stall, Double Devil Drop	Wall/Flip	Cat Belle, Cat Loser, Cat Front	An Inward Front set from Cat Hang position.
+94	Punch Wall Inward Front	Inward Front	Hang Castaway Punch Inward Front, Lache Punch Wall Inward Front, Punch Wall Full-Up Inward Front, Punch Wall Inward Double Front, Punch Wall Inward Front Half	Wall/Flip	Two-Foot Wall Inward Front	Punch set on a wall into a inward front tuck.
+95	Inward Front Half	Front Half, Inward Front	Inward Dark Arabian Down Monkey	Flip/Twist		A half twisting Inward Front.
+96	Front Half	Front Flip	Front Half Dismount Catch, Front Half-In Back-Out, Front-In Half-Out, Inward Front Half	Flip/Twist	Barani	A half twisting Front Flip.
+97	Front Full	Front Flip	Rudi	Flip/Twist		A full twisting Front Flip.
+98	Rudi	Front Full	Front Double Full	Flip/Twist		A one and a half twisting Front Flip.
+99	Randi	Front Double Full		Flip/Twist		A two and a half twisting Front Flip.
+100	Tic Tac Front	Front Flip, Tic Tac		Wall/Flip	Wall Front, Tac Front, Tic Front, Pop Front	Tic Tac into a front tuck.
+101	Back Flip		Arabian, Back Flip Precision, Back Flip Wall Dive Roll, Back Layout, Castaway Back, Double Back Flip, Gainer, Half-Up Back, Palm Flip, Stall Back Flip, Wall Flip	Flip	Back Tuck	A flip tucked rotating backward around the saggital axis.
+102	Back Flip Precision	Back Flip		Beam/Flip		Back Flip to a precision landing.
+103	Back Cat	Back Handspring	Back Full Cat	Wall/Flip		Back Flip dismount landing in Cat Hang position.
+104	Korbut Flip	Back Layout		Bar/Flip	Back Layout Catch	Back Layout off a bar to catch on the same bar. This move was landed by Olga Korbut in 1972.
+105	Back Full	Arabian	Back One and a Half Full	Flip/Twist		A full twisting Back flip.
+106	Wall Flip	Back Flip	270 Tic Tac Wall Flip, Inward Wall Flip Cat, One-Step Thread Wall Flip, Punch Wall Flip, Sideway Wall Flip, Trapdoor Wall Flip, Two-Step Wall Flip, Wall Arabian, Wall Double Back, Wall Flash Kick, Wall Flip Switch, Wall Full, Wall Full-Up, Wall Layout, Wall Pike, Wall Rocketboi, Wall Side Flip, Wall Wrap Full	Wall/Flip		One step off a wall into a Back Flip.
+107	Wall Full	Wall Flip	Wall Full Double Leg, Wall One and a Half Full	Wall/Flip/Twist	Waffle, Wall Flip 360	A full twisting Wall Flip.
+108	Wall Double Full	Wall One and a Half Full	Wall Full Snapu	Wall/Flip/Twist	Double Waffle, Wall Flip 720	A double full twisting Wall Flip.
+109	Wall Double Back	Wall Flip		Wall/Flip		Wall Flip with two rotations. This was first landed by Ben Jenx in 2010.
+110	Two-Step Wall Flip	Wall Flip	Three-Step Wall Flip, Two-Step Wall Double Back, Two-Step Wall Full, Two-Step Wall Full-Down, Two-Step Wall Stall Back	Wall/Flip		Two steps up a wall into a back tuck.
+111	Wall Corkscrew	Corkscrew	Wall Corkscrew Double Leg, Wall Corkscrew Shuriken, Wall Double Corkscrew, Wall Kroc	Wall/Flip/Twist		Corkscrew set off a wall either by J-stepping towards the wall and stepping off the wall with the swing leg or by taking one step up the wall with the non-swing leg into Corkscrew. Reference Club540.com for Corkscrew.
+112	Wall Kroc	Wall Corkscrew		Wall/Flip/Twist		An opposite twisting Wall Corkscrew. Reference Club540.com for Kroc.
+113	Angel Drop	Back Layout	Angel Drop Down Monkey, Angel Drop Full, Angel Drop Punch Wall Flip, Angel Drop Wall Flip	Wall/Flip		Backflip set from Cat Hang position.
+114	Angel Drop Full	Angel Drop	Angel Drop Double Full	Wall/Flip/Twist		Back Full set from Cat Hang position.
+115	Macaco Back	Macaco		Wall/Flip	Macaco Bomb, Valdez Bomb	Macaco off a ledge into a back tuck.
+116	Wall Arabian	Wall Flip	Corner Wall Arabian, Wall Arabian Dive Roll, Wall Arabian Inward Down Monkey, Wall Arabian Layout, Wall Arabian One and a Half Dive Roll, Wall Arabian Unwind Half	Wall/Flip		One step up a wall into an Arabian.
+117	Punch Wall Flip	Wall Flip	Castaway Punch Wall Flip, Corner Worm Punch Wall Flip, Lache Precision Punch Wall Flip, One-Step Punch Wall Flip, Punch Wall Layout, Wall Front Two-Foot Wall Flip, Wall Roll Punch Wall Flip, Wall Roll Punch Wall Flip	Wall/Flip		A two-foot set off a wall into a Wall Flip.
+118	Palm Flip	Back Flip	Alleyway Palm Flip, Ceiling Palm Flip, Corner Palm Flip, Dive Palm Flip, Double Palm Flip, Dyno Palm Flip, Elbow Palm Flip, One-Hand Palm Flip, One-Hand Palm Gainer, One-Step Palm Flip, Palm Full, Palm Gainer, Straddle Palm Flip, Wall Spin Flip	Wall/Flip		A two-foot jump set into a back tuck by pushing off a wall with both hands landing in front of the wall.
+119	One-Step Palm Layout	One-Step Palm Flip		Wall/Flip		A one step up a wall into a laid out Palm Flip.
+120	180 Ceiling Palm Flip 180	180 Ceiling Palm Flip		Ceiling/Flip/Twist		A 180 jump set into a Palm Flip off the ceiling or high bar followed by a 180 twist down.
+121	Castaway Back	Back Flip	Cast Bomb, Cast Gainer, Castaway Arabian, Castaway Double Back, Castaway Layout, Castaway Pike, Castaway Pistol, Castaway Side, Castaway Stall Back, Dive Castaway Back, Drop Castaway Back, Elbow Castaway Back, Handstand Castaway Back, Hang Castaway Back, Human Flag Castaway Back, One-Hand Castaway Back, One-Step Castaway Back, Pop Castaway Back, Reverse Hyper Castaway Back, Sideways Castaway Back, Swing Castaway Back, Turn Castaway Back	Bar/Flip	Palm Drop	A castaway set into a back tuck. Castaway refers to the position, casting motion, and the move.
+122	Castaway Full	Castaway Arabian	Castaway Arabian Unwind Half, Castaway Double Full, Sitting Turn Castaway Full	Wall/Bar/Flip/Twist	Palm Drop Full	A full twisting Castaway Back.
+123	Hang Castaway Back	Castaway Back	Hang Castaway Arabian, Hang Castaway Double Back, Hang Castaway Down Monkey, Hang Castaway Full, Hang Castaway Layout, Hang Castaway Stall Back, Hang Castaway Wall Punch Layout, One-Hand Hang Castaway Back	Wall/Flip		Castaway Back set from Hang position against a wall.
+124	Hang Castaway Full	Hang Castaway Back		Wall/Flip/Twist		A full twisting Hang Castaway Back. This was first landed by Vlas Vladimirov in 2014.
+125	Drop Castaway Back	Castaway Back		Wall/Flip		Castaway Back set by dropping off a ledge into a push up position.
+126	Tsukahara Vault		Kasamatsu Vault, Tsukahara Arabian Vault	Flip/Vault		A handspring with a quarter to half twist dive to the obstacle into a back tuck. Reference Club540 for Back Handspring.
+127	Kumquat	Back Layout	Drop Kumquat, Kumquat Full	Bar/Flip	Ping	Back Flip off a bar from sitting position.
+128	Kumquat Full	Kumquat	Kumquat One and a Half Full	Bar/Flip/Twist	Ping Full	A full twisting Kumquat.
+129	Flyaway		2D Flyaway, Double Flyaway, Elbow Flyaway, Flyaway 180 Tic Tac Regrab, Flyaway Arabian, Flyaway Cat, Flyaway Catch, Flyaway Full, Flyaway Full-Down, Flyaway Kong, Flyaway Layout, Flyaway Punch Wall Layout, Flyaway Rodeo, Flyaway Spider Climb, Flyaway Walkdown, Flyaway X-Out, Hang Gainer, Lotus Flyaway, One-Hand Flyaway	Bar/Flip	Swing Gainer, Bar Gainer	A forward swing released into a back tuck.
+130	Inward Flyaway		Double Inward Flyaway, Inward Flyaway Catch, Inward Flyaway Half, Inward Flyaway Inward Down Monkey, Inward Flyaway Regrab, Inward Flyaway Side, Inward Flyaway Wall Punch Dive Roll	Bar/Flip		A backwards swing into a front tuck.
+131	Double Back Flip	Back Flip	Back Layout-In Back-Out	Flip		A double rotating Back Flip.
+132	Double Flyaway	Flyaway	Double Flyaway Catch, Double Flyaway Full-Down, Flyaway Back-In Layout-Out, Flyaway Double Layout, Flyaway Full-In Back-Out, Flyaway Layout-In Back-Out, Flyaway Precision Punch Wall Flip, Flyaway Stall-Out, Flyaway-In Full-Out, Pike Double Flyaway, Triple Flyaway	Bar/Flip	Swing Double Gainer, Bar Double Gainer	A double rotating Flyaway.
+133	Triple Flyaway	Double Flyaway	Flyaway Full-in Triff	Bar/Flip	Andrianov	A triple rotating Flyaway.
+134	Sitting Sideway Gainer	Sideway Gainer	Sitting Sideway Gainer Full	Wall/Flip	Sitting Caster Back	A sideways traveling Gainer set from half sitting position parallel on a ledge. The term Side Gainer originates from Gymnastics.
+135	Sitting Sideway Gainer Full	Sitting Sideway Gainer		Wall/Flip/Twist	Sitting Caster Gainer Full	A full twisting Sitting Sideway Gainer.
+136	Pimp Flip	Gainer	360 Dive Pimp, Castaway Pimp, Frog Pimp, Giant Pimp, Palm Spin Pimp, Parallel Bar Pimp Dismount, Pimp Full, Pimp Wall Layout, Reverse Palm Spin 360 Pimp, Side Vault Pimp, Sitting Turn Pimp Flip, Speed Pimp	Flip		A back tuck parallel to an obstacle set by pushing down on top of the obstacle with one hand. In general, a Pimp is any flip with a back tuck while pushing off the top of an obstacle. This was first landed by Owen Hegarty in 2008.
+137	Scoot Pimp Flip	Sitting Turn Pimp Flip	Machine Pimp, Scoot Pimp Full, Scoot Pimp Full-Down	Flip		A scoot off a ledge into a Pimp Flip. Reference Club540.com for Scoot.
+138	Sitting Turn Pimp Flip	Pimp Flip	Scoot Pimp Flip, Sideways Sitting Gainer, Sitting Turn Pimp Full, Sitting Turn Pimp Wall Flip	Flip		Pimp Flip set from sitting position.
+139	Flyaway Full	Flyaway	Flyaway Double Full, Flyaway Full Catch, Flyaway Full-In Back-Out	Bar/Flip/Twist	Bar Gainer Full, Swing Gainer Full	A full twisting Flyaway.
+140	Flyaway Double Full	Flyaway Full	Flyaway Triple Full	Bar/Flip/Twist		A double full twisting Flyaway.
+141	Flyaway Full-In Back-Out	Double Flyaway, Flyaway Full	Flyaway Full-In Full-Out	Bar/Flip/Twist	Swing Gainer Full-In Back-Out, Bar Gainer Full-In Back-Out	Flyaway Full into a back tuck.
+142	Gainer	Back Flip	Devil Drop Gainer, Double Gainer, Gaet Pimp, Gainer Arabian, Gainer Cat, Gainer Down Monkey, Gainer Flash, Gainer Full-Down, Gainer Layout, Gainer Pike, Gainer Precision, Knee Gainer, One-Hand Palm Gainer, Palm Gainer, Pimp Flip, Running Gainer, Sideway Gainer, Sitting Gainer, Stall Gainer, Wall Gainer	Flip		A two foot jump set into a forward moving back tuck. Note: The Gainer technique used in Parkour/Freerunning is different from the technique used in Tricking. Reference Club540.com for the Tricking version of a Gainer.
+143	Gainer Precision	Gainer		Beam/Flip		Gainer to precision landing.
+144	Gainer Full	Gainer Arabian	EW Gainer Full, Gainer Double Full, Gainer Full Precision, Gainer Full-In Back-Out, Gainer Unwind Half, Lazy Boy Gainer Full	Flip/Twist	Gainer 360	A full twisting Gainer.
+145	Gainer Full Precision	Gainer Full		Beam/Flip/Twist	Gainer 360 Precision	Gainer Full landing in Precision.
+146	Sitting Gainer	Gainer		Wall/Flip		Gainer set from sitting position on a ledge.
+147	Lazy Gainer	Lazy Vault, Running Gainer		Vault/Flip		Running Gainer set with a Lazy Vault over a vault or rail.
+148	Gargoyle Gainer	Running Gainer	Elbow Gargoyle Gainer, Gargoyle Gainer Full	Wall/Flip		Gainer set from Gargoyle position.
+149	Gaet Pimp	Gainer	Alleyway Gaet Pimp, Dive Gaet Pimp, Double Gaet Pimp, Elbow Gaet Pimp, Gaet Pimp Full, Gaet Pimp Full-Down, Gaet Pimp Layout, Gaet Pimp Wall Flip, Gaet Stall Pimp, Gaet Wall Full-Up, One-hand Gaet Pimp, Palm Spin Gaet Pimp, Pimp Spin Gainer, Running Turn Gaet Pimp	Beam/Flip	Gaetan Pimp Flip	Pimp Flip variation using uses both hands to push down on the top corner of a low wall or a beam and using either a Punch or a split step to set into a back tuck. This move was created by Gaëtan Bouillet of Speeders Family in 2011.
+150	Double Gainer	Gainer	Gainer Full-In Back-Out	Flip		A double rotating Gainer.
+151	Devil Drop Gainer	Gainer	Devil Drop Gainer Down Monkey, Devil Drop Gainer Full, Devil Drop Gainer Layout, Devil Drop Gainer Pike, Devil Drop Gainer Stall	Wall/Flip		Gainer set from Cat Hang position.
+152	One-Hand Palm Gainer	Gainer, Palm Flip	Dive One-Hand Palm Gainer, Elbow One-Hand Palm Gainer, One-Hand Palm Double Gainer, One-Hand Palm Gainer Full, One-Hand Palm Gainer Full-Down, One-Hand Palm Gainer Layout, One-Hand Palm Gainer Pike, One-Step One-Hand Palm Gainer	Wall/Flip	Ginger Flip, Hi-Five Gainer	Gainer set by pushing against the vertical face of a wall with one hand.
+153	Handstand Gainer	Handstand	Handstand Gainer Full	Wall/Flip/Handstand		Gainer set from Handstand.
+154	Elbow Palm Flip	Palm Flip		Wall/Flip		Palm Flip using both forearms.
+155	Elbow Kong Gainer	Kong Gainer		Vault/Flip	Elbow Cat Pass Gainer	Kong Gainer set by pushing off the vault with both forearms.
+156	Penny Drop Gainer	Penny Drop		Bar/Flip		Penny Drop into a Gainer.
+157	Wall Gainer	Gainer	EW Gainer, Hang Castaway Wall Gainer, Punch Wall Gainer, Two-Step Wall Gainer, Wall Gainer Down Monkey, Wall Gainer Full, Wall Gainer Full-Down, Wall Gainer One-Hand Down Monkey	Wall/Flip		One step off a wall with a 180 turn set into a gainer. This was first landed by Ryan Doyle in 2007.
+158	Two-Step Wall Gainer	Wall Gainer	Two-Step Wall Stall Gainer	Wall/Flip		Two steps up a wall set into a Gainer. This was first landed by Alfred Scott of Dodo Freerunning in 2012.
+159	Punch Wall Gainer	Wall Gainer	Punch Wall Stall Gainer	Wall/Flip		Punch off the wall set into a Gainer. This was first landed by Alfred Scott of Dodo Freerunning in 2013.
+160	EW Gainer	Wall Gainer	Devil Drop EW Gainer, EW Gainer Arabian, EW Gainer Full, EW Stall Gainer	Wall/Flip	Eugene Wall Gainer, Erik Wall Gainer	This move was named after Erik Mukhametshin's friend, Eugene, who invented the move in 2007. It is also commonly referred to by the misnomer Erik Wall Gainer. After the first step on the wall, you turn 180 and use your other leg to set into the Gainer.
+161	Chair Spin Gainer		Chair Spin Gainer Full, Chair Spin Gainer Full-Down	Pole/Flip		Chair Spin (Pole Dancing move) into a Gainer.
+162	Chair Spin Gainer Full	Chair Spin Gainer		Pole/Flip/Twist		Chair Spin (Pole Dancing move) into a Gainer Full.
+163	Human Flag Castaway Back	Castaway Back, Human Flag	Human Flag Castaway Wall Flip	Pole/Flip		Castaway Back set from Human Flag position. This was first attempted by Vlas Vladimirov in 2013.
+164	Human Flag Toe Shoot Front	Human Flag, Toe Shoot Front		Pole/Flip		Toe Shoot Front set from Human Flag.
+165	Knee Gainer	Gainer	Kneel Gainer Down Monkey	Wall/Flip		Gainer set from kneeling on both knees off a ledge.
+166	Knee Front Flip	Front Flip	Knee Inward Front	Flip		Front Flip set from kneeling on a ledge using both knees.
+167	Knee Side Flip	Side Flip	Knee Side Full	Wall/Flip		Side Flip set from kneeling on a ledge using both knees.
+168	Side Flip		270 Dive Side Sumi, Devil Drop Side, Double Side Flip, Full-Up Side, Inward Side, Knee Side Flip, Palm Side, Raiden Side, Side Cat, Side Flip Handplant 360, Side Flip One and a Half Dive Roll, Side Flip Precision, Side Full, Side Pistol, Side Quarter Back, Stall Side Flip, Tic Tac Side, Touchdown Side Flip, Trinity Flip, Tunnel Flip, Wall Side Flip, Webster Side	Flip	Side Tuck	A flip tucked sideways rotating around the saggital axis.
+169	Side Cat	Side Flip		Flip		Side Flip landing in Cat Hang position.
+170	Side Flip Precision	Side Flip		Beam/Flip		Side Flip landing in Precision.
+171	Side Full	Side Flip, Side Full-In Back-Out	Kick Side Full, Side Double Full, Side Unwind Half	Flip/Twist		A full twisting Side Flip.
+172	Tunnel Flip	Side Flip	Gargoyle Tunnel, Inward Tunnel Flip, Palm Tunnel Flip, Pendulum, Running Tunnel Flip, Sitting Touchdown Tunnel Flip, Speed Tunnel, Tunnel Full, Tunnel Pike, Tunnel Stall, Wall Tunnel Flip	Flip		A forward traveling Side Flip.
+173	Palm Side	Side Flip	Gargoyle 270 Palm Side, One-Step Palm Side, Palm Side Half, Palm Side Pistol	Wall/Flip		Side Flip set by jumping and then pushing off a wall with one hand.
+174	One-Step Palm Side	Palm Side	One-Step Palm Punch Wall Side, Two-Step Palm Side	Wall/Flip		One step up a wall set into a Palm Side.
+175	Wall Inward Side	Inward Side	Two-Step Wall Inward Side, Wall Inward Side Full, Wall Inward Side Walkdown, Wall Inward Side Wall Dive Roll, Wall Inward Stall Side	Wall/Flip		One step up a wall set into an Inward Side.
+176	Two-Step Wall Inward Side	Wall Inward Side	Two-Step Wall Inward Double Side	Wall/Flip		Two steps up a wall set into a Wall Inward Side.
+177	Two-Step Palm Side	One-Step Palm Side		Wall/Flip		Two steps up a wall set into a Palm Side.
+178	Trinity Flip	Horizontal Wall Run, Side Flip		Wall/Flip		Tic Tac or Horizontal Wall Run using the outside foot to set into a side tuck. This move is typically referred to a Trinity Flip named after the character, Trinity, who does this trick in the 1999 movie The Matrix during the lobby scene.
+179	Flyaway Catch	Flyaway	Double Flyaway Catch, Flyaway Full Catch, Giant Release Half Twist Handstand Catch	Flip/Bar	Flyaway Catch	Flyaway to bar catch. This was first done by Gyong Sil Pak in 1989.
+180	Lache Handstand	Handstand, Lache Dive Roll		Bar/Flip/Handstand		Lache executed into Handstand.
+181	Toe Shoot Dark Arabian	Toe Shoot Front		Bar/Flip/Twist		Toe shoot half turn into a back tuck.
+182	Palm Spin		Palm Spin Gaet Pimp, Palm Spin Pimp, Reverse Palm Spin, Wall Spin		Rail Spin	A 180 spin on a ledge or rail using both hands.
+183	Wall Spin	Palm Spin	Devil Drop Wall Spin, One-Step Wall Spin, Wall Spin Back Out, Wall Spin Flip, Wall Spin Twist, Wall Spring	Wall/Flip		Flip performed by pivoting over one hand on a wall while using the other to push.
+184	Reverse Palm Spin 360	Reverse Palm Spin	Reverse Palm Spin 360 Pimp		J-Spin	Palm Spin with an additional 180 spin so that you land on the opposite side from which you started. This was first landed by Jason Paul in 2009.
+185	Palm Spin Gainer		Pimp Spin Gainer	Wall/Flip	Broken Arm Spin	Gainer pivoting around the hand closest to the wall, ledge, or rail  while leading with the leg closest to the wall.
+186	Wall Spin Back Out	Wall Spin		Wall/Flip		Wall Spin into a back tuck.
+187	Wall Spin Twist	Wall Spin	One-Hand Wall Spin Palm Twist, Wall Spin 540	Wall/Flip/Twist		Wall Spin into a full twist.
+188	Reverse Palm Spin 360 Pimp	Pimp Flip, Reverse Palm Spin 360		Flip		Reverse Palm Spin 360 into a Pimp Flip. This was first landed by Jason Paul in 2012.
+189	Butterfly Twist Vault	Butterfly Vault	Double Butterfly Twist Vault	Vault/Twist	Rail Butterfly Twist	A full twisting Butterfly Vault. This was first landed by Damien Walters in 2009. Reference Club540.com for Butterfly Twist.
+190	Rail Aerial Twist	Aerial Twist	Rail Aerial Twist-In Back-Out, Rail Double Aerial Twist	Vault/Flip/Twist	Rail A-twist	A one-hand vault set into an Aerial Twist.
+191	Palm Butterfly Twist	Butterfly Twist	Palm Double Butterfly Twist	Wall/Twist	Palm B-twist	Butterfly Twist using one hand to push away from a wall. Reference Club540.com for Butterfly Twist.
+192	Wall One-Hand Raiz	One-Hand Raiz		Wall/Flip		One-Hand Raiz (Sailor Moon) performed by placing the hand on the wall. Reference Club540.com for Sailor Moon.
+193	Human Flag		Human Flag Castaway Back, Human Flag Gainer, Human Flag Inward Side, Human Flag Toe Shoot Front	Pole		A position where the body is held in side plank position by using both hands to hold onto any vertical object.
+194	Tic Tac		Horizontal Wall Run, Tic Tac Front, Tic Tac Side	Wall	Tic Tak	Step off a wall to get more height for a move, or travel further forward.
+195	Wall Pop		Wall Pop 360	Wall		Step up the face of a wall in order to grab the top of it.
+196	Wall Pop 360	Wall Pop	One-Step 360 Palm Flip, Wall Full-Up Inward Front	Wall/Twist		A 360 twisting Wall Pop.
+197	Cat Leap		180 Cat Leap, 360 Cat Leap, Turn Wall Hang Drop	Wall	Arm Jump	A jump to Cat Hang position, which uses both hands to grab the top of the wall and both feet to grip the surface of the wall.
+198	360 Cat Leap	Cat Leap		Wall		A 360 jump landing in Cat Hang position.
+199	Underbar			Bar		A two-foot jump between two horizontal parallel bars. As the body moves between the bars, both hands grab and push the top bar to assist upper body through.
+200	Roll Kip-up Handstand	Handstand, Roll Kip-up		Handstand		Kip-up into Handstand. As the Kip-up transitions to Handstand, both legs tuck in, allowing the body to over-rotate to Handstand. This was first landed by Cato Aspmo in 2009. Reference Club540.com for Kip-up.
+201	Roll Kip-up Front	Roll Kip-up		Roll/Flip		A rolling Kip-up off a ledge into a front tuck. This was first landed by Cato Aspmo in 2009. Reference Club540.com for Kip-up.
+202	Horizontal Wall Run	Tic Tac	360 Horizontal Wall Run, Trinity Flip	Wall		Tic Tac followed by one or more steps across the same wall.
+203	360 Horizontal Wall Run	Horizontal Wall Run		Wall		Tic Tac with a quarter turn towards the wall allowing the opposite to step into a  270 Tic Tak.
+204	Crane Step					A jump landing with one foot on top of the wall. Crane also commonly refers to the position.
+205	Turn Vault			Vault		A vault over a rail or thin wall with a 180 turn landing immediately on the other side of the obstacle. This move is typically landed in Cat Hang position.
+206	Gate Vault			Vault/Flip		A vault with one hand placed on the top of the wall or rail and the other hand on the other side so that you completely invert and flip over to land facing forward on the other side.
+207	Rail Front Handspring	Front Handspring		Vault/Flip	Rail Flip	A two-hand vault using both legs to arch over into a front handspring over the obstacle. Reference Club540.com for Front Handspring.
+208	Giant		Giant Pimp, Giant Release Half Twist Handstand Catch, Reverse Giant, Shoulder Giant	Bar		A move where the performer holds onto a high bar with both hands while swinging around it fully extended.
+209	Reverse Giant	Giant		Bar		A backward swinging Giant.
+210	Wall Flare		One-Step Wall Flare	Wall		Flare executed on a wall. Reference Club540.com for Flare.
+211	Wall Inward Aerial Twist	Inward Aerial Twist	One-Step Palm Inward Aerial Twist, Wall Inward Double Aerial Twist	Wall/Flip/Twist	Wall Inward A-twist	One step up a wall set into an Inward Aerial Twist.
+212	One-Step Two-Hand Palm Inward Aerial Twist Double Leg		One-Step Two-Hand Palm Inward Aerial Twist Double Leg Twist	Wall/Flip	We Don't Know What It Is Flip	One step up a wall followed by a two-hand push set into an inward Aerial Twist Double Leg. Reference Club540 for Double Leg.
+213	Raiden	Front Handspring	Devil Drop Raiden, One-Hand Raiden, One-Step Raiden, Raiden Half, Raiden Side	Wall/Flip		A forward dive set into a front handspring off a wall. This was first landed by Victor Lopez in 2007. Reference Club540.com for Front Handspring.
+214	Raiden Half	Raiden		Wall/Flip/Twist		A half twisting Raiden. This was first landed by Zac Camino in 2012.
+215	One-Hand Raiden	Raiden		Wall/Flip		Raiden using one hand.
+216	Wall Gainer One-Hand Down Monkey	One-Hand Down Monkey, Wall Gainer	Wall Gainer One-Hand Down Monkey Full-Down	Wall/Flip	Dragonfly	One step off a wall, turn 180 degrees, arch backwards towards the wall, place one hand on the wall, and flip towards the wall and push off.
+217	Side Flip Handplant 360	Side Flip		Vault/Flip/Twist		Side Flip over an obstacle using one hand while inverted to push off into a full twist.
+218	Back Full Cat	Back Cat		Wall/Flip/Twist		Back Full off a ledge landing in Cat Hang position.
+219	Castaway Inward Front Regrab	Castaway Inward Front		Bar/Flip	Alleyoop	Castaway Inward Front to regrabbing the bar.
+220	Down Monkey	Back Handspring	180 Dive Down Monkey, 270 Dive Down Monkey, Devil Drop Gainer Down Monkey, Dive Down Monkey, Dive Twisting Trapdoor Down Monkey, Down Monkey Handstand, Hang Castaway Down Monkey, Inward Dark Arabian Down Monkey, Kneel Gainer Down Monkey, Kroc Down Monkey, One-Hand Down Monkey, Swing Castaway Down Monkey, Wall Layout Down Monkey	Wall/Flip		Back Handspring pushing with both hands off a wall. Reference Club540.com for Back Handspring.
+221	Inward Down Monkey	Front Handspring	Inward Down Monkey Half, Inward Flyaway Inward Down Monkey	Wall/Flip		Down Monkey rotating in the opposite direction. This move is typically set from Round Off.
+222	Inward Dark Arabian Down Monkey	Down Monkey, Inward Front Half		Wall/Flip/Twist		An Inward Front Half into a Down Monkey off a ledge.
+223	Stall Side Flip	Side Flip		Flip	Suicide Side Flip	Side Flip with a stall rotation.
+224	Stall Back Flip	Back Flip		Flip	Suicide Back Flip	Back Flip with a stalled rotation.
+225	One-Hand Raiz Twist	One-Hand Raiz		Twist	Jango Twist, Sailor Moon Twist	A one and a half twisting One-Hand Raiz set off a low wall or ledge. This technique is different from the technique used in Tricking. The hand used to push off the obstacle causes the body to travel sideways, whereas in Tricking, the body only travels up from the jump. This was first landed by Cory DeMeyers in 2013.
+226	One-Step Wall Flare Back	One-Step Wall Flare		Wall/Flip		One-Step Wall Flare into a back tuck by kicking off the wall.
+227	Kong Side	Kong Vault	Kong Side Full, One-Step Kong Side	Vault/Flip	Cat Pass Side	Kong Vault set into a side tuck.
+228	Kong Double Front	Kong Front		Vault/Flip	Cat Pass Double Front	Kong Vault executed into a Double Front.
+229	Inward Flyaway Catch	Inward Flyaway		Bar/Flip	Madrid	An Inward Flyaway to bar catch.
+230	Lazy Vault		Lazy Cat, Lazy Gainer, Lazy Roll, Thief Vault	Vault		A vault where the hand closest to the wall pushes off immediately followed by the leg on the same side. When both legs are over, the opposite hand helps push away.
+231	Thief Vault	Lazy Vault	Dash Vault, Thief Cat, Thief Precision	Vault		A vault where the hand closest to the wall pushes off immediately followed by the leg on the opposite side. When both legs are over, the opposite hand helps push away.
+232	Castaway Pimp	Pimp Flip	Castaway Pimp Full	Bar/Flip		A cast set over a bar or wall into a Pimp Flip.
+233	Penny Drop		Penny Drop Gainer	Bar		A backwards bar swing using both knees. As the chest returns to facing forward, both knees release landing on both feet in front of the bar.
+234	Double Frisbee	Frisbee		Flip		A double rotating Frisbee. This was first landed by Pasha Petkuns in 2015.
+235	Lache Precision	Lache		Bar/Beam		Lache to a precision landing.
+236	Lache Cat	Lache		Bar/Wall		Lache landing in Cat Hang position.
+237	Lache Crane	Lache		Bar		Lache landing in Crane position.
+238	Palm Spin Frisbee	Frisbee		Wall/Flip		Palm Spin set into a Frisbee.
+239	Front 360 Dive Roll	One-and-a-Half Front Flip Dive Roll		Flip/Twist/Roll	Front Vortex	Front Flip into a 360 Dive Roll.
+240	Castaway Pimp Full	Castaway Pimp		Flip/Twist/Twist		A cast set over a bar or wall into a Pimp Full.
+241	Sitting Turn Castaway Back	Turn Castaway Back	Double Leg Circle Castaway, Sitting Turn Castaway Full	Wall/Flip		Castaway Back set off a ledge from sitting position.
+242	Sitting Turn Pimp Full	Sitting Turn Pimp Flip		Wall/Flip/Twist		A full twisting Sitting Turn Pimp Flip.
+243	Double Gaet Pimp	Gaet Pimp	Gaet Pimp Full-In Back-Out, Gaet Pimp Layout-In Back-Out	Beam/Flip		A double rotating Gaët Pimp. This was first landed by Gaetan Bouillet of Speeders Family in 2012.
+244	Wall Spring	Wall Spin	One-Step Wall Spring	Wall/Flip		Front Handspring performed off a wall while inverted during a Wall Spin. This was first landed by Kit Ackermann in 2007. Reference Club540.com for Front Handspring.
+245	One-Hand Reverse Double Leg Double Twist	One-Hand Reverse Double Leg Twist		Vault/Flip/Twist	Barrel Double Full	A double twisting One-Hand Reverse Double Leg. Reference Club540.com for Doubleleg Double Twist.
+246	Cast Bomb Arabian	Cast Bomb		Vault/Flip/Twist		Cast Bomb set into an Arabian.
+247	Shoulder Vault 360	Shoulder Vault	360 Shoulder Vault 360, Shoulder Vault Twist Dive Roll	Vault/Twist	Sky Vault	A full twisting Shoulder Vault.
+248	Kash Bomb	Dash Bomb, Kash Vault	Cast Kash Bomb	Vault/Flip		Kong Vault into a Dash Bomb.
+249	Scoot Pimp Full	Scoot Pimp Flip		Wall/Flip/Twist		Scoot into Pimp Full.
+250	One-hand Gaet Pimp Full	One-hand Gaet Pimp	One-hand Gaet Pimp Double Full	Vault/Flip/Twist		A full twisting One-hand Gaet Pimp.
+251	Sitting Turn Castaway Full	Castaway Full, Sitting Turn Castaway Back		Wall/Flip/Twist		A full twisting Sitting Castaway.
+252	One-Hand Down Monkey Full	One-Hand Down Monkey		Wall/Flip/Twist		A full twisting One-Hand Down Monkey.
+253	Rail Triple Aerial Twist	Rail Double Aerial Twist		Vault/Flip/Twist	Rail Triple A-twist	A triple twisting Rail Aerial.
+254	Human Flag Inward Side	Devil Drop Side, Human Flag		Pole/Flip		An Inward Side Flip set from Flag.
+255	Gargoyle Tunnel	Tunnel Flip		Wall/Flip		A side tuck set from Gargoyle position by either using Erik Mukhametshin's style or the over grip technique. Each Gargoyle technique fundamentally changes how this move is executed. Erik's allows both arms to push up lifting the chest during the set. In comparison, the over grip technique positions the chest down during the set. These are considered two distinct moves only differing by set, but are catalogued as one for brevity.
+256	Gargoyle Front		Devil Drop Turn Gargoyle Front	Wall/Flip		A front tuck set from Gargoyle position.
+257	Inward Webster	Webster Front	Inward Double Webster, Inward Webster Half	Flip	Loser	A backwards traveling Webster. This move is typically done off a ledge. Reference Club540.com for Webster.
+258	Inward Double Front	Double Front Flip, Inward Front		Flip		A double rotating Inward Front.
+259	Inward Double Aerial Twist	Inward Aerial Twist		Flip/Twist	Inward Double A-twist	A backwards traveling Double Aerial Twist. This move is typically done off a ledge.
+260	Palm Double Butterfly Twist	Palm Butterfly Twist		Wall/Twist	Palm Double B-twist	Double Butterfly Twist using one hand to push away from a wall. Reference Club540.com for Double Butterfly Twist.
+261	Double Devil Drop	Devil Drop		Wall/Flip		A double rotating Devil Drop.
+262	Cast Front		Cast One-and-a-Half Front Flip Dive Roll	Bar/Flip		A cast into a front tuck over the bar.
+263	Castaway Inward Front Half	Castaway Inward Front		Bar/Flip/Twist	Cast Inward Barani	A half twisting Castaway Inward Front.
+264	One-Step Palm Flip	Palm Flip	One-Step 360 Palm Flip, One-Step Palm Double Back, One-Step Palm Flip Down Monkey, One-Step Palm Full, One-Step Palm Kick-Out, One-Step Palm Layout, One-Step Palm Punch Layout, One-Step Palm X-Out, Two-Step Palm Flip	Wall/Flip		One step up a wall into a Palm Flip.
+265	Devil Drop Side	Side Flip	Devil Drop Side Catch, Devil Drop Side Full, Devil Drop Side Full-Down, Devil Drop Stall Side, Human Flag Inward Side	Wall/Flip		An Inward Side set from Cat Hang position.
+266	Sitting Dash Gainer		Sitting Dash Gainer Full-Down	Bar/Flip	L-sit Gainer	Gainer set from sitting position on a bar or ledge using both hands to lift and push while both legs pull up into the flip
+267	Castaway Double Full	Castaway Full		Bar/Flip/Twist		A double twisting Castaway.
+268	Double Inward Flyaway	Inward Flyaway	Inward Flyaway-In Half-Out	Bar/Flip		A double rotating Inward Flyaway.
+269	Kong Front Half	Kong Front	Kong Front Full	Vault/Flip/Twist	Cat Pass Barani, Kong Barani	A half twisting Kong Front.
+270	Reverse Palm Spin Inward Frisbee Vault	Reverse Palm Spin Inward Frisbee		Vault/Flip	Powdered Donut	Reverse Palm Spin Inward Frisbee set over a vault.
+271	One-Hand Palm Gainer Full	One-Hand Palm Gainer	One-Hand Palm Gainer Double Full, One-Step One-Hand Palm Gainer Full	Wall/Flip/Twist	Ginger Flip Full, Hi-Five Gainer Full	A full twisting One-Hand Palm Gainer.
+272	Full-Up Gainer	Stall Gainer	Full-Up Gainer Full-Down	Flip/Twist	Vortex Gainer	A full twist up stalling the rotation into a Gainer. This was first landed by Alfred Scott of Dodo Freerunning in 2013.
+273	Inward Front	Front Flip	Castaway Inward Front, Devil Drop, Inward Double Front, Inward Front Catch, Inward Front Half, Inward Front Pike, Kip Inward Front, Punch Wall Inward Front, Wall Inward Front	Flip		A backwards traveling front tuck set off of both feet. This move is typically done off a ledge.
+274	Knee Side Full	Knee Side Flip		Wall/Flip/Twist		Side Full set from kneeling position on a ledge.
+275	Wall Tunnel Flip	Tunnel Flip	One-Step Palm Tunnel, Wall Tunnel Cat	Wall/Flip		One step up a wall set into a Tunnel Flip.
+276	270 Cat Leap	180 Cat Leap		Wall		A three-quarter degree Cat Leap to a perpendicular wall from Cat Hang position.
+277	Double Kong Precision	Double Kong		Vault/Beam	Double Cat Pass Precision	Double Kong Vault to Precision landing.
+278	Sitting Dash Bomb	Dash Bomb	Sitting Dash Bomb Half	Wall/Flip		Dash Bomb set from sitting position.
+279	Tsukahara Double Arabian Vault	Tsukahara Arabian Vault		Vault/Flip/Twist		A handspring with a quarter to half twist dive onto the vault into a Double Arabian.
+280	Reverse Double Kong	Reverse Kong		Vault	Reverse Double Cat Pass	Reverse Kong off a vault diving into a Reverse Kong off a consecutive obstacle.
+281	540 Regrab	360 Regrab		Bar/Twist		A forward swing released into a 540 twist and then regrabbing the bar.
+282	Back Roll Half Down	Backward Roll		Roll/Twist		A backwards roll off a ledge followed by a half twist down.
+283	Wall Tunnel Cat	Wall Tunnel Flip		Wall/Flip		Wall Tunnel Flip landing in Cat Hang position.
+284	Inward 360 Dive Roll Bomb	Inward 360 Dive Roll		Roll/Flip/Twist	Inward Morph Bomb	An Inward 360 Dive Roll off a ledge into a front tuck.
+285	Kneel Gainer Down Monkey	Down Monkey, Knee Gainer		Wall/Flip		Gainer set from kneeling on one knee into a Down Monkey off a ledge.
+286	Toe Shoot Front	Toe Shoot Dive Roll	Human Flag Toe Shoot Front, One-Hand Toe Shoot Front, Toe Shoot Dark Arabian, Toe Shoot Double Front, Toe Shoot Front Half, Toe Shoot Front Layout	Bar/Flip		A toe shoot (while swinging forward from the back swing, both feet kick straight up in front of the bar, as in an Underbar, and then whip down to lift the chest up) executed into a front tuck.
+287	Wall Back Handspring	Wall Layout		Wall/Flip	Wall BHS	Wall Flip set into a Back Handspring off the same wall. Reference Club540 for Back Handspring.
+288	Two-Foot Wall Inward Side	Inward Side	Lache Two-Foot Wall Inward Side, Two-Foot Wall Full-Up Inward Side, Two-Foot Wall Inward Side Full	Wall/Flip		Punch set on a wall into an Inward Side Flip.
+289	Kasamatsu Vault	Tsukahara Vault		Vault/Flip/Twist		A full twisting Tsukahara Vault. This was first landed by Shigeru Kasamatsu, the 1974 world gymnastics all-around champion gold medalist.
+290	Castaway Double Back	Castaway Back		Bar/Flip		A castaway set into a double back tuck.
+291	Kong Cast Bomb	Cast Bomb, Kong Reverse Kong		Vault/Flip	Cat Pass Cast Bomb	Kong Vault off a vault diving into a Cast Bomb off a consecutive obstacle.
+292	Inward Flyaway One and a Half Full	Inward Flyaway Full		Bar/Flip/Twist	Inward Flyaway 540	A one and a half twisting Inward Flyaway.
+293	Handstand		360 Dive Handstand, Dash Handstand, Dive Handstand, Down Monkey Handstand, Giant Release Half Twist Handstand Catch, Handstand Castaway Back, Handstand Gainer, Lache Handstand, One-Hand Handstand, Roll Kip-up Handstand			A position where you balance on only both hands while inverted.
+294	Wall Roll Punch Wall Flip	Punch Wall Flip, Wall Roll		Wall/Roll/Flip	Avsha Bomb	One-step Wall Roll into a Punch Wall Flip.
+295	360 Kong	360 Dive Roll, Kong Vault	360 Dive Kong, 360 Kong 360	Vault/Twist	Vortex Cat Pass, Vortex Kong	A 360 dive to Kong Vault.
+296	Arabian	Back Flip, Front Flip	Arabian One and a Half Dive Roll, Back Full, Double Arabian, Unwind Arabian	Flip/Twist		A half twisting Back Flip into a front tuck.
+297	Double Side Flip	Side Flip	Side-In Back-Out	Flip		A double rotating Side Flip.
+298	Tunnel Full	Tunnel Flip		Flip/Twist		A full twisting Tunnel Flip.
+299	Castaway Side	Castaway Back	One-Step Castaway Side, Pop Castaway Side, Swing Castaway Side, Swipe Drop Castaway Side	Wall/Flip	Palm Drop Side	A sideways cast set into a side tuck.
+300	Double Palm Flip	Palm Flip		Wall/Flip		A double rotating Palm Flip.
+301	Dive Reverse Underbar	Reverse Underbar		Bar		An underbar using both hands to pull the body through head first.
+302	Wall Inward Double Aerial Twist	Wall Inward Aerial Twist		Wall/Flip/Twist	Wall Inward Double A-twist	A double twisting Wall Inward Aerial Twist.
+303	Cartwheel		360 Dive Cartwheel, Aerial, Gumbi, Helicoptero, Rail Cartwheel, Wall Cartwheel			A sideways inverted movement using both hands reaching the ground one at a time to support the body as each leg swings over positioning the body facing the direction it started.
+304	Aerial	Cartwheel	Aerial Twist, Frisbee, Palm Spin Aerial, Raiz	Flip		A no-handed Cartwheel.
+305	One-Hand Down Monkey	Down Monkey	One-Hand Down Monkey Full, Palm Macaco Twist, Wall Gainer One-Hand Down Monkey	Wall/Flip		Down Monkey using only one hand.
+306	Lache 180 Wall Front	Reverse Lache Two-Foot Wall Front		Bar/Wall/Flip/Twist		A half twisting Lache into a punch front tuck off a wall.
+307	Wall Inward Front Half	Wall Inward Front	Wall Inward Front Full	Wall/Flip/Twist	Wall Loser Half	A half twisting Wall Inward Front.
+308	Elbow Castaway Back	Castaway Back		Wall/Flip		Castaway set off of both elbows.
+309	Slant Kong Gainer	Kong Vault	Double Kong Slant Gainer, Slant Kong Double Gainer, Slant Kong Gainer Cat, Slant Kong Gainer Full, Slant Kong Gainer Full-Down, Slant Kong Gainer Layout	Vault/Flip	Cheat Cat Pass Gainer, Cheat Kong Gainer, Slant Cat Pass Gainer	Kong Gainer set from a slanted angle allowing both legs to pass over the vault on one side instead of between the arms causing body to flip off axis.
+310	Swing Castaway Full	Swing Castaway Back	Swing Castaway Double Full, Swing Castaway Kick Full	Bar/Flip/Twist	Back Uprise Full	A full twisting Swing Castaway. This was first landed by Vlas Vladimirov in 2013.
+311	Turn Castaway Back	Castaway Back	Sitting Turn Castaway Back, Turn Castaway Full	Wall/Flip		A set turning into a ledge or Turn Vault set into Castaway Back.
+312	Backward Roll Bomb	Backward Roll		Roll/Flip		A backwards roll off a ledge into a back tuck.
+313	Wall Gainer Full	Wall Gainer		Wall/Flip/Twist		A full twisting Wall Gainer. This move was first landed by Adry Cemel in 2011.
+314	Cast Kash Bomb	Kash Bomb		Bar/Flip		A cast set into a Kash Bomb. This was first landed by Ethan Klickstein in 2014.
+315	Touchdown Side Flip	Side Flip		Vault/Flip		A touchdown on the obstacle while setting for a Side Flip.
+316	Palm Double Leg Twist	Double Leg Twist		Bar/Flip/Twist		Double Leg palming off a wall to initiate twist. Reference Club540.com for Double Leg Twist.
+317	Frisbee Vault Gyro	Frisbee Vault		Vault/Twist		Frisbee Vault into a full twist after the flip.
+318	Sitting Touchdown Butterfly Twist		Sitting Touchdown Double Butterfly Twist	Wall/Twist	Sitting Td B-twist	Butterfly Twist set from half sitting position and by touching down to set the body for the flat spin. Reference Club540.com for Butterfly Twist.
+319	Wall Cartwheel	Cartwheel	One-Hand Wall Cartwheel	Wall	Rotor	One step up a wall into a Cartwheel.
+320	Frog Pimp	Pimp Flip		Flip		A two-hand Pimp Flip set from Frog position parallel to a ledge.
+321	Pimp Spin Gainer Full	Pimp Spin Gainer		Beam/Flip/Twist		A full twisting Pimp Spin Gainer.
+322	Dash Bomb Half	Dash Bomb		Vault/Flip/Twist	Dash Barani	A half twisting Dash Bomb.
+323	Cheat Devil Drop	Webster Front		Wall/Flip		Devil Drop set by swinging one leg from Cat Hang position. Reference Club540.com for Webster.
+324	Cheat Angel Drop	Sideway Gainer		Wall/Flip		Sideway Gainer set by swinging one leg from Cat Hang position with one hand.
+325	Swing Castaway Back	Castaway Back	Elbow Swing Castaway Back, One-Hand Swing Castaway Back, Swing Castaway Arabian, Swing Castaway Back Regrab, Swing Castaway Double Back, Swing Castaway Flash Kick, Swing Castaway Full, Swing Castaway Full-Down, Swing Castaway Full-Up, Swing Castaway Layout, Swing Castaway Pike, Swing Castaway Punch Layout, Swing Castaway Rodeo, Swing Castaway Stall Back, Swing Castaway Wrap Full, Swing Castaway X-Out	Bar/Flip	Back Uprise Back Tuck	Castaway set after releasing from a backwards swing off a high bar.
+326	Palm Tunnel Flip	Tunnel Flip		Wall/Flip		Tunnel Flip set by pushing against the vertical face of a wall with one hand.
+327	Wall Full-Up Inward Front	Wall Inward Front, Wall Pop 360		Wall/Flip/Twist	Wall 360 Inward Front, Wall Vortex Inward Front, Wall Inward Pig Skin, Wall Inward Psycho Crusher	One step set up a wall into a full twist into an inward front tuck. This was first landed by Farshad Mohammadian in 2014.
+328	Dyno		Dyno 360, Dyno Palm Flip	Wall		A move used from Cat Hang position by stepping up the wall and shooting up both hands to grab a higher ledge.
+329	Rail Cartwheel	Cartwheel		Vault		Cartwheel executed over a rail or a wall by placing both hands down in front of the object and then pivoting over it using the hip.
+330	Knee Giant	Baby Knee Giant	Knee Giant Pimp Flip	Bar		A move where the performer holds onto a high bar with both knees while swinging around it fully extended.
+331	Single Ankle Front	Front Flip	Single Ankle Rudi	Flip	Pop Top	Front Flip set with one ankle placed on a low object behind the performer.
+332	Shin Slide				Conveyor Belt	A slide down on top of a rail using the outside of the calf.
+333	Inward 720 Dive Roll	Inward 360 Dive Roll	Inward 1080 Dive Roll	Roll/Twist	Inward Double Vortex	An Inward 360 Dive Roll set with an additional full twist. This was first landed by Sam Sarmiento in 2014.
+334	Shoulder Mount Gainer	Shoulder Mount		Bar/Flip	Shoulder Gainer	Gainer set from Shoulder Mount position (Pole Dancing position).
+335	Straddle Palm Full	Straddle Palm Flip		Wall/Flip/Twist		A full twisting Straddle Palm Flip.
+336	Two-Foot Wall Inward Side Full	Two-Foot Wall Inward Side		Wall/Flip/Twist		A full twisting Two-Foot Wall Inward Side.
+337	EW Gainer Full	EW Gainer, Gainer Full	EW Gainer Double Full	Wall/Flip/Twist	Eugene Wall Gainer Full, Erik Wall Gainer Full	A full twisting EW Gainer. This was first landed by Shawn Bautista in 2014.
+338	Dive Kong Gainer	Kong Gainer	360 Dive Kong Gainer	Vault/Flip	Dive Cat Pass Gainer	A dive into a Kong Gainer.
+339	Wall Front Two-Foot Wall Flip	Punch Wall Flip, Wall Inward Front		Wall/Flip	Dolphin Rebound	Wall Front into a Punch Wall Flip while inverted on the same wall.
+340	Knee 360 Dive Front Flip	360 Dive Front Flip		Wall/Flip/Twist	Knee Vortex Front, Knee Pig Skin, Knee Psycho Crusher	A 360 Dive Front Flip set off a ledge from kneeling position. This was first landed by Dimitris Dk' Kyrsanidis of team Focus in 2014.
+341	Safety Gainer	Safety Vault		Vault/Flip	Speed Step Gainer, Step Vault Gainer	Safety Vault into a Gainer. This was first landed by Alfred Scott of Dodo Freerunning in 2015.
+342	Safety Vault		180 Safety Vault, Double Safety Vault, One-Hand Reverse Safety, Reverse Safety, Safety Gainer, Safety Precision, Safety Vault 360, Side Vault, Speed Safety, Speed Vault	Vault	Speed Step, Step Vault	A one-hand vault using the opposite foot  to step off the top of the wall as the other foot kicks through.
+343	Devil Drop Gainer Full	Devil Drop Gainer		Wall/Flip/Twist		A full twisting Devil Drop Gainer.
+344	Pimp Spin Gainer	Gaet Pimp, Palm Spin Gainer	Pimp Spin Gainer Full, Pimp Spin Gainer Pike	Beam/Flip		Pimp Flip and Palm Spin Gainer variation using just the hand closest to a short wall to push down (Pimp Flip technique) while leading with the leg closest to the wall to set into a Gainer (Palm Spin Gainer technique).
+345	Toe Shoot Handstand	Toe Shoot Dive Roll		Bar/Flip/Handstand		A toe shoot executed into a Handstand.
+346	Russian Double Front	Russian Front Flip		Flip		A double rotating Russian Front.
+347	Double Reverse Vault	Reverse Vault		Vault		Reverse Vault off a vault diving backwards into a Reverse Vault off a consecutive obstacle.
+348	Kong Front Cat	Kong Front		Vault/Wall/Flip	Cat Pass Front Cat Hang	Kong Front landing in Cat Hang position.
+349	Hang Castaway Layout	Hang Castaway Back		Wall/Flip		A laid out Hang Castaway Back.
+350	Hang Gainer	Flyaway	Hang Gainer Full, One-Hand Hang Gainer	Wall/Flip		Gainer set from Hang position against a wall.
+351	Gainer Double Full	Gainer Full	Gainer Triple Full	Flip/Twist	Gainer 720	A double twisting Gainer.
+352	Ankle Front	Front Flip		Bar/Flip		Front Flip set while off balance and leaning forward with both ankles hooked over a bar or ledge.
+353	One-Step Wall Spin	Wall Spin	One-Step Wall Spin Frisbee	Wall		One step up a wall into a Wall Spin.
+354	Gargoyle Pimp Full	Gargoyle Pimp		Wall/Flip/Twist	Gargoyle Corkscrew	A full twisting Gargoyle Pimp. Reference Club540.com for Corkscrew. This was first landed by Alfred Scott of Dodo Freerunning in 2012.
+355	Inward Down Monkey Half	Inward Down Monkey		Wall/Flip/Twist		A half twisting Inward Down Monkey.
+356	Gainer Triple Full	Gainer Double Full	Gainer Quadruple Full	Flip/Twist	Gainer 1080	A triple twisting Gainer.
+357	Two-Step Wall One and a Half Full	Two-Step Wall Full	Two-Step Wall Double Full	Wall/Flip/Twist	Two-Step Wall Flip 540	A one-and-a-half twisting Wall Flip.
+358	One-Hand Palm Gainer Full-Down	One-Hand Palm Gainer		Wall/Flip/Twist	Ginger Flip Full-Down, Hi-Five Gainer Full-Down	One-Hand Palm Gainer into a full twist after the flip.
+359	Frog Stall Gainer	Frog Gainer		Vault/Flip	Frog Gainer Layout	Frog Gainer with stalled tuck.
+360	Inward Flyaway Regrab	Inward Flyaway		Bar/Flip		An Inward Flyaway followed by regrabbing the same bar.
+361	Cast One-and-a-Half Front Flip Dive Roll	Cast Front, One-and-a-Half Front Flip Dive Roll		Bar/Flip/Roll		A cast set into a one and a half rotating Cast Front over the bar into a Dive Roll.
+362	Side Vault	Safety Vault	Side Vault Pimp	Vault		A vault with both legs passing over the side.
+363	Shoulder Giant	Giant		Bar		Giant using both shoulders to hook over the bar.
+364	Inverted Human Flag			Pole		Human Flag using only both feet to hold onto the pole.
+365	Rail Macaco		Macaco	Vault/Flip	Rail Valdez	Macaco using a rail for support.
+366	Safety Vault 360	Safety Vault		Vault/Twist	Speed Step 360, Step Vault 360	Safety Vault followed by a full twist.
+367	Hang Toe Front	Front Flip		Wall/Flip		A front tuck set from Hang off a wall   with both feet.
+368	Webster One and a Half Full	Webster Full		Flip/Twist	Webster 540	A one and a half full twisting Webster.
+369	One-Hand Handstand	Handstand				Handstand only using one hand.
+370	Sitting Touchdown Tunnel Flip	Tunnel Flip		Flip		Tunnel Flip set off a ledge from half sitting and by touching down.
+371	Knee Corkscrew	Corkscrew	Knee Double Corkscrew	Wall/Flip/Twist		Corkscrew set off a ledge using a knee in lieu of the jump leg. Reference Club540.com for Corkscrew.
+372	Kong Stall Gainer	Kong Gainer	Kong Gainer X-Out	Vault/Flip	Cat Pass Stall Gainer	Kong Gainer with a stalled tuck.
+373	Two-Step Wall Double Full	Two-Step Wall One and a Half Full	Two-Step Wall Two and a Half Full	Wall/Flip/Twist	Two-Step Double Waffle, Two-Step Wall Flip 720	A double twisting Two-Step Wall Flip.
+374	Triple Kong	Double Kong		Vault	Triple Cat Pass	A vault in which the Kong Vault off the first wall is used to dive to a Kong off the second wall and then off a third parallel obstacle.
+375	One-Step One-Hand Palm Gainer	One-Hand Palm Gainer		Wall/Flip	One-Step Ginger Flip, One-Step Hi-Five Gainer	One step up a wall into One-Hand Palm Gainer.
+376	One-Step Cast Gainer	Cast Gainer		Vault/Flip	One-Step Cast Gainer	One step off a wall into a cast set into a gainer over the wall. This was first landed by Alfred Scott of Dodo Freerunning in 2014.
+377	Stall Gainer	Gainer	Full-Up Gainer, Lazy Boy Gainer	Flip		Gainer with a stalled tuck.
+378	Lache Dive Roll	Dive Roll, Lache	Lache Handstand	Bar/Flip/Roll		Lache executed into Dive Roll.
+379	Russian Front Flip		Russian Double Front, Russian Front One and a Half Dive Roll	Flip		Front Flip set by swinging both arms backwards.
+380	One-Step Kong Front	Kong Front		Vault/Flip	One-Step Cat Pass Front	One step off the face of the vault into a Kong Front.
+381	Turn Castaway Full	Turn Castaway Back		Wall/Flip/Twist		A full twisting Turn Castaway.
+382	Inward Double Webster	Inward Webster		Flip		A double rotating Inward Webster.
+383	Full-Up Side	Side Flip	Full-Up Side Precision	Flip/Twist	360 Dive Side, Vortex Side	360 twist up while stalling the flip into a side tuck.
+384	Gainer Layout	Gainer		Flip		A laid out Gainer.
+385	Flyaway Double Layout	Double Flyaway, Flyaway Layout		Bar/Flip	Swing Gainer Double Layout, Bar Gainer Double Layout	A laid out Double Flyaway.
+386	Double Layout	Back Layout		Flip		A double rotating Back Layout.
+387	Wall Pike	Wall Flip	Wall Stall Pike Layout	Wall/Flip		A piked (legs straight and together during the tuck) Wall Flip.
+388	180 Dive Down Monkey	Down Monkey	360 Dive Down Monkey	Wall/Flip/Twist	Sunny Side Up	A half twisting dive set into a Down Monkey.
+389	360 Dive Kong	360 Kong, Dive Kong	360 Dive Kong 360 Dive Roll, 360 Dive Kong Gainer, 360 Dive Pimp, 720 Dive Kong	Vault/Twist	360 Dive Cat Pass, Vortex Cat Pass, Vortex Kong	A full twisting dive into Kong vault.
+390	Flyaway Cat	Flyaway	Flyaway Full Cat	Bar/Wall		Flyaway landing in Cat Hang position.
+391	Elbow Flyaway Double Full	Elbow Flyaway Full		Bar/Flip/Twist		A double twisting Elbow Flyaway.
+392	Elbow Flyaway	Flyaway	Elbow Flyaway Full	Bar/Flip		Flyaway using both elbows to hold onto the bar.
+393	One-Hand Palm Gainer Layout	One-Hand Palm Gainer		Wall/Flip	Ginger Flip Layout, Hi-Five Gainer Layout	A laid out One-Hand Palm Gainer.
+394	One-Hand Wall Cartwheel	Wall Cartwheel		Wall		A one-hand Wall Cartwheel.
+395	Baby Knee Giant		Knee Giant	Bar		A giant circle using both hands and knees to grip the bar.
+396	Two-Step Wall Full	Two-Step Wall Flip	Two-Step Palm Wall Full, Two-Step Wall One and a Half Full	Wall/Flip/Twist	Two-Step Waffle, Two-Step Wall Flip 360	A full twisting Two-Step Wall Flip.
+397	Castaway Layout	Castaway Back		Bar/Flip		A laid out Castaway.
+398	Elbow Flyaway Full	Elbow Flyaway	Elbow Flyaway Double Full	Bar/Flip/Twist		A full twisting Elbow Flyaway.
+399	Elbow Gargoyle Gainer	Gargoyle Gainer		Wall/Flip		Gargoyle Gainer set from Elbow Gargoyle position. This was first landed by Alfred Scott of Dodo Freerunning in 2014.
+400	Wall Roll		Wall Roll Half, Wall Roll Punch Wall Flip	Wall/Roll		A roll up a wall.
+401	Lache Lache	Lache		Bar		Lache into another Lache.
+402	One-Step Palm Full	One-Step Palm Flip		Wall/Flip/Twist		One step up a wall into a Palm Flip Full.
+403	One-Step 360 Palm Flip	One-Step Palm Flip, Wall Pop 360		Wall/Flip/Twist	Wall Pop 360 Palm Flip, Wall Run 360 Palm Flip	Wall Pop 360 into a Palm Flip.
+404	One-Step Palm Snapuswipe			Wall/Twist		One step up a wall, arch back, and push off the wall and kick into a Snapuswipe. Reference Club540.com for Cheat 720 Twist.
+405	Palm Macaco Twist	One-Hand Down Monkey	One-Step Palm Macaco Twist	Wall/Flip/Twist	Palm Valdez Twist	Macaco Full palming off a perpendicular wall.
+406	Thief Precision	Thief Vault		Vault/Beam		Thief Vault to Precision landing.
+407	Aerial Twist	Aerial	Aerial Twist-In Back-Out, Inward Aerial Twist, Knee Aerial Twist, Rail Aerial Twist	Flip/Twist	A-twist	A full twisting Aerial.
+408	Roll Kip-up Half-In Back-Out	Roll Kip-up		Roll/Flip/Twist		A half-twisting rolling Kip-up into a back tuck. This was first landed by Cato Aspmo in 2011. Reference Club540.com for Kip-up.
+409	Macaco	Back Handspring	Inward Macaco, Macaco Back, Macaco Full, Rail Macaco	Flip	Valdez	A one-hand Back Handspring.
+410	Macaco Full	Macaco		Flip/Twist	Valdez Full	A full twisting Macaco.
+411	Double Arabian	Arabian		Flip		An Arabian with a double rotating front tuck.
+412	Back Dash	Half-Up Back		Flip/Vault		A 180 jump into a back tuck while pushing off the vault.
+413	Climb Up			Wall		A method for efficiently mounting a wall from Cat Hang position.
+414	One-and-a-Half Front Flip Dive Roll	Front Flip	360 Dive One-and-a-Half Front Flip Dive Roll, Cast One-and-a-Half Front Flip Dive Roll, Front 360 Dive Roll	Flip/Roll		Front Flip with one and a half degree rotation to Dive Roll.
+415	Wall Inward Double Leg	Double Leg	Two-Step Wall Inward Side Straddle	Wall/Flip		An Inward Double Leg set off a wall. Reference Club540.com for Double Leg.
+416	Two-Step Wall Inward Side Straddle	Wall Inward Double Leg		Wall/Flip		Two steps up a wall set into an Inward Side with legs straddled (split out to the sides).
+417	Three-Step Wall Flip	Two-Step Wall Flip		Wall/Flip		Three steps up a wall into a Wall Flip.
+418	Rail Double Aerial Twist	Rail Aerial Twist	Rail Triple Aerial Twist	Vault/Flip/Twist	Rail Double A-twist	A double twisting Rail Aerial.
+419	Backward Seat Circle Gainer	Backward Seat Circle		Bar/Flip	Champion, L-sit Lache Gainer	Backward Seat Circle into a Gainer.
+420	Running Gainer	Gainer	Gargoyle Gainer, Inward Dive Roll, Inward Wall Flip Cat, Lazy Boy Running Gainer, Lazy Gainer, Running Double Gainer, Running Gainer Cat, Running Gainer Catch, Running Gainer Down Monkey, Running Gainer Full, Running Gainer Layout, Running Gainer Pike	Flip		A run set into a Gainer.
+421	Running Double Gainer	Running Gainer	Running Gainer-In Full-Out	Flip		A run set into a Double Gainer.
+422	Castaway Inward Front	Inward Front	Castaway Inward Front Half, Castaway Inward Front Regrab, Devil Drop Castaway Inward Front, Handstand Inward Front	Bar/Flip		A castaway set into an inward front tuck.
+423	Punch Wall Inward Front Half	Punch Wall Inward Front		Wall/Flip/Twist		A half twisting Punch Wall Inward Front.
+424	One-Step Wall Spring	Wall Spring		Wall/Flip		One-step Wall Spin into a Front Handspring while inverted.
+425	180 Cat Leap	Cat Leap	270 Cat Leap	Wall		From Cat Hang position, 180 jump to another wall landing in Cat Hang position.
+426	Inward Flyaway Full	Inward Flyaway Half	Inward Flyaway One and a Half Full	Bar/Flip/Twist	Inward Flyaway 360	A full twisting Inward Flyaway.
+427	Frog Gainer Full	Frog Gainer		Flip/Twist		A full twisting Frog Gainer.
+428	One-Step Thread Wall Flip	Wall Flip		Wall/Flip		One step up a wall while threading the stepping leg into a Wall Flip.
+429	Shoulder Mount Side	Shoulder Mount		Bar/Flip		A side tuck set from Shoulder Mount position (Pole Dancing position).
+430	One-Step Touchdown Raiz Twist Vault	Touchdown Raiz		Vault/Flip/Twist		One step off the face of a vault set into to a Touchdown Raiz followed by a full twist.
+431	Punch Wall Full-Up Inward Front	360 Dive Front Flip, Punch Wall Inward Front		Wall/Twist/Flip	Two-Foot Wall 360 Inward Front, Two-Foot Wall Vortex Inward Front	Punch set up the wall into a full twist into an inward front tuck. This was first landed by Farshad Mohammadian in 2014.
+432	Palm Spin Gaet Pimp	Gaet Pimp, Palm Spin	Dive Palm Spin Gaet Pimp, Palm Spin Gaet Pimp Full	Beam/Flip		Palm Spin executed into a Gaet Pimp Flip. This was first landed by Gaetan Bouillet of Speeders Family in 2014.
+433	Turn Gaet Pimp	Running Turn Gaet Pimp	Sitting Turn Gaet Pimp, Turn Gaet Double Pimp, Turn Gaet Pimp Full, Turn Gaet Pimp Layout, Turn Gaet Pimp Pike, Turn Gaet Pimp Wall Flip	Beam/Flip		A 180 turn off the corner of a ledge into a Gaet Pimp. This was first landed by Gaetan Bouillet of Speeders Family in 2014.
+434	One-Step Palm Macaco Twist	Palm Macaco Twist		Wall/Flip/Twist	One-Step Palm Valdez Twist	One step off a wall set into a Palm Macaco Twist.
+435	Devil Drop Gainer Down Monkey	Devil Drop Gainer, Down Monkey	Devil Drop Gainer One-Hand Down Monkey	Wall/Flip	Devil Gainer Down Monkey, Cat Wall Gainer Down Monkey	Devil Drop Gainer into a Down Monkey.
+436	Double Frisbee Vault	Frisbee Vault		Vault/Flip		A double rotating Frisbee Vault. This was first landed by Valtteri Luoma-aho in 2015.
+437	Frisbee Vault	Frisbee	Double Frisbee Vault, Frisbee Vault Gyro	Vault/Flip		Frisbee set over a vault.
+438	Palm Gainer	Gainer, Palm Flip	Dive Palm Gainer, Palm Gainer Full, Slant Palm Gainer, Trapdoor Palm Gainer	Wall/Flip		Gainer set by pushing against the vertical face of a wall with both hands.
+439	Gargoyle Dash Roll	Dash Roll	Gargoyle Dash Bomb	Wall/Roll		Dash Roll set from Gargoyle position. This was first landed by Sean Nobles in 2015.
+440	720 Dive Roll Bomb	360 Dive Roll Bomb, 720 Dive Roll		Roll/Twist	720 Morph Bomb	A double twisting Dive Roll off a ledge into a side or front tuck. This move was landed by Aaron Hakala in 2013.
+441	Wall Double Corkscrew	Wall Corkscrew	Wall Triple Corkscrew	Wall/Flip/Twist		A double twisting Wall Corkscrew. Reference Club540.com for Double Corkscrew.
+442	Turn Gaet Pimp Full	Turn Gaet Pimp	Turn Gaet Pimp Double Full	Beam/Flip/Twist		A full twisting Turn Gaet Pimp Flip. This move was landed by Alfred Scott of Dodo Freerunning in 2015.
+443	Flyaway Triple Full	Flyaway Double Full		Bar/Flip/Twist		A triple full twisting Flyaway.
+444	Inward Flyaway Half	Inward Flyaway	Inward Flyaway Full, Inward Flyaway Half Catch, Reverse Underbar Inward Flyaway Half	Bar/Flip/Twist	Inward Flyaway 180	A half twisting Inward Flyaway.
+445	Swing Castaway Double Back	Swing Castaway Back		Bar/Flip/Twist	Back Uprise Double Back	A double rotating Swing Castaway Back. This was first attempted by Shawn Bautista of Dodo Freerunning in 2015. This was first landed by Alexey Kruk of team Air Style in 2016.
+446	Flyaway Full-In Full-Out	Flyaway Full-In Back-Out, Flyaway-In Full-Out	Flyaway Full-In Double Full-Out	Bar/Flip/Twist	Flyaway Double Double, Watanabe	Flyaway Full-In Back-Out with a full twist during the second rotation.
+447	Wall Spin 540	Wall Spin Twist	One-Step Wall Spin 540	Wall/Flip/Twist		Wall Spin into a 540 twist.
+448	One-Step One-Hand Palm Gainer Full	One-Hand Palm Gainer Full		Wall/Flip/Twist	One-Step Ginger Flip Full, One-Step Hi-Five Gainer Full	One step up a wall set into a One-Hand Palm Gainer Full.
+449	Inward Side	Side Flip	Castaway Inward Side, Two-Foot Wall Inward Side, Wall Inward Side	Flip		Side Flip rotating opposite to the travel direction.
+450	Gargoyle Pimp		Elbow Gargoyle Pimp, Gargoyle Pimp Full, Gargoyle Pimp Layout, Gargoyle Pimp Wall Flip	Wall/Flip		Pimp Flip set from Gargoyle position.
+451	Elbow Gargoyle Pimp	Gargoyle Pimp		Wall/Flip		Gargoyle Pimp set from Elbow Gargoyle position.
+452	Palm Spin Pimp	Palm Spin, Pimp Flip		Beam/Flip		Palm Spin into a Pimp Flip off the corner of a wall.
+453	Double Butterfly Twist Vault	Butterfly Twist Vault		Vault/Twist	Rail Double Butterfly Twist	A double twisting Butterfly Twist Vault.
+454	Pimp Double Full	Pimp Full		Flip/Twist		A double full twisting Pimp Flip.
+455	Gargoyle Pimp Wall Flip	Gargoyle Pimp		Wall/Flip		Gargoyle Pimp set with a step off a perpendicular wall.
+456	Sitting Turn Pimp Wall Flip	Sitting Turn Pimp Flip	Double Leg Circle Pimp Wall Flip	Wall/Flip		Sitting Turn Pimp set with a step off a perpendicular wall.
+457	One-Hand Wall Spin Palm Twist	Wall Spin Twist	Corner One-Hand Wall Spin Palm Twist, Elbow Wall Spin Palm Twist	Wall/Flip/Twist	Dk Flip, Diddy Flip, One-Hand Palm Front Palm Half-Down	One-Hand Wall Spin into a half to three-quarter twist. This was first landed independently by both Dimitris Dk' Kyrsanidis of team Focus and Didi Alaoui in 2015.
+458	Knee Aerial Twist	Aerial Twist	Knee Double Aerial Twist	Wall/Flip/Twist	Knee A-twist	An Aerial Twist set from kneeling on a ledge.
+459	Knee Double Aerial Twist	Knee Aerial Twist		Wall/Flip/Twist	Knee Double A-twist	A double full twisting Aerial set from kneeling on a ledge on both knees.
+460	Wall One and a Half Full	Wall Full	Wall Double Full	Wall/Flip/Twist	Wall Flip 540	A one and a half twisting Wall Flip.
+461	Frisbee	Aerial, Butterfly Kick	Double Frisbee, Frisbee Full-Down, Frisbee Vault, Inward Frisbee, Palm Spin Frisbee, Pistol Frisbee, Touchdown Frisbee	Flip		A tucked Aerial or tucked Butterfly Kick.
+462	Inward Aerial Twist	Aerial Twist	Inward Double Aerial Twist, Wall Inward Aerial Twist	Flip/Twist	Inward A-twist	A backwards traveling Aerial Twist. This move is typically done off a ledge.
+463	Reverse Lache Two-Foot Wall Front	Front Flip, Reverse Lache	Lache 180 Wall Front	Bar/Wall/Flip		A backwards swinging Lache into a Front Flip off a wall.
+464	Dive Palm Spin Gaet Pimp	Palm Spin Gaet Pimp		Beam/Flip		A dive into a Palm Spin Gaet Pimp. This was first landed by Alfred Scott of Dodo Freerunning in 2015.
+465	Devil Drop Inward Tunnel	Inward Tunnel Flip		Wall/Flip	Hammer Drop	Inward Tunnel Flip set from Cat Hang position.
+466	Inward Tunnel Flip	Tunnel Flip	Devil Drop Inward Tunnel, Inward Double Tunnel, Inward Tunnel Full	Flip		A backwards traveling Tunnel Flip. This move is typically done off a ledge.
+467	Flyaway Layout	Flyaway	Flyaway Double Layout, Flyaway Layout-In Back-Out	Bar/Flip	Swing Gainer Layout, Bar Gainer Layout	A laid out Flyaway.
+468	Back Layout	Back Flip	Angel Drop, Back Layout-In Back-Out, Double Layout, Korbut Flip, Kumquat, Pistol Back Flip	Flip		A laid out Back Flip.
+469	Inward Dive Roll	Running Gainer	Inward Dive Roll Bomb	Roll		Running Gainer set into a laid out backwards rotation landing on both shoulders into a forward roll. Reference Club540.com for Suicide Kip Up.
+470	Kong 360 Dive Roll	Kong 360, Kong Dive Roll	Kong 360 Front	Vault/Twist/Roll	Cat Pass 360 Dive Roll, Screwdriver Dive Roll	Kong 360 into Dive Roll. Alternatively, a full twisting Kong Dive Roll.
+471	Reverse Speed	Reverse Safety		Vault		A vault performed over parallel obstacles in which a Reverse is executed off the first wall to a Speed off the second wall.
+472	Swing Castaway Arabian	Swing Castaway Back	Swing Castaway Arabian Half	Bar/Flip/Twist	Back Uprise Arabian	A swing castaway set into an Arabian. This was first landed by Alfred Scott of Dodo Freerunning in 2015.
+473	540 Dive Front Flip	540 Dive Roll		Flip/Twist	Filipino, 540 Vortex Front, 540 Pig Skin, 540 Psycho Crusher	A 540 twist into a front tuck.
+474	Gainer Cat	Gainer		Wall/Flip	Gainer Arm Jump	Gainer landing in Cat Hang position. This was first landed by Erik Mukhametshin in 2015.
+475	Devil Drop Side Full-Down	Devil Drop Side		Wall/Flip/Twist		Devil Drop Side into a full twist after the flip.
+476	Devil Drop Gainer Layout	Devil Drop Gainer		Wall/Flip		A laid out Devil Drop Gainer.
+477	Inward Dive Touchdown Twist	Inward 360 Dive Roll		Wall/Twist		An inward dive set followed by touching down into a full twist off a ledge.
+478	Elbow Wall Spin Palm Twist	One-Hand Wall Spin Palm Twist		Wall/Flip/Twist	Elbow Dk Flip, Elbow Diddy Flip	One-Hand Wall Spin Palm Twist set by pushing off the wall with the elbow instead of spinning with the first hand. This was first landed independently by both Dimitris Dk' Kyrsanidis of team Focus in 2015.
+479	Corner One-Hand Wall Spin Palm Twist	One-Hand Wall Spin Palm Twist		Wall/Flip/Twist	Corner Dk Flip, Corner Diddy Flip	One step off a wall into a One-Hand Wall Spin Palm Twist on a perpendicular wall. This was first landed independently by both Dimitris Dk' Kyrsanidis of team Focus in 2015.
+480	One-Step Wall Spin 540	Wall Spin 540		Wall/Flip/Twist		One step up a wall into a Wall Spin 540.
+481	Palm Side Half	Palm Side		Wall/Flip/Twist		A half twisting Palm Side Flip.
+482	Kong 360 Front	Kong 360 Dive Roll		Vault/Flip/Twist	Cat Pass 360 Front, Screwdriver Front	Kong 360 into front tuck.
+483	Sitting Touchdown Aerial Twist			Wall/Flip/Twist	Sitting Td A-twist	An Aerial Twist set from half sitting position and by touching down to set the body for the flat spin.
+484	Kong Gainer Layout	Kong Gainer		Vault/Flip	Cat Pass Gainer Layout	A laid out Kong Gainer.
+485	Slant Kong Gainer Cat	Slant Kong Gainer		Vault/Wall	Cheat Cat Pass Gainer Cat Hang, Cheat Kong Gainer Cat, Slant Kong Gainer Cat	Slant Kong Gainer landing in Cat Hang position. This was first landed by Ed Scott and Steve Jehu in 2015.
+486	Flyaway-In Full-Out	Double Flyaway	Flyaway Full-In Full-Out, Flyaway Layout-In Full-Out	Bar/Flip/Twist	Lache Gainer Full-Out, Bar Gainer Full-Out, Swing Gainer Full-Out	Double Flyaway with a full twist during the second rotation.
+487	Standing Cast Monkey Gainer	Monkey Gainer		Vault/Flip		A cast from standing into a Monkey Gainer. This was first landed by Alfred Scott of Dodo Freerunning in 2015.
+488	Monkey Gainer	Kong Gainer	Standing Cast Monkey Gainer	Vault/Flip		Monkey Vault executed into a Gainer.
+489	Two-Foot Wall Full-Up Inward Side	Two-Foot Wall Inward Side		Wall/Flip/Twist	Two-Foot Wall Vortex Inward Side, Two-Foot Wall 360 Inward Side	A two-foot jump set up the wall into a full twist into an inward side tuck. This was first landed by Farshad Mohammadian in 2015.
+490	Sideways Castaway Back	Castaway Back		Wall/Flip	Bio Castaway Back, Caster Castaway Back, Lateral Castaway Back, Strafe Castaway Back	A sideways moving Castaway Back.
+491	One-Step Palm Inward Aerial Twist	Wall Inward Aerial Twist		Wall/Flip/Twist	One-Step Palm Inward A-twist	One step up a wall followed by a push with one hand into an Inward Aerial Twist.
+492	Swing Castaway Full-Up	Swing Castaway Back		Bar/Flip/Twist	Back Uprise Full-Up	A swing castaway set into a Full-Up. This was first attempted by Alfred Scott of Dodo Freerunning in 2015. Reference Club540.com for Full-Up.
+493	Sitting Touchdown Double Butterfly Twist	Sitting Touchdown Butterfly Twist		Wall/Twist	Sitting Td Double B-twist	Double Butterfly Twist set from half sitting position and by touching down to set the body for the flat spin. Reference Club540.com for Double Butterfly Twist.
+494	Wall Full-Up	Wall Flip	Gaet Wall Full-Up	Wall/Twist/Flip		One step up a wall set into a Full-Up. This was first landed by Shawn Bautista in 2015. Reference Club540.com for Full-Up.
+495	Rail Aerial Twist-In Back-Out	Rail Aerial Twist		Vault/Flip/Twist	Rail A-twist-In Back-Out	Rail Aerial Twist into a back tuck. This was first attempted by Chris Hollingsworth in 2014.
+496	Sitting Dash Bomb Half	Sitting Dash Bomb		Wall/Flip/Twist	Sitting Dash Barani	A half-twisting Sitting Dash Bomb.
+497	Swing Castaway Full-Down	Swing Castaway Back		Bar/Flip/Twist	Back Uprise Full-Down	Swing Castaway Back into a full twist after the flip. This was first landed by Alfred Scott of Dodo Freerunning in 2015.
+498	Devil Drop Half	Devil Drop	Devil Drop Full	Wall/Flip/Twist	Cat Belle Half, Cat Loser Half, Cat Front Half	A half twisting Devil Drop.
+499	Dive Down Monkey	Down Monkey	Angel Drop Down Monkey	Wall/Flip		A backwards dive set into Down Monkey.
+500	Two-Step Palm Wall Full	Two-Step Wall Full		Wall/Flip/Twist		Two steps up a wall while using both hands to palm off into a Wall Full. This was first landed by Alfred Scott of Dodo Freerunning in 2014.
+501	One-Step Castaway Side	Castaway Side		Wall/Flip	One-Step Palm Drop Side	One step up a wall set into a Castaway Side.
+502	Kong Dive Palm Gainer	Dive Palm Gainer		Vault/Wall/Flip	Cat Pass Dive Two-Hand Palm Gainer	Kong Vault into a Two-Hand Palm Gainer. This was first landed by Alfred Scott of Dodo Freerunning in 2014.
+503	Slant Palm Gainer	Palm Gainer		Wall/Flip		An off-axis Palm Gainer.
+504	Swing Castaway X-Out	Swing Castaway Back	Swing Castaway X-Out Full-Down	Bar/Flip	Back Uprise Straddle	A swing castaway set into X-Out. This was first landed by Moses Jackson in 2015.
+505	One-Step Palm X-Out	One-Step Palm Flip		Wall/Flip		Palm Flip where both legs kick out to the sides before tucking. This was first landed by Moses Jackson in 2015.
+506	Devil Drop Rudi	Devil Drop Full		Wall/Flip/Twist	Devil Drop 540	A one and a half twisting Devil Drop. This was first attempted by Delyan Dido Dimitrov in 2011.
+507	Down Monkey Handstand	Down Monkey, Handstand		Wall/Flip/Handstand		Down Monkey into Handstand.
+508	Handstand Castaway Back	Castaway Back, Handstand	One-Hand Handstand Castaway Back	Flip/Handstand	Quasimodo	Castaway Back set from Handstand position. This was first landed by Ben Jenkin in 2008.
+509	One-Hand Handstand Castaway Back	Handstand Castaway Back		Flip/Handstand	One-Hand Quasimodo	Castaway Back using one hand set from Handstand.
+510	Devil Drop Full	Devil Drop Half	Devil Drop Rudi	Wall/Flip/Twist	Cat Belle Full, Cat Loser Full, Cat Front Full	A full twisting Devil Drop.
+511	Back Hip Semi-Circle Gainer	Back Hip Circle		Bar/Flip	Clear Hip Circle Gainer	Back Hip Circle released early in front of the high bar into a Gainer. This was first attempted by Delyan Dido Dimitrov in 2011.
+512	Shushunova			Bar	Full Twisting Tkatchev, Half-Turn Markelov	A forward swing into a half turn released over the bar while straddled to regrab. This move was landed by Elena Shushunova in 1987.
+513	Inward Flyaway-In Half-Out	Double Inward Flyaway		Bar/Flip/Twist		Double Inward Flyaway with half twisting during the second rotation.
+514	Wall Layout Down Monkey	Down Monkey, Wall Layout	Alleyway Bridge Down Monkey, Wall Full Down Monkey, Wall Layout One-Hand Down Monkey	Wall/Flip		Wall Layout into a Down Monkey. This move was first landed by Adry Cemel in 2012.
+515	Thief Cat	Thief Vault		Vault/Wall		Thief Vault landing in Cat Hang position.
+516	Two-Step Wall Inward Front	Wall Inward Front		Wall/Flip	Two-Step Wall Loser	Two steps up a wall into an Inward Front.
+517	Lache Side	Lache	Lache Side Full	Bar/Flip		Lache into a side tuck.
+518	Double Flyaway Catch	Double Flyaway, Flyaway Catch		Bar/Flip	Swing Double Gainer Catch, Bar Double Gainer Catch	Double Flyaway to bar catch. This was first attempted by Alfred Scott of Dodo Freerunning in 2015.
+519	Dive Palm Flip	Palm Flip	Trapdoor Palm Flip	Wall/Flip		A dive set into a Palm Flip.
+520	Devil Drop Side Full	Devil Drop Side		Wall/Flip/Twist		A full twisting Devil Drop Side.
+521	Back Flip Wall Dive Roll	Back Flip		Wall/Flip/Roll	Back Flip Wall Suicide	Back Flip into Wall Dive Roll.
+522	Corner Worm Punch Wall Flip	Punch Wall Flip		Wall/Flip		A worm off a ledge towards a perpendicular wall into a Punch Wall Flip. This was first landed by Alfred Scott of Dodo Freerunning in 2015.
+523	Flyaway Arabian Half	Flyaway Arabian	Flyaway Arabian Unwind Half	Bar/Flip/Twist		A half twisting Flyaway into a front tuck followed by a half twist.
+524	Gainer Arabian Half	Gainer Arabian		Flip/Twist		A half twisting Gainer into a front tuck followed by a half twist.
+525	Gainer Arabian	Gainer	Flyaway Arabian, Gainer Arabian Half, Gainer Full	Flip/Twist		A half twisting Gainer into a front tuck.
+526	Devil Drop Raiden Half	Devil Drop Raiden		Wall/Flip/Twist		A half twisting Devil Drop Raiden. This was first landed by Alfred Scott of Dodo Freerunning in 2014.
+527	Inward Webster Half	Inward Webster		Flip/Twist	Loser Half	A half twisting Inward Webster.
+528	Inward Macaco	Macaco		Flip	Inward Valdez	A forward traveling Macaco. This was first landed by Alexander Zyulev in 2011.
+529	Two-Step Wall Two and a Half Full	Two-Step Wall Double Full		Wall/Flip/Twist	Wall Flip 900	A two and a half twisting Wall Flip.
+530	360 Dive Front Dash-Out	360 Dive Front Flip		Vault/Flip/Twist	Vortex Front Dash-Out, Pigskin Dash-Out, Psycho Crusher Dash-Out	A 360 Dive Front Flip over a vault into a Dash Vault.
+531	Toe Shoot Dive Roll		Hang Toe Shoot Dive Roll, Toe Shoot Front, Toe Shoot Handstand, Toe Shoot 360 Dive Roll	Bar/Flip/Roll		A toe shoot executed into Dive Roll.
+532	Swing Castaway Rodeo	Swing Castaway Back		Bar/Flip	Back Uprise Rodeo	A swing castaway set into Rodeo. This was first landed by Dimitris Dk' Kyrsanidis of team Focus in 2015. Reference Club540.com for Rodeo.
+533	Front Half-In Back-Out	Front Half		Flip/Twist	Barani-In Back-Out	Front Half into a back tuck.
+534	Front-In Half-Out	Double Front Flip, Front Half		Flip/Twist	Front-In Barani-Out	Front Flip into a Front Half.
+535	Lazy Roll	Lazy Vault	Lazy Bomb	Vault/Roll		Lazy Vault into a roll.
+536	Reverse Palm Spin Inward Frisbee	Inward Frisbee, Reverse Palm Spin	Reverse Palm Spin Inward Frisbee Vault	Flip		Reverse Palm Spin set into an Inward Frisbee.
+537	Reverse Palm Spin	One-Hand Reverse, Palm Spin	Reverse Palm Spin 360, Reverse Palm Spin Inward Frisbee			Reverse Vault set into a Palm Spin.
+538	Inward Webster Side	Webster Side		Flip	Loser Side	Webster Side flip traveling opposite the direction of rotation.
+539	Webster Side	Side Flip	Inward Webster Side	Flip		Webster set into a side tuck.
+540	Wall Flip 540 Dive Roll	Wall Arabian Dive Roll		Wall/Flip/Twist		Wall Flip set into a 540 Dive Roll. This was first landed by Alfred Scott of Dodo Freerunning in 2015.
+541	Reverse Underbar Inward Flyaway Half	Inward Flyaway Half, Reverse Underbar		Bar/Flip/Twist		A 180 Underbar into an Inward Flyaway Half.
+542	Slant Kong Gainer Full	Slant Kong Gainer	Slant Kong Gainer Double Full	Vault/Flip/Twist	Slant Cat Pass Gainer Full	A full twisting Slant Kong Gainer. This was first attempted by Adry Cemel in 2014.
+543	Hang Gainer Full	Hang Gainer		Wall/Flip/Twist		A full twisting Hang Gainer. This was first attempted by Laurynas Ukanis in 2014 and first landed by Nick Provost in 2016.
+544	Knee Double Corkscrew	Knee Corkscrew		Wall/Flip/Twist		Double Corkscrew set off a ledge off the knee of the jump leg while using the other leg to swing into the Double Corkscrew. This was first attempted by Laurynas Ukanis in 2014. Reference Club540.com for Double Corkscrew.
+545	Inward Wall Flip Cat	Running Gainer, Wall Flip		Wall/Flip		One step up a wall set into a Gainer landing Cat Hang.
+546	Inward Flyaway Side	Inward Flyaway	Inward Flyaway Double Side, Inward Flyaway Side Regrab, Kip Inward Side	Bar/Flip		A backwards swing into a side tuck.
+547	Inward Flyaway Side Regrab	Inward Flyaway Side		Bar/Flip		An Inward Flyaway Side to regrabbing the same bar.
+548	Dive One-Hand Palm Gainer	One-Hand Palm Gainer		Wall/Flip	Dive Ginger Flip, Dive Hi-Five Gainer	A dive set into One-Hand Palm Gainer.
+549	Parallel Bar Gainer Full Dismount	Parallel Bar Gainer Dismount		Parallel Bar/Flip/Twist		A full twisting Parallel Bar Gainer Dismount.
+550	Giant Release Half Twist Handstand Catch	Flyaway Catch, Giant, Handstand		Bar/Flip/Twist/Handstand		A forward swing followed by a half twist flight to Handstand catch on a parallel bar.
+551	Toe Shoot Side		Hang Toe Shoot Side, Toe Shoot Side Full	Bar/Flip		A toe shoot (while swinging forward from the back swing, both feet kick straight up in front of the bar, as in an Underbar, and then whip down to lift the chest up) executed into a side tuck.
+552	Giant Pimp	Giant, Pimp Flip		Bar/Flip		Giant set into Pimp Flip off a high bar. This was first landed by Alexander Novikov in 2015.
+553	Inward 540 Roll	Inward 360 Dive Roll		Roll/Twist		Loser set into a 360 twist to the hands and then collapsed into a roll.
+554	Inward 1080 Dive Roll	Inward 720 Dive Roll		Roll/Twist		An Inward 360 Dive Roll set with two additional full twists. This was first attempted by Scott McDonald in 2015.
+555	Speed Vault 540	Speed Vault 360		Vault/Twist		Speed Vault set into a 540 twist.
+556	Handstand Gainer Full	Handstand Gainer		Wall/Flip/Twist/Handstand		A full twisting Handstand Gainer. This was first attempted by Alexey Kruk in 2015.
+557	360 Dive Pimp	360 Dive Kong, Pimp Flip		Vault/Flip/Twist	Vortex Pimp	A 360 dive into a Pimp Flip. This was first attempted by Oliver Pitot in 2012.
+558	Toe Shoot Double Front	Toe Shoot Front		Bar/Flip		A double rotating Toe Shoot Front.
+559	360 Dive Down Monkey	180 Dive Down Monkey		Wall/Flip/Twist		A 360 dive set backwards into a Down Monkey. This was first attempted by Aaron Hakala in 2012.
+560	360 Dive Cartwheel	360 Dive Roll, Cartwheel		Flip/Twist		A 360 dive into Cartwheel.
+561	Double Dash Vault	Dash Vault		Vault		Dash Vault off a vault into a Dash Vault off a consecutive obstacle.
+562	Toe Shoot Side Full	Toe Shoot Side		Bar/Flip/Twist		A full twisting Toe Shoot Side.
+563	Double Flyaway Full-Down	Double Flyaway		Bar/Flip/Twist	Swing Double Gainer Full-Down, Bar Double Gainer Full-Down	Double Flyaway into a full twist after the second rotation. This was first attempted by Alfred Scott of Dodo Freerunning in 2015.
+564	Kong Gainer Full-Down	Kong Gainer		Vault/Flip/Twist	Cat Pass Gainer Full-Down	Kong Gainer into a full twist after the flip.
+565	Flyaway Kong	Flyaway		Bar/Flip/Vault	Lache Gainer Kong, Swing Gainer Cat Pass, Swing Gainer Kong	An under-rotated Flyaway into a Kong Vault.
+566	Lazy Cat	Lazy Vault		Vault/Wall		Lazy Vault landing in Cat Hang position.
+567	One-Hand Reverse Double Leg Gyro	One-Hand Reverse Double Leg		Vault/Flip/Twist		One-Hand Reverse Double Leg into a full twist after the flip.
+568	Double Leg Circle Pimp Wall Flip	Double Leg Circle, Sitting Turn Pimp Wall Flip		Pommel Horse/Wall/Flip		Circle into a Wall Flip off a perpendicular wall.
+569	Double Leg Circle		Double Leg Circle Castaway, Double Leg Circle Front, Double Leg Circle Pimp Wall Flip	Pommel Horse		A stationary movement where both legs swing in a circle around the body while alternating balance on both hands.
+570	Straddle Sole Circle Gainer	Straddle Sole Circle	Split Sole Circle Gainer, Straddle Sole Circle Gainer Full, Straddle Sole Circle Gainer Layout, Straddle Sole Circle Stall Gainer	Bar/Flip		Straddle Sole Circle into Gainer. This was first landed by Alfred Scott of Dodo Freerunning in 2015.
+571	Double Leg Circle Castaway	Double Leg Circle, Sitting Turn Castaway Back	Double Leg Circle Castaway Full	Pommel Horse/Flip		Double Leg Circle into Castaway Back. This was first landed by Josh Yadon in 2012.
+572	Kong Gainer X-Out	Kong Stall Gainer		Vault/Flip	Cat Pass Gainer X-Out	Kong Stall Gainer with both legs straddled. This was first landed by Vladimir Koldaev in 2015.
+573	Sideway Gainer	Gainer	Cheat Angel Drop, Sideway Double Gainer, Sitting Sideway Gainer	Flip	Bio Gainer, Caster Gainer, Lateral Gainer, Strafe Gainer	A sideways traveling Gainer.
+574	Sideway Double Gainer	Sideway Gainer		Flip	Bio Gainer, Caster Gainer, Lateral Double Gainer, Strafe Double Gainer	A double rotating Side Gainer.
+575	Flyaway Arabian	Flyaway, Gainer Arabian	Flyaway Arabian Half	Bar/Flip/Twist		A half twisting Flyaway into a front tuck.
+576	Wall Inward Front Full	Wall Inward Front Half	Wall Inward Rudi	Wall/Flip/Twist	Wall Loser Full	A full twisting Wall Inward Front.
+577	Wall Inward Rudi	Wall Inward Front Full		Wall/Flip/Twist	Wall Loser One and a Half	A one and a half twisting Wall Inward Front.
+578	Sitting Dash Gainer Full-Down	Sitting Dash Gainer		Bar/Flip/Twist		Sitting Dash Gainer into a full twist after the flip. This was first attempted by Alfred Scott of Dodo Freerunning in 2015.
+579	Swipe Drop Castaway Side	Castaway Side		Wall/Flip	Your mom	Swipe (breakdancing move) dropped into a Castaway Side. This was first attempted by Masa Suzuki in 2015.
+580	Parallel Bar Sideway Gainer Dismount		Parallel Bar Sideway Gainer Full-Down Dismount	Parallel Bar/Flip/Twist	Parallel Bar Bio Gainer, Parallel Bar Caster Gainer, Parallel Bar Lateral Gainer, Parallel Bar Strafe Gainer	A swing set on parallel bars from support position into a sideways traveling Gainer dismount.
+581	Parallel Bar Sideway Gainer Full-Down Dismount	Parallel Bar Sideway Gainer Dismount		Parallel Bar/Flip/Twist	Parallel Bar Bio Gainer Full-Down, Parallel Bar Caster Gainer Full-Down, Parallel Bar Lateral Gainer Full-Down, Parallel Bar Strafe Gainer Full-Down	Parallel Bar Sideway Gainer into a full twist after the flip.
+582	Two-Step Wall Full-Down	Two-Step Wall Flip		Wall/Flip/Twist		Two-Step Wall Flip into a full twist after the flip. This was first landed by Alfred Scott of Dodo Freerunning in 2015.
+583	Swing Castaway Pike	Swing Castaway Back		Bar/Flip	Back Uprise Pike	A piked (both legs straight during the tuck) Swing Castaway Back.
+584	Front Double Full	Rudi	Randi	Flip/Twist		A double twisting Front Flip.
+585	Hang Castaway Down Monkey	Down Monkey, Hang Castaway Back		Wall/Flip		Hang Castaway into Down Monkey. This was first landed by Joe Scandrett in 2015.
+586	Swing Castaway Down Monkey	Down Monkey, Swing Castaway Layout		Wall/Bar/Flip	Back Uprise Down Monkey	A swing castaway set into a Down Monkey.  This was first attempted by Erik Mukhametshin in 2015.
+587	Double Kong Front	Double Kong, Kong Front		Vault/Flip	Double Cat Pass Front	Double Kong into a front tuck.
+588	Slant Kong Double Gainer	Slant Kong Gainer		Vault/Flip	Cheat Cat Pass Double Gainer, Cheat Kong Double Gainer, Slant Kong Double Gainer	An off-axis Kong Vault executed into Double Gainer. This was first attempted by Lewis Scandrett in 2015.
+589	Wall Gainer Down Monkey	Wall Gainer	Wall Gainer Down Monkey Half-Down	Wall/Flip	Two-Hand Dragonfly	Wall Gainer set into Down Monkey.
+590	Dive Palm Gainer	Palm Gainer	Kong Dive Palm Gainer	Wall/Flip		A dive into a Two-Hand Palm Gainer.
+591	One-Step Castaway Back	Castaway Back		Wall/Bar/Flip		One step up a wall with both legs arched back into a Castaway Back.
+592	Swing Castaway Layout	Swing Castaway Back	Swing Castaway Down Monkey	Bar/Flip	Back Uprise Layout	A laid out Swing Castaway Back.
+593	Running Tunnel Flip	Tunnel Flip		Flip	Running Side Gainer	A run set into Tunnel Flip. During the set, the inside leg (leg on the side of the flip direction) swings into the flip, similar to a Grandmaster Swipe. 
+594	Swing Castaway Double Full	Swing Castaway Full		Bar/Flip/Twist	Back Uprise Double Full	A double twisting Swing Castaway.
+595	Parallel Bar Front Dismount			Parallel Bar/Flip		A swing set on parallel bars from support position into a Front Flip dismount.
+596	Wall Arabian Unwind Half	Wall Arabian		Wall/Flip/Twist	Wall Arabian Un-Half	Wall Arabian with a half twist in one direction followed by a half twist in the opposite direction. This was first landed by Vitaliy Chzhen in 2012.
+597	One-Step Raiden	Raiden	One-Step Raiden Half	Wall/Flip		One step up a wall into a Raiden.
+598	One-Step Raiden Half	One-Step Raiden		Wall/Flip/Twist		A half twisting One-Step Raiden.
+599	Running Gainer Cat	Running Gainer		Wall/Flip		Running Gainer landing in Cat Hang position.
+600	Turn Gaet Pimp Pike	Turn Gaet Pimp		Beam/Flip		A piked Turn Gaet Pimp. This was first attempted by Nate Weston in 2015.
+601	Running Gainer Catch	Running Gainer		Flip/Bar		Running Gainer to bar catch. This was first landed by Dimitris Kyrsanidis in 2015.
+602	Turn Gaet Double Pimp	Turn Gaet Pimp		Beam/Flip		A double rotating Turn Gaet Pimp. This move was first attempted by Alfred Scott of Dodo Freerunning in 2015.
+603	Angel Drop Double Full	Angel Drop Full		Wall/Flip/Twist		A double twisting Angel Drop.
+604	180 Precision	Precision	360 Precision	Jump/Beam		A jump with a 180 spin to precision.
+605	Gaet Pimp Full	Gaet Pimp	Gaet Pimp Double Full, Gaet Pimp Full-In Back-Out	Beam/Flip/Twist		A full twisting Gaet Pimp.
+606	Gaet Pimp Double Full	Gaet Pimp Full		Beam/Flip/Twist		A double twisting Gaet Pimp. This was first attempted by Alfred Scott of Dodo Freerunning in 2015.
+607	Palm Double Full	Palm Full		Wall/Flip/Twist		A double twisting Palm Flip.
+608	Gaet Pimp Full-Down	Gaet Pimp		Beam/Flip/Twist		Gaet Pimp into a full twist after the flip. This was first attempted by Solomon Berg in 2015.
+609	Wall Inward Side Full	Wall Inward Side		Wall/Flip/Twist		A full twisting Wall Inward Side.
+610	Frisbee Full-Down	Frisbee		Flip/Twist		Frisbee into a full twist after the flip.
+611	Gaet Pimp Layout	Gaet Pimp		Beam/Flip		A laid out Gaet Pimp. This was first landed by Shawn Bautista of Dodo Freerunning in 2015.
+612	Shoulder Vault-In Back-Out	Shoulder Vault		Vault/Flip/Twist		Shoulder Vault into a back tuck. This was created by Gaëtan Bouillet of Speeders Family in 2009.
+613	Split Sole Circle Gainer Full	Split Sole Circle Gainer		Bar/Flip/Twist		A full twisting Split Sole Circle Gainer.
+614	Split Sole Circle Gainer	Straddle Sole Circle Gainer	Split Sole Circle Full-Up Gainer, Split Sole Circle Gainer Full	Bar/Flip		Sole Circle with one foot on the bar into a Gainer.
+615	Split Sole Circle Full-Up Gainer	Split Sole Circle Gainer		Bar/Flip/Twist		Split Sole Circle into a full twist into Gainer.
+616	Wall Inward Front Pike	Wall Inward Front		Wall/Flip		A piked Wall Inward Front.
+617	Turn Gaet Pimp Double Full	Turn Gaet Pimp Full		Beam/Flip/Twist		A double twisting Gaet Pimp. This was first attempted by Alfred Scott of Dodo Freerunning in 2015.
+618	Flyaway Full-Down	Flyaway	Flyaway Double Full-Down	Bar/Flip/Twist		Flyaway into a full twist after the flip.
+619	Swing Castaway Back Regrab	Swing Castaway Back		Bar/Flip	Back Uprise Back Tuck Catch	Swing Castaway Back to catching the same bar. This was created by Jeff Bender in 1992.
+620	Elbow Gaet Pimp	Gaet Pimp		Beam/Flip		Gaet Pimp set off of both elbows. This was first landed by Shawn Bautista of Dodo Freerunning of 2015.
+621	Hang Castaway Wall Gainer	Wall Gainer		Wall/Flip		From Hang position, cast and then step into a Wall Gainer. This was created and first landed by Shawn Bautista of Dodo Freerunning in 2015.
+622	Gargoyle Dash Bomb	Gargoyle Dash Roll		Wall/Flip		Dash Bomb set from Gargoyle position.
+623	Hang Toe Shoot Dive Roll	Toe Shoot Dive Roll	Hang Toe Shoot Front	Wall/Flip/Roll		Toe Shoot Dive Roll set from Hang position.
+624	Hang Toe Shoot Front	Hang Toe Shoot Dive Roll		Wall/Flip		Toe Shoot Front set from Hang position.
+625	Kong Gainer Kong	Kong Gainer		Vault/Flip	Cat Pass Gainer Cat Pass	An underrotated Kong Gainer into a Kong off a consecutive and lower obstacle. This was first attempted by Gaëtan Bouillet of Speeders Family in 2012.
+626	Pike Double Flyaway	Double Flyaway		Bar/Flip		A piked Double Flyaway.
+627	Machine Pimp	Scoot Pimp Flip		Flip	Powerground Pimp, Spindle Pimp, Whirl Spin Pimp, Windup Pimp	Machine (Break Dance setup) into Pimp Flip.
+628	Kip Inward Front	Inward Front		Bar/Flip		A bar kip into Inward Front. This was first landed by Erik Mukhametshin in 2015.
+629	Wall Inward Tunnel	Wall Inward Double Tunnel		Wall/Flip		One step off a wall into a Tunnel Flip.
+630	Wall Inward Double Tunnel	Wall Inward Tunnel		Wall/Flip		A double rotating Wall Inward Tunnel.
+631	Hang Castaway Punch Inward Front	Punch Wall Inward Front		Wall/Flip		Hang castaway set into Punch Wall Inward Front.
+632	Kip Inward Side	Inward Flyaway Side		Bar/Flip		A bar kip into Inward Side.
+633	One-Hand Palm Gainer Double Full	One-Hand Palm Gainer Full		Wall/Flip/Twist	Ginger Flip Double Full, Hi-Five Gainer Double Full	A double twisting One-Hand Palm Gainer.
+634	Pimp Punch Wall Layout	Punch Wall Layout		Wall/Flip		Pimp Flip into a Punch Wall Layout.
+635	Pimp Wall Wrap Full	Pimp Wall Layout		Wall/Flip		Pimp Flip into a Wrap Full off a perpendicular wall.
+636	Pimp Wall Layout	Pimp Flip, Wall Layout	Pimp Wall Wrap Full	Wall/Flip		Pimp Flip set into a Wall Layout off a perpendicular wall.
+637	Wall Layout	Wall Flip	Pimp Wall Layout, Wall Back Handspring, Wall Layout Down Monkey, Wall Macaco, Wall Stall Pike Layout	Wall/Flip		A laid out Wall Flip.
+638	Trapdoor Wall Flip	Wall Flip	Kong Trapdoor Wall Flip, Tic Tac Trapdoor Wall Flip, Trapdoor Punch Wall Layout, Trapdoor Wall Full	Wall/Flip		Wall Flip set by jumping over a gap to a wall, and then stepping off the wall into a back flip and landing in the gap below.
+639	Trapdoor Wall Full	Trapdoor Wall Flip	Trapdoor Wall Double Full	Wall/Flip/Twist		A full twisting Trapdoor Wall Flip.
+640	Trapdoor Wall Double Full	Trapdoor Wall Full		Wall/Flip/Twist		A double twisting Trapdoor Wall Flip.
+641	Hang Castaway Arabian	Hang Castaway Back		Wall/Flip/Twist		A half twisting Hang Castaway Back into a front tuck.
+642	Wall Inward Stall Side	Wall Inward Side		Wall/Flip		A stalled Wall Inward Side.
+643	360 Dive Kong 360 Dive Roll	360 Dive Kong, 360 Dive Roll		Vault/Roll/Twist	360 Dive Cat Pass 360 Dive Roll, Vortex Dive Kong Vortex	A 360 Dive Kong into a 360 Dive Roll. This was first landed by Bob Reese in 2015.
+644	Gargoyle Pimp Layout	Gargoyle Pimp		Wall/Flip		A laid out Gargoyle Pimp. This was first landed by Alfred Scott of Dodo Freerunning in 2015.
+645	Side Vault Pimp	Pimp Flip, Side Vault	Side Vault Pimp Layout	Vault/Flip		Side Vault into Pimp Flip.
+646	Side Vault Pimp Layout	Side Vault Pimp	Side Vault Pimp Full	Vault/Flip		A laid out Side Vault Pimp.
+647	Inward Flyaway Half Catch	Inward Flyaway Half		Bar/Flip/Twist	Inward Flyaway 180	Inward Flyaway Half to bar catch.
+648	Wall Flash Kick	Wall Flip	Wall Flip Walkdown	Wall/Flip		Wall Flip where the non-stepping leg kicks ahead and the stepping leg lags behind.
+649	Inward Frisbee	Frisbee	Devil Drop Frisbee, Palm Inward Frisbee, Reverse Palm Spin Inward Frisbee	Flip		Frisbee rotating opposite to the direction of travel.
+650	Gaet Wall Full-Up	Gaet Pimp, Wall Full-Up		Beam/Wall/Flip		Gaet Pimp set into a Wall Full-Up. This was first attempted by Shawn Bautista of Dodo Freerun in 2015.
+651	Two-Step Palm Flip	One-Step Palm Flip	Two-Step Palm Full-Down	Wall/Flip		Two steps up a wall into a Palm Flip.
+652	Two-Step Palm Full-Down	Two-Step Palm Flip		Wall/Flip/Twist		Two-Step Palm Flip into a full twist after the flip.
+653	Side Vault Pimp Full	Side Vault Pimp Layout		Vault/Flip/Twist		A full twisting Side Vault Pimp Layout. This was first attempted by Alfred Scott of Dodo Freerunning in 2015.
+654	Turn Gaet Pimp Wall Flip	Turn Gaet Pimp	Turn Gaet Pimp Wall Full	Beam/Wall/Flip		Gaet set into a Wall Flip. This was first landed by Alfred Scott of Dodo Freerunning in 2015.
+655	Lache Punch Wall Inward Front	Lache, Punch Wall Inward Front	Lache Punch Wall Inward Front Half, Lache Punch Wall Inward Front Layout, Lache Punch Wall Inward Front Regrab	Bar/Wall/Flip		Lache set into Punch Wall Inward Front.
+656	Butterfly Vault	Butterfly Kick	Butterfly Twist Vault	Vault	Rail Butterfly	Butterfly Kick set with one hand over a rail or vault. Reference Club540.com for Butterfly Kick.
+657	Half-Up Back	Back Flip	Back Dash, Half-Up Back Full-Down, Half-Up Double Back, One-Step Half-Up Back	Flip/Twist		A 180 dive into a back tuck.
+658	One-Step Half-Up Back	Half-Up Back		Wall/Flip/Twist		One step up and over a wall into a Half-Up Back.
+659	Half-Up Double Back	Half-Up Back		Flip/Twist		A 180 dive into a Double Back Flip.
+660	Swing Castaway Stall Back	Swing Castaway Back	Swing Castaway Back Handcuffs, Swing Castaway Stall Full-Down	Bar/Flip	Back Uprise Stall Back	A swing cast set into a stalled back tuck. This was first landed by Vlas Vladimirov in 2012.
+661	Castaway Stall Back	Castaway Back		Bar/Flip	Stall Palm Drop	A stalled Castaway Back.
+662	One-Hand Castaway Back	Castaway Back		Bar/Flip	One-Hand Palm Drop	Castaway Back where one hand comes off the wall after the cast.
+663	360 Shoulder Vault 360	Shoulder Vault 360		Vault/Twist	360 Shoulder Vault 360	A full twist onto the vault into a Shoulder Vault 360. This was first landed by Pasha in 2015.
+664	Slant Kong Gainer Full-Down	Slant Kong Gainer		Vault/Flip/Twist	Cheat Cat Pass Gainer Full-Down, Cheat Kong Gainer Full-Down, Slant Cat Pass Gainer Full-Down	Slant Kong Gainer into a full twist after the flip.
+665	Double Kong Slant Gainer	Double Kong, Slant Kong Gainer		Vault/Flip	Double Cat Pass Slant Gainer, Double Kong Cheat Gainer	Kong Vault into a dive to a Slant Kong Gainer.
+666	One-Step Kong Side	Kong Side		Vault/Flip	One-Step Cat Pass Side	One step into a Kong Side.
+667	Punch Wall Layout	Punch Wall Flip	Dyno Palm Wall Punch Layout, Hang Castaway Wall Punch Layout, Pimp Punch Wall Layout, Slant Punch Wall Layout	Wall/Flip		A laid out Punch Wall Flip.
+668	Slant Punch Wall Layout	Punch Wall Layout		Wall/Flip		Punch set on a wall while perpendicular to the ground into a back layout. This was first landed by Mike Wilson of 3Run in 2015.
+669	Turn Gaet Pimp Layout	Turn Gaet Pimp		Beam/Flip		A laid out Turn Gaet Pimp.
+670	One-Hand Kong One-Hand Reverse	One-Hand Double Kong		Vault	One-Hand Cat Pass One-Hand Reverse	One-Hand Kong into a dive to a One-Hand Reverse Vault.
+671	Wall Roundoff			Wall/Flip		Roundoff set off the face of a wall. Reference Club540.com for Roundoff.
+672	Inward Flyaway Inward Down Monkey	Inward Down Monkey, Inward Flyaway		Bar/Wall/Flip		An Inward Flyaway into an Inward Down Monkey. This was first landed by Kirya Kolesnikov of team Air Style in 2015.
+673	Palm Gainer Full	Palm Gainer		Wall/Flip/Twist		A full twisting Palm Gainer.
+674	Palm Inward Frisbee	Inward Frisbee	Dive Palm Inward Frisbee	Wall/Flip		An Inward Frisbee set by jumping and then pushing off a wall with one hand.
+675	Gargoyle Gainer Full	Gargoyle Gainer		Wall/Flip		A full twisting Gargoyle Gainer.
+676	Toe-On Inward Roll		Toe-On Inward 360 Roll	Bar/Roll/Twist		A toe-on into Inward Roll.
+677	Toe-On Inward 360 Roll	Toe-On Inward Roll	Toe-On Inward 720 Roll	Bar/Roll/Twist		A toe-on set into a full twisting Inward Roll.
+678	Toe-On Inward 720 Roll	Toe-On Inward 360 Roll		Bar/Roll/Twist		A toe-on into a double full twisting Inward Roll. This was first done by Bboy Mostef in 2015.
+679	Pop Castaway Back	Castaway Back	Pop Castaway Full	Bar/Flip	Pop Palm Drop	Devil Drop set into Castaway Back.
+680	Chest Wall Spin		Chest Wall Spin Full-Down	Wall/Spin		A jump or slide onto the face of a wall on the chest into a spin. This was first landed by Remi Girard of Massilia Parkour in 2015.
+681	Chest Wall Spin Full-Down	Chest Wall Spin		Wall/Spin/Twist		Chest Wall Spin into a  into a full twist after the spin. This was first attempted by Remi Girard of Massilia Parkour in 2015.
+682	Cast Stall Gainer	Cast Gainer		Bar/Flip		Cast into a stalled Gainer. This was first attempted by Julien Williams in 2015.
+683	Double Webster	Webster Front		Flip		A double rotating Webster.
+684	Scoot Pimp Full-Down	Scoot Pimp Flip		Flip		Scoot Pimp Flip into a full twist after the flip.
+685	Pop Castaway Full	Pop Castaway Back		Bar/Flip/Twist		A full twisting Pop Castaway.
+686	Side Flip One and a Half Dive Roll	Side Flip		Flip	Side 1 in 3	Side Flip one and a half degree rotation to Dive Roll.
+687	Lache Two-Foot Wall Inward Side	Lache, Two-Foot Wall Inward Side		Bar/Wall/Flip		Lache set into a Two-Foot Wall Inward Side.
+688	Gainer Pike	Gainer		Flip		A piked Gainer.
+689	Reverse Hyper Castaway Back	Castaway Back, Reverse Hyper		Vault/Flip		Reverse Hyper into a Castaway Back. This was first attempted by Bob Reese in 2015.
+690	Castaway Punch Wall Flip	Punch Wall Flip	Castaway Punch Wall Full	Bar/Flip		A castaway set into a Punch Wall Flip. This was first attempted by Bob Reese in 2015.
+691	Swing Castaway Wrap Full	Swing Castaway Back	Swing Castaway Wrap Double Full	Bar/Flip/Twist		A swing castaway set into one step of the bar into Wrap Full. Reference Club540.com for Wrap Full.
+692	Swing Castaway Wrap Double Full	Swing Castaway Wrap Full		Bar/Flip/Twist		A swing castaway set into one step of the bar into Wrap Double Full. Reference Club540.com for Wrap Double Full.
+693	Straddle Kong Gainer	Kong Gainer		Vault/Flip	Straddle Cat Pass Gainer	A straddled Kong Gainer. This was first landed by Alfred Scott of Dodo Freerunning in 2016.
+694	Reverse Hyper	Reverse Vault	Reverse Hyper Castaway Back	Vault		An over-rotated Reverse Vault landing on the jump leg.
+695	Slant Kong Gainer Layout	Slant Kong Gainer		Vault/Flip	Slant Cat Pass Gainer Layout	A laid out Slant Kong Gainer.
+696	Webster Front		Cheat Devil Drop, Double Webster, Inward Webster, Stomach Webster, Webster Half, Webster Precision	Flip		A flip where one leg kicks and the other leg is used to jump to set into a front tuck.
+697	Toe Shoot Front Half	Toe Shoot Front	Toe Shoot Front Full	Bar/Flip/Twist		A half twisting Toe Shoot Front.
+698	Kong One-Hand Kong Gainer	Double Kong Gainer		Vault/Flip	Cat Pass One-Hand Kong Gainer	Kong Vault into a dive to a One-Hand Kong Gainer.
+699	Knee Inward Front	Knee Front Flip		Flip		A backwards traveling front tuck set off of both knees.
+700	Backward Roll Down Monkey	Backward Roll		Wall/Flip		A backwards roll into Down Monkey.
+701	Elbow Swing Castaway Back	Swing Castaway Back		Bar/Flip		Swing Castaway Back using both elbows to grip the bar.
+702	Gainer Flash	Gainer		Flip		Gainer where one leg kicks ahead and the other leg lags behind.
+703	One-Hand Flyaway	Flyaway	One-Hand Flyaway Full	Bar/Flip		Flyaway using one hand to grip the bar.
+704	One-Hand Flyaway Full	One-Hand Flyaway	One-Hand Flyaway Double Full	Bar/Flip/Twist		A full twisting One-Hand Flyaway.
+705	One-Hand Flyaway Double Full	One-Hand Flyaway Full		Bar/Flip/Twist		A double full twisting One-Hand Flyaway.
+706	One-Hand Swing Castaway Back	Swing Castaway Back		Bar/Flip		Swing Castaway Back using one hand.
+707	Slant Frog Gainer	Frog Gainer		Flip		Frog Gainer set from a slanted angle allowing both legs to pass over the vault on one side instead of between the arms causing body to flip off axis.
+708	Gaet Stall Pimp	Gaet Pimp		Beam/Flip		A stalled Gaet Pimp. This was first landed by Shawn Bautista of Dodo Freerunning in 2015.
+709	Drop Kumquat	Kumquat		Bar/Flip	Drop Ping	Kumquat executed from standing and then dropping into the move. This was first landed by Jesse Peveril in 2015.
+710	Kumquat One and a Half Full	Kumquat Full	Kumquat Double Full	Bar/Flip/Twist	Ping One and a Half Full	A one and a half twisting Kumquat. This was first landed by Jesse LaFlair in 2015.
+711	Kumquat Double Full	Kumquat One and a Half Full		Bar/Flip/Twist	Ping Double Full	A double full twisting Kumquat.
+712	Gainer Full-In Back-Out	Double Gainer, Gainer Full		Flip/Twist		Gainer Full into a back tuck.
+713	Touchdown Raiz-In Back-Out	Touchdown Raiz		Flip		Touchdown Raiz into a back tuck.
+714	One-Hand Toe Shoot Front	Toe Shoot Front		Bar/Flip		Toe Shoot Front using one hand.
+715	Flyaway Rodeo	Flyaway		Bar/Flip	Swing Gainer Rodeo, Bar Gainer Rodeo	Flyaway while grabbing both ankles.
+716	Wall Arabian Dive Roll	Wall Arabian	Wall Flip 540 Dive Roll	Wall/Flip/Roll/Twist		An under-rotated Wall Arabian to Dive Roll.
+717	One-Step Punch Wall Flip	Punch Wall Flip		Wall/Flip		One step up a wall into a Punch Wall Flip.
+718	Castaway Punch Wall Full	Castaway Punch Wall Flip		Bar/Flip		A full twisting Castaway Punch Wall Flip.
+719	Chair Spin Gainer Full-Down	Chair Spin Gainer		Pole/Flip/Twist		Chair Spin Gainer into a full twist after the flip. This was first attempted by Pasha Katsuba in 2015.
+720	Flyaway X-Out Full-Down	Flyaway X-Out		Bar/Flip/Twist		Flyaway X-Out into a full twist after the flip.
+721	Wall Inward Side Wall Dive Roll	Wall Inward Side		Wall/Flip/Roll		An under-rotated Wall Inward Side into a Wall Dive Roll.
+722	Gainer One-Hand Down Monkey	Gainer Down Monkey	Gainer One-Hand Down Monkey Full	Wall/Flip		Gainer set off a ledge into a One-Hand Down Monkey.
+723	Wall Inward Side Walkdown	Wall Inward Side		Wall/Flip		An under-rotated Wall Inward Side where the inside leg kicks off the wall before landing.
+724	Flyaway X-Out	Flyaway	Flyaway X-Out Full-Down	Bar/Flip		Flyaway where both legs kick out to the sides before tucking.
+725	One-Step Palm Flip Down Monkey	One-Step Palm Flip		Wall/Flip		One-Step Palm Flip opened early into a Down Monkey. This was first landed by Denis Pichugov in 2015.
+726	Devil Drop Stall Side	Devil Drop Side		Wall/Flip		A stalled Devil Drop Side.
+727	Gainer Down Monkey	Gainer	Gainer One-Hand Down Monkey	Wall/Flip		Gainer Layout set off a ledge into a Down Monkey.
+728	Wall Layout One-Hand Down Monkey	Wall Layout Down Monkey	Wall Layout One-Hand Down Monkey Full	Wall/Flip		Wall Layout into a One-Hand Down Monkey.
+729	Wall Layout One-Hand Down Monkey Full	Wall Layout One-Hand Down Monkey		Wall/Flip/Twist		A full twisting Wall Layout One-Hand Down Monkey. This was first attempted by Alfred Scott in 2014.
+730	One-Step Wall Roll Half	Wall Roll Half		Wall		One step up a wall into half-twisting Wall Roll.
+731	One-Step Wall Spin Frisbee Full-Down		One-Step Wall Spin Frisbee	Wall/Flip/Twist		One-Step Wall Spin Frisbee into a full twist after the flip.
+732	One-Step Wall Spin Frisbee	One-Step Wall Spin	One-Step Wall Spin Frisbee Full-Down	Wall/Flip		One-Step Wall Spin set into a Frisbee.
+733	Toe Shoot 360 Dive Roll	Toe Shoot Dive Roll		Bar/Flip/Twist/Roll		A full twisting Toe Shoot Dive Roll. This was first landed by Michael Isaev in 2015.
+734	Dyno 360	Dyno		Wall/Twist		A full twisting Dyno. This was first landed by Erik Mukhametshin in 2015.
+735	Sitting Turn Gaet Pimp	Turn Gaet Pimp		Beam/Flip		Turn Gaet Pimp set from sitting position.
+736	EW Stall Gainer	EW Gainer		Wall/Flip	Eugene Wall Stall Gainer, Erik Wall Stall Gainer	A stalled EW Gainer.
+737	Punch Wall Stall Gainer	Punch Wall Gainer		Wall/Flip		A stalled Punch Wall Gainer.
+738	One-Hand Palm Flip	Palm Flip	Dive One-Hand Palm Flip	Wall/Flip		Palm Flip using just one hand.
+739	Parallel Bar Gainer Dismount		Parallel Bar Gainer Full Dismount	Parallel Bar/Flip		A swing set on parallel bars from support position into a Gainer dismount.
+740	Pistol Back Flip	Back Layout	Pistol Back Full	Flip		Back Layout set off a ledge from a Pistol Squat position.
+741	Pistol Back Full	Pistol Back Flip		Flip/Twist		A full twisting Pistol Back Flip.
+742	Tsukahara Arabian Vault	Tsukahara Vault	Tsukahara Double Arabian Vault	Vault/Flip/Twist		Tsukahara set off a vault into Arabian.
+743	Two-Step Wall Double Back	Two-Step Wall Flip	Two-Step Wall Full-In Back-Out	Wall/Flip		A double rotating Two-Step Wall Flip. This was first landed by Levi Meeuwenberg in 2007.
+744	Kong Gainer Double Full	Kong Gainer Full		Vault/Flip/Twist	Cat Pass Gainer Double Full	A double twisting Kong Gainer.
+745	Reverse Bomb	Reverse Vault		Vault/Flip		Reverse Vault set into a front tuck.
+746	Punch Wall Inward Double Front	Punch Wall Inward Front		Wall/Flip		Punch set on a wall into an inward double front tuck.
+747	Shoulder Vault Twist Dive Roll	Shoulder Vault 360		Vault/Flip/Twist	Trident Dive	An over-rotated Shoulder Vault into a 3/4 twisting dive roll. This was first landed by Christian Russell in 2015.
+748	Roll Bomb 360 Dive Roll	Roll Bomb		Roll/Flip/Twist	Roll Bomb Vortex	An under-rotated Roll Bomb set into a 360 Dive Roll. This was first landed by Markus Karlsson in 2015.
+749	Roll Bomb Full	Roll Bomb		Roll/Flip/Twist		A full twisting Roll Bomb. This was first landed by Markus Karlsson in 2015.
+750	One-Step Two-Hand Palm Inward Aerial Twist Double Leg Twist	One-Step Two-Hand Palm Inward Aerial Twist Double Leg		Wall/Flip/Twist		One-Step Two-Hand Palm Inward Aerial Twist Double Leg into a full twist. This was first attempted by Adry Cemel in 2014.
+751	Devil Drop Gainer Pike	Devil Drop Gainer		Wall/Flip		A piked Devil Drop Gainer.
+752	Devil Drop Gainer Stall	Devil Drop Gainer		Wall/Flip		A stalled Devil Drop Gainer.
+753	Lazy Boy Gainer Full	Gainer Full		Flip/Twist		Gainer Full variation with both hands behind the head.
+754	Wall Flip Walkdown	Wall Flash Kick		Wall/Flip	Wall Flip Stepdown	Wall Flash Kick followed by a step off a parallel wall.
+755	Back Full-In Back-Out	Back Layout-In Back-Out		Flip/Twist		Back Full into a back tuck.
+756	Back Layout-In Back-Out	Back Layout, Double Back Flip	Back Full-In Back-Out	Flip		Back Layout into a back tuck.
+757	Gaet Pimp Wall Flip	Gaet Pimp	Gaet Pimp Wall Wrap Full	Beam/Wall/Flip		Gaet Pimp set into a Wall Flip.
+758	Gaet Pimp Wall Wrap Full	Gaet Pimp Wall Flip		Beam/Wall/Flip/Twist		Gaet Pimp set into one step off a wall into Wrap Full.
+759	Wall Flip Switch	Wall Flip		Wall/Flip		Wall Flip where the wall step leg kicks pass the non-step leg during the flip. The non-step leg then lags behind allowing the step leg to land first setting up for swingthru with the non-step leg.
+760	Straddle Palm Flip	Palm Flip	One-Step Straddle Palm Flip, Straddle Palm Full	Wall/Flip		Palm Flip with both legs straddled to the sides during the flip.
+761	Flyaway Walkdown	Flyaway		Bar/Flip		Flyaway where one of the legs kicks off the bar before landing.
+762	Lazy Boy Gainer	Stall Gainer		Flip		Stall Gainer variation with both hands behind the head.
+763	Kong Rebound	Kong Vault		Vault/Wall	Cat Pass Rebound	Kong Vault to a Punch off a wall reversing the travel direction. As you travel back over the vault, push off the vault with both hands.
+764	Backward Roll		Back Roll Half Down, Backward Roll Bomb, Backward Roll Down Monkey	Roll		A roll rotating backwards.
+765	Butterfly Kick		Butterfly Twist, Butterfly Vault, Frisbee, Helicoptero			A jumping kick where the torso dips in the shape of the letter U. As the torso dips, the body turns 180 degrees, delineating the first half of the U. After this turn, the torso rises and the outside leg (leg opposite to the turn direction) arches up and kicks into the turn direction as the other leg jumps, completing the last half of the U.
+766	Butterfly Twist	Butterfly Kick	Palm Butterfly Twist	Twist		A full twisting Butterfly Kick.
+767	Back Handspring		Back Cat, Down Monkey, Macaco	Flip		A backwards jump set into a partial rotation onto both hands. Once both hands reach the ground, they push off and both legs kick over returning the body upright.
+768	One-Hand Raiz	Gumbi	One-Hand Raiz Twist, Wall One-Hand Raiz	Flip	Sailor Moon	Raiz using the inside hand (hand on the side of the dipping shoulder) to push off the ground.
+769	Corkscrew	Slant Gainer	Corkscrew-In Back-Out, Double Corkscrew, Knee Corkscrew, Kroc, Wall Corkscrew	Flip/Twist		A full twisting Cheat Gainer.
+770	Tunnel Stall	Tunnel Flip		Flip	Side Gainer Stall	A stalled Tunnel Flip
+771	Inward Front Pike	Inward Front		Flip		A piked Inward Front.
+772	Skin the Catch		Skin the Catch 180, Skin the Catch In Back-Out	Bar/Flip	Shrimp Flip	From dead hang position on a high bar, pike both legs and pull them between the  arms (Skin the Cat), initiating a backwards rotation. As the toes pass through the arms, both legs shoot up and back, straightening out both. Simultaneously, both hands release the bar, and reach behind the head to regrab.
+773	Skin the Catch 180	Skin the Catch		Bar/Flip/Twist	Shrimp Flip 180	A half twisting Skin the Catch.
+774	Reverse Lache		Reverse Lache Two-Foot Wall Front	Bar		A backwards traveling Lache.
+775	Running Gainer-In Full-Out	Running Double Gainer		Flip/Twist		Running Double Gainer with a full twist during the second rotation.
+776	Inward Dive Roll Bomb	Inward Dive Roll		Roll/Flip		An Inward Dive Roll off a ledge into a front tuck.
+777	Front Half Dismount Catch	Front Half		Bar/Flip/Twist	Barani Dismount Catch	Front Half off a bar to catch on the same bar.
+778	Running Gainer Full	Running Gainer	Running Gainer Full Down Monkey	Flip/Twist		A full twisting Running Gainer.
+779	Sideway Wall Flip	Wall Flip	Sideway Wall Double Back	Flip	Bio Wall Flip, Caster Wall Flip, Lateral Wall Flip, Strafe Wall Flip 	A sideways traveling Wall Flip.
+780	Sideway Wall Double Back	Sideway Wall Flip		Wall/Flip	Wall Bio Double Back, Wall Caster Double Back, Wall Lateral Double Back, Wall Strafe Double Back	A double rotating Sideway Wall Flip
+781	Double Leg		Double Leg Twist, Wall Inward Double Leg	Flip		Punch set into a side rotation with both legs together perpendicular to the torso during the flip.
+782	Double Leg Twist	Double Leg	Palm Double Leg Twist	Flip/Twist		A full twisting Double Leg.
+783	Front Handspring		Inward Down Monkey, Raiden, Rail Front Handspring	Flip		A forward lunge onto both hands set into a forward rotation. Once both hands reach the ground, they push off and both legs kick over returning the body upright.
+784	Straddle Sole Circle	Sole Circle	Straddle Sole Circle Gainer, Straddle Sole Circle Inward Front	Bar	Straddle Toe-On	A straddled Sole Circle.
+785	Webster Half	Webster Front	Webster Full	Flip/Twist	Webster 180	A half twisting Webster Front.
+786	Webster Full	Webster Half	Webster One and a Half Full	Flip/Twist	Webster 360	A full twisting Webster.
+787	Hang Castaway Stall Back	Hang Castaway Back		Wall/Flip		A stalled Hang Castaway Back. This was first landed by Shawn Bautista of Dodo Freerunning in 2015.
+788	Swing Castaway X-Out Full-Down	Swing Castaway X-Out		Bar/Flip/Twist	Back Uprise Straddle Full-Down	Swing Castaway X-Out into a full twist after the flip. This was first attempted by Moses Jackson in 2015.
+789	Hang Toe Shoot Side	Toe Shoot Side		Wall/Flip		Toe Shoot Side set from Hang position.
+790	Hang Castaway Double Back	Hang Castaway Back		Wall/Flip		A double rotating Hang Castaway Back.
+791	Inward Flyaway Double Side	Inward Flyaway Side		Bar/Flip		A double rotating Inward Flyaway Side.
+792	Side Full-In Back-Out	Side Full		Flip/Twist		Side Full into a back tuck.
+793	Human Flag Gainer	Human Flag	Human Flag Gainer Half-Down	Pole/Flip		Gainer set from Human Flag.
+794	Human Flag Gainer Half-Down	Human Flag Gainer		Pole/Flip/Twist		Human Flag Gainer followed by a half twist after the flip. This was first landed by Alexey Kruk in 2015.
+795	Straddle Sole Circle Stall Gainer	Straddle Sole Circle Gainer		Bar/Flip		A stalled Straddle Sole Circle Gainer. This was first attempted by Alexey Kruk in 2015.
+796	Straddle Sole Circle Gainer Layout	Straddle Sole Circle Gainer		Bar/Flip		A laid out Straddle Sole Circle Gainer. This was first attempted by Alexey Kruk in 2015.
+797	Corner Wall Arabian	Wall Arabian	Corner Wall Arabian Pike	Wall/Flip/Twist		Two steps up the inside corner of two intersecting walls into an Arabian.
+798	Corner Wall Arabian Pike	Corner Wall Arabian	Corner Wall Arabian Pike Half-Down	Wall/Flip/Twist		A piked Corner Wall Arabian.
+799	Corner Wall Arabian Pike Half-Down	Corner Wall Arabian Pike		Wall/Flip/Twist		Corner Wall Arabian Pike followed by a half twist after the flip. This was first landed by Nick Provost in 2015.
+800	Straddle Sole Circle Gainer Full	Straddle Sole Circle Gainer		Bar/Flip/Twist		A full twisting Straddle Sole Circle Gainer. This was first attempted by Alexey Kruk in 2015.
+801	One-Hand Hang Castaway Back	Hang Castaway Back		Wall/Flip		Hang Castaway Back using one hand.
+802	Cast Side			Bar/Flip		A cast into a side tuck over the bar.
+803	EW Gainer Arabian	EW Gainer		Wall/Flip/Twist	Eugene Wall Gainer Arabian, Erik Wall Gainer Arabian	A half twisting EW Gainer into a front tuck. This was first landed by Zezo Zoromba of Dodo Freerunning in 2015.
+804	Angel Drop Down Monkey	Angel Drop, Dive Down Monkey		Wall/Flip		An Angel Drop set into Down Monkey off a parallel wall. This was first landed by Bart van der Linden in 2015.
+805	Front Pike	Front Flip		Flip		A piked Front Flip.
+806	Touchdown Frisbee	Frisbee	Touchdown Double Frisbee	Flip		Frisbee set by touching down off a ledge.
+807	Touchdown Double Frisbee	Touchdown Frisbee		Flip		A double rotating Touchdown Frisbee.
+808	Trapdoor Palm Gainer	Palm Gainer	Trapdoor Palm Gainer Full	Wall/Flip		Palm Gainer set by jumping over a gap to a wall, and then pushing off the wall into a Gainer and landing in the gap below.
+809	Trapdoor Palm Gainer Full	Trapdoor Palm Gainer		Wall/Flip/Twist		A full twisting Trapdoor Palm Gainer.
+810	Dive Gumbi	Gumbi				A dive into Gumbi.
+811	Kick 540 Dive Roll	540 Dive Roll		Roll/Twist		A delayed set followed by a kick into 540 Dive Roll. This was first landed by Aaron Hakala in 2014.
+812	540 Dive Back Handspring	360 Dive Handstand		Flip/Twist		A one and a half full twisting dive to both hands. This was first landed by Aaron Hakala in 2013.
+813	Single Ankle Rudi	Single Ankle Front		Flip/Twist	Pop Top 540	A one and a half twisting Single Ankle Front.
+814	Pendulum	Tunnel Flip	Pendulum Full-Down	Beam/Flip		A side tuck set off a ledge using both hands for support, similar to Gargoyle position, while also swinging both legs together. This was first landed by Alfred Scott of Dodo Freerunning in 2015.
+815	Gumbi	Cartwheel	Dive Gumbi, One-Hand Raiz, Touchdown Raiz			An inverted Cartwheel.
+816	Touchdown Raiz	Gumbi	One-Step Touchdown Raiz Twist Vault, Touchdown Raiz-In Back-Out	Flip		Gumbi using only the outside hand (hand on the opposite side of the dipping shoulder) to push off the ground.
+817	Swing Castaway Flash Kick	Swing Castaway Back		Bar/Flip		A swing castaway set into Flash Kick. This was first landed by Alexander Bilionis in 2015.
+818	Swing Castaway Punch Layout	Swing Castaway Back		Bar/Flip		A swing castaway set into Punch layout off the bar. This was first landed by  Dimitris Dk' Kyrsanidis of Team Focus in 2015.
+819	Wall Arabian Inward Down Monkey Half	Wall Arabian Inward Down Monkey		Wall/Flip/Twist		Wall Arabian opened early into Inward Down Monkey Half. This was first landed by Kirya Kolesnikov of team Air Style in 2015.
+820	Lache Front	Lache	Lache Front Half, Lache Stall Front	Bar/Flip		Lache set into front tuck.
+821	Lache Stall Front	Lache Front		Bar/Flip		A stalled Lache Front. This was first landed by Kirya Kolesnikov of team Air Style in 2015.
+822	Two-Step Wall Stall Gainer	Two-Step Wall Gainer		Wall/Flip		A stalled Two-Step Wall Gainer. This was first landed by Vlas Vladimirov in 2014.
+823	Webster Precision	Webster Front		Beam/Flip	Loser Precision	Webster landing to a precision landing.
+824	Devil Drop EW Gainer	EW Gainer		Wall/Flip		Devil Drop set into EW Gainer. This was first landed by Erik Mukhametshin in 2013.
+825	Inward Front Catch	Inward Front		Bar/Flip		An Inward Front to bar catch. This was first landed by Kirya Kolesnikov of team Air Style in 2015.
+826	Tic Tac Side	Side Flip, Tic Tac	Tic Tac Side Full	Wall/Flip		Tic Tac into a side tuck.
+827	Tic Tac Side Full	Tic Tac Side	Tic Tac Side Double Full	Wall/Flip/Twist		A full twisting Tic Tac Side.
+828	Tic Tac Side Double Full	Tic Tac Side Full		Wall/Flip/Twist		A double full twisting Tic Tac Side.
+829	Wall Rocketboi	Wall Flip		Wall/Flip		One step up a wall into Rocketboi. This was first landed by Cory DeMeyers in 2013.
+830	Running Gainer Pike	Running Gainer		Flip		A piked Running Gainer.
+831	Peter Pan Running Gainer Layout	Running Gainer Layout		Flip		Running Gainer Layout with both hands on at the hips during the flip.
+832	Gainer One-Hand Down Monkey Full	Gainer One-Hand Down Monkey		Wall/Flip/Twist		A full twisting Gainer One-Hand Down Monkey. This was first landed by Didi Alaoui in 2016.
+833	Flyaway Double Full-Down	Flyaway Full-Down		Bar/Flip/Twist		Flyaway into a double full twist after the flip. This was first attempted by Pasha Katsuba in 2016.
+834	Straddle Sole Circle Inward Front	Straddle Sole Circle		Bar/Flip		Straddle Sole Circle into Inward Front. This was first attempted by Pasha Katsuba in 2016.
+835	Toe Shoot Front Layout	Toe Shoot Front		Bar/Flip		A laid out Toe Shoot Front. This was first landed by Erik Mukhametshin in 2015.
+836	Wall Gainer Down Monkey Half-Down	Wall Gainer Down Monkey		Wall/Flip/Twist	Two-Hand Dragonfly Half-Down	Wall Gainer Down Monkey into a half twist after the flip. This was first landed by Waldi Müller in 2015.
+837	Lache Punch Wall Inward Front Half	Lache Punch Wall Inward Front	Lache Punch Wall Inward Front Full	Bar/Wall/Flip/Twist		A half twisting Lache Punch Wall Inward Front.
+838	Lache Punch Wall Inward Front Full	Lache Punch Wall Inward Front Half		Bar/Wall/Flip/Twist		A full twisting Lache Punch Wall Inward Front.
+839	Lache Punch Wall Inward Front Layout	Lache Punch Wall Inward Front		Bar/Wall/Flip		A laid out Lache Punch Wall Inward Front.
+840	Flyaway 180 Tic Tac Regrab	Flyaway		Bar/Wall/Flip		Flyaway to a wall followed by a 180 Tic Tac to regrabbing the same bar. This was first landed by Erik Mukhametshin in 2016.
+841	Flyaway Punch Wall Layout	Flyaway		Bar/Wall/Flip		Flyaway to a wall followed by a punch set off the wall into a Back Layout. This was first landed by Erik Mukhametshin in 2016.
+842	Swing Castaway Side	Castaway Side	Swing Castaway Side Full, Swing Castaway Side Half-Down	Bar/Flip		A backwards swing into a castaway set into a side tuck.
+843	Swing Castaway Side Half-Down	Swing Castaway Side		Bar/Flip/Twist		Swing Castaway Side into a half twist after the flip. This was first attempted by Alfred Scott of Dodo Freerunning in 2014.
+844	Swing Castaway Side Full	Swing Castaway Side		Bar/Flip/Twist		A full twisting Swing Castaway Side. This was first attempted by Alfred Scott of Dodo Freerunning in 2014.
+845	Devil Drop Castaway Inward Front	Castaway Inward Front, Devil Drop		Bar/Flip		Devil Drop set into a Castaway Inward Front. This was first landed by Alfred Scott of Dodo Freerunning in 2014.
+846	Kash Roll	Dash Roll		Vault/Roll		Kash Vault into a roll.
+847	270 Tic Tac Wall Flip	Wall Flip		Wall/Flip		A three-quarter dive twist into Down Monkey.
+848	Reverse Underbar		Dive Reverse Underbar, Reverse Underbar 180, Reverse Underbar Inward Flyaway Half	Bar/Twist		A half twisting dive to Reverse Underbar.
+849	Reverse Underbar 180	Reverse Underbar		Bar/Twist	360 Underbar	A 180 Dive Reverse Underbar followed by a half turn.
+850	Wall Arabian Inward Down Monkey	Wall Arabian	Wall Arabian Inward Down Monkey Half	Wall/Flip/Twist		Wall Arabian opened early into Inward Down Monkey.
+851	Parallel Bar Pimp Dismount	Pimp Flip	Parallel Bar Pimp Full-Down Dismount	Parallel Bar/Flip/Twist		A swing set on parallel bars from support position towards the corner of one of the bars into a Pimp Flip dismount.
+852	Parallel Bar Pimp Full-Down Dismount	Parallel Bar Pimp Dismount		Parallel Bar/Flip/Twist		Parallel Bar Pimp Dismount into a full twist after the flip. This was first attempted by Alfred Scott of Dodo Freerunning in 2015.
+853	Russian Front One and a Half Dive Roll	Russian Front Flip		Flip/Roll		Russian Front Flip with one and a half degree rotation to Dive Roll.
+854	Turn Gaet Pimp Wall Wrap Full	Turn Gaet Pimp Wall Full		Beam/Wall/Flip/Twist		Turn Gaet Pimp set into one step off a wall into Wrap Full.
+855	Two-Step Wall Macaco	Wall Macaco		Wall/Flip	Two-Step Wall Valdez	Two steps up a wall set into a Macaco off the same wall.
+856	Wall Macaco	Wall Layout	Two-Step Wall Macaco	Wall/Flip	Wall Valdez	Wall Layout set into a Macaco off the same wall.
+857	Two-Step Wall Stall Back	Two-Step Wall Flip		Wall/Flip		Two steps up a wall set into a stalled back tuck.
+858	Wall Arabian Layout	Wall Arabian		Wall/Flip/Twist		A laid out Wall Arabian.
+859	Running Turn Gaet Pimp	Gaet Pimp	Turn Gaet Pimp	Beam/Flip		A run into a Turn Gaet set into Pimp Flip.
+860	Dive Palm Inward Frisbee	Palm Inward Frisbee		Wall/Flip		A diving Palm Inward Frisbee.
+861	Back Hip Circle		Back Hip Semi-Circle Gainer, Back Hip Semi-Circle Handstand	Bar/Flip		A straight legged cast away while holding onto the bar from front support position where after the cast, the hips return to the bar and travel around it in a circle returning the body to front support position.
+862	Back Hip Semi-Circle Handstand	Back Hip Circle		Bar/Handstand	Clear Hip Circle Handstand	Back Hip Circle into Handstand.
+863	Shoulder Mount		Shoulder Mount Gainer, Shoulder Mount Side	Bar		A pole dancing position where you hold onto a pole positioned behind your shoulder and lift both legs up to position the body parallel to the ground.
+864	Roll Kip-up	Kip-up	Roll Kip-up Front, Roll Kip-up Half-In Back-Out, Roll Kip-up Handstand	Flip/Roll		A roll into Kip-up.
+865	Kip-up		Roll Kip-up	Flip		While lying down with the back on the ground, roll backwards onto the shoulders, and reach back to place both on the ground such that the fingers point towards the head. Then kick up and forward, and then immediately snap both feet to the ground while simulanteously pushing off the ground with both hands to stand the body up.
+866	Two-Step Wall Full-In Back-Out	Two-Step Wall Double Back		Wall/Flip/Twist		Two steps up a wall into a Full-In Back-Out. This was first attempted by Erik Mukhametshin in 2015.
+867	One-Step Palm Double Back	One-Step Palm Flip		Wall/Flip		A double rotating One-Step Palm Flip.
+868	Wall Wrap Full	Wall Flip		Wall/Flip/Twist		One step up a wall where the inside leg (non-stepping leg) bends and wraps behind the stepping leg set into a full twist).
+869	Backward Seat Circle		Backward Seat Circle Gainer	Bar	L-sit Lache	A backward circle around a high bar in Seat position (gymnastics term)/ L-sit position.
+870	Gainer Full-Down	Gainer	Full-Up Gainer Full-Down	Flip/Twist	Gainer Gyro	Gainer into a full twist after the flip.
+871	Sole Circle		Straddle Sole Circle	Bar	Toe-On	A move where the performer holds onto a high bar with both hands while swinging around it backwards with both toes pressed against the bar.
+872	One-Hand Palm Double Gainer	One-Hand Palm Gainer		Wall/Flip	Double Ginger Flip, Hi-Five Double Gainer	A double rotating One-Hand Palm Gainer.
+873	Elbow One-Hand Palm Double Gainer	Elbow One-Hand Palm Gainer		Wall/Flip	Elbow Double Ginger Flip, Elbow Hi-Five Double Gainer	A double rotating Elbow One-Hand Palm Gainer. This was first landed by Alireza Japalaghy in 2016.
+874	Swing Castaway Arabian Half	Swing Castaway Arabian		Bar/Flip/Twist		A half twisting Swing Castaway Arabian. This was first attempted by Shawn Bautista of Dodo Freerunning in 2016.
+875	Swing Castaway Back Handcuffs	Swing Castaway Stall Back		Bar/Flip		Swing Castaway Stall Back with both hands behind the back as if in handcuffs during the stall. This was first attempted by Shawn Bautista of Dodo Freerunning in 2016.
+876	Gargoyle 270 Palm Side	Palm Side		Wall/Flip/Twist		A three-quarter twist up into a Palm Side set from Gargoyle position. This was first attempted by Otto Vainio on 2016.
+877	Flyaway Full-Down-In Back-Out	Flyaway Stall-Out	Flyaway Full-Down-In Full-Out	Bar/Flip/Twist		Flyaway Full-Down into a back tuck. This was first attempted by Alfred Scott of Dodo Freerunning in 2016.
+878	Wall Gainer Full-Down	Wall Gainer		Wall/Flip/Twist		Wall Gainer into a full twist after the flip. This was first landed by Calen Chan in 2015.
+879	Angel Drop Punch Wall Flip	Angel Drop		Wall/Flip		An Angel Drop set into a Punch Wall Flip. This was first landed by Jesse Peveril in 2016.
+880	Double Leg Circle Castaway Full	Double Leg Circle Castaway		Pommel Horse/Flip/Twist		Double Leg Circle into a Castaway Full. This was first landed by Erik Mukhametshin in 2016.
+881	Double Leg Circle Front	Double Leg Circle	Double Leg Circle Front Half-Down	Pommel Horse/Flip		Double Leg Circle into front tuck. This was first landed by Erik Erik Mukhametshin in 2016.
+882	Double Leg Circle Front Half-Down	Double Leg Circle Front		Pommel Horse/Flip/Twist		Double Leg Circle Front into a half twist after the flip.
+883	Kong Trapdoor Wall Flip	Kong Vault, Trapdoor Wall Flip		Vault/Wall/Flip	Cat Pass Trapdoor Wall Flip	Kong Vault set into a Trapdoor Wall Flip. This was first attempted by Erovikov Vladislav in 2016.
+884	Lazy Bomb	Lazy Roll		Vault/Flip		Lazy Vault into a front tuck.
+885	360 Dive Front Unwind Half	360 Dive Front Flip		Flip/Twist	360 Dive Front Un-Half	A 360 Dive Front with a half twist in one direction followed by a half twist in the opposite direction. This was first landed by Kirya Kolesnikov in 2015.
+886	Running Gainer Down Monkey	Running Gainer		Wall/Flip		Running Gainer set off a ledge into a Down Monkey. This was first landed by Alfred Scott of Dodo Freerunning in 2013.
+887	Aerial Twist-In Back-Out	Aerial Twist		Flip/Twist	A-twist-in	An Aerial Twist into a back tuck.
+888	Wall Roll Half	Wall Roll	One-Step Wall Roll Half	Wall/Roll/Twist		A half-twisting Wall Roll.
+889	Flyaway Full-Down-In Full-Out	Flyaway Full-Down-In Back-Out		Bar/Flip/Twist		Flyaway Full-Down-In Back-Out with a full twist during the second rotation. This was first attempted by Colton Pearson in 2016.
+890	Palm Spin Gaet Pimp Full	Palm Spin Gaet Pimp		Beam/Flip/Twist		A full twisting Palm Spin Gaet Pimp. This was first attempted by Alfred Scott of Dodo Freerunning in 2016.
+891	Gainer Quadruple Full	Gainer Triple Full		Flip/Twist	Gainer 1440	A quadruple twisting Gainer.
+892	Dive Castaway Back	Castaway Back		Flip	Dive Palm Drop	A dive set into Castaway Back.
+893	Full-Up Gainer Full-Down	Full-Up Gainer, Gainer Full-Down		Flip/Twist	Full-Up Full-Down Gainer, Vortex Gainer Gyro,	Full-Up Gainer into a full twist after the flip. This was first landed by Calen Chan in 2016.
+894	Inward Double Tunnel	Inward Tunnel Flip		Flip		A double rotating Inward Tunnel Flip.
+895	Flyaway Arabian Unwind Half	Flyaway Arabian Half		Bar/Flip/Twist	Flyaway Arabian Un-Half	Flyaway Arabian followed by a half twist in the opposite direction.
+896	Gaet Pimp Full-In Back-Out	Gaet Pimp Full	Double Gaet Pimp, Gaet Pimp Full	Beam/Flip/Twist		Gaët Pimp Full into a back tuck. This was first attempted by Adry Cemel in 2016.
+897	Dive Twisting Trapdoor Down Monkey	Down Monkey		Wall/Flip/Twist		A dive twist set over a gap into a Down Monkey.
+898	Knee Giant Pimp Flip	Knee Giant		Bar/Flip	Penny Drop Pimp Flip	Knee Giant set into Pimp Flip off a high bar. This was first landed by Ivan Kiselev in 2016.
+899	Flyaway Full-In Double Full-Out	Flyaway Full-In Full-Out		Bar/Flip/Twist	Swing Gainer Full-In Double Full-Out	Flyaway Full-In Full-Out with two twists during the second rotation.
+900	Kip Gainer		Kip Gainer Full	Bar/Flip		A bar Kip set into Gainer. This was first landed by Alfred Scott of Dodo Freerunning in 2015.
+901	Kip Gainer Full	Kip Gainer		Bar/Flip		A full twisting Kip Gainer. This was first attempted by Alfred Scott of Dodo Freerunning in 2015.
+902	Wall Corkscrew Double Leg	Wall Corkscrew		Wall/Flip/Twist		Wall Corkscrew into a Double Leg.
+903	Flyaway Precision Punch Wall Flip	Double Flyaway		Bar/Wall/Flip	Swing Gainer Precision Punch Wall Flip	Flyaway into a Punch Wall Flip. This was first attempted by Alfred Scott of Dodo Freerunning in 2016.
+904	Lache Precision Punch Wall Flip	Lache, Punch Wall Flip	Lache Precision Punch Wall Full	Bar/Wall/Flip		Lache Precision into Punch Wall Flip.
+905	Lache Precision Punch Wall Full	Lache Precision Punch Wall Flip		Bar/Wall/Flip/Twist		Lache Precision to Punch Wall Full.
+906	Wall Stall Pike Layout	Wall Layout, Wall Pike		Wall/Flip		One step up a wall into a stalled pike Wall Flip opened early into a layout. This was first landed by Shawn Bautista of Dodo Freerunning in 2015.
+907	Gainer Unwind Half	Gainer Full		Flip/Twist	Gainer Un-Half	Gainer with a half twist in one direction followed by a half twist in the opposite direction.
+908	Wall Arabian One and a Half Dive Roll	Wall Arabian	Wall Arabian Wall Punch Dive Roll	Wall/Flip/Roll		Wall Arabian with one and a half degree rotation to Dive Roll.
+909	Trapdoor Palm Flip	Dive Palm Flip		Wall/Flip		Dive Palm Flip set over a gap to a wall, and then pushing off the wall into a back tuck and landing in the gap below.
+910	Handstand Inward Front	Castaway Inward Front		Beam/Flip/Handstand		An Inward Front set from Handstand. This was first landed by Alexey Kruk in 2016.
+911	Dive One-Hand Palm Flip	One-Hand Palm Flip		Wall/Flip		A dive set into a One-Hand Palm Flip.
+912	Lotus Flyaway	Flyaway		Bar/Flip		Flyaway with both legs crossed in lotus position during the flip. This was first landed by Jason Paul of team Farang in 2016.
+913	EW Gainer Double Full	EW Gainer Full		Wall/Flip/Twist		A double full twisting EW Gainer. This was first attempted by Kyle Eckstrom in 2016.
+914	Castaway Arabian	Castaway Back	Castaway Full	Bar/Flip/Twist	Palm Drop Arabian	A cast set into Arabian.
+915	Castaway Arabian Unwind Half	Castaway Full		Bar/Flip/Twist	Castaway Arabian Un-Half	Castaway Arabian with a half twist in one direction followed by a half twist in the opposite direction. This was first attempted by Kyle Eckstrom in 2016.
+916	Pendulum Full-Down	Pendulum		Beam/Flip/Twist		Pendulum into a full twist after the flip.
+917	Corkscrew-In Full-Out	Corkscrew-In Back-Out		Flip/Twist		Corkscrew-In Back-Out with a full twist during the second rotation.
+918	Sideways Sitting Gainer	Sitting Turn Pimp Flip		Beam/Flip	No-Hand Pimp Flip	Sitting Gainer set off a ledge sideways.
+919	Corner Palm Flip	Palm Flip	One-Step Corner Palm Flip	Wall/Flip		Palm Flip set off a concave corner of two adjacent walls.
+920	One-Step Corner Palm Flip	Corner Palm Flip		Wall/Flip		One step up a wall into a Corner Palm Flip.
+921	720 Dive Kong	360 Dive Kong		Vault/Twist	720 Cat Pass, 720 Vortex Kong	A double twisting dive into Kong vault.
+922	Two-Step Wall Inward Double Side	Two-Step Wall Inward Side		Wall/Flip		Two steps up a wall into Double Side. This was first landed by Vanya Tischenko in 2016.
+923	Inward Flyaway Wall Punch Dive Roll	Inward Flyaway		Bar/Wall/Flip/Roll		An over-rotated Inward Flyaway into a punch dive roll off a wall. This was first landed by Stanislav Lazdan in 2014.
+924	Running Gainer Layout	Running Gainer	Peter Pan Running Gainer Layout	Flip		A laid out Running Gainer.
+925	Slant Kong Gainer Double Full	Slant Kong Gainer Full		Vault/Flip/Twist	Slant Cat Pass Gainer Double Full	A double full twisting Slant Kong Gainer. This was first attempted by Calen Chan of team You Got This in 2016.
+926	Lazy Boy Running Gainer	Running Gainer		Flip/Twist		A stalled Running Gainer variation with both hands behind the head.
+927	One-Step Palm Kick-Out	One-Step Palm Flip		Wall/Flip		One-Step Palm Flip opened early with both legs kicking out.
+928	Dive Gaet Pimp	Gaet Pimp	Dive Gaet Pimp Full	Beam/Flip		A dive into Gaet Pimp.
+929	Dive Gaet Pimp Full	Dive Gaet Pimp		Beam/Flip/Twist		A full twisting Dive Gaet Pimp. This was first landed by Alfred Scott of Dodo Freerunning in 2016.
+930	One-Step Palm Punch Layout	One-Step Palm Flip		Wall/Flip		One-Step Palm Flip set into a Punch Wall Layout.
+931	Wall Arabian Wall Punch Dive Roll	Wall Arabian One and a Half Dive Roll		Wall/Flip/Roll		An over-rotated Wall Arabian into a punch off the wall with both feet into a dive roll.
+932	Tsukahara Dismount		Kasamatsu Dismount	Beam/Flip		A cartwheel pushing off into a back layout off a ledge.
+933	Kasamatsu Dismount	Tsukahara Dismount		Beam/Flip/Twist		A full twisting Tsukahara Dismount.
+934	Kong Gainer Pike	Kong Gainer		Vault/Flip	Cat Pass Gainer Pike	A piked Kong Gainer.
+935	Wall Triple Corkscrew	Wall Double Corkscrew		Wall/Flip/Twist		A triple twisting Wall Corkscrew. Reference Club540.com for Triple Corkscrew.
+936	Wall Side Flip	Side Flip, Wall Flip	Wall Pistol Side	Wall/Flip		Wall Flip set into a side tuck.
+937	540 Precision	360 Precision	720 Precision	Jump/Twist/Beam		A one-and-a-half twisting jump to precision landing.
+938	Kick Side Full	Side Full		Flip/Twist		Side Full variation initiated with a kick in the travel direction.
+939	Side Double Full	Side Full		Flip/Twist		A double full twisting Side Flip.
+940	Devil Drop Frisbee	Inward Frisbee	Devil Drop Frisbee Full-Down	Wall/Flip		An Inward Frisbee set from Cat Hang position.
+941	Devil Drop Frisbee Full-Down	Devil Drop Frisbee		Wall/Flip/Twist		Devil Drop Frisbee into a full twist after the flip. This was first landed by Elias Gross in 2016.
+942	Devil Drop Side Catch	Devil Drop Side		Bar/Wall/Flip		Devil Drop Side to bar catch.
+943	Front Kong	Front Flip		Flip/Vault		Front Flip with an extra quarter rotation into Kong Vault.
+944	Wall Full Snapu	Wall Double Full		Wall/Flip/Twist		Wall Double Full variation with a kick after the first into a second full twist before landing. This was first attempted by Dimitris Dimitris Dk' Kyrsanidis of team Focus in 2016.
+945	Standing Pike Double Front Flip	Standing Double Front Flip		Flip		A piked Standing Double Front Flip.
+946	Standing Double Front Flip	Front Flip	Standing Pike Double Front Flip	Flip		A double rotating Front Flip from standing.
+947	Stall Front Flip	Front Flip	Kong Stall Front	Flip		Front Flip with a stall rotation.
+948	Reverse Safety	Reverse Vault, Safety Vault	Reverse Speed	Vault		Reverse using two hands into a Safety off a consecutive obstacle.
+949	Palm Full	Palm Flip	Palm Double Full	Wall/Flip/Twist		A full twisting Palm Flip.
+950	Slant Gainer		Corkscrew	Flip	Cheat Gainer	An off-axis non-inverted running gainer landing on the kick leg which is extended throughout the flip.
+951	Turn Wall Hang Drop	Cat Leap	Wall Pounce Drop	Wall		A wall dismount starting with a turn off the wall into Cat Leap position and then kicking off the wall with one foot while dropping.
+952	Wall Pounce Drop	Turn Wall Hang Drop		Wall		A leap over a gap to the face of a wall and then using either one or both hands and feet to stop forward momentum and control descent.
+953	One-hand Gaet Pimp	Gaet Pimp	One-hand Gaet Pimp Full	Vault/Flip		A one-handed Gaet Pimp Flip.
+954	One-hand Gaet Pimp Double Full	One-hand Gaet Pimp Full		Vault/Flip/Twist		A double full twisting One-hand Gaet Pimp.
+955	Pimp Full	Pimp Flip	Pimp Double Full	Vault/Flip/Twist		A full twisting Pimp Flip.
+956	Pimp Spin Gainer Pike	Pimp Spin Gainer		Vault/Flip		Pimp Spin Gainer in Pike position (legs straight and together during the tuck).
+957	Helicoptero	Butterfly Kick, Cartwheel		Twist	Leg swipe	Butterfly kick using both hands on a rail for support where the first kick leg swipes around and back up while the second leg follows through and lands first.
+958	Cast Vault	Cast Mount, Monkey Vault		Wall		A cast into Monkey Vault.
+959	Devil Drop Raiden	Raiden	Devil Drop Raiden Half	Wall/Flip		Raiden set from Cat Hang position.
+960	Devil Drop Gainer One-Hand Down Monkey Full-Down	Devil Drop Gainer One-Hand Down Monkey Half-Down		Wall/Flip/Twist		Devil Drop Gainer One-Hand Down Monkey into a full twist after the flip.
+961	Human Flag Castaway Wall Full	Human Flag Castaway Wall Flip		Pole/Wall/Flip/Twist		A full twisting Flag Castaway Wall Flip.
+962	Human Flag Castaway Wall Flip	Human Flag Castaway Back	Human Flag Castaway Wall Full	Pole/Wall/Flip		Human Flag Castaway set into a Wall Flip.
+963	Devil Drop Gainer One-Hand Down Monkey Flash Kick	Devil Drop Gainer One-Hand Down Monkey		Wall/Flip		Devil Drop Gainer into a One-Hand Down Monkey where the first leg to come off the wall kicks ahead and the other leg lags behind.
+964	Devil Drop Wall Spin Half	Devil Drop Wall Spin		Wall/Flip/Twist		A half twisting Devil Drop Wall Spin.
+965	Devil Drop Turn Gargoyle Front	Gargoyle Front		Wall/Flip		Devil Drop set into a turn into Gargoyle Front.
+966	180 Ceiling Palm Flip	Ceiling Palm Flip	180 Ceiling Palm Flip 180	Ceiling/Flip		A 180 jump set into a Palm Flip off the ceiling or high bar.
+967	Back One and a Half Full	Back Full	Back Double Full	Flip		A one and a half twisting Back Flip.
+968	Back Double Full	Back One and a Half Full	Back Two and a Half Full	Flip/Twist		A double twisting Back Flip.
+969	Back Two and a Half Full	Back Double Full	Back Triple Full	Flip/Twist		A two and a half twisting Back Flip.
+970	Back Triple Full	Back Two and a Half Full	Back Three and a Half Full	Flip/Twist		A triple twisting Back Flip.
+971	Back Three and a Half Full	Back Triple Full	Back Quadruple Full	Flip/Twist		A three and a half twisting Back Flip.
+972	Back Quadruple Full	Back Three and a Half Full		Flip/Twist		A quadruple twisting Back Flip.
+973	Lache Side Full	Lache Side		Bar/Flip/Twist		A full twisting Lache Side.
+974	Flyaway Stall-Out	Double Flyaway	Flyaway Full-Down-In Back-Out	Bar/Flip		Double Flyaway with a stall before the second rotation.
+975	Flyaway Full-in Triff	Triple Flyaway		Bar/Flip/Twist		Triple Flyaway with a full twist during the first rotation.
+976	Pop Castaway Side	Castaway Side		Wall/Flip		Devil Drop set into side tuck.
+977	Double Corkscrew	Corkscrew	Triple Corkscrew	Flip/Twist		A double twisting Corkscrew.
+978	Triple Corkscrew	Double Corkscrew	Quadruple Corkscrew	Flip/Twist		A triple twisting Corkscrew.
+979	Quadruple Corkscrew	Triple Corkscrew		Flip/Twist		A quadruple twisting Corkscrew.
+980	Corkscrew-In Back-Out	Corkscrew	Corkscrew-In Full-Out	Flip/Twist	Cork-In	Corkscrew into a back tuck.
+981	Swing Castaway Kick Full	Swing Castaway Full		Bar/Flip/Twist		Swing Castaway with a kick into full twist.
+982	Lache Punch Wall Inward Front Regrab	Lache Punch Wall Inward Front		Bar/Wall/Flip		Lache Punch Wall Inward Front to regrabbing the bar.
+983	Swing Castaway Stall Full-Down	Swing Castaway Stall Back		Bar/Flip/Twist		Swing Castaway Stall Back with a full twist after the flip.
+984	One-Step Palm Punch Wall Side	One-Step Palm Side		Wall/Flip		One-Step Palm set into Punch Wall Side.
+985	Half-Up Back Unwind Full-Down	Half-Up Back Full-Down		Flip/Twist	Jonah Un-Full-Down	Jonah into a full twist after the flip in the opposite direction.
+986	Full-Up Side Precision	Full-Up Side		Flip/Twist		360 twist up while stalling the flip into a side tuck to a precision landing.
+987	360 Dive One-and-a-Half Front Flip Dive Roll	One-and-a-Half Front Flip Dive Roll		Flip/Twist/Roll		A 360 Dive Front Flip with one and a half degree rotation to Dive Roll.
+988	Unwind Arabian Unwind Half	Unwind Arabian		Flip/Twist	Arabian Un-Half Un-Half	Unwind Arabian followed by a half twist in the opposite direction.
+989	One-Step Palm Tunnel Pike Half-Down	One-Step Palm Tunnel Pike		Wall/Flip/Twist		One-Step Palm Tunnel Pike into a half twist after the flip.
+990	Side Quarter Unwind Full	Side One and a Quarter Full		Flip/Twist	Side Quarter Un-Full	Side Quarter followed by a full twist in the opposite direction.
+991	Alleyway Gaet Pimp Layout	Alleyway Gaet Pimp		Wall/Beam/Flip		A laid out Alleyway Gaet Pimp.
+992	Alleyway Palm Flip	Palm Flip		Wall/Beam/Flip		Palm Flip set from alleyway climb position.
+993	Speed Tunnel Pike	Speed Tunnel, Tunnel Pike		Vault/Flip	Bullet Vault	A piked (both legs straight during the tuck) Speed Tunnel.
+994	Toe Shoot Front One and Half Full	Toe Shoot Front Full		Bar/Flip/Twist		A one and a half twisting Toe Shoot Front.
+995	Raiden Side	Raiden, Side Flip		Wall/Flip		Raiden set into side tuck.
+996	Kroc Down Monkey	Down Monkey, Kroc		Wall/Flip		Kroc dismount into Down Monkey off a ledge.
+997	Wall Gainer One-Hand Down Monkey Full-Down	Wall Gainer One-Hand Down Monkey		Wall/Flip/Twist	Dragonfly Full	Wall Gainer One-Hand Down Monkey into a full twist after the flip.
+998	270 Dive Down Monkey Full-Down	270 Dive Down Monkey		Wall/Flip/Twist		270 Dive Down Monkey into a full twist after the flip.
+999	Inward Tunnel Full	Inward Tunnel Flip		Flip/Twist		A full twisting Inward Tunnel Flip.
+1000	Castaway Inward Side	Inward Side		Bar/Flip		A castaway set into an inward side tuck.
+1001	Triple Kong Gainer	Double Kong Gainer		Vault/Flip	Triple Cat Pass Gainer	Double Kong Vault into a dive to a Kong Gainer. This was first landed by Didi Alaoui Mohammed in 2015.
+1002	Double Safety Vault	Safety Vault	Triple Safety Vault	Vault	Double Speed Step	Safety Vault into a consecutive Safety Vault.
+1003	Triple Safety Vault	Double Safety Vault		Vault	Triple Speed Step	A vault in which the Safety Vault off the first wall is used for a Safety off the second wall and then off a third parallel obstacle.
+1004	Backward Precision	Precision		Jump		A backward jump to a precision landing.
+1005	Hurdle Precision	Precision		Jump		A hurdle jump to a precision landing.
+1006	Safety Precision	Safety Vault		Vault	Speed Step Precision	Safety Vault to precision landing.
+1007	Punch Tic Tac		Punch Tic Tac Precision	Wall/Jump		Punch off a wall, often using both hands to assist pushing.
+1008	Punch Tic Tac Precision	Precision, Punch Tic Tac		Wall/Jump		Punch Tic Tac to precision landing.
+1009	Kong 180 Precision	Kong Precision		Vault	Cat Pass 180 Precision	Kong half turn into precision landing.
+1010	Dive Handstand	Handstand	Kong Handstand			A dive to Handstand.
+1011	Kong Triple Safety Vault			Vault	Cat Pass Triple Speed Step Vault	Kong Triple Speed Step Vault
+1012	Speed Double Safety Precision	Speed Double Safety		Vault	Speed Double Speed Step Precision	Speed into Double Safety to a precision landing.
+1013	One-Hand Palm Gainer Pike	One-Hand Palm Gainer		Wall/Flip	Ginger Flip Pike, Hi-Five Gainer Pike	One-Hand Palm Gainer performed in Pike position (legs straight and together during the tuck).
+1014	Speed Double Safety	Speed Safety	Speed Double Safety Precision	Vault	Speed Double Speed Step	Speed into Double Safety.
+1015	Half-Up Back Full-Down	Half-Up Back	Half-Up Back Unwind Full-Down	Flip/Twist	Jonah Full-Down	Half-Up into a full twist after the flip.
+1016	Turn Gaet Pimp Wall Full	Turn Gaet Pimp Wall Flip	Turn Gaet Pimp Wall Wrap Full	Beam/Wall/Flip		A full twisting Turn Gaet Pimp Wall Flip.
+1017	Angel Drop Wall Flip	Angel Drop	Angel Drop Wall Full	Wall/Flip		An Angel Drop set into Wall Flip.
+1018	Angel Drop Wall Full	Angel Drop Wall Flip	Angel Drop Wall Double Full	Wall/Flip/Twist		A full twisting Angel Drop Wall Flip.
+1019	Angel Drop Wall Double Full	Angel Drop Wall Full		Wall/Flip/Twist		A double full twisting Angel Drop Wall Flip.
+1020	Wall Full Double Leg Full Twist	Wall Full Double Leg		Wall/Flip/Twist		Wall Full into a Double Leg Full Twist.
+1021	Wall Full Double Leg	Wall Full	Wall Full Double Leg Full Twist	Wall/Flip/Twist		Wall Full into a Double Leg.
+1022	Descent			Wall		The process of climbing down the face of a structure, typically a garage park, building or staircase.
+1023	Ascent			Wall		The process of climbing up the face of a structure, typically a garage park, building or staircase.
+1024	Cast Mount		Cast Vault	Wall		A cast and kick with both feet to landing on the same wall.
+1025	One-Step Wall Flare	Wall Flare	One-Step Wall Flare Back	Wall		One step up a wall into Wall Flare.
+1026	Devil Drop Gainer One-Hand Down Monkey	Devil Drop Gainer Down Monkey	Devil Drop Gainer One-Hand Down Monkey Flash Kick, Devil Drop Gainer One-Hand Down Monkey Half-Down	Wall/Flip/Twist		Devil Drop Gainer into a One-Hand Down Monkey.
+1027	Devil Drop Gainer One-Hand Down Monkey Half-Down	Devil Drop Gainer One-Hand Down Monkey	Devil Drop Gainer One-Hand Down Monkey Full-Down	Wall/Flip/Twist		Devil Drop Gainer One-Hand Down Monkey into a half twist after the flip.
+1028	Devil Drop Wall Spin	Wall Spin	Devil Drop Wall Spin Half	Wall/Flip		Devil Drop set into Wall Spin.
+1029	Tunnel Pike	Tunnel Flip	Speed Tunnel Pike	Flip	Bullet Flip	A piked Tunnel Flip.
+1030	Side Unwind Half	Side Full		Flip/Twist	Side Un-Half	A half twisting Side Flip followed by a half twist in the opposite direction.
+1031	Arabian One and a Half Dive Roll	Arabian		Flip/Twist		An Arabian with one and a half degree rotation to Dive Roll.
+1032	Unwind Arabian	Arabian	Unwind Arabian Unwind Half	Flip/Twist	Arabian Un-Half	An Arabian with a half twist in one direction followed by a half twist in the opposite direction.
+1033	One-Step Palm Tunnel Pike	One-Step Palm Tunnel	One-Step Palm Tunnel Pike Half-Down	Wall/Flip		A piked One-Step Palm Tunnel.
+1034	One-Step Palm Tunnel	Wall Tunnel Flip	One-Step Palm Tunnel Pike	Wall/Flip		Wall Tunnel Flip using both hands to push off the wall.
+1035	Ceiling Palm Pike	Ceiling Palm Flip		Ceiling/Flip		A piked Ceiling Palm Flip.
+1036	Ceiling Palm Flip	Palm Flip	180 Ceiling Palm Flip, Ceiling Palm Pike	Ceiling/Flip		Palm Flip off a ceiling.
+1037	Side One and a Quarter Full	Side Quarter Layout	Side Quarter Unwind Full	Flip/Twist		A full twisting Side Quarter Back.
+1038	Side Quarter Layout	Side Quarter Back	Side One and a Quarter Full	Flip		A laid out Side Quarter Back.
+1039	Side Quarter Back	Side Flip	Side Quarter Layout	Flip		A quarter twisting Side Flip into a back tuck.
+1040	Toe Shoot Front Full	Toe Shoot Front Half	Toe Shoot Front One and Half Full	Bar/Flip/Twist		A full twisting Toe Shoot Front.
+1041	270 Dive Down Monkey	Down Monkey	270 Dive Down Monkey Full-Down	Wall/Flip/Twist		A three-quarter dive into Down Monkey.
+1042	Alleyway Gaet Pimp	Gaet Pimp	Alleyway Gaet Pimp Layout	Wall/Beam/Flip		Gaet Pimp set from alleyway climb position.
+1043	Running Gainer Full Down Monkey	Running Gainer Full		Wall/Flip/Twist		Running Gainer Full dismount into Down Monkey off a parallel wall while inverted.
+1044	Gaet Pimp Layout-In Back-Out	Double Gaet Pimp		Beam/Flip/Twist		Gaet Pimp Layout into a back tuck.
+1045	Wall Corkscrew Shuriken	Wall Corkscrew	Wall Corkscrew Shuriken Cutter	Wall/Twist		Wall Corkscrew set into Shuriken Twist.
+1046	180 Safety Vault	Safety Vault		Vault		A 180 jump into Safety Vault.
+1047	Split Vault			Vault		A one-hand vault set sideways with a partial front split over the obstacle. As the first hand releases and pushes away, the opposite hand catches the obstacle to help rebalance and push away.
+1048	Wall Spin Flip	Palm Flip, Wall Spin		Wall/Flip		Wall Spin set into a tuck by pushing off the wall with both hands.
+1049	Wall Corkscrew Shuriken Cutter	Wall Corkscrew Shuriken		Wall/Twist		Wall Corkscrew Shuriken into a full twist with the kicking leg fully extended.
+1050	Two-Hand Wall Touch Down Raiz	Raiz		Wall/Flip		Raiz towards a wall using both hands to push off the wall.
+1051	Raiz	Aerial	Palm Spin Raiz, Raiz-In Back-Out, Two-Hand Wall Touch Down Raiz	Flip		An inverted Aerial.
+1052	Raiz-In Back-Out	Raiz		Flip		Raiz dismount into a back tuck.
+1053	Flyaway Back-In Layout-Out	Double Flyaway		Bar/Flip		Flyaway into a back layout.
+1054	Flyaway Layout-In Back-Out	Double Flyaway, Flyaway Layout	Flyaway Layout-In Full-Out	Bar/Flip		Flyaway Layout into a back tuck.
+1055	Kroc	Corkscrew	Double Kroc, Kroc Down Monkey	Flip/Twist		Corkscrew set into a twist in the opposite direction.
+1056	Double Kroc	Kroc		Flip/Twist		A double twisting Kroc.
+1057	Flyaway Full Cat	Flyaway Cat		Bar/Flip/Twist		Flyaway Full landing in Cat Hang position.
+1058	One-Hand Hang Gainer	Hang Gainer		Wall/Flip		Hang Gainer using one hand.
+1059	Dyno Palm Flip	Dyno, Palm Flip	Dyno Palm Wall Punch Layout	Wall/Flip		Dyno into Palm Flip.
+1060	Dyno Palm Wall Punch Layout	Dyno Palm Flip, Punch Wall Layout		Wall/Flip		Dyno Palm Flip set into Punch Wall Layout.
+1061	Castaway Pike	Castaway Back		Bar/Flip		A piked Castaway Back.
+1062	Devil Drop Stall	Devil Drop		Wall/Flip		A stalled Devil Drop.
+1063	2D Flyaway	Flyaway		Wall/Flip		Flyaway parallel to and set from Hang on a wall.
+1064	Hang Castaway Wall Punch Layout	Hang Castaway Back, Punch Wall Layout		Wall/Flip		Hang Castaway Back set into Punch Wall Layout.
+1065	Tic Tac Trapdoor Wall Flip	Trapdoor Wall Flip	Trapdoor Wall Layout	Wall/Flip		Tic Tac set into Trap Door Wall Flip.
+1066	Trapdoor Wall Layout	Tic Tac Trapdoor Wall Flip		Wall/Flip		A laid out Tic Tac Trapdoor Wall Flip.
+1067	Lache Front Half	Lache Front		Bar/Flip/Twist		A half twisting Lache Front.
+1068	Trapdoor Punch Wall Layout	Trapdoor Wall Flip		Wall/Flip		Trapdoor Wall Flip into Punch Wall Layout.
+1069	Flyaway Layout-In Full-Out	Flyaway Layout-In Back-Out, Flyaway-In Full-Out		Bar/Flip/Twist		Flyaway Layout-In Back-out with a full twist during the second rotation.
+1070	One-Step Straddle Palm Flip	Straddle Palm Flip		Wall/Flip		One step into a Straddle Palm Flip.
+1071	Wall Full Down Monkey	Wall Layout Down Monkey		Wall/Flip/Twist		A full twisting Wall Flip Down Monkey.
+1072	Elbow One-Hand Palm Gainer	One-Hand Palm Gainer	Elbow One-Hand Palm Double Gainer	Wall/Flip	Ginger Flip, Hi-Five Gainer	One-Hand Palm Gainer set using the forearm.
+1073	Speed Safety	Safety Vault, Speed Vault	Speed Double Safety	Vault		Speed Vault into a Safety Vault off a consecutive obstacle.
+1074	Side-In Back-Out	Double Side Flip		Flip		Side Flip into a back tuck.
+1075	Castaway Pistol	Castaway Back	Hang Castaway Pistol, Pop Castaway Pistol	Bar/Flip		Castaway set into Pistol.
+1076	Hang Castaway Pistol	Castaway Pistol		Wall/Flip		Castaway set from Hanging position against a wall.
+1077	Pop Castaway Pistol	Castaway Pistol		Wall/Flip		Devil Drop set into Castaway Pistol.
+1078	Side Pistol	Side Flip		Flip		Side Flip executed in Pistol position (one leg tucked with the other straight).
+1079	Pistol Frisbee	Frisbee	Double Pistol Frisbee	Flip		Frisbee executed in Pistol position.
+1080	Double Pistol Frisbee	Pistol Frisbee		Flip		A double rotating Pistol Frisbee.
+1081	Palm Side Pistol	Palm Side	One-Step Palm Side Pistol	Wall/Flip		Palm Side in pistol position.
+1082	One-Step Palm Side Pistol	Palm Side Pistol		Wall/Flip		One-step into Palm Side Pistol.
+1083	Palm Spin Raiz	Raiz		Flip		Raiz using both hands on a rail or ledge for support.
+1084	Palm Spin Aerial	Aerial		Flip		Aerial using both hands on a rail or ledge for support.
+1085	Wall Feilong			Wall		One step up a wall into Feilong Kick.
+1086	Wall Pistol Side	Wall Side Flip		Wall/Flip		Wall Side executed in Pistol position.
+1087	Skin the Catch In Back-Out	Skin the Catch		Bar/Flip	Shrimp-In Back-Out	Skin the Catch into a back tuck.
+1088	Splat		Splat 180	Wall		A jump to the face of a wall and using both hands and feet to control and slow dropping.
+1089	Splat 180	Splat		Wall		Splat into a simuntaneous jump and push into a half turn off the wall.
+1090	Alleyway Bridge Down Monkey	Wall Layout Down Monkey		Wall/Flip		Down Monkey set from a bridge position in an alleyway.
+1091	Toe Hang Front			Wall/Flip		Front tuck set from hanging off the face of a wall using both feet to hook onto the top of the wall and both hands to push off.
+1092	Flyaway Spider Climb	Flyaway		Wall/Bar/Flip		Flyaway to spider climb position.
