@@ -209,18 +209,28 @@ width   (int)            Output video width
 log     (logging.Logger) Log file
 '''
 def format_videos(df, src_dir, dst_dir, height=640, width=480, log=None):
+    vid_dir = os.path.join(dst_dir, 'video')
+    img_dir = os.path.join(dst_dir, 'thumbnail')
+
     if not os.path.exists(dst_dir) or len(dst_dir) == 0:
         os.makedirs(dst_dir)
+        os.makedirs(vid_dir)
+        os.makedirs(img_dir)
 
-    f = vid.Format(height, width)
+    v = vid.Video()
 
     for block in chunked(df.iterrows(), mp.cpu_count()):
         procs = []
 
         for row in block:
             video = row[1]['embed']
+            thumbnail = video.split('.')[0]+'png'
+
             file = os.path.join(src_dir, video)
-            procs.append(mp.Process(target=f.resize, args=(file, os.path.join(dst_dir, video))))
+            procs.append(mp.Process(target=v.resize, 
+                         args=(height, width, file, os.path.join(vid_dir, video))))
+            procs.append(mp.Process(target=v.thumbnail,
+                         args=(height, width, os.path.join(img_dir, thumbnail))))
 
         for p in procs: p.start()
         for p in procs: p.join()
