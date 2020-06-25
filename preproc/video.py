@@ -8,7 +8,9 @@ Date: 5/11/2020
 
 import cv2
 import os
-from tqdm import tqdm
+import io
+import base64
+from PIL import Image
 from more_itertools import chunked
 import multiprocessing as mp
 
@@ -54,18 +56,19 @@ class Video(object):
 
 
     '''
-    Generate thumbnails
+    Generate thumbnails using the middle frame.
 
     inputs:
     src    (str) Absolute path to src video
     dst    (str) Absolute path to save dir
     height (int, optional) Thumbnail height. Default: 300
     width  (int, optional) Thumbnail width. Default: 168
+    save   (bool, optional) Save image to disk. If False, returns the image as a base64 string
 
     outputs:
     failed (bool) True if successfully saved thumbnail
     '''
-    def thumbnail(self, src, dst, height=300, width=168):
+    def thumbnail(self, src, dst, height=300, width=168, save=False):
         vidcap = cv2.VideoCapture(src)
         success,image = vidcap.read()
         count = 0
@@ -77,13 +80,22 @@ class Video(object):
 
             if count == mid:
                 image = cv2.resize(image,(height, width))
-                cv2.imwrite(os.path.join(dst, f'{filename}.jpg'), image)     # save frame as JPEG file
+                                    
+                if save:
+                    # save frame as JPEG file
+                    cv2.imwrite(os.path.join(dst, f'{filename}.jpg'), image)
+                else:
+                    _, buffer = cv2.imencode('.jpg', image)
+                    return base64.b64encode(buffer)
 
-                if success: return True
+                vidcap.release()
 
             success, image = vidcap.read()
 
-        return False
+
+    def thumbnail_base64():
+        with open(out_path, 'rb') as file:
+            return f'data:image/png;base64, {base64.b64encode(file.read())}'
 
 
     '''
@@ -98,7 +110,7 @@ class Video(object):
         cpus = mp.cpu_count()
         steps, _ = divmod(len(files), cpus)
 
-        for block in tqdm(chunked(iter(files), cpus), total=steps+1):
+        for block in chunked(iter(files), cpus):
             procs = []
 
             for f in block:
