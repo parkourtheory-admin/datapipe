@@ -4,6 +4,7 @@ Luigi tasks
 import os
 import json
 import luigi
+import argparse
 import configparser
 import threading as th
 import multiprocessing as mp
@@ -108,12 +109,12 @@ class CollectVideos(luigi.Task, PATHTask):
 
 
 	def output(self):
-		pass
+		return luigi.LocalTarget('collect_videos.json')
 
 
 	def run(self):
 		log = {}
-		df = pd.read_csv(video_pipe['csv'], header=0)
+		df = pd.read_csv(self.video_pipe['csv'], header=0)
 
 		una, miss, cta = clt.find_missing(moves_path, videos_path, csv_out)
 	
@@ -197,6 +198,35 @@ class ExtractThumbnails(luigi.Task, PATHTask):
 			for t in threads: t.join()
 
 
+def main():
+	parser = argparse.ArgumentParser()
+	parser.add_argument('--config', '-cfg', type=is_config, help='Configuration file (available: production, test)')
+	parser.add_argument('--loop', '-l', action='store_true', help='Loop execution (default: False)')
+	parser.add_argument('--pipes', '-p', type=is_pipes, nargs='+', required=True, help='Specify pipelines to execute. Required by default. (options: m (move), v (video))')
+	args = parser.parse_args()
+
+	cfg = configparser.ConfigParser()
+	cfg.read(args.config)
+
+	self.default = cfg['DEFAULT']
+	self.move_pipe = cfg['moves']
+	self.video_pipe = cfg['videos']
+	self.dst = self.video_pipe['dst']
+	self.file = self.video_pipe['csv']
+	self.whitelist = self.get_whitelist() if self.default.getboolean('whitelist') else []
+
+	self.vid_dir = os.path.join(self.dst, 'video')
+	self.img_dir = os.path.join(self.dst, 'thumbnail')
+
+	if not os.path.exists(self.dst) or len(self.dst) == 0:
+		os.makedirs(self.dst)
+		os.makedirs(self.vid_dir)
+		os.makedirs(self.img_dir)
+
+	# dynamically build pipeline
+	pipe = [globals()[task]() for task in cfg[name]['pipe'].split(', ')]
+	luigi.build(pipe)
+
+
 if __name__ == '__main__':
-	dc = DataCheck()
-	dc.run()
+	main()
