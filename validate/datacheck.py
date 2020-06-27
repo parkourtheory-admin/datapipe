@@ -11,8 +11,7 @@ from pandas import isnull
 from itertools import zip_longest
 
 class DataCheck(object):
-    def __init__(self, log, whitelist=None):
-        self.log = log
+    def __init__(self, whitelist=None):
         self.whitelist = whitelist if whitelist is not None else []
 
 
@@ -26,6 +25,7 @@ class DataCheck(object):
     edges (list)         List of prereqs or subseqs corresponding to move id
     '''
     def set_edges(self, df, adj, a, edges):
+        log = {'edges': []}
         # iterate over every edge
         # if prereq or subseq is not a string, it's NaN
         if isinstance(edges, str):
@@ -34,7 +34,7 @@ class DataCheck(object):
                     b = int(df.loc[df['name'] == j]['id']) - 1
                     adj[a, b] += 1
                 except TypeError:
-                    self.log.debug(f'src: {a+1}\ttgt: {j}')
+                    log['edges'].append({'src': a+1, 'tgt': j})
 
 
     '''
@@ -122,8 +122,13 @@ class DataCheck(object):
 
     inputs:
     df (pd.DataFrame) Table of moves
+
+    outputs:
+    log (dict) Dictionary of lists of dicts
     '''
     def find_duplicate_edges(self, df):
+        log = {'pre': [], 'sub': []}
+
         for i, row in df.iterrows():
             if isinstance(row['prereq'], str):
                 pre = row['prereq'].split(', ')
@@ -131,7 +136,7 @@ class DataCheck(object):
 
                 if uniq == pre:
                     e = [i for i in pre if i not in uniq]
-                    self.log.debug(f'row: {i}\t extra pre: {e}')
+                    log['pre'].append({i: e})
 
             if isinstance(row['subseq'], str):
                 sub = row['subseq'].split(', ')
@@ -140,7 +145,9 @@ class DataCheck(object):
                 if uniq == sub:
                     if uniq == sub:
                         e = [i for i in sub if i not in uniq]
-                        self.log.debug(f'row: {i}\t extra sub: {e}')
+                        log['pre'].append({i: e})
+
+        return log
 
 
     '''

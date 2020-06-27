@@ -4,9 +4,12 @@ Luigi tasks
 import os
 import json
 import luigi
+import configparser
 import threading as th
 import multiprocessing as mp
 from more_itertools import chunked
+
+import pandas as pd
 
 from validate import datacheck as dck
 from collect import collector as clt
@@ -17,14 +20,14 @@ from utils import write, is_config
 class PATHTask(object):
 	def __init__(self):
 		cfg = configparser.ConfigParser()
-		cfg.read(config)
+		cfg.read('configs/test.ini')
 
 		self.default = cfg['DEFAULT']
 		self.move_pipe = cfg['moves']
 		self.video_pipe = cfg['videos']
-		self.dst = video_pipe['dst']
-		self.file = video_pipe['csv']
-		self.whitelist = self.get_whitelist() if default.getboolean('whitelist') else []
+		self.dst = self.video_pipe['dst']
+		self.file = self.video_pipe['csv']
+		self.whitelist = self.get_whitelist() if self.default.getboolean('whitelist') else []
 
 		self.vid_dir = os.path.join(self.dst, 'video')
 		self.img_dir = os.path.join(self.dst, 'thumbnail')
@@ -49,20 +52,25 @@ class PATHTask(object):
 
 	
 class DataCheck(luigi.Task, PATHTask):
+	def __init__(self):
+		luigi.Task.__init__(self)
+		PATHTask.__init__(self)
+
 
 	def requires(self):
 		pass
 
 
 	def output(self):
-		pass
+		return luigi.LocalTarget('data_check.json')
 
 
 	def run(self):
-		df = pd.read_csv(move_pipe['csv'], header=0)
+		src = self.move_pipe['csv']
+		df = pd.read_csv(src, header=0)
 
 		log = {}
-		dc = dck.DataCheck(None, whitelist=whitelist)
+		dc = dck.DataCheck(whitelist=self.whitelist)
 		ids = dc.invalid_ids(df)
 		log['invalid_ids'] = ids
 
@@ -70,7 +78,7 @@ class DataCheck(luigi.Task, PATHTask):
 		log['duplicate_edges'] = edges
 
 		dup = dc.duplicated('name', df)
-		log['duplicate_nodes'] = dup
+		log['duplicate_nodes'] = dup.to_json()
 
 		adj = dc.get_adjacency(df)
 		err = dc.check_symmetry(adj)
@@ -86,10 +94,14 @@ class DataCheck(luigi.Task, PATHTask):
 		errs = dc.check_type(df)
 		log['move_types'] = errs
 
-		write('data_check.json', log)
-		 
+		write(self.output(), log)
+
 
 class CollectVideos(luigi.Task, PATHTask):
+	def __init__(self):
+		luigi.Task.__init__(self)
+		PATHTask.__init__(self)
+
 
 	def requires(self):
 		pass
@@ -125,6 +137,10 @@ class CollectVideos(luigi.Task, PATHTask):
 
 
 class FormatVideos(luigi.Task, PATHTask):
+	def __init__(self):
+		luigi.Task.__init__(self)
+		PATHTask.__init__(self)
+
 
 	def requires(self):
 		pass
@@ -144,7 +160,7 @@ class FormatVideos(luigi.Task, PATHTask):
 			for row in block:
 				video = row[1]['embed']
 				file = os.path.join(src_dir, video)
-				
+
 				procs.append(mp.Process(target=v.resize, 
 							 args=(height, width, file, os.path.join(vid_dir, video))))
 
@@ -179,3 +195,8 @@ class ExtractThumbnails(luigi.Task, PATHTask):
 
 			for t in threads: t.start()
 			for t in threads: t.join()
+
+
+if __name__ == '__main__':
+	dc = DataCheck()
+	dc.run()

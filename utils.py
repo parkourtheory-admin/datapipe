@@ -1,3 +1,4 @@
+import os
 import time
 import json
 
@@ -40,6 +41,11 @@ def is_pipes(p):
         raise Exception('Invalid argparse')
 
 
+
+'''
+inputs:
+dst (luigi.LocalTarget)
+'''
 def write(dst, data):
-    with open(dst, 'w') as file:
+    with dst.open('w') as file:
         json.dump(data, file)
