@@ -1,4 +1,5 @@
 import time
+import json
 
 def format_time(t):
     h, r = divmod(t, 3600)
@@ -37,3 +38,8 @@ def is_pipes(p):
         return 'videos'
     else:
         raise Exception('Invalid argparse')
+
+
+def write(dst, data):
+    with open(dst, 'w') as file:
+        json.dump(data, file)

@@ -108,7 +108,6 @@ class Video(object):
     def extract_thumbnails(self, src, dst):
         files = [i for i in os.listdir(src)]
         cpus = mp.cpu_count()
-        steps, _ = divmod(len(files), cpus)
 
         for block in chunked(iter(files), cpus):
             procs = []
