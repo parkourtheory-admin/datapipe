@@ -44,8 +44,8 @@ def is_pipes(p):
 
 '''
 inputs:
-dst (luigi.LocalTarget)
+dst (str)
 '''
 def write(dst, data):
-    with dst.open('w') as file:
+    with open(dst, 'w') as file:
         json.dump(data, file)

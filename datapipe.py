@@ -1,301 +1,190 @@
 '''
-Data processing pipeline for Parkour Theory
-
-Author: Justin Chen
-Date: 5/11/2020
+Luigi tasks
 '''
 import os
-import sys
 import json
-import logging
+import luigi
 import argparse
 import configparser
-from time import time, sleep
-from datetime import timedelta, datetime
-import multiprocessing as mp
 import threading as th
-from signal import signal, SIGINT
+import multiprocessing as mp
+from more_itertools import chunked
 
-from pprint import pformat
 import pandas as pd
 
 from validate import datacheck as dck
-from preproc import video as vid
 from collect import collector as clt
-
-from more_itertools import chunked
-from utils import format_time
-
-
-'''
-Creates subdirectory for logs and logging handler
-
-inputs:
-name (str) Log name
-
-outputs:
-log (logging.Logger) Log handler
-'''
-def get_log(name):
-    sub = os.path.join('logs', name)
-
-    # check for subdirectory and temporarily change directory permissions to make the directory
-    if not os.path.exists(sub):
-        try:
-            orig = os.umask(0)
-            os.makedirs(sub)
-        finally:
-            os.umask(orig)
-
-    logname = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
-
-    logging.basicConfig(filename=os.path.join(sub, f'{logname}.log'),
-                        filemode='w',
-                        format='%(message)s',
-                        datefmt='%H:%M:%S',
-                        level=logging.DEBUG)
-
-    log = logging.getLogger(name)
-
-    return log
+from preproc import video as vid
+from utils import write, is_config
 
 
-'''
-Single execution of pipeline
+class Configuration(object):
+    def __init__(self, config):
+        cfg = configparser.ConfigParser()
+        cfg.read(config)
 
-inputs:
-pipe (list) Pipeline specified in config
-call (dict) Dictionary containing pointer to function and parameters
-'''
-def run(pipe, call):
-    for f in pipe:
-        start = time()
-        func = call[f]
-        func['name'](*func['params'])
-        print(f'{f}()\ttotal time: {format_time(time()-start)}')
+        # default configuration
+        default = cfg['DEFAULT']
+        self.whitelist = self.get_whitelist() if default.getboolean('whitelist') else []
+        self.parallel = default.getboolean('parallel')
+        self.pipe = default['pipe']
 
+        # move configuration
+        move = cfg['moves']
+        self.move_csv = move['csv']
 
-'''
-Detect ctrl-c
+        # video configuration
+        video = cfg['videos']
+        self.video_src = video['src']
+        self.video_dst = video['dst']
+        self.video_csv = video['csv']
+        self.video_csv_out = video['csv_out']
+        self.video_height = video['height']
+        self.video_width = video['width']
 
-inputs:
-sig
-frame
-'''
-def handler(sig, frame):
-    sys.exit(0)
+        dst = self.video_dst
 
+        if not os.path.exists(dst):
+            os.makedirs(os.path.join(dst, 'video'))
+            os.makedirs(os.path.join(dst, 'thumbnails'))
 
-'''
-Update call map with new parameter
-
-inputs:
-calls     (dict)   Map of API calls
-new_param (object) New parameter to add to api calls
-
-outputs:
-calls (dict) Updated API map
-'''
-def update_calls(calls, new_param):
-    for k, v in calls.items():
-        for i, p in enumerate(v['params']):
-            if isinstance(new_param, type(p)):
-                calls[k]['params'][i] = new_param
-    return calls
+        # thumbnail configuration
+        thumb = cfg['thumbnails']
+        self.thumb_height = thumb['height']
+        self.thumb_width = thumb['width']
+        self.thumb_dst = thumb['dst']
 
 
-'''
-Continuously check for changes and run pipeline
+    '''
+    Open and return white list
 
-inputs:
-pipe     (list)          Pipeline specified in config
-calls    (dict)          Dictionary containing pointer to function and parameters
-file     (str)           File to watch
-interval (int, optional) Frequency at which pipeline is run
-'''
-def loop(pipe, calls, file, interval=5):
-    if not isinstance(interval, int):
-        raise Exception(f'daemonize()\tInvalid parameter interval {interval}. Must be type int.')
+    outputs:
+    ids (list) List of ids to whitelist
+    '''
+    def get_whitelist(self):
+        cfg = configparser.ConfigParser()
+        cfg.read(is_config('whitelist'))
+        return [int(i) for i in cfg['DEFAULT']['ids'].split(',')]
 
-    signal(SIGINT, handler)
-
-    while 1:
-        df = pd.read_csv(file)
-        run(pipe, update_calls(calls, df))
-        sleep(interval)
-
-
-'''
-Open and return white list
-
-outputs:
-ids (list) List of ids to whitelist
-'''
-def get_whitelist():
-    cfg = configparser.ConfigParser()
-    cfg.read(is_config('whitelist'))
-    return [int(i) for i in cfg['DEFAULT']['ids'].split(',')]
-
-
-'''
-Data cleaning section of pipeline
-
-inputs:
-df        (pd.DataFrame)   Move dataframe
-whitelist (list)           Ignore rows corresponding to ids in this list
-src       (str)            Source file
-log       (logging.Logger) Log file
-'''
-def check_moves(df, whitelist, src, log=None):
-    dc = dck.DataCheck(log, whitelist=whitelist)
-
-    ids = dc.invalid_ids(df)
-    print(f'\nINVALID IDS:{ids}\n')
-
-    edges = dc.find_duplicate_edges(df)
-    print(f'\nDUP EDGES:{edges}\n')
-
-    dup = dc.duplicated('name', df)
-    print(f'\nDUPLICATES:{pformat(dup)}\n')
-
-    adj = dc.get_adjacency(df)
-    err = dc.check_symmetry(adj)
-    print(f'\nSYMMETRYS: {pformat(err)}\n')
-
-    columns = ['id', 'name', 'type', 'desc']
-    print('INCOMPLETE')
-    for col in columns:
-        print(f'{col}: {dc.find_empty(df, col)}')
-
-    dc.sort_edges(df)
-    df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
-    df.to_csv(src, index=False)
-    print('\nEDGES SORTED\n')
-
-    print('\nMOVE TYPES\n')
-    errs = dc.check_type(df)
-    print(pformat(errs))
-
-
-'''
-Data collection section of pipeline
-
-inputs:
-dst         (str)            Directory where videos will be saved
-moves_path  (str)            Path to moves.csv
-videos_path (str)            Path to videos.csv
-csv_out     (str)            CSV output directory
-log         (logging.Logger) Log file
-'''
-def collect_videos(dst, moves_path, videos_path, csv_out, save_path, log=None):
-    una, miss, cta = clt.find_missing(moves_path, videos_path, csv_out)
     
-    print(f'una: {len(una)}\tmiss: {len(miss)}\tcta: {len(cta)}')
-    miss.to_csv(os.path.join(csv_out, 'missing.csv'))
-    una, found = clt.collect(miss, dst, csv_out)
+class DataCheck(object):
 
-    print(f'una: {len(una)}\tfound: {len(found)}')
-    clt.update_videos(videos_path, found, save_path)
+    '''
+    inputs:
+    config (Configuration) Object containing parsed configuration values
+    '''
+    def __init__(self, config):
+        self.cfg = config
+        
 
+    def run(self):
+        log = {}
+        
+        src = self.cfg.move_csv
+        df = pd.read_csv(src, header=0)
 
-'''
-Data collection section of pipeline
+        dc = dck.DataCheck(whitelist=self.cfg.whitelist)
+        ids = dc.invalid_ids(df)
+        log['invalid_ids'] = ids
 
-inputs:
-df      (pd.DataFrame)   Table of videos
-src_dir (str)            Data directory
-dst_dir (str)            Output directory
-height  (int)            Output video height
-width   (int)            Output video width
-log     (logging.Logger) Log file
-'''
-def format_videos(df, src_dir, dst_dir, height=640, width=480, log=None):
-    vid_dir = os.path.join(dst_dir, 'video')
-    img_dir = os.path.join(dst_dir, 'thumbnail')
+        edges = dc.find_duplicate_edges(df)
+        log['duplicate_edges'] = edges
 
-    if not os.path.exists(dst_dir) or len(dst_dir) == 0:
-        os.makedirs(dst_dir)
-        os.makedirs(vid_dir)
-        os.makedirs(img_dir)
+        dup = dc.duplicated('name', df)
+        log['duplicate_nodes'] = dup.to_json()
 
-    v = vid.Video()
+        adj = dc.get_adjacency(df)
+        err = dc.check_symmetry(adj)
+        log['symmetry'] = err
 
-    for block in chunked(df.iterrows(), mp.cpu_count()):
-        procs = []
+        columns = ['id', 'name', 'type', 'desc']
+        log['incomplete'] = [{col: dc.find_empty(df, col)} for col in columns]
 
-        for row in block:
-            video = row[1]['embed']
-            thumbnail = video.split('.')[0]+'png'
+        dc.sort_edges(df)
+        df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
+        df.to_csv(src, index=False)
 
-            file = os.path.join(src_dir, video)
-            procs.append(mp.Process(target=v.resize, 
-                         args=(height, width, file, os.path.join(vid_dir, video))))
-            procs.append(mp.Process(target=v.thumbnail,
-                         args=(height, width, os.path.join(img_dir, thumbnail))))
+        errs = dc.check_type(df)
+        log['move_types'] = errs
 
-        for p in procs: p.start()
-        for p in procs: p.join()
+        write('data_check.json', log)
 
 
-'''
-inputs:
-cfg  (c)
-name (str)
-
-outputs:
-calls (dict)
-'''
-def get_call_map(cfg, name):
-    default = cfg['DEFAULT']
-    move_pipe = cfg['moves']
-    video_pipe = cfg['videos']
-
-    calls = None
-    file = ''
-
-    if name == 'moves':
-        file = move_pipe['csv']
-        df = pd.read_csv(file, header=0)
-        whitelist = get_whitelist() if default.getboolean('whitelist') else []
-        calls = { 'check_moves': {'name': check_moves, 'params': [df, whitelist, file]} }
-    else:
-        df = pd.read_csv(video_pipe['csv'], header=0)
-        dst = video_pipe['dst']
-        file = video_pipe['csv']
+class CollectVideos(object):
+    def __init__(self, config):
+        self.cfg = config
 
 
-        calls = {
-            'collect_videos': {'name': collect_videos,
-                               'params': [dst, move_pipe['csv'], file, video_pipe['csv_out'], video_pipe['csv']]},
-            'format_videos': {'name': format_videos,
-                              'params': [df, file, dst]}
+    def run(self):
+        log = {}
+        df = pd.read_csv(self.csv, header=0)
+
+        una, miss, cta = clt.find_missing(self.cfg.move_csv, self.cfg.video_csv, self.cfg.video_csv_out)
+    
+        log['missing'] = {
+            'unavailable': len(una),
+            'missing': len(miss),
+            'call_to_action': len(cta)
         }
 
-    return calls, file
+        miss.to_csv(os.path.join(self.cfg.video_csv_out, 'missing.csv'))
+        una, found = clt.collect(miss, self.cfg.video_dst, self.cfg.video_csv_out)
 
-'''
-Create pipeline call dictionary and pipeline
+        log['collect'] = {
+            'unavailable': len(una),
+            'found': len(found)
+        }
 
-inputs:
-args      (argparser.ArgumentParser) Pipeline arguments
+        clt.update_videos(self.cfg.video_csv, found, os.path.join(self.cfg.video_csv_out, 'updated.csv'))
 
-outputs:
-pipe (list) Data pipeline
-call (dict) Dictionary of function calls and parameters
-'''
-def get_pipe(config, name):
-    cfg = configparser.ConfigParser()
-    cfg.read(config)
+        write('collect_videos.json', log)
 
-    calls, file = get_call_map(cfg, name)
-    pipe = cfg[name]['pipe'].split(', ')
 
-    # make log for each API
-    for api in pipe:
-        params = calls[api]['params']
-        params.append(get_log(api))
+class FormatVideos(object):
+    def __init__(self, config):
+        self.cfg = config
 
-    return pipe, calls, file
+
+    def run(self):
+        df = pd.read_csv(self.cfg.video_csv, header=0)
+        v = vid.Video()
+
+        for block in chunked(df.iterrows(), mp.cpu_count()):
+            procs = []
+
+            for row in block:
+                video = row[1]['embed']
+                file = os.path.join(self.video_src, video)
+
+                procs.append(mp.Process(target=v.resize, 
+                             args=(self.height, self.width, file, os.path.join(self.video_src, video))))
+
+            for p in procs: p.start()
+            for p in procs: p.join()
+
+
+class ExtractThumbnails(object):
+    def __init__(self, config):
+        self.cfg = config
+
+
+    def run(self):
+        df = pd.read_csv(self.cfg.video_csv, header=0)
+        v = vid.Video()
+
+        for block in chunked(df.iterrows(), mp.cpu_count()):
+            threads = []
+
+            for row in block:
+                video = row[1]['embed']
+                thumbnail = video.split('.')[0]+'png'
+                file = os.path.join(self.video_src, video)
+
+                threads.append(th.Thread(target=v.thumbnail,
+                             args=(self.height, self.width, os.path.join(self.dst, thumbnail))))
+
+            for t in threads: t.start()
+            for t in threads: t.join()
 
 
 '''
@@ -305,45 +194,30 @@ inputs:
 c (str) Configuration file name
 
 outputs:
-(str) formatted file name
+(str) formatted file path
 '''
-def is_config(c):
+def config_path(c):
     if not c.endswith('.ini'):
         c = c.split('.')[0]+'.ini'
     return os.path.join('configs', c)
 
 
-'''
-Convert argparse arguments into pipeline names
-
-inputs:
-p (str) Pipeline argument
-
-outputs:
-name (str) Formatted name of pipeline
-'''
-def is_pipes(p):
-    if p == 'm' or p == 'moves' or p == 'move':
-        return 'moves'
-    elif p == 'v' or p == 'videos' or p == 'video':
-        return 'videos'
-    else:
-        raise Exception('Invalid argparse')
-
-
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config', '-cfg', type=is_config, help='Configuration file (available: production, test)')
-    parser.add_argument('--loop', '-l', action='store_true', help='Loop execution (default: False)')
-    parser.add_argument('--pipes', '-p', type=is_pipes, nargs='+', required=True, help='Specify pipelines to execute. Required by default. (options: m (move), v (video))')
+    parser.add_argument('--config', '-cfg', type=config_path, help='Configuration file (available: production, test)')
     args = parser.parse_args()
 
-    #TODO: spin off into procs
-    for name in args.pipes:
-        pipe, calls, file = get_pipe(args.config, name)
+    cfg = Configuration(args.config)
 
-        if args.loop: loop(pipe, calls, file)
-        else: run(pipe, calls)
+    # dynamically build pipeline
+    pipe = [globals()[task](cfg) for task in cfg.pipe.split(', ')]
+
+    if cfg.parallel:
+        pipe = [mp.Process(target=t.run) for t in pipe]
+        for t in pipe: t.start()
+        for t in pipe: t.join()
+    else: 
+        for t in pipe: t.run()
 
 
 if __name__ == '__main__':

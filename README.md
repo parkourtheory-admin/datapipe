@@ -1,36 +1,31 @@
 # datapipe
-Parkour Theory multimodal dataset
+Parkour Theory data set processing pipeline
 
-Before running `datapipe.py`, set up your configuration file ending in `.ini` and place it in the `configs/` directory. Then run the script using the following flags.
+Before running `datapipe.py`, set up your configuration file ending in `.ini` and place it in the `configs/` directory. Also update `whitelist.ini` as needed. Then run the script using the following flags.
+
+### Basic configuration setup
+Change the move and video configurations to match your directory structure. Otherwise to simply run the pipeline, set these three parameters:
+
+-- whitelist	Uses the move id white list. This will ignore processing moves with accorsponding ids.
+-- parallel 	If yes, parallelize execution of the tasks listed in pipe. Else, sequential execution.
+-- pipe    		List of tasks to execute.
+
+
+```
+[DEFAULT]
+whitelist = yes
+parallel  = no
+pipe      = collect_videos, check_moves
+```
 
 ### Usage
 ```
 --config -cfg 	Configuration file (available: production, test)
---loop -l 		Loop execution (default: False)
---pipes -p 		Specify pipelines to execute. Required by default. (options: m: move, v: video)
-```
-
-### Test configuration file
-```
-[DEFAULT]
-whitelist = yes
-
-[moves]
-csv  = /media/ch3njus/Seagate4TB/research/parkourtheory/data/database/latest/test_moves.csv
-pipe = check_moves
-
-[videos]
-src      = /media/ch3njus/Seagate4TB/research/parkourtheory/data/videos/production
-dst      = /media/ch3njus/Seagate4TB/research/parkourtheory/data/videos/test
-csv      = /media/ch3njus/Seagate4TB/research/parkourtheory/data/database/latest/test_videos.csv
-csv_out  = /media/ch3njus/Seagate4TB/research/parkourtheory/data/output
-pipe     = collect_videos
-
 ```
 
 ### Example usage
 
-To run the `test.ini` configuration with the `move` and `video` pipelines:
+To run the `test.ini` configuration:
 ```
-python datapipe.py -cfg test -p m v
+python datapipe.py -cfg test
 ```

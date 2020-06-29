@@ -2,7 +2,7 @@ import os
 import sys
 import pandas as pd
 from tqdm import tqdm
-from external.pytube import YouTube
+from pytube import YouTube
 
 sys.path.insert(1, '/media/ch3njus/Seagate4TB/projects/pystagram')
 
