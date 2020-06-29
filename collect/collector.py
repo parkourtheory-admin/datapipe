@@ -2,7 +2,7 @@ import os
 import sys
 import pandas as pd
 from tqdm import tqdm
-from pytube import YouTube
+from external.pytube import YouTube
 
 sys.path.insert(1, '/media/ch3njus/Seagate4TB/projects/pystagram')
 
@@ -87,7 +87,7 @@ def collect(df, dst, csv_out):
 
 
 '''
-Update videos table column and save to csvs
+Update videos table column and save to csv's
 
 inputs:
 video_path (str)          Path to source video csv

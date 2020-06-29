@@ -18,26 +18,27 @@ from preproc import video as vid
 from utils import write, is_config
 
 
-class PATHTask(object):
-	def __init__(self):
+class Configuration(object):
+	def __init__(self, config):
 		cfg = configparser.ConfigParser()
-		cfg.read('configs/test.ini')
+		cfg.read(config)
 
-		self.default = cfg['DEFAULT']
+		default = cfg['DEFAULT']
+		self.whitelist = get_whitelist() if default.getboolean('whitelist') else []
 		self.move_pipe = cfg['moves']
 		self.video_pipe = cfg['videos']
-		self.dst = self.video_pipe['dst']
-		self.file = self.video_pipe['csv']
-		self.whitelist = self.get_whitelist() if self.default.getboolean('whitelist') else []
+		self.thumbnail_pipe = cfg['thumbnails']
+		dst = video_pipe['dst']
 
-		self.vid_dir = os.path.join(self.dst, 'video')
-		self.img_dir = os.path.join(self.dst, 'thumbnail')
+		vid_dir = os.path.join(dst, 'video')
+		img_dir = os.path.join(dst, 'thumbnails')
 
-		if not os.path.exists(self.dst) or len(self.dst) == 0:
-			os.makedirs(self.dst)
-			os.makedirs(self.vid_dir)
-			os.makedirs(self.img_dir)
+		if not os.path.exists(dst) or len(dst) == 0:
+			os.makedirs(dst)
+			os.makedirs(vid_dir)
+			os.makedirs(img_dir)
 
+		self.dst = dst
 
 
 	'''
@@ -46,18 +47,18 @@ class PATHTask(object):
 	outputs:
 	ids (list) List of ids to whitelist
 	'''
-	def get_whitelist(self):
+	def whitelist(self):
 		cfg = configparser.ConfigParser()
 		cfg.read(is_config('whitelist'))
 		return [int(i) for i in cfg['DEFAULT']['ids'].split(',')]
 
 	
-class DataCheck(luigi.Task, PATHTask):
-	def __init__(self):
+class DataCheck(luigi.Task):
+	def __init__(self, config):
 		luigi.Task.__init__(self)
-		PATHTask.__init__(self)
+		self.config = config
 
-
+	
 	def requires(self):
 		pass
 
@@ -67,11 +68,11 @@ class DataCheck(luigi.Task, PATHTask):
 
 
 	def run(self):
-		src = self.move_pipe['csv']
+		src = self.config.move_pipe['csv']
 		df = pd.read_csv(src, header=0)
 
 		log = {}
-		dc = dck.DataCheck(whitelist=self.whitelist)
+		dc = dck.DataCheck(whitelist=self.config.whitelist())
 		ids = dc.invalid_ids(df)
 		log['invalid_ids'] = ids
 
@@ -98,10 +99,15 @@ class DataCheck(luigi.Task, PATHTask):
 		write(self.output(), log)
 
 
-class CollectVideos(luigi.Task, PATHTask):
-	def __init__(self):
+class CollectVideos(luigi.Task):
+	def __init__(self, config):
 		luigi.Task.__init__(self)
-		PATHTask.__init__(self)
+		video = config.video_pipe
+		move = config.move_pipe
+		self.move_csv = move['csv']
+		self.video_csv = video['csv']
+		self.csv_out = video['csv_out']
+		self.dst = video['dst']
 
 
 	def requires(self):
@@ -114,9 +120,9 @@ class CollectVideos(luigi.Task, PATHTask):
 
 	def run(self):
 		log = {}
-		df = pd.read_csv(self.video_pipe['csv'], header=0)
+		df = pd.read_csv(self.csv, header=0)
 
-		una, miss, cta = clt.find_missing(moves_path, videos_path, csv_out)
+		una, miss, cta = clt.find_missing(self.move_csv, self.video_csv, self.csv_out)
 	
 		log['missing'] = {
 			'unavailable': len(una),
@@ -124,23 +130,28 @@ class CollectVideos(luigi.Task, PATHTask):
 			'call_to_action': len(cta)
 		}
 
-		miss.to_csv(os.path.join(csv_out, 'missing.csv'))
-		una, found = clt.collect(miss, dst, csv_out)
+		miss.to_csv(os.path.join(self.csv_out, 'missing.csv'))
+		una, found = clt.collect(miss, self.dst, self.csv_out)
 
 		log['collect'] = {
 			'unavailable': len(una),
 			'found': len(found)
 		}
 
-		clt.update_videos(videos_path, found, save_path)
+		clt.update_videos(self.video_csv, found, os.path.join(self.csv_out, 'updated.csv'))
 
 		write('collect_videos.json', log)
 
 
-class FormatVideos(luigi.Task, PATHTask):
-	def __init__(self):
+class FormatVideos(luigi.Task):
+	def __init__(self, config):
 		luigi.Task.__init__(self)
-		PATHTask.__init__(self)
+		self.config = config
+		video = config.video_pipe
+		move = config.move_pipe
+		self.video_src = video['src']
+		self.height = video['height']
+		self.width = video['width']
 
 
 	def requires(self):
@@ -152,7 +163,7 @@ class FormatVideos(luigi.Task, PATHTask):
 
 
 	def run(self):
-		df = pd.read_csv(video_pipe['csv'], header=0)
+		df = pd.read_csv(self.video_pipe['csv'], header=0)
 		v = vid.Video()
 
 		for block in chunked(df.iterrows(), mp.cpu_count()):
@@ -160,16 +171,26 @@ class FormatVideos(luigi.Task, PATHTask):
 
 			for row in block:
 				video = row[1]['embed']
-				file = os.path.join(src_dir, video)
+				file = os.path.join(self.video_src, video)
 
 				procs.append(mp.Process(target=v.resize, 
-							 args=(height, width, file, os.path.join(vid_dir, video))))
+							 args=(self.height, self.width, file, os.path.join(self.video_src, video))))
 
 			for p in procs: p.start()
 			for p in procs: p.join()
 
 
-class ExtractThumbnails(luigi.Task, PATHTask):
+class ExtractThumbnails(luigi.Task):
+	def __init__(self, config):
+		luigi.Task.__init__(self)
+		self.config = config
+		video = config.video_pipe
+		thumb = config.thumbnail_pipe
+		self.height = thumb['height']
+		self.width = thumb['width']
+		self.video_src = video['src']
+		self.dst = thumb['dst']
+
 
 	def requires(self):
 		pass
@@ -180,7 +201,7 @@ class ExtractThumbnails(luigi.Task, PATHTask):
 
 
 	def run(self):
-		df = pd.read_csv(video_pipe['csv'], header=0)
+		df = pd.read_csv(self.video['csv'], header=0)
 		v = vid.Video()
 
 		for block in chunked(df.iterrows(), mp.cpu_count()):
@@ -189,10 +210,10 @@ class ExtractThumbnails(luigi.Task, PATHTask):
 			for row in block:
 				video = row[1]['embed']
 				thumbnail = video.split('.')[0]+'png'
-				file = os.path.join(src_dir, video)
+				file = os.path.join(self.video_src, video)
 
 				threads.append(th.Thread(target=v.thumbnail,
-							 args=(height, width, os.path.join(img_dir, thumbnail))))
+							 args=(self.height, self.width, os.path.join(self.dst, thumbnail))))
 
 			for t in threads: t.start()
 			for t in threads: t.join()
@@ -205,26 +226,10 @@ def main():
 	parser.add_argument('--pipes', '-p', type=is_pipes, nargs='+', required=True, help='Specify pipelines to execute. Required by default. (options: m (move), v (video))')
 	args = parser.parse_args()
 
-	cfg = configparser.ConfigParser()
-	cfg.read(args.config)
-
-	self.default = cfg['DEFAULT']
-	self.move_pipe = cfg['moves']
-	self.video_pipe = cfg['videos']
-	self.dst = self.video_pipe['dst']
-	self.file = self.video_pipe['csv']
-	self.whitelist = self.get_whitelist() if self.default.getboolean('whitelist') else []
-
-	self.vid_dir = os.path.join(self.dst, 'video')
-	self.img_dir = os.path.join(self.dst, 'thumbnail')
-
-	if not os.path.exists(self.dst) or len(self.dst) == 0:
-		os.makedirs(self.dst)
-		os.makedirs(self.vid_dir)
-		os.makedirs(self.img_dir)
+	config = Configuration(args.config)
 
 	# dynamically build pipeline
-	pipe = [globals()[task]() for task in cfg[name]['pipe'].split(', ')]
+	pipe = [globals()[task](config) for task in cfg[name]['pipe'].split(', ')]
 	luigi.build(pipe)
 
 
