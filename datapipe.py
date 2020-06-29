@@ -42,17 +42,17 @@ class Configuration(object):
         self.video_height = video['height']
         self.video_width = video['width']
 
-        dst = self.video_dst
-
-        if not os.path.exists(dst):
-            os.makedirs(os.path.join(dst, 'video'))
-            os.makedirs(os.path.join(dst, 'thumbnails'))
-
+        if not os.path.exists(video['dst']):
+            os.makedirs(video['dst'])
+            
         # thumbnail configuration
         thumb = cfg['thumbnails']
         self.thumb_height = thumb['height']
         self.thumb_width = thumb['width']
         self.thumb_dst = thumb['dst']
+        
+        if not os.path.exists(thumb['dst']):
+            os.makedirs(thumb['dst'])
 
 
     '''
@@ -157,7 +157,7 @@ class FormatVideos(object):
                 file = os.path.join(self.video_src, video)
 
                 procs.append(mp.Process(target=v.resize, 
-                             args=(self.height, self.width, file, os.path.join(self.video_src, video))))
+                             args=(self.cfg.video_height, self.cfg.video_width, file, os.path.join(self.cfg.video_src, video))))
 
             for p in procs: p.start()
             for p in procs: p.join()
@@ -178,10 +178,11 @@ class ExtractThumbnails(object):
             for row in block:
                 video = row[1]['embed']
                 thumbnail = video.split('.')[0]+'png'
-                file = os.path.join(self.video_src, video)
+                file = os.path.join(self.cfg.video_src, video)
 
                 threads.append(th.Thread(target=v.thumbnail,
-                             args=(self.height, self.width, os.path.join(self.dst, thumbnail))))
+                             args=(self.cfg.thumb_height, self.cfg.thumb_width, 
+                                   os.path.join(self.cfg.thumb_dst, thumbnail))))
 
             for t in threads: t.start()
             for t in threads: t.join()
