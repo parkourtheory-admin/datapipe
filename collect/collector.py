@@ -101,8 +101,13 @@ def update_thumbnail(df, thumbnails):
         df['thumbnail'] = ''
 
     for i, row in df.iterrows():
-        e = row['embed']
-        df.at[df['embed'] == e , 'thumbnail'] = thumbnails[e]
+        try:
+            e = row['embed']
+            df.at[df['embed'] == e, 'thumbnail'] = thumbnails[e]
+        except KeyError:
+            print(e)
+
+    return df
 
 
 '''
@@ -159,3 +164,10 @@ def update_videos(video_path, update, video_src, save_path):
     df.to_csv(save_path, index=False)
 
     return df
+
+
+def fix_extensions(src):
+    for i in tqdm(os.listdir(src)):
+        if not i.endswith('.mp4'):
+            os.rename(os.path.join(src, i), os.path.join(src, i+'.mp4'))
+

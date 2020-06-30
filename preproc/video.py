@@ -10,6 +10,7 @@ import cv2
 import os
 import io
 import base64
+from tqdm import tqdm
 from PIL import Image
 from more_itertools import chunked
 from multiprocessing import Process, Manager, cpu_count
@@ -60,37 +61,28 @@ class Video(object):
 
     inputs:
     src    (str) Absolute path to src video
-    dst    (str) Absolute path to save dir
     height (int, optional) Thumbnail height. Default: 300
     width  (int, optional) Thumbnail width. Default: 168
-    save   (bool, optional) Save image to disk. If False, returns the image as a base64 string
 
     outputs:
     failed (bool) True if successfully saved thumbnail
     '''
-    def thumbnail(self, res, src, dst, height=300, width=168, save=False):
+    def thumbnail(self, res, src, height=300, width=168):
         vidcap = cv2.VideoCapture(src)
         success,image = vidcap.read()
         count = 0
         mid = int(vidcap.get(cv2.CAP_PROP_FRAME_COUNT))//2
-        filename = src.split('/')[-1].split('.')[0]
+        filename = src.split('/')[-1]
 
         while success:
             count += 1
 
             if count == mid:
                 image = cv2.resize(image,(height, width))
-                                    
-                if save:
-                    # save frame as JPEG file
-                    cv2.imwrite(os.path.join(dst, f'{filename}.jpg'), image)
-                else:
-                    _, buffer = cv2.imencode('.jpg', image)
-                    res[filename] = f'data:image/png;base64, {base64.b64encode(buffer)}'
-                    vidcap.release()
-                    break
-
+                _, buffer = cv2.imencode('.jpg', image)
+                res[filename] = f'data:image/png;base64, {base64.b64encode(buffer)}'
                 vidcap.release()
+                break
 
             success, image = vidcap.read()
 
@@ -99,23 +91,27 @@ class Video(object):
     Extract thumbnails in parallel
 
     inputs:
-    src (str) Source directory containing videos
-    dst (str) Destination directory for thumbnails
+    src    (str) Source directory containing videos
+    height (int) Crop height
+    width  (int) Crop width
+
+    outputs:
+    res (dict) Dictionary with file name as key and serialized thumbnail as value
     '''
-    def extract_thumbnails(self, src, dst):
+    def extract_thumbnails(self, src, height, width):
         files = [i for i in os.listdir(src)]
         cpus = cpu_count()
         mgmt = Manager()
         res = mgmt.dict()
 
-        for block in chunked(iter(files), cpus):
+        for block in tqdm(chunked(iter(files), cpus), total=len(files)//cpus+1):
             procs = []
 
             for f in block:
                 procs.append(Process(target=self.thumbnail, 
-                    args=(res, os.path.join(src, f), dst, 300, 168)))
+                    args=(res, os.path.join(src, f), height, width)))
             
             for p in procs: p.start()
             for p in procs: p.join()
 
-        return res.values()
+        return res

@@ -138,8 +138,6 @@ class CollectVideos(object):
         updated = clt.update_videos(self.cfg.video_csv, found, self.cfg.video_src,
                                     os.path.join(self.cfg.video_csv_out, 'updated.csv'))
 
-        clt.update_thumbnail(updated, Video().extract_thumbnails())
-
         write('collect_videos.json', log)
 
 
@@ -174,21 +172,21 @@ class ExtractThumbnails(object):
     def run(self):
         df = pd.read_csv(self.cfg.video_csv, header=0)
         v = vid.Video()
+        res = v.extract_thumbnails(self.cfg.video_src, 300, 168)
 
-        for block in chunked(df.iterrows(), mp.cpu_count()):
-            threads = []
+        df = clt.update_thumbnail(df, res)
 
-            for row in block:
-                video = row[1]['embed']
-                thumbnail = video.split('.')[0]+'png'
-                file = os.path.join(self.cfg.video_src, video)
+        dst = os.path.join(self.cfg.video_csv_out, 'updated.tsv')
+        df.to_csv(dst, index=False, sep='\t')
 
-                threads.append(th.Thread(target=v.thumbnail,
-                             args=(self.cfg.thumb_height, self.cfg.thumb_width, 
-                                   os.path.join(self.cfg.thumb_dst, thumbnail))))
 
-            for t in threads: t.start()
-            for t in threads: t.join()
+class FixExtensions(object):
+    def __init__(self, config):
+        self.cfg = config
+
+
+    def run(self):
+        clt.fix_extensions(self.cfg.video_src)
 
 
 '''
