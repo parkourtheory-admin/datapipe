@@ -12,7 +12,7 @@ import io
 import base64
 from PIL import Image
 from more_itertools import chunked
-import multiprocessing as mp
+from multiprocessing import Process, Manager, cpu_count
 
 class Video(object):
     '''
@@ -68,7 +68,7 @@ class Video(object):
     outputs:
     failed (bool) True if successfully saved thumbnail
     '''
-    def thumbnail(self, src, dst, height=300, width=168, save=False):
+    def thumbnail(self, res, src, dst, height=300, width=168, save=False):
         vidcap = cv2.VideoCapture(src)
         success,image = vidcap.read()
         count = 0
@@ -86,16 +86,13 @@ class Video(object):
                     cv2.imwrite(os.path.join(dst, f'{filename}.jpg'), image)
                 else:
                     _, buffer = cv2.imencode('.jpg', image)
-                    return base64.b64encode(buffer)
+                    res[filename] = f'data:image/png;base64, {base64.b64encode(buffer)}'
+                    vidcap.release()
+                    break
 
                 vidcap.release()
 
             success, image = vidcap.read()
-
-
-    def thumbnail_base64():
-        with open(out_path, 'rb') as file:
-            return f'data:image/png;base64, {base64.b64encode(file.read())}'
 
 
     '''
@@ -107,14 +104,18 @@ class Video(object):
     '''
     def extract_thumbnails(self, src, dst):
         files = [i for i in os.listdir(src)]
-        cpus = mp.cpu_count()
+        cpus = cpu_count()
+        mgmt = Manager()
+        res = mgmt.dict()
 
         for block in chunked(iter(files), cpus):
             procs = []
 
             for f in block:
-                procs.append(mp.Process(target=self.thumbnail, 
-                    args=(os.path.join(src,f), dst, 300, 168)))
+                procs.append(Process(target=self.thumbnail, 
+                    args=(res, os.path.join(src, f), dst, 300, 168)))
             
             for p in procs: p.start()
             for p in procs: p.join()
+
+        return res.values()

@@ -135,7 +135,10 @@ class CollectVideos(object):
             'found': len(found)
         }
 
-        clt.update_videos(self.cfg.video_csv, found, os.path.join(self.cfg.video_csv_out, 'updated.csv'))
+        updated = clt.update_videos(self.cfg.video_csv, found, self.cfg.video_src,
+                                    os.path.join(self.cfg.video_csv_out, 'updated.csv'))
+
+        clt.update_thumbnail(updated, Video().extract_thumbnails())
 
         write('collect_videos.json', log)
 

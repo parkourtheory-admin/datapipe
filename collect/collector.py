@@ -78,8 +78,8 @@ def collect(df, dst, csv_out):
         except Exception:
             failed = failed.append(row, ignore_index=True)
 
+    # create a dataframe of successfully downloaded videos, which are moves not in failed
     df = df[~df.id.isin(failed.id)]
-    # df = df.drop(df.columns[0], axis=1)
     failed.to_csv('unavailable.csv', index=False)
     df.to_csv('found.csv', index=False)
 
@@ -87,19 +87,75 @@ def collect(df, dst, csv_out):
 
 
 '''
+Update video table thumbnail column
+
+inputs:
+df         (pd.DataFrame) Video table
+thumbnails (dict)         Directory containing serialized thumbnails
+
+outputs:
+df (pd.DataFrame) Video table with updated thumbnail column
+'''
+def update_thumbnail(df, thumbnails):
+    if 'thumbnail' not in df:
+        df['thumbnail'] = ''
+
+    for i, row in df.iterrows():
+        e = row['embed']
+        df.at[df['embed'] == e , 'thumbnail'] = thumbnails[e]
+
+
+'''
+Update video table embed column
+
+inputs:
+df        (pd.DataFrame) Video table
+video_src (str)          Directory containing video files
+
+outputs:
+df (pd.DataFrame) Video table with updated embed column
+'''
+def update_embed(df, video_src):
+
+    # iterate over entire video dataframe and check video file name format
+    for i, row in df.iterrows():
+        formatted = row['name'].lower().replace(' ', '_')
+
+        # update video file name if incorrect
+        if formatted != row['embed']:
+            os.rename(os.path.join(video_src, row['embed']), 
+                      os.path.join(video_src, formatted))
+            df.at[row['id']-1, 'embed'] = formatted
+
+    return df
+
+
+'''
 Update videos table column and save to csv's
 
 inputs:
 video_path (str)          Path to source video csv
-update     (pd.DataFrame) DataFrame containing found videos
+update     (pd.DataFrame) DataFrame containing found videos generated from self.collect()
+video_src  (str)          Directory containing video files
 save_path  (str)          Path including file name for saving csv output
 '''
-def update_videos(video_path, update, save_path):
+def update_videos(video_path, update, video_src, save_path):
     df = pd.read_csv(video_path, dtype={'id': int})
-    update.drop(columns='name')
-
+    
+    # update with new embed info
     for i, row in update.iterrows():
         df.at[row['id']-1, 'embed'] = row['embed']
 
+    df = update_embed(df, video_src)
+
+    # clean up video dataframe so it can be saved
+    video_cols = ['id', 'vid', 'channel', 'link', 'time', 'embed']
+
+    for col in update.columns:
+        if col not in video_cols:
+            update.drop(columns=col)
+
     df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
     df.to_csv(save_path, index=False)
+
+    return df
