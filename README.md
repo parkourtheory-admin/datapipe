@@ -1,7 +1,7 @@
 # datapipe
 Parkour Theory data set processing pipeline
 
-Before running `datapipe.py`, set up your configuration file ending in `.ini` and place it in the `configs/` directory. Also update `whitelist.ini` as needed. Then run the script using the following flags.
+Before running `main.py`, set up your configuration file ending in `.ini` and place it in the `configs/` directory. Also update `whitelist.ini` with row ids as needed.
 
 ### Basic configuration setup
 Change the move and video configurations to match your directory structure.
@@ -22,5 +22,5 @@ pipe      = FixEmbed, CheckMoves
 
 To run the `test.ini` configuration:
 ```
-python datapipe.py -cfg test
+python main.py -cfg test
 ```
