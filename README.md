@@ -6,10 +6,7 @@ Before running `datapipe.py`, set up your configuration file ending in `.ini` an
 ### Basic configuration setup
 Change the move and video configurations to match your directory structure. Otherwise to simply run the pipeline, set these three parameters:
 
--- whitelist	Uses the move id white list. This will ignore processing moves with accorsponding ids.
--- parallel 	If yes, parallelize execution of the tasks listed in pipe. Else, sequential execution.
--- pipe    		List of tasks to execute.
-
+-- config -cfg	Configuration file in config/
 
 ```
 [DEFAULT]

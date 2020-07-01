@@ -14,7 +14,7 @@ from tasks import *
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config', '-cfg', type=is_config, help='Configuration file (available: production, test)')
+    parser.add_argument('--config', '-cfg', type=is_config, help='Configuration file in config/')
     args = parser.parse_args()
 
     cfg = config.Configuration(args.config)

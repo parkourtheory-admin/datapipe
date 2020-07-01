@@ -22,4 +22,4 @@ class FixEmbed(object):
 			df.at[i, 'embed'] = f if f in files else 'unavailable.mp4'
 
 		df = df.drop(['prereq', 'subseq', 'type', 'alias', 'description'], axis=1)
-		df.to_csv('logs/fixed.tsv', index=False, sep='\t')
+		df.to_csv('output/fixed.tsv', index=False, sep='\t')
