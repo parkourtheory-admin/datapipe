@@ -10,7 +10,7 @@ Change the move and video configurations to match your directory structure.
 [DEFAULT]
 whitelist = yes
 parallel  = no
-pipe      = collect_videos, check_moves
+pipe      = FixEmbed, CheckMoves
 ```
 
 ### Usage
