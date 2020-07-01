@@ -3,9 +3,12 @@ Module for dynamically importing <task>.py files when the tasks module is import
 Importing class must import all
 i.e. from tasks import *
 
-All <task>.py files should be named using camelcase and with the same name as the class
-e.g. CheckMoves.py, which contains 
-class CheckMoves(object):
+Instructions for creating a new task:
+1. All <task>.py files should be named using camelcase and with the same name as the class
+   e.g. CheckMoves.py, which contains 
+        class CheckMoves(object):
+2. Each task should take a Configuration object via constructor
+3. Each task should have a run()
 '''
 from os import listdir
 from os.path import dirname, basename

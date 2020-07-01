@@ -1,4 +1,6 @@
 '''
+If properties are added to or removed from configuration files, change this object to make
+them available to all tasks.
 '''
 import os
 import configparser
