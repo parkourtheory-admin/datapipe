@@ -105,7 +105,7 @@ def save_graph(G, filename):
 
 def main():
  	src='database/latest/moves.csv'
-	df = pd.read_csv(src, dtype={'id': int})
+	df = pd.read_csv(src, dtype={'id': int}, sep='\t')
 	# edge_map =  dataframe_to_dict(df, 'name', 'id')
  	G = dataframe_to_graph(df)
 	save_graph(G, 'path.pdf')

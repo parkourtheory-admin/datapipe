@@ -24,20 +24,20 @@ cta     (pd.DataFrame) Moves without videos without links
 '''
 def find_missing(moves_path, videos_path, csv_out):
 
-    moves = pd.read_csv(moves_path, dtype={'id': int})
-    clips = pd.read_csv(videos_path,  dtype={'id': int})
+    moves = pd.read_csv(moves_path, dtype={'id': int}, sep='\t')
+    clips = pd.read_csv(videos_path,  dtype={'id': int}, sep='\t')
 
     una = clips.loc[clips['embed'] == 'unavailable.mp4']
     una = pd.merge(moves, una, on='id')
     una = una.drop(['prereq', 'subseq', 'type', 'alias', 'desc'], axis=1)
-    una.to_csv(os.path.join(csv_out, 'all_missing.csv'), index=False)
+    una.to_csv(os.path.join(csv_out, 'all_missing.csv'), index=False, sep='\t')
 
     miss = una.loc[una['link'].notnull()]
-    miss.to_csv(os.path.join(csv_out, 'missing_with_link.csv'), index=False)
+    miss.to_csv(os.path.join(csv_out, 'missing_with_link.csv'), index=False, sep='\t')
 
     cta = una.loc[una['link'].isna()]
     cta = cta.drop(['vid', 'channel', 'link', 'time', 'embed'], axis=1)
-    cta.to_csv(os.path.join(csv_out, 'call_to_action.csv'), index=False)
+    cta.to_csv(os.path.join(csv_out, 'call_to_action.csv'), index=False, sep='\t')
 
     return una, miss, cta
 
@@ -80,8 +80,8 @@ def collect(df, dst, csv_out):
 
     # create a dataframe of successfully downloaded videos, which are moves not in failed
     df = df[~df.id.isin(failed.id)]
-    failed.to_csv('unavailable.csv', index=False)
-    df.to_csv('found.csv', index=False)
+    failed.to_csv('unavailable.csv', index=False, sep='\t')
+    df.to_csv('found.csv', index=False, sep='\t')
 
     return failed, df
 
@@ -151,7 +151,7 @@ video_src  (str)          Directory containing video files
 save_path  (str)          Path including file name for saving csv output
 '''
 def update_videos(video_path, update, video_src, save_path):
-    df = pd.read_csv(video_path, dtype={'id': int})
+    df = pd.read_csv(video_path, dtype={'id': int}, sep='\t')
     
     # update with new embed info
     for i, row in update.iterrows():
@@ -167,7 +167,7 @@ def update_videos(video_path, update, video_src, save_path):
             update.drop(columns=col)
 
     df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
-    df.to_csv(save_path, index=False)
+    df.to_csv(save_path, index=False, sep='\t')
 
     return df
 

@@ -129,9 +129,8 @@ class DataCheck(object):
     outputs:
     empty (list) List of dicts with key as column header and value as the empty row
     '''
-    def find_all_empty(df, columns):
+    def find_all_empty(self, df, columns):
         return [{col: self.find_empty(df, col)} for col in columns]
-
 
 
     '''
@@ -202,7 +201,7 @@ class DataCheck(object):
     outputs:
     df (pd.DataFrame) Cleaned DataFrame
     '''
-    def remove_unnamed(df):
+    def remove_unnamed(self, df):
         return df.loc[:, ~df.columns.str.contains('^Unnamed')]
 
 

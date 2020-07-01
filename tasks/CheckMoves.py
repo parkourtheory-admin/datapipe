@@ -19,7 +19,7 @@ class CheckMoves(object):
         
         # check over move table
         src = self.cfg.move_csv
-        df = pd.read_csv(src, header=0)
+        df = pd.read_csv(src, header=0, sep='\t')
 
         dc = dck.DataCheck(whitelist=self.cfg.whitelist)
 
@@ -35,12 +35,12 @@ class CheckMoves(object):
         err = dc.check_symmetry(df)
         log['symmetry'] = err
 
-        cols = ['id', 'name', 'type', 'desc']
-        log['incomplete'] = dc.fine_all_empty(df, cols)
+        cols = ['id', 'name', 'type', 'description']
+        log['incomplete'] = dc.find_all_empty(df, cols)
 
         df = dc.sort_edges(df)
         df = dc.remove_unnamed(df)
-        df.to_csv(src, index=False)
+        df.to_csv(src, index=False, sep='\t')
 
         errs = dc.check_type(df)
         log['move_types'] = errs

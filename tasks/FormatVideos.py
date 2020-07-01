@@ -13,7 +13,7 @@ class FormatVideos(object):
 
 
     def run(self):
-        df = pd.read_csv(self.cfg.video_csv, header=0)
+        df = pd.read_csv(self.cfg.video_csv, header=0, sep='\t')
         v = vid.Video()
 
         for block in chunked(df.iterrows(), mp.cpu_count()):

@@ -22,8 +22,8 @@ def main():
     # dynamically import tasks and build pipeline
     pipe = []
     for task in cfg.pipe.split(', '):
-        cl = inspect.getmembers(globals()[task], inspect.isclass)
-        pipe.append(cl[0][1](cfg))
+        cl = inspect.getmembers(globals()[task], inspect.isclass) # cl is a tuple
+        pipe.append(cl[0][1](cfg)) # index 0 is class name and index 1 is object
 
     if cfg.parallel:
         pipe = [mp.Process(target=t.run) for t in pipe]
