@@ -291,36 +291,3 @@ class DataCheck(object):
         errs = [s for s in label_map.values() if len(s) > 1]
 
         return [] if len(unique) == sum([len(s) for s in errs]) else errs
-
-
-    '''
-    Check video embed file names and update embed to formated move names
-
-    inputs:
-    moves     (pd.DataFrame) Move dataframe
-    videos    (pd.DataFrame) Video dataframe to be updated
-    video_dir (str)          Directory containing videos
-
-    outputs:
-    videos (pd.DataFrame) Updated video dataframe
-    '''
-    def correct_embed(self, moves, videos, video_dir):
-        df = pd.merge(moves, videos, on='id')
-        move_headers = moves.head()
-
-        for i, row in df.iterrows():
-            curr_fn = os.path.join(video_dir, row['embed'])
-            new_embed = row['name'].replace(' ', '_').lower()+'.mp4'
-            new_fn = os.path.join(video_dir, new_embed)
-            
-            if row['embed'] != 'unavailable.mp4' and curr_fn != new_fn:
-                try:
-                    if not os.path.exists(new_fn):
-                        os.rename(curr_fn, new_fn)
-                except FileNotFoundError as e:
-                    print(f"{row['embed']}")
-            
-            df.at[i, 'embed'] = new_embed
-
-        df = df.drop(move_headers, axis=1)
-        return df
