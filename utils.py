@@ -47,5 +47,5 @@ inputs:
 dst (str)
 '''
 def write(dst, data):
-    with open(dst, 'w') as file:
+    with open(os.path.join('logs', dst), 'w') as file:
         json.dump(data, file)
