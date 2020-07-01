@@ -29,7 +29,7 @@ def find_missing(moves_path, videos_path, csv_out):
 
     una = clips.loc[clips['embed'] == 'unavailable.mp4']
     una = pd.merge(moves, una, on='id')
-    una = una.drop(['prereq', 'subseq', 'type', 'alias', 'desc'], axis=1)
+    una = una.drop(['prereq', 'subseq', 'type', 'alias', 'description'], axis=1)
     una.to_csv(os.path.join(csv_out, 'all_missing.csv'), index=False, sep='\t')
 
     miss = una.loc[una['link'].notnull()]
