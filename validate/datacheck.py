@@ -68,7 +68,9 @@ class DataCheck(object):
     outputs:
     return (list, ndarray) Returns empty list if symmetric and coordinates of asymmetric values
     '''
-    def check_symmetry(self, m):
+    def check_symmetry(self, df):
+        m = self.get_adjacency(df)
+
         if m is None: return
         if not (m == m.T).all():
             return np.argwhere(np.triu(m+m.T) == 1)+1
@@ -118,6 +120,21 @@ class DataCheck(object):
 
 
     '''
+    Find all empty cells
+
+    inputs:
+    df      (pd.DataFrame) Data source
+    columns (list)         List of column headers
+
+    outputs:
+    empty (list) List of dicts with key as column header and value as the empty row
+    '''
+    def find_all_empty(df, columns):
+        return [{col: self.find_empty(df, col)} for col in columns]
+
+
+
+    '''
     Log rows with duplicate edges
 
     inputs:
@@ -155,6 +172,9 @@ class DataCheck(object):
 
     inputs:
     df (pd.DataFrame) Table of moves
+
+    outputs:
+    df (pd.DataFrame) Sorted table of moves
     '''
     def sort_edges(self, df):
         for i, row in df.iterrows():
@@ -169,6 +189,21 @@ class DataCheck(object):
                 edge.sort()
                 row['subseq'] = edge
                 df.at[i, 'subseq'] = ', '.join(row['subseq'])
+
+        return df
+
+
+    '''
+    Remove unnamed column from DataFrame
+
+    inputs:
+    df (pd.DataFrame) DataFrame to clean
+
+    outputs:
+    df (pd.DataFrame) Cleaned DataFrame
+    '''
+    def remove_unnamed(df):
+        return df.loc[:, ~df.columns.str.contains('^Unnamed')]
 
 
     '''
@@ -230,7 +265,7 @@ class DataCheck(object):
     e.g. Wall/Flip/Twist == Wall/Twist/Flip == Flip/Wall/Twist, etc.
 
     inputs:
-    df          (pd.DataFrame)   DataFrame of moves
+    df (pd.DataFrame) DataFrame of moves
 
     outputs:
     output (list) Empty list if no errors else a list of errors
@@ -289,15 +324,3 @@ class DataCheck(object):
 
         df = df.drop(move_headers, axis=1)
         return df
-                
-
-
-if __name__ == '__main__':
-    dc = DataCheck(None)
-    move_path = '/media/ch3njus/Seagate4TB/research/parkourtheory/data/database/latest/moves.csv'
-    videos_path = '/media/ch3njus/Seagate4TB/research/parkourtheory/data/database/latest/video.csv'
-    videos_out = '/media/ch3njus/Seagate4TB/research/parkourtheory/data/output'
-    video_dir = '/media/ch3njus/Seagate4TB/research/parkourtheory/data/videos/production/'
-    moves = pd.read_csv(moves_path, dtype={'id': int})
-    videos = pd.read_csv(videos_path,  dtype={'id': int})
-    dc.correct_embed(moves, videos, video_dir).to_csv(videos_out, index=False)

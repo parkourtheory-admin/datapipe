@@ -94,20 +94,26 @@ df         (pd.DataFrame) Video table
 thumbnails (dict)         Directory containing serialized thumbnails
 
 outputs:
-df (pd.DataFrame) Video table with updated thumbnail column
+df  (pd.DataFrame) Video table with updated thumbnail column
+err (pd.DataFrame) Thumbnails that could not be extracted
 '''
 def update_thumbnail(df, thumbnails):
     if 'thumbnail' not in df:
         df['thumbnail'] = ''
 
+    failed = []
+
     for i, row in df.iterrows():
+        if row['embed'] == 'unavailable.mp4':
+            continue
+            
         try:
             e = row['embed']
             df.at[df['embed'] == e, 'thumbnail'] = thumbnails[e]
         except KeyError:
-            print(e)
+            failed.append(row)
 
-    return df
+    return df, pd.DataFrame(failed)
 
 
 '''

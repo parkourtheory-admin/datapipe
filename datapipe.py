@@ -3,7 +3,6 @@ Luigi tasks
 '''
 import os
 import json
-import luigi
 import argparse
 import configparser
 import threading as th
@@ -80,10 +79,12 @@ class DataCheck(object):
     def run(self):
         log = {}
         
+        # check over move table
         src = self.cfg.move_csv
         df = pd.read_csv(src, header=0)
 
         dc = dck.DataCheck(whitelist=self.cfg.whitelist)
+
         ids = dc.invalid_ids(df)
         log['invalid_ids'] = ids
 
@@ -93,15 +94,14 @@ class DataCheck(object):
         dup = dc.duplicated('name', df)
         log['duplicate_nodes'] = dup.to_json()
 
-        adj = dc.get_adjacency(df)
-        err = dc.check_symmetry(adj)
+        err = dc.check_symmetry(df)
         log['symmetry'] = err
 
-        columns = ['id', 'name', 'type', 'desc']
-        log['incomplete'] = [{col: dc.find_empty(df, col)} for col in columns]
+        cols = ['id', 'name', 'type', 'desc']
+        log['incomplete'] = dc.fine_all_empty(df, cols)
 
-        dc.sort_edges(df)
-        df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
+        df = dc.sort_edges(df)
+        df = dc.remove_unnamed(df)
         df.to_csv(src, index=False)
 
         errs = dc.check_type(df)
@@ -170,11 +170,12 @@ class ExtractThumbnails(object):
 
 
     def run(self):
-        df = pd.read_csv(self.cfg.video_csv, header=0)
+        df = pd.read_csv(self.cfg.video_csv, header=0, sep='\t')
         v = vid.Video()
         res = v.extract_thumbnails(self.cfg.video_src, 300, 168)
 
-        df = clt.update_thumbnail(df, res)
+        df, err = clt.update_thumbnail(df, res)
+        err.to_csv(os.path.join(self.cfg.video_csv_out, 'missing_thumbnails.tsv'), sep='\t')
 
         dst = os.path.join(self.cfg.video_csv_out, 'updated.tsv')
         df.to_csv(dst, index=False, sep='\t')
