@@ -24,3 +24,6 @@ To run the `test.ini` configuration:
 ```
 python main.py -cfg test
 ```
+
+### Notes
+1. Running `FixEmbed` task will output a tsv, which if opened in Google sheets or Libre Office 5 will show malformed cells containing entire rows. Not sure why this happens, but the same tsv file can be viewed properly with pandas in a Jupter Notebook or imported into MySQL. Querying those same malformed rows in either pandas or MySQL will results in correctly formatted data.
