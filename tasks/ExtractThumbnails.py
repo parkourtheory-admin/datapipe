@@ -20,4 +20,4 @@ class ExtractThumbnails(object):
         err.to_csv(os.path.join(self.cfg.video_csv_out, 'missing_thumbnails.tsv'), sep='\t')
 
         dst = os.path.join(self.cfg.video_csv_out, 'updated.tsv')
-        df.to_csv(dst, index=False, sep='\t')
+        df.to_csv(self.cfg.video_csv_out, index=False, sep='\t')

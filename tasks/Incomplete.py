@@ -4,7 +4,7 @@ import pandas as pd
 from validate import datacheck as dck
 from utils import write
 
-class CheckMoves(object):
+class Incomplete(object):
 
     '''
     inputs:
@@ -23,26 +23,7 @@ class CheckMoves(object):
 
         dc = dck.DataCheck(whitelist=self.cfg.whitelist)
 
-        ids = dc.invalid_ids(df)
-        log['invalid_ids'] = ids
-
-        edges = dc.find_duplicate_edges(df)
-        log['duplicate_edges'] = edges
-
-        dup = dc.duplicated('name', df)
-        log['duplicate_nodes'] = dup.to_json()
-
-        err = dc.check_symmetry(df)
-        log['symmetry'] = err
-
         cols = ['id', 'name', 'type', 'description']
         log['incomplete'] = dc.find_all_empty(df, cols)
 
-        df = dc.sort_edges(df)
-        df = dc.remove_unnamed(df)
-        df.to_csv(src, index=False, sep='\t')
-
-        errs = dc.check_type(df)
-        log['move_types'] = errs
-
-        write('data_check.json', log)
+        write('incomplete.json', log)
