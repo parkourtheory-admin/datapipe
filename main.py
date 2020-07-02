@@ -5,6 +5,7 @@ main module
 '''
 import inspect
 import argparse
+import traceback
 import multiprocessing as mp
 
 import config
@@ -29,15 +30,19 @@ inputs:
 pipe (list) Tasks to execute
 log  (dict) Log for failed tasks
 '''
-def sequential(pipe, log):
+def sequential(pipe, log, verbose=True):
     for i, t in enumerate(pipe):
         task = type(t).__name__
         try: 
             t.run()
             print(f'[{i}] {task} succeeded\n')
-        except Exception as e: 
-            print(f'[{i}] {task}.py failed\n{str(e)}\n')
-            log[type(t).__name__] = str(e)
+        except Exception as e:
+            tb = traceback.format_exc()
+            err = tb if verbose else str(e)
+            
+            print(f'[{i}] {task}.py failed\n{err}\n')
+
+            log[type(t).__name__] = tb
 
 
 def main():
