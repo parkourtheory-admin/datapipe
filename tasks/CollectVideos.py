@@ -12,7 +12,6 @@ class CollectVideos(object):
 
     def run(self):
         log = {}
-        df = pd.read_csv(self.csv, header=0, sep='\t')
 
         una, miss, cta = clt.find_missing(self.cfg.move_csv, self.cfg.video_csv, self.cfg.video_csv_out)
     

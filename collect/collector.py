@@ -36,7 +36,7 @@ def find_missing(moves_path, videos_path, csv_out):
     miss.to_csv(os.path.join(csv_out, 'missing_with_link.csv'), index=False, sep='\t')
 
     cta = una.loc[una['link'].isna()]
-    cta = cta.drop(['vid', 'channel', 'link', 'time', 'embed'], axis=1)
+    cta = cta.drop(['title', 'channel', 'link', 'time', 'embed'], axis=1)
     cta.to_csv(os.path.join(csv_out, 'call_to_action.csv'), index=False, sep='\t')
 
     return una, miss, cta
