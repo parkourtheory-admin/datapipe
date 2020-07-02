@@ -9,7 +9,7 @@ import traceback
 import multiprocessing as mp
 
 import config
-from utils import is_config, write, clean_logs, str2bool, accuracy
+from utils import is_config, write, clean_logs, accuracy
 from tasks import *
 
 '''
@@ -40,7 +40,7 @@ def sequential(pipe, log, verbose=True):
             tb = traceback.format_exc()
             err = tb if verbose else str(e)
             
-            print(f'[{i}] {task}.py failed\n{err}\n')
+            print(f'[{i}] {task}.py failed\n\n{err}\n')
 
             log[type(t).__name__] = tb
 
@@ -48,7 +48,8 @@ def sequential(pipe, log, verbose=True):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--config', '-cfg', type=is_config, help='Configuration file in config/')
-    parser.add_argument('--clean', '-cl', type=str2bool, help='Clean out old logs')
+    parser.add_argument('--clean', '-cl', action='store_true', help='Clean out old logs')
+    parser.add_argument('--verbose', '-vb', action='store_true', help='Display stack trace if errors occur')
     args = parser.parse_args()
 
     if args.clean: clean_logs()
@@ -63,7 +64,7 @@ def main():
 
     log = {}
     if cfg.parallel: parallel(pipe)
-    else: sequential(pipe, log)
+    else: sequential(pipe, log, verbose=args.verbose)
 
     accuracy(log, pipe)
     write('datapipe.json', log)

@@ -57,25 +57,7 @@ Remove all logs
 def clean_logs():
     for f in os.listdir('./logs'):
         os.remove(os.path.join('./logs',f))
-
-
-'''
-Convert string to bool
-
-inputs:
-s (str) String representation of boolean value
-
-outputs:
-bool
-'''
-def str2bool(s):
-    if s.lower() in ('y', 'yes', 't', 'true', '1'):
-        return True
-    elif s.lower() in ('n', 'no', 'f', 'false', '0'):
-        return False
-    else:
-        raise argparse.ArgumentTypeError('Error: Boolean value expected: {}'.format(s))
-
+        
 
 '''
 Display pipeline completion accuracy
