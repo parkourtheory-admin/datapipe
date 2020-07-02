@@ -8,7 +8,7 @@ import argparse
 import multiprocessing as mp
 
 import config
-from utils import is_config, write, clean_logs, str2bool
+from utils import is_config, write, clean_logs, str2bool, accuracy
 from tasks import *
 
 
@@ -34,14 +34,16 @@ def main():
         for t in pipe: t.start()
         for t in pipe: t.join()
     else: 
-        for t in pipe: 
+        for i, t in enumerate(pipe):
+            task = type(t).__name__
             try: 
                 t.run()
+                print(f'[{i}] {task} succeeded\n')
             except Exception as e: 
-                task = type(t).__name__
-                print(f'{task}.py failed\n{str(e)}')
+                print(f'[{i}] {task}.py failed\n{str(e)}\n')
                 log[type(t).__name__] = str(e)
 
+    accuracy(log, pipe)
     write('datapipe.json', log)
 
 

@@ -1,7 +1,6 @@
 import os
 import time
 import json
-import glob
 
 def format_time(t):
     h, r = divmod(t, 3600)
@@ -56,8 +55,8 @@ def write(dst, data):
 Remove all logs
 '''
 def clean_logs():
-    for f in glob.glob('logs'):
-        os.remove(f)
+    for f in os.listdir('./logs'):
+        os.remove(os.path.join('./logs',f))
 
 
 '''
@@ -76,3 +75,18 @@ def str2bool(s):
         return False
     else:
         raise argparse.ArgumentTypeError('Error: Boolean value expected: {}'.format(s))
+
+
+'''
+Display pipeline completion accuracy
+inputs:
+log  (dict) Failure log
+pipe (list) List of all tasks
+'''
+def accuracy(log, pipe):
+    total = len(pipe)
+    failed = len(log)
+    completed = total - failed
+    
+    print(f'completed: {completed} ({completed/total:.2%})')
+    print(f'failed:    {failed} ({failed/total:.2%})')
