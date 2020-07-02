@@ -22,4 +22,4 @@ class FixEmbed(object):
 			df.at[i, 'embed'] = f if f in files else 'unavailable.mp4'
 
 		df = df.drop(['name', 'prereq', 'subseq', 'type', 'alias', 'description'], axis=1)
-		df.to_csv('output/fixed.tsv', index=False, sep='\t')
+		df.to_csv(self.cfg.video_csv, index=False, sep='\t')
