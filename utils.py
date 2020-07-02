@@ -1,6 +1,7 @@
 import os
 import time
 import json
+import glob
 
 def format_time(t):
     h, r = divmod(t, 3600)
@@ -49,3 +50,29 @@ dst (str)
 def write(dst, data):
     with open(os.path.join('logs', dst), 'w') as file:
         json.dump(data, file)
+
+
+'''
+Remove all logs
+'''
+def clean_logs():
+    for f in glob.glob('logs'):
+        os.remove(f)
+
+
+'''
+Convert string to bool
+
+inputs:
+s (str) String representation of boolean value
+
+outputs:
+bool
+'''
+def str2bool(s):
+    if s.lower() in ('y', 'yes', 't', 'true', '1'):
+        return True
+    elif s.lower() in ('n', 'no', 'f', 'false', '0'):
+        return False
+    else:
+        raise argparse.ArgumentTypeError('Error: Boolean value expected: {}'.format(s))

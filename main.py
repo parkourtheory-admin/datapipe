@@ -8,14 +8,17 @@ import argparse
 import multiprocessing as mp
 
 import config
-from utils import is_config
+from utils import is_config, write, clean_logs, str2bool
 from tasks import *
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--config', '-cfg', type=is_config, help='Configuration file in config/')
+    parser.add_argument('--clean', '-cl', type=str2bool, help='Clean out old logs')
     args = parser.parse_args()
+
+    if args.clean: clean_logs()
 
     cfg = config.Configuration(args.config)
 
@@ -25,12 +28,21 @@ def main():
         cl = inspect.getmembers(globals()[task], inspect.isclass) # cl is a tuple
         pipe.append(cl[0][1](cfg)) # index 0 is class name and index 1 is object
 
+    log = {}
     if cfg.parallel:
         pipe = [mp.Process(target=t.run) for t in pipe]
         for t in pipe: t.start()
         for t in pipe: t.join()
     else: 
-        for t in pipe: t.run()
+        for t in pipe: 
+            try: 
+                t.run()
+            except Exception as e: 
+                task = type(t).__name__
+                print(f'{task}.py failed\n{str(e)}')
+                log[type(t).__name__] = str(e)
+
+    write('datapipe.json', log)
 
 
 if __name__ == '__main__':
