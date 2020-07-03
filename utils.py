@@ -2,6 +2,7 @@ import os
 import time
 import json
 import functools
+from collections import defaultdict
 
 def format_time(t):
     h, r = divmod(t, 3600)
@@ -31,6 +32,10 @@ data (dict) Log data
 '''
 def write(dst, data):
     dst = os.path.join('logs', dst)
+    
+    if isinstance(data, defaultdict):
+        data = dict(data)
+
     if type(data) is dict:
         with open(dst, 'w') as file:
             json.dump(data, file)
