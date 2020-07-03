@@ -35,11 +35,13 @@ def write(dst, data):
         with open(dst, 'w') as file:
             json.dump(data, file)
 
-    if type(data) is list:
+    elif type(data) is list:
         with open(dst, 'w') as file:
             for i in data:
                 file.write(f'{i}\n')
-
+    else:
+        with open(dst, 'w') as file:
+            file.write(data)
 
 '''
 Remove all logs
