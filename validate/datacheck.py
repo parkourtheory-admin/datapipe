@@ -1,6 +1,6 @@
 '''
 
-API for sanitizing graph data
+API for sanitizing move data
 
 Author: Justin Chen
 Date: 5/9/2020
