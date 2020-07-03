@@ -6,6 +6,7 @@ import time
 import traceback
 import multiprocessing as mp
 
+from colorama import Fore, Style
 from utils import timer
 
 '''
@@ -37,12 +38,13 @@ def sequential(pipe, log, verbose=True):
             start = time.perf_counter()
             t.run()
             runtime = time.perf_counter() - start
-            print(f'[{i}] {task} succeeded - time: {runtime:.4f} s\n')
+            print(f'{Fore.GREEN}[{i}] {task} succeeded - time: {runtime:.4f} s\n{Style.RESET_ALL}')
         except Exception as e:
             tb = traceback.format_exc()
             err = tb if verbose else str(e)
             
-            print(f'[{i}] {task}.py failed\n\n{err}\n')
+            print(f'{Fore.RED}[{i}] {task}.py failed{Style.RESET_ALL}')
+            print(f'{err}\n')
 
             log[type(t).__name__] = tb
 
