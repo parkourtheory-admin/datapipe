@@ -18,3 +18,5 @@ class DataStats(object):
 		write('single_type_dist.json', sl)
 
 		print(f'multi-label: {len(ml)}\tsingle-label: {len(sl)}')
+
+		G = dataframe_to_graph(moves)

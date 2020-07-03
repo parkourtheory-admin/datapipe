@@ -74,6 +74,8 @@ def dataframe_to_graph(df):
 	for i, node in singles.iterrows():
     	G.add_node(node['name'])
 
+    assert len(G.nodes()) == len(df.index)
+
     return G
 
 
