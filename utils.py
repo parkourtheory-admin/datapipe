@@ -44,7 +44,8 @@ def is_pipes(p):
 
 '''
 inputs:
-dst (str)
+dst  (str)  Log file name
+data (dict) Log data
 '''
 def write(dst, data):
     with open(os.path.join('logs', dst), 'w') as file:
@@ -62,11 +63,11 @@ def clean_logs():
 '''
 Display pipeline completion accuracy
 inputs:
-log  (dict) Failure log
-pipe (list) List of all tasks
+log   (dict)     Failure log
+total (iterable) Iterable object of all tasks
 '''
-def accuracy(log, pipe):
-    total = len(pipe)
+def accuracy(log, total):
+    total = len(total)
     failed = len(log)
     completed = total - failed
     

@@ -29,31 +29,37 @@ class Video(object):
     Writes resize video as mp4
 
     inputs:
-    height   (int) Output video height
-    width    (int) Output video width
-    filename (str) Input file path
-    output   (str) Output file path
+    height   (int)  Output video height
+    width    (int)  Output video width
+    filename (str)  Input file path
+    output   (str)  Output file path
+    res      (dict) Process Manager dictionary
     '''
-    def resize(self, height, width, filename, output):
+    def resize(self, height, width, filename, output, res):
         dout = (height, width)
         out_file = f'{output}.mp4' if not output.endswith('.mp4') else output
         cap = cv2.VideoCapture(filename)
-        # fourcc = cv2.VideoWriter_fourcc(*'MP4V')
 
         if self.fps == None:
-            self.fps = cap.get(cv2.CAP_PROP_FPS)
+            self.fps = int(cap.get(cv2.CAP_PROP_FPS))
 
         out = cv2.VideoWriter(out_file, 0x7634706d, self.fps, dout)
 
-        while 1:
+        count = 0
+
+        while cap.isOpened():
             ret, frame = cap.read()
             if not ret: break
-
+            
             b = cv2.resize(frame, dout, fx=0, fy=0, interpolation=cv2.INTER_CUBIC)
             out.write(b)
+            count += 1
 
         cap.release()
         out.release()
+
+        f = filename.split('/')[-1]
+        res[f] = count == 0
 
 
     '''
