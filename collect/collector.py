@@ -117,7 +117,7 @@ def update_thumbnail(df, thumbnails):
 
 
 '''
-Update video table embed column
+Update video table embed column and renamed video files
 
 inputs:
 df        (pd.DataFrame) Video table
@@ -130,13 +130,17 @@ def update_embed(df, video_src):
 
     # iterate over entire video dataframe and check video file name format
     for i, row in df.iterrows():
-        formatted = row['name'].lower().replace(' ', '_')
+        formatted = row['name'].lower().strip().replace(' ', '_')+'.mp4'
 
-        # update video file name if incorrect
-        if formatted != row['embed']:
-            os.rename(os.path.join(video_src, row['embed']), 
-                      os.path.join(video_src, formatted))
-            df.at[row['id']-1, 'embed'] = formatted
+        try:
+            # update video file name if incorrect
+            if row['embed'] != 'unavailable.mp4' and formatted != row['embed']:
+                os.rename(os.path.join(video_src, row['embed']), 
+                          os.path.join(video_src, formatted))
+        except Exception:
+            print(f'from: {row["embed"]}\tto: {formatted}')
+
+        df.at[row['id']-1, 'embed'] = formatted
 
     return df
 
@@ -160,7 +164,7 @@ def update_videos(video_path, update, video_src, save_path):
     df = update_embed(df, video_src)
 
     # clean up video dataframe so it can be saved
-    video_cols = ['id', 'vid', 'channel', 'link', 'time', 'embed']
+    video_cols = ['id', 'title', 'channel', 'link', 'time', 'embed']
 
     for col in update.columns:
         if col not in video_cols:

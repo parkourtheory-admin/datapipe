@@ -21,5 +21,5 @@ class FixEmbed(object):
 			f = row['name'].lower().strip().replace(' ', '_')+'.mp4'
 			df.at[i, 'embed'] = f if f in files else 'unavailable.mp4'
 
-		df = df.drop(['name', 'prereq', 'subseq', 'type', 'alias', 'description'], axis=1)
+		df = df.drop(list(moves)[1:], axis=1)
 		df.to_csv(self.cfg.video_csv, index=False, sep='\t')
