@@ -30,8 +30,15 @@ dst  (str)  Log file name
 data (dict) Log data
 '''
 def write(dst, data):
-    with open(os.path.join('logs', dst), 'w') as file:
-        json.dump(data, file)
+    dst = os.path.join('logs', dst)
+    if type(data) is dict:
+        with open(dst, 'w') as file:
+            json.dump(data, file)
+
+    if type(data) is list:
+        with open(dst, 'w') as file:
+            for i in data:
+                file.write(f'{i}\n')
 
 
 '''
