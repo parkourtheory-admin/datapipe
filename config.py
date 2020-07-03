@@ -28,16 +28,16 @@ class Configuration(object):
         self.video_dst = video['dst']
         self.video_csv = video['csv']
         self.video_csv_out = video['csv_out']
-        self.video_height = video['height']
-        self.video_width = video['width']
+        self.video_height = int(video['height'])
+        self.video_width = int(video['width'])
 
         if not os.path.exists(video['dst']):
             os.makedirs(video['dst'])
             
         # thumbnail configuration
         thumb = cfg['thumbnails']
-        self.thumb_height = thumb['height']
-        self.thumb_width = thumb['width']
+        self.thumb_height = int(thumb['height'])
+        self.thumb_width = int(thumb['width'])
         self.thumb_dst = thumb['dst']
         
         if not os.path.exists(thumb['dst']):

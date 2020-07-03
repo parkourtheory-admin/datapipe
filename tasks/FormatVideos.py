@@ -21,7 +21,7 @@ class FormatVideos(object):
 
             for row in block:
                 video = row[1]['embed']
-                file = os.path.join(self.video_src, video)
+                file = os.path.join(self.cfg.video_src, video)
 
                 procs.append(mp.Process(target=v.resize, 
                              args=(self.cfg.video_height, self.cfg.video_width, file, os.path.join(self.cfg.video_src, video))))
