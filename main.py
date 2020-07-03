@@ -9,9 +9,10 @@ import config
 
 from tasks import *
 from pipeline import parallel, sequential, unique, exists
-from utils import is_config, write, clean_logs, accuracy
+from utils import is_config, write, clean_logs, accuracy, timer
 
 
+@timer
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--config', '-cfg', type=is_config, help='Configuration file in config/')

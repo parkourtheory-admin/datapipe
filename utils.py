@@ -1,6 +1,7 @@
 import os
 import time
 import json
+import functools
 
 def format_time(t):
     h, r = divmod(t, 3600)
@@ -54,3 +55,23 @@ def accuracy(log, total):
     
     print(f'completed: {completed} ({completed/total:.2%})')
     print(f'failed:    {failed} ({failed/total:.2%})')
+
+
+'''
+timer decorator
+
+inputs:
+func (function) Function to time
+
+outputs:
+func (function) Wrapper for functio to be timed
+'''
+def timer(func):
+    @functools.wraps(func)
+    def wrapper_timer(*args, **kwargs):
+        start = time.perf_counter()
+        value = func(*args, **kwargs)
+        runtime = time.perf_counter() - start
+        print(f'{func.__name__}() time: {runtime:.4f} s')
+        return value
+    return wrapper_timer

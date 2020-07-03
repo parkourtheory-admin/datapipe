@@ -2,8 +2,11 @@
 Data pipeline API
 '''
 import os
+import time
 import traceback
 import multiprocessing as mp
+
+from utils import timer
 
 '''
 Parallel task execution
@@ -11,6 +14,7 @@ Parallel task execution
 inputs:
 pipe (list) Tasks to execute
 '''
+@timer
 def parallel(pipe):
     pipe = [mp.Process(target=t.run) for t in pipe]
 
@@ -24,13 +28,16 @@ inputs:
 pipe (list) Tasks to execute
 log  (dict) Log for failed tasks
 '''
+@timer
 def sequential(pipe, log, verbose=True):
     for i, t in enumerate(pipe):
         task = type(t).__name__
 
         try: 
+            start = time.perf_counter()
             t.run()
-            print(f'[{i}] {task} succeeded\n')
+            runtime = time.perf_counter() - start
+            print(f'[{i}] {task} succeeded - time: {runtime:.4f} s\n')
         except Exception as e:
             tb = traceback.format_exc()
             err = tb if verbose else str(e)
