@@ -8,7 +8,7 @@ import argparse
 import config
 
 from tasks import *
-from pipeline import parallel, sequential, unique, exists
+from pipeline import parallel, sequential, unique, exists, notice
 from utils import is_config, write, clean_logs, accuracy, timer
 
 
@@ -39,6 +39,7 @@ def main():
 
     accuracy(log, pipe)
     write('datapipe.json', log)
+    notice()
 
 
 if __name__ == '__main__':

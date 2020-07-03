@@ -7,6 +7,7 @@ from pytube import YouTube
 sys.path.insert(1, '/media/ch3njus/Seagate4TB/projects/pystagram')
 
 from pystagram import Instagram
+from colorama import Fore, Style
 
 
 '''
@@ -117,32 +118,39 @@ def update_thumbnail(df, thumbnails):
 
 
 '''
-Update video table embed column and renamed video files
+Update video table embed column and rename video files
 
 inputs:
 df        (pd.DataFrame) Video table
 video_src (str)          Directory containing video files
 
 outputs:
-df (pd.DataFrame) Video table with updated embed column
+df  (pd.DataFrame) Video table with updated embed column
+err (list)         Moves without videos
 '''
 def update_embed(df, video_src):
-
+    err = []
     # iterate over entire video dataframe and check video file name format
     for i, row in df.iterrows():
         formatted = row['name'].lower().strip().replace(' ', '_')+'.mp4'
 
         try:
             # update video file name if incorrect
-            if row['embed'] != 'unavailable.mp4' and formatted != row['embed']:
-                os.rename(os.path.join(video_src, row['embed']), 
-                          os.path.join(video_src, formatted))
+            if row['embed'] != 'unavailable.mp4':
+                file = os.path.join(video_src, row['embed'])
+                new_file = os.path.join(video_src, formatted)
+
+                if os.path.isfile(file):
+                    os.rename(file, new_file)
+                elif not os.path.isfile(new_file):
+                    err.append(row['name']) # log moves without videos
         except Exception:
-            print(f'from: {row["embed"]}\tto: {formatted}')
+            # capture unexpected bugs
+            print(f'from:{Fore.RED} {row["embed"]}\t{Style.RESET_ALL}to: {formatted}')
 
         df.at[row['id']-1, 'embed'] = formatted
 
-    return df
+    return df, err
 
 
 '''
@@ -153,6 +161,9 @@ video_path (str)          Path to source video csv
 update     (pd.DataFrame) DataFrame containing found videos generated from self.collect()
 video_src  (str)          Directory containing video files
 save_path  (str)          Path including file name for saving csv output
+
+outputs:
+err (list) Moves without videos
 '''
 def update_videos(video_path, update, video_src, save_path):
     df = pd.read_csv(video_path, dtype={'id': int}, sep='\t')
@@ -161,7 +172,7 @@ def update_videos(video_path, update, video_src, save_path):
     for i, row in update.iterrows():
         df.at[row['id']-1, 'embed'] = row['embed']
 
-    df = update_embed(df, video_src)
+    df,err = update_embed(df, video_src)
 
     # clean up video dataframe so it can be saved
     video_cols = ['id', 'title', 'channel', 'link', 'time', 'embed']
@@ -173,7 +184,7 @@ def update_videos(video_path, update, video_src, save_path):
     df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
     df.to_csv(save_path, index=False, sep='\t')
 
-    return df
+    return df, err
 
 
 def fix_extensions(src):

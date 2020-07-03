@@ -74,3 +74,6 @@ def exists(pipe):
 	tasks = [t.split('.')[0] for t in os.listdir('tasks') if t.endswith('.py')]
 	for t in pipe:
 		assert t in tasks
+
+def notice():
+    print(f'{Fore.BLUE}REMINDER:{Style.RESET_ALL} check logs/ for output even if tasks are successful.')

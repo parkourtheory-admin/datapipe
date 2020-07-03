@@ -29,7 +29,7 @@ class CollectVideos(object):
             'found': len(found)
         }
 
-        updated = clt.update_videos(self.cfg.video_csv, found, self.cfg.video_src,
+        updated, err = clt.update_videos(self.cfg.video_csv, found, self.cfg.video_src,
                                     os.path.join(self.cfg.video_csv_out, 'updated.csv'))
-
+        write('no_videos_clt.txt', err)
         write('collect_videos.json', log)
