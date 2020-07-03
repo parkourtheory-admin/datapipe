@@ -5,44 +5,11 @@ main module
 '''
 import inspect
 import argparse
-import traceback
-import multiprocessing as mp
-
 import config
-from utils import is_config, write, clean_logs, accuracy
+
 from tasks import *
-
-'''
-Parallel task execution
-
-inputs:
-pipe (list) Tasks to execute
-'''
-def parallel(pipe):
-    pipe = [mp.Process(target=t.run) for t in pipe]
-    for t in pipe: t.start()
-    for t in pipe: t.join()
-
-'''
-Sequential execution of pipeline
-
-inputs:
-pipe (list) Tasks to execute
-log  (dict) Log for failed tasks
-'''
-def sequential(pipe, log, verbose=True):
-    for i, t in enumerate(pipe):
-        task = type(t).__name__
-        try: 
-            t.run()
-            print(f'[{i}] {task} succeeded\n')
-        except Exception as e:
-            tb = traceback.format_exc()
-            err = tb if verbose else str(e)
-            
-            print(f'[{i}] {task}.py failed\n\n{err}\n')
-
-            log[type(t).__name__] = tb
+from pipeline import parallel, sequential, unique
+from utils import is_config, write, clean_logs, accuracy
 
 
 def main():
@@ -58,7 +25,7 @@ def main():
 
     # dynamically import tasks and build pipeline
     pipe = []
-    for task in cfg.pipe.split(', '):
+    for task in unique(cfg.pipe.split(', ')):
         cl = inspect.getmembers(globals()[task], inspect.isclass) # cl is a tuple
         pipe.append(cl[0][1](cfg)) # index 0 is class name and index 1 is object
 
