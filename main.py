@@ -8,7 +8,7 @@ import argparse
 import config
 
 from tasks import *
-from pipeline import parallel, sequential, unique
+from pipeline import parallel, sequential, unique, exists
 from utils import is_config, write, clean_logs, accuracy
 
 
@@ -25,7 +25,10 @@ def main():
 
     # dynamically import tasks and build pipeline
     pipe = []
-    for task in unique(cfg.pipe.split(', ')):
+    tasks = unique(cfg.pipe.split(', '))
+    exists(tasks)
+
+    for task in tasks:
         cl = inspect.getmembers(globals()[task], inspect.isclass) # cl is a tuple
         pipe.append(cl[0][1](cfg)) # index 0 is class name and index 1 is object
 

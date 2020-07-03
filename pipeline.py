@@ -1,6 +1,7 @@
 '''
 Data pipeline API
 '''
+import os
 import traceback
 import multiprocessing as mp
 
@@ -12,7 +13,7 @@ pipe (list) Tasks to execute
 '''
 def parallel(pipe):
     pipe = [mp.Process(target=t.run) for t in pipe]
-    
+
     for t in pipe: t.start()
     for t in pipe: t.join()
 
@@ -52,3 +53,15 @@ def unique(pipe):
 	p = set(pipe)
 	assert len(p) == len(pipe)
 	return p
+
+
+'''
+Check that all specified tasks exists in tasks/
+
+inputs:
+pipe (list) List of tasks
+'''
+def exists(pipe):
+	tasks = [t.split('.')[0] for t in os.listdir('tasks') if t.endswith('.py')]
+	for t in pipe:
+		assert t in tasks

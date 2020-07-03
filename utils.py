@@ -24,25 +24,6 @@ def is_config(c):
 
 
 '''
-Convert argparse arguments into pipeline names
-
-inputs:
-p (str) Pipeline argument
-
-outputs:
-name (str) Formatted name of pipeline
-'''
-def is_pipes(p):
-    if p == 'm' or p == 'moves' or p == 'move':
-        return 'moves'
-    elif p == 'v' or p == 'videos' or p == 'video':
-        return 'videos'
-    else:
-        raise Exception('Invalid argparse')
-
-
-
-'''
 inputs:
 dst  (str)  Log file name
 data (dict) Log data
