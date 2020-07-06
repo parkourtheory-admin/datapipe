@@ -2,6 +2,7 @@
 Extract relational features, which can later be use for graph embeddings
 '''
 
+import numpy as np
 import pandas as pd
 import networkx as nx
 

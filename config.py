@@ -37,10 +37,10 @@ class Configuration(object):
         self.thumb_width = int(thumb['width'])
         self.thumb_dst = thumb['dst']
         
-        make_dirs(video['csv_out'])
-        make_dirs(video['src'])
-        make_dirs(video['dst'])
-        make_dirs(thumb['dst'])
+        make_dir(video['csv_out'])
+        make_dir(video['src'])
+        make_dir(video['dst'])
+        make_dir(thumb['dst'])
 
 
     '''

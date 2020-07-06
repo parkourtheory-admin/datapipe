@@ -66,7 +66,7 @@ class DataCheck(object):
     m (ndarray) Adjacency matrix of moves
 
     outputs:
-    return (list, ndarray) Returns empty list if symmetric and coordinates of asymmetric values
+    return (ndarray) Returns empty list if symmetric and coordinates of asymmetric values
     '''
     def check_symmetry(self, df):
         m = self.get_adjacency(df)
@@ -74,7 +74,7 @@ class DataCheck(object):
         if m is None: return
         if not (m == m.T).all():
             return np.argwhere(np.triu(m+m.T) == 1)+1
-        return []
+        return np.empty()
 
 
     '''
@@ -254,6 +254,6 @@ class DataCheck(object):
 
 
         # check if any errors, return empty list if none
-        errs = [s for s in label_map.values() if len(s) > 1]
+        errs = [list(s) for s in label_map.values() if len(s) > 1]
 
         return [] if len(unique) == sum([len(s) for s in errs]) else errs

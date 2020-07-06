@@ -24,6 +24,6 @@ class Symmetry(object):
         dc = dck.DataCheck(whitelist=self.cfg.whitelist)
 
         err = dc.check_symmetry(df)
-        log['symmetry'] = err
+        log['symmetry'] = err.tolist()
 
         write('symmetry.json', log)
