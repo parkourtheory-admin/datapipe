@@ -28,7 +28,7 @@ class DuplicateEdges(object):
         ground_truth = edges//2
         graph_count = len(G.edges())
 
-        print(f'networkx: {graph_count}\ttruth: {ground_truth}')
+        print(f'dataframe_to_graph: {graph_count}\ttruth: {ground_truth}')
 
         assert graph_count == ground_truth
 
