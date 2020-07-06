@@ -134,39 +134,6 @@ class DataCheck(object):
 
 
     '''
-    Log rows with duplicate edges
-
-    inputs:
-    df (pd.DataFrame) Table of moves
-
-    outputs:
-    log (dict) Dictionary of lists of dicts
-    '''
-    def find_duplicate_edges(self, df):
-        log = {'pre': [], 'sub': []}
-
-        for i, row in df.iterrows():
-            if isinstance(row['prereq'], str):
-                pre = row['prereq'].split(', ')
-                uniq = list(set(pre))
-
-                if uniq == pre:
-                    e = [i for i in pre if i not in uniq]
-                    log['pre'].append({i: e})
-
-            if isinstance(row['subseq'], str):
-                sub = row['subseq'].split(', ')
-                uniq = list(set(sub))
-
-                if uniq == sub:
-                    if uniq == sub:
-                        e = [i for i in sub if i not in uniq]
-                        log['pre'].append({i: e})
-
-        return log
-
-
-    '''
     Sort edges alphabetically and update by reference
 
     inputs:

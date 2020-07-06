@@ -9,7 +9,7 @@ import config
 
 from tasks import *
 from pipeline import parallel, sequential, unique, exists, notice
-from utils import is_config, write, clean_logs, accuracy, timer
+from utils import *
 
 
 @timer
@@ -20,6 +20,7 @@ def main():
     parser.add_argument('--verbose', '-v', action='store_true', help='Display stack trace if errors occur')
     args = parser.parse_args()
 
+    make_log_dir()
     if args.clean: clean_logs()
 
     cfg = config.Configuration(args.config)

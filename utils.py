@@ -26,6 +26,14 @@ def is_config(c):
 
 
 '''
+'''
+def make_log_dir():
+    if not os.path.exists('logs'):
+        os.mkdir('logs')
+
+
+
+'''
 inputs:
 dst  (str)  Log file name
 data (dict) Log data
