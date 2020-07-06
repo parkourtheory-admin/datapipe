@@ -3,6 +3,14 @@ Parkour Theory data set processing pipeline
 
 Before running `main.py`, set up your configuration file ending in `.ini` and place it in the `configs/` directory. Also update `whitelist.ini` with row ids as needed.
 
+### Requirements
+1. pystagram
+```
+git clone https://github.com/ch3njust1n/pystagram.git && cd pystagram
+python setup.py build
+sudo python setup.py install
+```
+
 ### Basic configuration setup
 Change the move and video configurations to match your directory structure.
 
