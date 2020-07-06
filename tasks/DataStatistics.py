@@ -4,6 +4,8 @@ import pandas as pd
 from stats import label_dist
 from utils import write
 
+from preproc import relational as rel
+
 class DataStats(object):
 	def __init__(self, config):
 		self.cfg = config
@@ -19,4 +21,4 @@ class DataStats(object):
 
 		print(f'multi-label: {len(ml)}\tsingle-label: {len(sl)}')
 
-		G = dataframe_to_graph(moves)
+		G = rel.dataframe_to_graph(moves)

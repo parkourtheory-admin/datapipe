@@ -26,11 +26,12 @@ def is_config(c):
 
 
 '''
+inputs:
+path (str) Absolute or relative path to create
 '''
-def make_log_dir():
-    if not os.path.exists('logs'):
-        os.mkdir('logs')
-
+def make_dir(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
 
 
 '''

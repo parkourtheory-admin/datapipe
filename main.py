@@ -20,7 +20,7 @@ def main():
     parser.add_argument('--verbose', '-v', action='store_true', help='Display stack trace if errors occur')
     args = parser.parse_args()
 
-    make_log_dir()
+    make_dir('logs')
     if args.clean: clean_logs()
 
     cfg = config.Configuration(args.config)

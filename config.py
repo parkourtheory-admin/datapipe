@@ -5,7 +5,7 @@ them available to all tasks.
 import os
 import configparser
 
-from utils import is_config
+from utils import *
 
 class Configuration(object):
     def __init__(self, config):
@@ -30,9 +30,6 @@ class Configuration(object):
         self.video_csv_out = video['csv_out']
         self.video_height = int(video['height'])
         self.video_width = int(video['width'])
-
-        if not os.path.exists(video['dst']):
-            os.makedirs(video['dst'])
             
         # thumbnail configuration
         thumb = cfg['thumbnails']
@@ -40,8 +37,10 @@ class Configuration(object):
         self.thumb_width = int(thumb['width'])
         self.thumb_dst = thumb['dst']
         
-        if not os.path.exists(thumb['dst']):
-            os.makedirs(thumb['dst'])
+        make_dirs(video['csv_out'])
+        make_dirs(video['src'])
+        make_dirs(video['dst'])
+        make_dirs(thumb['dst'])
 
 
     '''
