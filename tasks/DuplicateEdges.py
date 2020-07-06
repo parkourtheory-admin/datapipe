@@ -28,9 +28,9 @@ class DuplicateEdges(object):
         ground_truth = edges//2
         graph_count = len(G.edges())
 
-        print(f'graph: {graph_count}\tbrute: {brute}')
+        print(f'networkx: {graph_count}\ttruth: {ground_truth}')
 
-        assert graph == brute
+        assert graph_count == ground_truth
 
         log['duplicate_edges'] = duplicates
         write('duplicate_edges.json', log)
