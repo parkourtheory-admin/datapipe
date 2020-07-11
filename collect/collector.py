@@ -121,7 +121,7 @@ def update_thumbnail(df, thumbnails):
 Update video table embed column and rename video files
 
 inputs:
-df        (pd.DataFrame) Video table
+df        (pd.DataFrame) Merged move and video table
 video_src (str)          Directory containing video files
 
 outputs:
@@ -157,7 +157,8 @@ def update_embed(df, video_src):
 Update videos table column and save to csv's
 
 inputs:
-video_path (str)          Path to source video csv
+move_path  (str)          Path to source move tsv
+video_path (str)          Path to source video tsv
 update     (pd.DataFrame) DataFrame containing found videos generated from self.collect()
 video_src  (str)          Directory containing video files
 save_path  (str)          Path including file name for saving csv output
@@ -165,14 +166,16 @@ save_path  (str)          Path including file name for saving csv output
 outputs:
 err (list) Moves without videos
 '''
-def update_videos(video_path, update, video_src, save_path):
-    df = pd.read_csv(video_path, dtype={'id': int}, sep='\t')
+def update_videos(move_tsv, video_tsv, update, video_src, save_path):
+    move = pd.read_csv(move_tsv, dtype={'id': int}, header=0, sep='\t')
+    video = pd.read_csv(video_tsv, dtype={'id': int}, header=0, sep='\t')
+    df = pd.merge(move, video, on='id')
     
     # update with new embed info
     for i, row in update.iterrows():
         df.at[row['id']-1, 'embed'] = row['embed']
 
-    df,err = update_embed(df, video_src)
+    df, err = update_embed(df, video_src)
 
     # clean up video dataframe so it can be saved
     video_cols = ['id', 'title', 'channel', 'link', 'time', 'embed']

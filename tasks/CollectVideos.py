@@ -13,7 +13,8 @@ class CollectVideos(object):
     def run(self):
         log = {}
 
-        una, miss, cta = clt.find_missing(self.cfg.move_csv, self.cfg.video_csv, self.cfg.video_csv_out)
+        una, miss, cta = clt.find_missing(self.cfg.move_csv, self.cfg.video_csv, 
+                                          self.cfg.video_csv_out)
     
         log['missing'] = {
             'unavailable': len(una),
@@ -29,7 +30,8 @@ class CollectVideos(object):
             'found': len(found)
         }
 
-        updated, err = clt.update_videos(self.cfg.video_csv, found, self.cfg.video_src,
-                                    os.path.join(self.cfg.video_csv_out, 'updated.csv'))
+        update_path = os.path.join(self.cfg.video_csv_out, 'updated.csv')
+        updated, err = clt.update_videos(self.cfg.move_csv, self.cfg.video_csv, found, 
+                                         self.cfg.video_src, update_path)
         write('no_videos_clt.txt', err)
         write('collect_videos.json', log)
