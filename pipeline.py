@@ -2,6 +2,7 @@
 Data pipeline API
 '''
 import os
+import sys
 import time
 import traceback
 import multiprocessing as mp
@@ -21,6 +22,7 @@ def parallel(pipe):
 
     for t in pipe: t.start()
     for t in pipe: t.join()
+
 
 '''
 Sequential execution of pipeline
@@ -71,9 +73,15 @@ inputs:
 pipe (list) List of tasks
 '''
 def exists(pipe):
-	tasks = [t.split('.')[0] for t in os.listdir('tasks') if t.endswith('.py')]
-	for t in pipe:
-		assert t in tasks
+    tasks = [t.split('.')[0] for t in os.listdir('tasks') if t.endswith('.py')]
+    errs = []
+    for t in pipe:
+        if t not in tasks: errs.append(t)
+
+    if len(errs) > 0: 
+        print(f'Invalid tasks: {Fore.RED}{", ".join(errs)}{Style.RESET_ALL}')
+        sys.exit(0)
+
 
 def notice():
     print(f'{Fore.BLUE}REMINDER:{Style.RESET_ALL} check logs/ for output even if tasks are successful.')
