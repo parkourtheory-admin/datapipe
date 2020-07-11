@@ -6,6 +6,7 @@ import sys
 import time
 import traceback
 import multiprocessing as mp
+from collections import OrderedDict
 
 from colorama import Fore, Style
 from utils import timer
@@ -61,7 +62,7 @@ output:
 pipe (set) Unique set of tasks
 '''
 def unique(pipe):
-	p = set(pipe)
+	p = list(OrderedDict.fromkeys(pipe).keys())
 	assert len(p) == len(pipe)
 	return p
 
