@@ -27,6 +27,15 @@ def is_config(c):
 
 '''
 inputs:
+path (str) Absolute or relative path to create
+'''
+def make_dir(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+
+'''
+inputs:
 dst  (str)  Log file name
 data (dict) Log data
 '''
