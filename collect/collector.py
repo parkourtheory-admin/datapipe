@@ -102,17 +102,18 @@ def update_thumbnail(df, thumbnails):
     if 'thumbnail' not in df:
         df['thumbnail'] = ''
 
+    img = ''
     failed = []
 
     for i, row in df.iterrows():
-        if row['embed'] == 'unavailable.mp4':
-            continue
-            
         try:
             e = row['embed']
-            df.loc[e == df['embed'], 'thumbnail'] = thumbnails[e]
+            img = thumbnails[e]
         except KeyError:
             failed.append(row)
+            img = thumbnails['unavailable.mp4']
+
+        df.loc[e == df['embed'], 'thumbnail'] = img
 
     return df, pd.DataFrame(failed)
 
