@@ -75,26 +75,20 @@ class Video(object):
     '''
     def thumbnail(self, res, src, height=300, width=168):
         vidcap = cv2.VideoCapture(src)
-        success,image = vidcap.read()
-        count = 0
-        mid = int(vidcap.get(cv2.CAP_PROP_FRAME_COUNT))//2
-        filename = src.split('/')[-1]
-
-        while success:
-            count += 1
-
-            if count == mid:
-                image = cv2.resize(image,(height, width))
-                _, buffer = cv2.imencode('.jpg', image)
-                res[filename] = f'data:image/png;base64, {base64.b64encode(buffer)}'
-                vidcap.release()
-                break
-
-            success, image = vidcap.read()
+        
+        _, image = vidcap.read()
+        _, buffer = cv2.imencode('.jpg', cv2.resize(image,(height, width)))
+        
+        embed = src.split('/')[-1]
+        res[embed] = f'data:image/png;base64, {base64.b64encode(buffer)}'
+        
+        vidcap.release()
 
 
     '''
-    Extract thumbnails in parallel
+    Extract thumbnails in parallel. Assumes the file names are already formatted so that 
+    the results dictionary can be used to align with and to update the video table.
+
 
     inputs:
     src    (str) Source directory containing videos
@@ -119,5 +113,5 @@ class Video(object):
             
             for p in procs: p.start()
             for p in procs: p.join()
-
+        print(dict(res).keys())
         return res
