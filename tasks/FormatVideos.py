@@ -23,11 +23,10 @@ class FormatVideos(object):
 
             for row in block:
                 video = row[1]['embed']
-                file = os.path.join(self.cfg.video_src, video)
                 args = (self.cfg.video_height, 
                         self.cfg.video_width, 
-                        file, 
-                        os.path.join(self.cfg.video_src, video),
+                        os.path.join(self.cfg.video_src, video), 
+                        os.path.join(self.cfg.video_csv_out, video),
                         res)
                 procs.append(mp.Process(target=v.resize, args=args))
 
@@ -36,5 +35,5 @@ class FormatVideos(object):
 
         failed = list(filter(lambda x: not x, res.values()))
         accuracy(failed, res)
-        write('format_video.json', res)
+        write('format_video.json', dict(res))
 

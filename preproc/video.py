@@ -16,14 +16,6 @@ from more_itertools import chunked
 from multiprocessing import Process, Manager, cpu_count
 
 class Video(object):
-    '''
-    inputs:
-    
-    fps (int) Output video frames per second
-    '''
-    def __init__(self, fps=None):
-        self.fps = fps
-
 
     '''
     Writes resize video as mp4
@@ -40,14 +32,13 @@ class Video(object):
         out_file = f'{output}.mp4' if not output.endswith('.mp4') else output
         cap = cv2.VideoCapture(filename)
 
-        if self.fps == None:
-            self.fps = int(cap.get(cv2.CAP_PROP_FPS))
-
-        out = cv2.VideoWriter(out_file, 0x7634706d, self.fps, dout)
+        fps = int(cap.get(cv2.CAP_PROP_FPS))
+        fourcc = cv2.VideoWriter_fourcc(*'MP4V')
+        out = cv2.VideoWriter(out_file, fourcc, fps, dout)
 
         count = 0
 
-        while cap.isOpened():
+        while 1:
             ret, frame = cap.read()
             if not ret: break
             
@@ -58,8 +49,7 @@ class Video(object):
         cap.release()
         out.release()
 
-        f = filename.split('/')[-1]
-        res[f] = count == 0
+        res[filename.split('/')[-1]] = count == 0
 
 
     '''
