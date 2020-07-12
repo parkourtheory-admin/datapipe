@@ -113,5 +113,5 @@ class Video(object):
             
             for p in procs: p.start()
             for p in procs: p.join()
-        print(dict(res).keys())
+
         return res

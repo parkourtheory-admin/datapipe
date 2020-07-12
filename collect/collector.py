@@ -110,7 +110,7 @@ def update_thumbnail(df, thumbnails):
             
         try:
             e = row['embed']
-            df.at[df['embed'] == e, 'thumbnail'] = thumbnails[e]
+            df.loc[e == df['embed'], 'thumbnail'] = thumbnails[e]
         except KeyError:
             failed.append(row)
 
@@ -148,7 +148,7 @@ def update_embed(df, video_src):
             # capture unexpected bugs
             print(f'from:{Fore.RED} {row["embed"]}\t{Style.RESET_ALL}to: {formatted}')
 
-        df.at[row['id']-1, 'embed'] = formatted
+        df.loc[df['id'] == row['id'], 'embed'] = formatted
 
     return df, err
 
