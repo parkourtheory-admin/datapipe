@@ -1,6 +1,6 @@
 '''
 
-API for sanitizing graph data
+API for sanitizing move data
 
 Author: Justin Chen
 Date: 5/9/2020
@@ -11,8 +11,7 @@ from pandas import isnull
 from itertools import zip_longest
 
 class DataCheck(object):
-    def __init__(self, log, whitelist=None):
-        self.log = log
+    def __init__(self, whitelist=None):
         self.whitelist = whitelist if whitelist is not None else []
 
 
@@ -26,6 +25,7 @@ class DataCheck(object):
     edges (list)         List of prereqs or subseqs corresponding to move id
     '''
     def set_edges(self, df, adj, a, edges):
+        log = {'edges': []}
         # iterate over every edge
         # if prereq or subseq is not a string, it's NaN
         if isinstance(edges, str):
@@ -34,7 +34,7 @@ class DataCheck(object):
                     b = int(df.loc[df['name'] == j]['id']) - 1
                     adj[a, b] += 1
                 except TypeError:
-                    self.log.debug(f'src: {a+1}\ttgt: {j}')
+                    log['edges'].append({'src': a+1, 'tgt': j})
 
 
     '''
@@ -66,13 +66,15 @@ class DataCheck(object):
     m (ndarray) Adjacency matrix of moves
 
     outputs:
-    return (list, ndarray) Returns empty list if symmetric and coordinates of asymmetric values
+    return (ndarray) Returns empty list if symmetric and coordinates of asymmetric values
     '''
-    def check_symmetry(self, m):
+    def check_symmetry(self, df):
+        m = self.get_adjacency(df)
+
         if m is None: return
         if not (m == m.T).all():
             return np.argwhere(np.triu(m+m.T) == 1)+1
-        return []
+        return np.empty()
 
 
     '''
@@ -118,29 +120,17 @@ class DataCheck(object):
 
 
     '''
-    Log rows with duplicate edges
+    Find all empty cells
 
     inputs:
-    df (pd.DataFrame) Table of moves
+    df      (pd.DataFrame) Data source
+    columns (list)         List of column headers
+
+    outputs:
+    empty (list) List of dicts with key as column header and value as the empty row
     '''
-    def find_duplicate_edges(self, df):
-        for i, row in df.iterrows():
-            if isinstance(row['prereq'], str):
-                pre = row['prereq'].split(', ')
-                uniq = list(set(pre))
-
-                if uniq == pre:
-                    e = [i for i in pre if i not in uniq]
-                    self.log.debug(f'row: {i}\t extra pre: {e}')
-
-            if isinstance(row['subseq'], str):
-                sub = row['subseq'].split(', ')
-                uniq = list(set(sub))
-
-                if uniq == sub:
-                    if uniq == sub:
-                        e = [i for i in sub if i not in uniq]
-                        self.log.debug(f'row: {i}\t extra sub: {e}')
+    def find_all_empty(self, df, columns):
+        return [{col: self.find_empty(df, col)} for col in columns]
 
 
     '''
@@ -148,6 +138,9 @@ class DataCheck(object):
 
     inputs:
     df (pd.DataFrame) Table of moves
+
+    outputs:
+    df (pd.DataFrame) Sorted table of moves
     '''
     def sort_edges(self, df):
         for i, row in df.iterrows():
@@ -162,6 +155,21 @@ class DataCheck(object):
                 edge.sort()
                 row['subseq'] = edge
                 df.at[i, 'subseq'] = ', '.join(row['subseq'])
+
+        return df
+
+
+    '''
+    Remove unnamed column from DataFrame
+
+    inputs:
+    df (pd.DataFrame) DataFrame to clean
+
+    outputs:
+    df (pd.DataFrame) Cleaned DataFrame
+    '''
+    def remove_unnamed(self, df):
+        return df.loc[:, ~df.columns.str.contains('^Unnamed')]
 
 
     '''
@@ -223,7 +231,7 @@ class DataCheck(object):
     e.g. Wall/Flip/Twist == Wall/Twist/Flip == Flip/Wall/Twist, etc.
 
     inputs:
-    df          (pd.DataFrame)   DataFrame of moves
+    df (pd.DataFrame) DataFrame of moves
 
     outputs:
     output (list) Empty list if no errors else a list of errors
@@ -246,6 +254,6 @@ class DataCheck(object):
 
 
         # check if any errors, return empty list if none
-        errs = [s for s in label_map.values() if len(s) > 1]
+        errs = [list(s) for s in label_map.values() if len(s) > 1]
 
         return [] if len(unique) == sum([len(s) for s in errs]) else errs

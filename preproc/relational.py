@@ -8,6 +8,7 @@ import networkx as nx
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib import pylab
+from collections import Counter
 
 
 '''
@@ -26,20 +27,56 @@ def dataframe_to_dict(df, key, val):
 
 
 '''
-Generates edges given a pandas DataFrame that contains edges as value-separated strings
+Generator for edges given a pandas DataFrame that contains edges as value-separated strings
 
 inputs:
-df       (pd.DataFrame)  DataFrame source
-cols     (list) 		 List of columns names as strings
-delim    (str, optional) Delimiter for edge values
+df	   (pd.DataFrame)  DataFrame source
+cols	 (list) 		 List of columns names as strings
+delim	(str, optional) Delimiter for edge values
 '''
 def dataframe_to_edges(df, key, cols, delim=''):
 	for i, row in df.iterrows():
 		src = row[key]
 		for j in cols:
-		    if isinstance(row[j], str):
-		        for i in row[j].split(delim):
-		        	yield (src, i)
+			if isinstance(row[j], str):
+				for i in row[j].split(delim):
+					yield (src, i)
+
+
+'''
+inputs:
+df (pd.DataFrame) Moves table
+
+outputs:
+edges (int)  Total number of edges in prereq and subseq columns
+err   (list) Collection of duplicate moves
+'''
+def count_edges(df):
+	edges = 0
+	err = []
+
+	for i, row in df.iterrows():
+		if isinstance(row['prereq'], str):
+			p = row['prereq'].split(', ')
+			unique_p = len(set(p))
+
+			if len(p) != unique_p:
+				counts = dict(Counter(list(row['prereq'].split(', '))))
+				err.append(f"\n{row['id']} {row['name']} prereq\n{counts}")
+
+			edges += unique_p
+
+		if isinstance(row['subseq'], str):
+			s = row['subseq'].split(', ')
+			unique_s = len(set(s))
+
+			if len(s) != unique_s:
+				counts = dict(Counter(list(row['subseq'].split(', '))))
+				err.append(f"\n{row['id']} {row['name']} subseq\n{counts}")
+
+			edges += unique_s
+
+	return edges, err
 
 
 '''
@@ -52,7 +89,7 @@ outputs:
 df (pd.DataFrame) DataFrame containing only rows without prereq nodes
 '''
 def no_edge(df, edge_type):
-    return df.loc[df[edge_type].isnull()]
+	return df.loc[df[edge_type].isnull()]
 
 
 '''
@@ -71,17 +108,20 @@ def dataframe_to_graph(df):
 	roots = no_edge(df, 'prereq')
 	singles = no_edge(roots, 'subseq')
 
-	for i, node in singles.iterrows():
-    	G.add_node(node['name'])
+	for e in edges:
+		G.add_edge(*e)
 
-    return G
+	for i, node in singles.iterrows():
+		G.add_node(node['name'])
+
+	return G
 
 
 '''
 credit: https://stackoverflow.com/a/17388676
 
 inputs:
-G        (nx.Graph) Graph
+G		(nx.Graph) Graph
 filename (str) 		File name to save graph drawing
 '''
 def save_graph(G, filename):
@@ -90,26 +130,14 @@ def save_graph(G, filename):
 	fig = plt.figure(1)
 	
 	pos = nx.spiral_layout(G, center=[0,0])
-    pos = nx.spring_layout(G, k=2, iterations=0)
-    
-    plt.figtext(.5, .85, 'PARKOUR THEORY', fontsize=130, fontweight='bold', ha='center')
-    
-    nx.draw_networkx_nodes(G, pos, alpha=0.25)
-    nx.draw_networkx_edges(G, pos, alpha=0.1)
-    nx.draw_networkx_labels(G, pos, font_color='r', font_size=11)
+	pos = nx.spring_layout(G, k=2, iterations=0)
+	
+	plt.figtext(.5, .85, 'PARKOUR THEORY', fontsize=130, fontweight='bold', ha='center')
+	
+	nx.draw_networkx_nodes(G, pos, alpha=0.25)
+	nx.draw_networkx_edges(G, pos, alpha=0.1)
+	nx.draw_networkx_labels(G, pos, font_color='r', font_size=11)
 
 	plt.savefig(filename, bbox_inches="tight")
 	pylab.close()
 	del fig
-
-
-def main():
- 	src='database/latest/moves.csv'
-	df = pd.read_csv(src, dtype={'id': int})
-	# edge_map =  dataframe_to_dict(df, 'name', 'id')
- 	G = dataframe_to_graph(df)
-	save_graph(G, 'path.pdf')
-
-
-if __name__ == '__main__':
-	main()
