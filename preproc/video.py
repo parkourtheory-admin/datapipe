@@ -70,7 +70,7 @@ class Video(object):
         _, buffer = cv2.imencode('.jpg', cv2.resize(image,(height, width)))
         
         embed = src.split('/')[-1]
-        res[embed] = f'data:image/png;base64, {base64.b64encode(buffer)}'
+        res[embed] = 'data:image/png;base64,'+base64.b64encode(buffer).decode("utf-8")
         
         vidcap.release()
 
