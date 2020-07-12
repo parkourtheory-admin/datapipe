@@ -4,9 +4,12 @@ Data pipeline API
 import os
 import sys
 import time
+import inspect
 import traceback
 import multiprocessing as mp
 from collections import OrderedDict
+
+from tasks import *
 
 from colorama import Fore, Style
 from utils import timer
@@ -86,3 +89,25 @@ def exists(pipe):
 
 def notice():
     print(f'{Fore.BLUE}REMINDER:{Style.RESET_ALL} check logs/ for output even if tasks are successful.')
+
+
+'''
+Dynamically import tasks and build pipeline
+
+inputs:
+cfg (config.Configuration) Configuration instance of config file
+
+outputs:
+pipe (list) List of task objects
+'''
+def build(cfg):
+    tasks = unique(cfg.pipe.split(', '))
+    exists(tasks)
+
+    pipe = []
+
+    for t in tasks:
+        cl = inspect.getmembers(globals()[t], inspect.isclass) # cl is a tuple
+        pipe.append(cl[0][1](cfg)) # index 0 is class name and index 1 is object
+
+    return pipe

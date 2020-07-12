@@ -3,12 +3,10 @@ Author: Justin Chen
 
 main module
 '''
-import inspect
 import argparse
 import config
 
-from tasks import *
-from pipeline import parallel, sequential, unique, exists, notice
+from pipeline import parallel, sequential, build, notice
 from utils import *
 
 
@@ -24,15 +22,7 @@ def main():
     if args.clean: clean_logs()
 
     cfg = config.Configuration(args.config)
-
-    # dynamically import tasks and build pipeline
-    pipe = []
-    tasks = unique(cfg.pipe.split(', '))
-    exists(tasks)
-
-    for task in tasks:
-        cl = inspect.getmembers(globals()[task], inspect.isclass) # cl is a tuple
-        pipe.append(cl[0][1](cfg)) # index 0 is class name and index 1 is object
+    pipe = build(cfg)
 
     log = {}
     if cfg.parallel: parallel(pipe)
