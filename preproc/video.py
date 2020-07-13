@@ -70,17 +70,17 @@ class Video(object):
 
     inputs:
     src    (str) Absolute path to src video
-    height (int, optional) Thumbnail height. Default: 300
-    width  (int, optional) Thumbnail width. Default: 168
+    height (int, optional) Thumbnail height. Default: 168
+    width  (int, optional) Thumbnail width. Default: 300
 
     outputs:
     failed (bool) True if successfully saved thumbnail
     '''
-    def thumbnail(self, res, src, height=300, width=168):
+    def thumbnail(self, res, src, width=300, height=168):
         vidcap = cv2.VideoCapture(src)
         
         _, image = vidcap.read()
-        _, buffer = cv2.imencode('.jpg', cv2.resize(image,(height, width)))
+        _, buffer = cv2.imencode('.jpg', cv2.resize(image, (width, height)))
         
         embed = src.split('/')[-1]
         res[embed] = 'data:image/png;base64,'+base64.b64encode(buffer).decode("utf-8")

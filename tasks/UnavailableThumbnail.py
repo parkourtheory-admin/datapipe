@@ -16,5 +16,5 @@ class UnavailableThumbnail(object):
 		res = {}
 		embed = 'unavailable'
 		file = f'{embed}.mp4'
-		v.thumbnail(res, os.path.join(self.cfg.video_src, file))
+		v.thumbnail(res, os.path.join(self.cfg.video_src, file), 1920, 1080)
 		write(os.path.join(self.cfg.video_csv_out, embed+'.json'), res)
