@@ -16,7 +16,7 @@ class ExtractThumbnails(object):
         v = vid.Video()
         
         df = pd.read_csv(self.cfg.video_csv, header=0, sep='\t')
-        res = v.extract_thumbnails(self.cfg.video_src, 300, 168)
+        res = v.extract_thumbnails(self.cfg.video_src, self.cfg.thumb_dst, 300, 168)
 
         files = [i for i in os.listdir(self.cfg.video_src)]
         assert len(res) == len(files), f'videos: {len(files)}\textracted: {len(res)}'

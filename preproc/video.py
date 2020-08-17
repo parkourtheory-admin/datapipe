@@ -56,22 +56,29 @@ class Video(object):
     Generate thumbnails using the middle frame.
 
     inputs:
-    src    (str) Absolute path to src video
-    height (int, optional) Thumbnail height. Default: 300
-    width  (int, optional) Thumbnail width. Default: 168
+    res    (dict)           Return value dictionary
+    src    (str)            Absolute path to src video
+    dst    (str)            Save directory
+    height (int, optional)  Thumbnail height. Default: 300
+    width  (int, optional)  Thumbnail width. Default: 168
+    save   (bool, optional) True to write image files (default: True).
 
     outputs:
     failed (bool) True if successfully saved thumbnail
     '''
-    def thumbnail(self, res, src, height=300, width=168):
+    def thumbnail(self, res, src, dst, height=300, width=168, save=True):
         vidcap = cv2.VideoCapture(src)
-        
         _, image = vidcap.read()
-        _, buffer = cv2.imencode('.jpg', cv2.resize(image,(height, width)))
-        
+        image = cv2.resize(image, (height, width))
         embed = src.split('/')[-1]
-        res[embed] = 'data:image/png;base64,'+base64.b64encode(buffer).decode("utf-8")
-        
+
+        if save:
+            cv2.imwrite(os.path.join(dst, f"{embed.split('.')[0]}.jpg"), image)
+            res[embed] = 1
+        else:
+            _, buffer = cv2.imencode('.jpg', image)
+            res[embed] = 'data:image/png;base64,'+base64.b64encode(buffer).decode("utf-8")
+            
         vidcap.release()
 
 
@@ -81,14 +88,16 @@ class Video(object):
 
 
     inputs:
-    src    (str) Source directory containing videos
-    height (int) Crop height
-    width  (int) Crop width
+    src    (str)            Source directory containing videos
+    dst    (str)            Save directory
+    height (int)            Crop height
+    width  (int)            Crop width
+    save   (bool, optional) True to write image files (default: True).
 
     outputs:
     res (dict) Dictionary with file name as key and serialized thumbnail as value
     '''
-    def extract_thumbnails(self, src, height, width):
+    def extract_thumbnails(self, src, dst, height, width, save=True):
         files = [i for i in os.listdir(src)]
         cpus = cpu_count()
         mgmt = Manager()
@@ -99,7 +108,7 @@ class Video(object):
 
             for f in block:
                 procs.append(Process(target=self.thumbnail, 
-                    args=(res, os.path.join(src, f), height, width)))
+                    args=(res, os.path.join(src, f), dst, height, width)))
             
             for p in procs: p.start()
             for p in procs: p.join()
