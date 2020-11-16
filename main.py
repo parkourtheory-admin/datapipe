@@ -21,8 +21,8 @@ def main():
     make_dir('logs')
     if args.clean: clean_logs()
 
-    if not args.config(os.path.join('configs', args.config)):
-        raise argparse.ArgumentError(f'{args.config} does not exist')
+    if not os.path.isfile(os.path.join(os.getcwd(), args.config)):
+        raise Exception(f'{args.config} does not exist')
 
     cfg = config.Configuration(args.config)
     pipe = build(cfg)
