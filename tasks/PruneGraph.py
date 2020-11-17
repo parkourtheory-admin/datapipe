@@ -2,6 +2,7 @@
 Prune knowledge graph
 '''
 import os
+import json
 import pandas as pd
 import networkx as nx
 
@@ -54,4 +55,8 @@ class PruneGraph(object):
 		df[['id', 'name']].to_csv(os.path.join(self.cfg.video_csv_out, 'pruned.tsv'), sep='\t', index=False)
 		moves.to_csv(os.path.join(self.cfg.video_csv_out, 'moves.tsv'), sep='\t', index=False)
 		videos.to_csv(os.path.join(self.cfg.video_csv_out, 'videos.tsv'), sep='\t', index=False)
-
+		
+		adjlist = nx.to_dict_of_lists(G)
+		
+		with open(os.path.join(self.cfg.video_csv_out, 'pruned_path.adjlist'), 'w') as file:
+			json.dump(adjlist, file)
