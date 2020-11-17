@@ -24,6 +24,7 @@ class PruneGraph(object):
 		df = df[df['link'].isnull()]
 		df = df[df['embed'].isnull()]
 		missing_moves = list(df['name'])
+		labels = []
 
 		for move in tqdm(missing_moves):
 			for neighbor in G.edges(move):
