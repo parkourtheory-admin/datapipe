@@ -9,6 +9,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib import pylab
 from collections import Counter
+from itertools import chain
 
 
 '''
@@ -31,16 +32,20 @@ Generator for edges given a pandas DataFrame that contains edges as value-separa
 
 inputs:
 df	   (pd.DataFrame)  DataFrame source
-cols	 (list) 		 List of columns names as strings
-delim	(str, optional) Delimiter for edge values
+delim  (str, optional) Delimiter for edge values
 '''
-def dataframe_to_edges(df, key, cols, delim=''):
+def dataframe_to_edges(df, delim=', '):
+
 	for i, row in df.iterrows():
-		src = row[key]
-		for j in cols:
-			if isinstance(row[j], str):
-				for i in row[j].split(delim):
-					yield (src, i)
+		src, pre, sub = row.iloc[1].strip(), row.iloc[2], row.iloc[3]
+
+		if isinstance(pre, str):
+			for p in pre.split(delim):
+				yield (p.strip(), src)
+		
+		if isinstance(sub, str):
+			for s in sub.split(delim):
+				yield (src, s.strip())
 
 
 '''
@@ -93,26 +98,52 @@ def no_edge(df, edge_type):
 
 
 '''
+Check that graph was correctly created from the dataframe by iterating over every move. Check if the move is in the graph.
+Then get the edges and compare to the edges in the dataframe.
+
+inputs:
+G  (nx.Graph)     Networkx graph of given dataframe
+df (pd.DataFrame) Dataframe of entities and relations
+'''
+def validate_graph(G, df):
+	moves = list(df['name'])
+
+	for m in moves:
+		assert G.has_node(m)
+
+		row = df[df['name'] == m]
+		pre = row['prereq'].squeeze()
+		sub = row['subseq'].squeeze()
+		pre = pre.split(', ') if isinstance(pre, str) else []
+		sub = sub.split(', ') if isinstance(sub, str) else []
+		df_edges = set([i for i in chain.from_iterable([pre, sub]) if len(i) > 0])
+		graph_edges = set(G.neighbors(m))
+
+		assert graph_edges == df_edges
+
+	assert len(G.nodes()) == len(df)
+
+
+'''
 Create undirected networkx Graph from pandas DataFrame
 
 inputs:
-df (pd.DataFrame) DataFrame of moves
+df 		 (pd.DataFrame) DataFrame of moves
+directed (bool) 		True if directed edges, else undirected
 
 outputs:
 G (nx.Graph) Graph based on DataFrame
 '''
-def dataframe_to_graph(df):
-	edges = dataframe_to_edges(df, 'name', ['prereq', 'subseq'], ', ')
-	G = nx.Graph(edges)
+def dataframe_to_graph(df, directed=False, validate=False):
+	edges = dataframe_to_edges(df, delim=', ')
+	G = nx.DiGraph(edges) if directed else nx.Graph(edges)
 
-	roots = no_edge(df, 'prereq')
-	singles = no_edge(roots, 'subseq')
-
-	for e in edges:
-		G.add_edge(*e)
+	singles = no_edge(no_edge(df, 'prereq'), 'subseq')
 
 	for i, node in singles.iterrows():
 		G.add_node(node['name'])
+
+	if validate: validate_graph(G, df)
 
 	return G
 
