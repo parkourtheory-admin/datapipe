@@ -56,14 +56,17 @@ outputs:
 edges (int)  Total number of edges in prereq and subseq columns
 err   (list) Collection of duplicate moves
 '''
-def count_edges(df):
+def count_edges(df, return_edges=False):
 	edges = 0
 	err = []
+	ret_edges = []
 
 	for i, row in df.iterrows():
 		if isinstance(row['prereq'], str):
 			p = row['prereq'].split(', ')
 			unique_p = len(set(p))
+
+			if return_edges: ret_edges.extend((i, row['name']) for i in p)
 
 			if len(p) != unique_p:
 				counts = dict(Counter(list(row['prereq'].split(', '))))
@@ -75,12 +78,15 @@ def count_edges(df):
 			s = row['subseq'].split(', ')
 			unique_s = len(set(s))
 
+			if return_edges: ret_edges.extend((row['name'], i) for i in s)
+
 			if len(s) != unique_s:
 				counts = dict(Counter(list(row['subseq'].split(', '))))
 				err.append(f"\n{row['id']} {row['name']} subseq\n{counts}")
 
 			edges += unique_s
 
+	if return_edges: return edges, err, ret_edges
 	return edges, err
 
 
@@ -122,6 +128,8 @@ def validate_graph(G, df):
 		assert graph_edges == df_edges
 
 	assert len(G.nodes()) == len(df)
+	assert all([G.has_edge(*i) for i in dataframe_to_edges(df)])
+	assert all([G.has_edge(*i) for i in count_edges(df, True)[-1]])
 
 
 '''
