@@ -50,11 +50,13 @@ def dataframe_to_edges(df, delim=', '):
 
 '''
 inputs:
-df (pd.DataFrame) Moves table
+df 			 (pd.DataFrame)   Moves table
+return_edges (bool, optional) True to return edges
 
 outputs:
-edges (int)  Total number of edges in prereq and subseq columns
-err   (list) Collection of duplicate moves
+edges     (int)  Total number of edges in prereq and subseq columns
+err       (list) Collection of duplicate moves
+ret_edges (list) List of tuples of edges if return_edges parameter is True
 '''
 def count_edges(df, return_edges=False):
 	edges = 0
