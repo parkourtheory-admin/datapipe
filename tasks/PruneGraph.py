@@ -7,6 +7,7 @@ import json
 import math
 import pandas as pd
 import networkx as nx
+from networkx.readwrite import json_graph
 
 from tqdm import tqdm
 from preproc import relational as rel
@@ -58,14 +59,16 @@ class PruneGraph(object):
 
 		assert len(errors) == 0
 
-		G = nx.to_dict_of_lists(G)
-
-		print(f'total: {start_len}\tmissing: {len(missing_moves)}\tpruned: {start_len - end_len}\tremaining: {end_len} moves\tnodes: {len(G)}')
+		print(f'total: {start_len}\
+			missing: {len(missing_moves)}\
+			pruned: {start_len - end_len}\
+			remaining: {end_len} moves\
+			nodes: {len(G.nodes())}\
+			components: {nx.number_connected_components(G)}')
 	
-		df[['id', 'name']].to_csv(os.path.join(self.cfg.video_csv_out, 'pruned.tsv'), sep='\t', index=False)
-		moves.to_csv(os.path.join(self.cfg.video_csv_out, 'moves.tsv'), sep='\t', index=False)
-		videos.to_csv(os.path.join(self.cfg.video_csv_out, 'videos.tsv'), sep='\t', index=False)
+		moves.to_csv(os.path.join(self.cfg.video_csv_out, 'pruned_moves.tsv'), sep='\t', index=False)
+		videos.to_csv(os.path.join(self.cfg.video_csv_out, 'pruned_videos.tsv'), sep='\t', index=False)
 
 	
 		with open(os.path.join(self.cfg.video_csv_out, 'adjlist'), 'w') as file:
-			json.dump(G, file, ensure_ascii=False, indent=4)
+			json.dump(nx.to_dict_of_lists(G), file, ensure_ascii=False, indent=4)
