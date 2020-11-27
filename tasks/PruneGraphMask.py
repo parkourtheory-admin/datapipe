@@ -33,3 +33,6 @@ class PruneGraphMask(object):
 	
 		train_mask.to_csv(os.path.join(self.cfg.video_csv_out, 'train_mask.tsv'), sep='\t', index=False)
 		validation_mask.to_csv(os.path.join(self.cfg.video_csv_out, 'validation_mask.tsv'), sep='\t', index=False)
+
+		with open(os.path.join(self.cfg.video_csv_out, 'adjlist'), 'w') as file:
+			json.dump(nx.to_dict_of_lists(G), file, ensure_ascii=False, indent=4)

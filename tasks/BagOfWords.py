@@ -12,10 +12,9 @@ class BagOfWords(object):
 
 
 	def run(self):
-		file = os.path.join(self.cfg.video_csv_out, 'pruned_moves.tsv')
-		df = pd.read_csv(file, sep='\t', header=0)
-
+		df = pd.read_csv(self.cfg.move_csv, sep='\t', header=0)
 		features = defaultdict(list)
+
 		# build bag-of-words map
 		terms = set(term for move in df['name'] for term in move.split())
 		term2index = {term: i for i, term in enumerate(list(terms))}
