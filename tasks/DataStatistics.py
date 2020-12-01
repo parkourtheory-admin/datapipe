@@ -1,6 +1,8 @@
 '''
 '''
 import pandas as pd
+import networkx as nx
+from numpy import linalg as la
 from stats import label_dist
 from utils import write
 
@@ -22,3 +24,6 @@ class DataStats(object):
 		print(f'multi-label: {len(ml)}\tsingle-label: {len(sl)}')
 
 		G = rel.dataframe_to_graph(moves)
+		adj = nx.to_numpy_matrix(G)
+		vals = la.eigvals(adj)
+		print(sorted(vals.tolist())[:10])
