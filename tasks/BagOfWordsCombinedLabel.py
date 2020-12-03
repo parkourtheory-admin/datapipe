@@ -19,9 +19,6 @@ class BagOfWords(object):
 		terms = set(term for move in df['name'] for term in move.split())
 		term2index = {term: i for i, term in enumerate(list(terms))}
 
-		# for multilabel classification
-		# labels = {m[0]: str(m[1]).split('/') for m in zip(list(moves['name']), list(moves['type']))}
-
 		# single label classification
 		type2id = {str(m):i for i, m in enumerate(list(set(df['type'])))}
 		
