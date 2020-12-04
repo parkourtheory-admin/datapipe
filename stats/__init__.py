@@ -17,14 +17,16 @@ dist (dict) Dictionary of counts of labels
 def label_dist(df, single=True):
     dist = defaultdict(int)
     
-    for i, row in df.iterrows():
-        if isinstance(row['type'], str):
-            if single:
-                types = row['type'].split('/')
-                for t in types:
-                    dist[t] += 1
-            else:
-                dist[row['type']] += 1
+    for type_ in df['type']:
+        type_ = str(type_)
+
+        if single:
+            types = type_.split('/')
+            for t in types:
+                dist[t] += 1
+        else:
+            dist[type_] += 1
+
     return dist
 
 
