@@ -5,8 +5,9 @@ import os
 import json
 import pandas as pd
 from collections import defaultdict
+from pprint import pprint
 
-class BagOfWords(object):
+class BagOfWordsMultihot(object):
 	def __init__(self, config):
 		self.cfg = config
 
@@ -20,14 +21,18 @@ class BagOfWords(object):
 		term2index = {term: i for i, term in enumerate(list(terms))}
 
 		# single label classification
-		type2id = {str(m):i for i, m in enumerate(list(set(df['type'])))}
+		unique_labels = set(label for type_ in df['type'] for label in str(type_).split('/'))
+		type2id = {str(m):i for i, m in enumerate(list(set(unique_labels)))}
 		
 		for i, sample in enumerate(zip(df['name'], df['type'])):
 			move, type_ = sample
 			bag = [0]*len(term2index)
+			label = [0]*len(type2id)
+
 			for term in move.split(): bag[term2index[term]] += 1
+			for lab in str(type_).split('/'): label[type2id[lab]] = 1
 
-			features[i] = (move, bag, type2id[str(type_)])
+			features[i] = (move, bag, label)
 
-		with open(os.path.join(self.cfg.video_csv_out, 'bag-of-words.json'), 'w') as file:
-			json.dump(features, file, ensure_ascii=False, indent=4)
+		with open(os.path.join(self.cfg.video_csv_out, 'bag-of-words-multi-binary-label.json'), 'w') as file:
+			json.dump({'task': 'multihot', 'features':features}, file, ensure_ascii=False, indent=4)
