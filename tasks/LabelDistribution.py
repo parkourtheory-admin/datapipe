@@ -28,8 +28,8 @@ class LabelDistribution(object):
 		ml = OrderedDict((k, v) for k, v in sorted(ml.items(), key=lambda x: x[1]))
 		sl = OrderedDict((k, v) for k, v in sorted(sl.items(), key=lambda x: x[1]))
 
-		self.plot(ml.keys(), ml.values(), 'labels', 'frequency', 'Multi-type Labels', labelsize=8)
-		self.plot(sl.keys(), sl.values(), 'labels', 'frequency', 'Single-type Labels')
+		self.plot(ml.keys(), ml.values(), 'labels', 'frequency', 'Multi-hot Labels', labelsize=8)
+		self.plot(sl.keys(), sl.values(), 'labels', 'frequency', 'One-hot Labels')
 
 
 	def plot(self, x, y, xlabel, ylabel, title, labelsize=10):
