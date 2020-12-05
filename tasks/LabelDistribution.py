@@ -19,17 +19,17 @@ class LabelDistribution(object):
 
 	def run(self):
 		moves = pd.read_csv(self.cfg.move_csv, header=0, sep='\t')
-		ml = label_dist(moves, single=False)
-		sl = label_dist(moves, single=True)
+		multi_hot = label_dist(moves, multihot=True)
+		one_hot = label_dist(moves, multihot=False)
 		
 		# Label distributions
-		write('multi_type_dist.json', ml)
-		write('single_type_dist.json', sl)
-		ml = OrderedDict((k, v) for k, v in sorted(ml.items(), key=lambda x: x[1]))
-		sl = OrderedDict((k, v) for k, v in sorted(sl.items(), key=lambda x: x[1]))
+		write('multi_hot_dist.json', multi_hot)
+		write('single_hot_dist.json', one_hot)
+		multi_hot = OrderedDict((k, v) for k, v in sorted(multi_hot.items(), key=lambda x: x[1]))
+		one_hot = OrderedDict((k, v) for k, v in sorted(one_hot.items(), key=lambda x: x[1]))
 
-		self.plot(ml.keys(), ml.values(), 'labels', 'frequency', 'Multi-hot Labels', labelsize=8)
-		self.plot(sl.keys(), sl.values(), 'labels', 'frequency', 'One-hot Labels')
+		self.plot(multi_hot.keys(), multi_hot.values(), 'labels', 'frequency', 'Multi-hot Labels', labelsize=8)
+		self.plot(one_hot.keys(), one_hot.values(), 'labels', 'frequency', 'One-hot Labels')
 
 
 	def plot(self, x, y, xlabel, ylabel, title, labelsize=10):

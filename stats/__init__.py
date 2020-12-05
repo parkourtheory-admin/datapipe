@@ -7,20 +7,20 @@ from collections import defaultdict
 Count number of labels
 
 inputs:
-df 	   (pd.DataFrame)   DataFrame of moves
-single (bool, optional) If True, count individual types e.g. Wall, Vault, etc.
-						If False, count combination of types e.g. Wall/Flip, etc.
+df 	     (pd.DataFrame)   DataFrame of moves
+multihot (bool, optional) If True, use multi-hot encoding e.g. Wall, Vault, etc.
+						  If False, use one-hot encoding e.g. Wall/Flip, etc.
 
 outputs:
 dist (dict) Dictionary of counts of labels
 '''
-def label_dist(df, single=True):
+def label_dist(df, multihot=True):
     dist = defaultdict(int)
     
     for type_ in df['type']:
         type_ = str(type_)
 
-        if single:
+        if multihot:
             types = type_.split('/')
             for t in types:
                 dist[t] += 1
