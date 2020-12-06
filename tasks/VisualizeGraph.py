@@ -1,13 +1,14 @@
 '''
 Visualize entire move graph and connected components
 '''
-import sys
+import os
 
 import pandas as pd
 import networkx as nx
 import matplotlib.pyplot as plt
 from matplotlib import pylab
 import numpy as np
+from tqdm import tqdm
 
 from preproc import relational as rel
 
@@ -21,11 +22,17 @@ class VisualizeGraph(object):
 		G = rel.dataframe_to_graph(moves)
 		# self.plot(G, 'Parkour Theory')
 		
-		for i, c in enumerate(nx.connected_components(G)):
+		for i, c in enumerate(tqdm(nx.connected_components(G), total=nx.number_connected_components(G))):
 			self.plot(G.subgraph(c), f'Component {i}')
 
 
+	'''
+	Does not display to avoid matplotlib throwing a Segmentation fault
 
+	inputs:
+	G     (nx.Graph) Networkx graph
+	title (str)      Title of graph and filename to save
+	'''
 	def plot(self, G, title):
 		degrees = dict(nx.degree(G))
 		node_size = [v*100 for v in degrees.values()]
@@ -60,10 +67,9 @@ class VisualizeGraph(object):
 		nx.draw_networkx_nodes(G, pos, nodelist=degrees.keys(), node_size=node_size, alpha=0.25)
 		nx.draw_networkx_edges(G, pos, alpha=0.1)
 		nx.draw_networkx_labels(G, pos, labels, font_size=8)
+		save_path = os.path.join(self.cfg.video_csv_out, f"{title.lower().replace(' ', '_')}.pdf")
 
-		plt.savefig(f"{title.lower().replace(' ', '_')}.pdf", bbox_inches="tight")
+		plt.savefig(save_path, bbox_inches="tight")
 		plt.show()
 		pylab.close()
 		del fig
-
-		plt.show()
