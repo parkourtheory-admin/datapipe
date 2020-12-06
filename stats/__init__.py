@@ -31,6 +31,23 @@ def label_dist(df, multihot=True):
 
 
 '''
+Return degree of each move
+
+inputs:
+G    (nx.Graph)       Networkx graph
+sort (bool, optional) If True, return sorted
+
+outputs:
+degrees (list) List of tuples. First item is the move name and the second item is the degree.
+'''
+def move_degrees(G, sort=True):
+    move_deg = [(m, G.degree[m]) for m in G.nodes]
+    if sort:
+        return sorted(move_deg, key=lambda x:x[1], reverse=True)
+    return move_deg
+
+
+'''
 Compute percentage each label comprises of label set
 
 inputs:
