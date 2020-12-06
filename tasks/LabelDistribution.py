@@ -2,7 +2,7 @@
 Label distribution of move table
 '''
 import os
-from collections import OrderedDict
+from collections import OrderedDict, defaultdict
 
 import pandas as pd
 from stats import label_dist
@@ -21,10 +21,13 @@ class LabelDistribution(object):
 		moves = pd.read_csv(self.cfg.move_csv, header=0, sep='\t')
 		multi_hot = label_dist(moves, multihot=True)
 		one_hot = label_dist(moves, multihot=False)
+		multi_hot_percentages = label_percentages(multi_hot)
+		one_hot_percentages = label_percentages(one_hot)
 		
-		# Label distributions
 		write('multi_hot_dist.json', multi_hot)
 		write('single_hot_dist.json', one_hot)
+		write('multi_hot_percentages.json', multi_hot_percentages)
+		write('one_hot_percentages.json', one_hot_percentages)
 		multi_hot = OrderedDict((k, v) for k, v in sorted(multi_hot.items(), key=lambda x: x[1]))
 		one_hot = OrderedDict((k, v) for k, v in sorted(one_hot.items(), key=lambda x: x[1]))
 

@@ -31,6 +31,20 @@ def label_dist(df, multihot=True):
 
 
 '''
+Compute percentage each label comprises of label set
+
+inputs:
+labels (dict) Dictionary of frequencies of labels generated from label_dist()
+
+outputs:
+percentages (dict) Dictionary of percentage each label comprises of the label set
+'''
+def label_percentages(labels):
+    total = sum(labels.values())
+    return {k: v/total for k, v in labels.items()}
+
+
+'''
 Get average node degree in graph
 
 inputs:
