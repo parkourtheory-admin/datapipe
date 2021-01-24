@@ -303,7 +303,7 @@ def create_col_nodes(G, df):
 
 	for i, col in enumerate(df.columns):
 
-		column_to_node(G, df, col)
+		column_to_nodes(G, df, col)
 		attributes[col] = {'column': i, 'dtype': df[col].dtypes}
 
 	nx.set_node_attributes(G, attributes)
