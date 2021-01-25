@@ -198,10 +198,10 @@ def save_graph(G, filename):
 Format column name into relation
 
 inputs:
-column (str)
+column (str) Column name
 
 outputs:
-relation (str)
+relation (str) Formatted relation name
 '''
 def column_to_relation(col):
 
@@ -212,9 +212,9 @@ def column_to_relation(col):
 Add list of types to edges
 
 inputs:
-
-outputs:
-
+G 		 (nx.Graph) 	 Graph to modify
+edge     (tuple) 		 Tuple containing names of two nodes
+relation (str, optional) Name of relation, typically the column name
 '''
 def set_relation(G, edge, relation=''):
 
@@ -228,12 +228,11 @@ def set_relation(G, edge, relation=''):
 
 
 '''
-Create single data src root node
+Create single data src root node. Should only be called once for each table.
 
 inputs:
-
-outputs:
-
+G 	   (nx.Graph) Graph to modify
+source (str)      Name of data source
 '''
 def create_src_node(G, source):
 
@@ -244,8 +243,9 @@ def create_src_node(G, source):
 Create a node for each row in the graph
 
 inputs:
-
-outputs:
+G 	   (nx.Graph)     Graph to modify
+df     (pd.DataFrame) Source table to be converted into graph
+source (str) 		  Name of table
 
 '''
 def create_row_nodes(G, df, source):
@@ -258,10 +258,13 @@ def create_row_nodes(G, df, source):
 TODO:
 This needs fixing. Does not detect nan. Should not create nan nodes!
 
+Test if this value is valid
+
 inputs:
+val (*) Column value
 
 outputs:
-
+exists (bool) True if the value exists, else False
 '''
 def exists(val):
 
@@ -276,9 +279,9 @@ def exists(val):
 Create node for each unique value in each column and connect to column node
 
 inputs:
-
-outputs:
-
+G 	   (nx.Graph)     Graph to modify
+df     (pd.DataFrame) Source table to be converted into graph
+source (str) 		  Name of column
 '''
 def column_to_nodes(G, df, column):
 
@@ -293,9 +296,8 @@ def column_to_nodes(G, df, column):
 Create nodes from columns
 
 inputs:
-
-outputs:
-
+G  (nx.Graph)     Graph to modify
+df (pd.DataFrame) Source table to be converted into graph
 '''
 def create_col_nodes(G, df):
 
@@ -313,9 +315,8 @@ def create_col_nodes(G, df):
 For each row, create an edge from the row node to each of its column value nodes
 
 inputs:
-
-outputs:
-
+G  (nx.Graph)     Graph to modify
+df (pd.DataFrame) Source table to be converted into graph
 '''
 def connect_row_to_col(G, df):
 
@@ -330,9 +331,11 @@ def connect_row_to_col(G, df):
 Check if an entire path exists
 
 inputs:
+G 	 (nx.Graph) Graph to modify
+path (list)     List of nodes
 
 outputs:
-
+accept (bool) True if all nodes exist in path
 '''
 def accepts(G, path):
 
@@ -346,10 +349,10 @@ TODO:
 Breadth-first find paths from source to target that strictly have relation using standard breadth-first search
 
 inputs:
-G        (nx.Graph)
-source   (str)
-target   (str)
-relation (str)
+G        (nx.Graph) Graph to modify
+source   (str) 		Start node of path
+target   (str) 		End node of path
+relation (str) 		Type of edges to traverse
 
 outputs:
 path (list) List of nodes as strings or None if no path exists
@@ -388,10 +391,10 @@ Depth-first finds paths from source to target that strictly have relation using 
 Solution based on: https://stackoverflow.com/a/39376201/3158028 by XueYu
 
 inputs:
-G        (nx.Graph)
-source   (str)
-target   (str)
-relation (str)
+G        (nx.Graph) Graph to modify
+source   (str) 		Start node of path
+target   (str) 		End node of path
+relation (str) 		Type of edges to traverse
 
 outputs:
 path (list) List of nodes as strings or None if no path exists
