@@ -287,7 +287,7 @@ def column_to_nodes(G, df, column):
 
 	for val in set(df[column].to_list()):
 		if exists(val):
-			e = (column, val)
+			e = (str(column), str(val))
 			G.add_edge(*e)
 			set_relation(G, e, relation=column)
 
@@ -322,7 +322,7 @@ def connect_row_to_col(G, df):
 
 	for i, row in df.iterrows():
 		for col, val in zip(df.columns, row):
-			e = (f'row_{i}', val)
+			e = (f'row_{i}', str(val))
 			G.add_edge(*e)
 			set_relation(G, e, col)
 
