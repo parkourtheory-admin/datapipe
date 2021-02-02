@@ -53,6 +53,19 @@ class Video(object):
 
 
     '''
+    Write byte string image to jpg file
+
+    inputs:
+    byte_str (str) Byte string of image to write
+    filename (str) File name to write to
+    '''
+    def write_thumbnail(self, byte_str, filename):
+        img = imread(io.BytesIO(base64.b64decode(byte_str)))
+        cv2_img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+        cv2.imwrite(f'{filename}.jpg', cv2_img)
+
+
+    '''
     Generate thumbnails using the middle frame.
 
     inputs:

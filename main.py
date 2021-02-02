@@ -13,13 +13,16 @@ from utils import *
 @timer
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config', '-cfg', type=is_config, help='Configuration file in config/')
+    parser.add_argument('--config', '-cfg', type=is_config, help='Configuration file in config')
     parser.add_argument('--clean', '-c', action='store_true', help='Clean out old logs')
     parser.add_argument('--verbose', '-v', action='store_true', help='Display stack trace if errors occur')
     args = parser.parse_args()
 
     make_dir('logs')
     if args.clean: clean_logs()
+
+    if not os.path.isfile(os.path.join(os.getcwd(), args.config)):
+        raise Exception(f'{args.config} does not exist')
 
     cfg = config.Configuration(args.config)
     pipe = build(cfg)

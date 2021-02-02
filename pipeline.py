@@ -44,7 +44,7 @@ def sequential(pipe, log, verbose=True):
             start = time.perf_counter()
             t.run()
             runtime = time.perf_counter() - start
-            print(f'{Fore.GREEN}[{i}] {task} succeeded - time: {runtime:.4f} s\n{Style.RESET_ALL}')
+            print(f'{Fore.GREEN}[{i}] {task} succeeded - time: {runtime:.4f} s{Style.RESET_ALL}')
         except Exception as e:
             tb = traceback.format_exc()
             err = tb if verbose else str(e)

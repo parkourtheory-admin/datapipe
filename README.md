@@ -44,6 +44,7 @@ FormatVideos 		Parallelize processing of resizing video frames and save videos.
 Incomplete 			Find all empty rows in move table for manual correction.
 InvalidIDs 			Find moves with incorrect ids for manual correction.
 MoveTypes 			Create list of canonical move types and log errors for manual correction.
+PruneGraph 			Prune the knowledge graph of incomplete entities without video information.
 SortEdges			Sort move edges and save to tsv.
 Symmetry			Check symmetry of move edges and log for manual correction.
 ```

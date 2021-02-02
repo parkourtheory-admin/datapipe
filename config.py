@@ -9,7 +9,7 @@ from utils import *
 
 class Configuration(object):
     def __init__(self, config):
-        cfg = configparser.ConfigParser()
+        cfg = configparser.ConfigParser(allow_no_value=True)
         cfg.read(config)
 
         # default configuration
@@ -28,19 +28,19 @@ class Configuration(object):
         self.video_dst = video['dst']
         self.video_csv = video['csv']
         self.video_csv_out = video['csv_out']
-        self.video_height = int(video['height'])
-        self.video_width = int(video['width'])
+        self.video_height = int(video['height']) if video['height'] else 0
+        self.video_width = int(video['width']) if video['width'] else 0
             
         # thumbnail configuration
         thumb = cfg['thumbnails']
-        self.thumb_height = int(thumb['height'])
-        self.thumb_width = int(thumb['width'])
+        self.thumb_height = int(thumb['height']) if thumb['height'] else 0
+        self.thumb_width = int(thumb['width']) if thumb['width'] else 0
         self.thumb_dst = thumb['dst']
         
-        make_dir(video['csv_out'])
-        make_dir(video['src'])
-        make_dir(video['dst'])
-        make_dir(thumb['dst'])
+        if video['csv_out']: make_dir(video['csv_out'])
+        if video['src']: make_dir(video['src'])
+        if video['dst']: make_dir(video['dst'])
+        if thumb['dst']: make_dir(thumb['dst'])
 
 
     '''

@@ -7,25 +7,58 @@ from collections import defaultdict
 Count number of labels
 
 inputs:
-df 	   (pd.DataFrame)   DataFrame of moves
-single (bool, optional) If True, count individual types e.g. Wall, Vault, etc.
-						If False, count combination of types e.g. Wall/Flip, etc.
+df 	     (pd.DataFrame)   DataFrame of moves
+multihot (bool, optional) If True, use multi-hot encoding e.g. Wall, Vault, etc.
+						  If False, use one-hot encoding e.g. Wall/Flip, etc.
 
 outputs:
 dist (dict) Dictionary of counts of labels
 '''
-def label_dist(df, single=True):
+def label_dist(df, multihot=True):
     dist = defaultdict(int)
     
-    for i, row in df.iterrows():
-        if isinstance(row['type'], str):
-            if single:
-                types = row['type'].split('/')
-                for t in types:
-                    dist[t] += 1
-            else:
-                dist[row['type']] += 1
+    for type_ in df['type']:
+        type_ = str(type_)
+
+        if multihot:
+            types = type_.split('/')
+            for t in types:
+                dist[t] += 1
+        else:
+            dist[type_] += 1
+
     return dist
+
+
+'''
+Return degree of each move
+
+inputs:
+G    (nx.Graph)       Networkx graph
+sort (bool, optional) If True, return sorted
+
+outputs:
+degrees (list) List of tuples. First item is the move name and the second item is the degree.
+'''
+def move_degrees(G, sort=True):
+    move_deg = [(m, G.degree[m]) for m in G.nodes]
+    if sort:
+        return sorted(move_deg, key=lambda x:x[1], reverse=True)
+    return move_deg
+
+
+'''
+Compute percentage each label comprises of label set
+
+inputs:
+labels (dict) Dictionary of frequencies of labels generated from label_dist()
+
+outputs:
+percentages (dict) Dictionary of percentage each label comprises of the label set
+'''
+def label_percentages(labels):
+    total = sum(labels.values())
+    return {k: v/total for k, v in labels.items()}
 
 
 '''
