@@ -31,7 +31,7 @@ class PruneGraphMask(object):
 		validation_mask = df['embed'].isnull()
 		test_mask = None
 
-		test_split = .1
+		test_split = self.cfg['test_split']
 		val_idx = [i for i in validation_mask.tolist() if i == 1]
 		test_idx = np.random.choice(val_idx, int(test_split*len(df)))
 		val_mask = np.array(validation_mask.tolist())

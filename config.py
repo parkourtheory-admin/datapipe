@@ -36,6 +36,12 @@ class Configuration(object):
         self.thumb_height = int(thumb['height']) if thumb['height'] else 0
         self.thumb_width = int(thumb['width']) if thumb['width'] else 0
         self.thumb_dst = thumb['dst']
+
+        # dataset configuration
+        split = cfg['dataset']
+        self.train_split = split['train_split']
+        self.val_split = split['val_split']
+        self.test_split = split['test_split']
         
         if video['csv_out']: make_dir(video['csv_out'])
         if video['src']: make_dir(video['src'])
