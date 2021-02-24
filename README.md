@@ -23,7 +23,9 @@ pipe      = FixEmbed, CheckMoves
 
 ### Usage
 ```
---config -cfg 	Configuration file (available: production, test)
+--config  -cfg 	Configuration file (available: production, test)
+--clean   -c    Clean out old logs
+--verbose -v    Display stack trace if errors occur
 ```
 
 ### Example usage
