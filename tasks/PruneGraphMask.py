@@ -41,10 +41,6 @@ class PruneGraphMask(object):
 		val_mask = pd.Series(val_mask, dtype=bool)
 		test_mask = pd.Series(test_mask, dtype=bool)
 
-		print(type(train_mask))
-		print(type(val_mask))
-		print(type(test_mask))
-
 		train_size = len(df[train_mask])
 		val_size = len(df[val_mask])
 		test_size = len(df[test_mask])
