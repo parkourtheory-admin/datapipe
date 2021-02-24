@@ -31,12 +31,17 @@ class PruneGraphMask(object):
 		validation_mask = df['embed'].isnull()
 		test_mask = None
 
-		test_split = self.cfg['test_split']
+		test_split = self.cfg.test_split
 		val_idx = [i for i in validation_mask.tolist() if i == 1]
+		print(val_idx)
 		test_idx = np.random.choice(val_idx, int(test_split*len(df)))
+		print(test_idx)
 		val_mask = np.array(validation_mask.tolist())
+		print(val_mask)
 		test_mask = val_mask[test_idx]
+		print(test_mask)
 		validation_mask -= test_mask
+		print(validation_mask)
 
 		train_size = len(df[train_mask])
 		val_size = len(df[validation_mask])
