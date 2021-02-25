@@ -35,4 +35,4 @@ class BagOfWordsMultihot(object):
 			features[i] = (move, bag, label)
 
 		with open(os.path.join(self.cfg.video_csv_out, 'bag-of-words-multi-binary-label.json'), 'w') as file:
-			json.dump({'task': 'multihot', 'features':features}, file, ensure_ascii=False, indent=4)
+			json.dump({'task': 'multihot', 'features':features}, file, ensure_ascii=False, indent=4) 
