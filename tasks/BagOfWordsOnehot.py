@@ -33,21 +33,14 @@ class BagOfWordsOnehot(object):
 
 			return features
 
-		def save(filename):
+		def save(features, filename):
 			with open(os.path.join(self.cfg.video_csv_out, filename), 'w') as file:
 				json.dump({'task': 'onehot', 'features': features}, file, ensure_ascii=False, indent=4)
 		
 		if self.cfg.is_split:
-			train_mask = pd.read_csv(os.path.join(self.cfg.video_csv_out, 'train_mask.tsv'), sep='\t', header=0)
-			val_mask = pd.read_csv(os.path.join(self.cfg.video_csv_out, 'validation_mask.tsv'), sep='\t', header=0)
-			test_mask = pd.read_csv(os.path.join(self.cfg.video_csv_out, 'test_mask.tsv'), sep='\t', header=0)
-
-			print(train_mask)
-			print(train_mask.iloc[0])
-			print(df)
-			print(df[train_mask])
-			print(type(df[train_mask]))
-			print(type(train_mask))
+			train_mask = pd.read_csv(os.path.join(self.cfg.video_csv_out, 'train_mask.tsv'), sep='\t', header=0).to_numpy()
+			val_mask = pd.read_csv(os.path.join(self.cfg.video_csv_out, 'validation_mask.tsv'), sep='\t', header=0).to_numpy()
+			test_mask = pd.read_csv(os.path.join(self.cfg.video_csv_out, 'test_mask.tsv'), sep='\t', header=0).to_numpy()
 
 			save(process(df[train_mask]), 'train_bag-of-words.json')
 			save(process(df[val_mask]), 'val_bag-of-words.json')
