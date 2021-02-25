@@ -42,8 +42,9 @@ class Configuration(object):
         self.train_split = float(split['train_split'])
         self.val_split = float(split['val_split'])
         self.test_split = float(split['test_split'])
+        self.is_split = self.train_split + self.val_split + self.test_split
 
-        if self.train_split + self.val_split + self.test_split != 1:
+        if self.is_split != 1:
             raise Exception('data set split should sum to 1')
         
         if video['csv_out']: make_dir(video['csv_out'])
