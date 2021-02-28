@@ -21,6 +21,7 @@ class Configuration(object):
         # move configuration
         move = cfg['moves']
         self.move_csv = move['csv']
+        self.node_map = move['map']
 
         # video configuration
         video = cfg['videos']
@@ -42,7 +43,9 @@ class Configuration(object):
         self.train_split = float(split['train_split'] or 0)
         self.val_split = float(split['val_split'] or 0)
         self.test_split = float(split['test_split'] or 0)
-        self.is_split = self.train_split + self.val_split + self.test_split
+        self.is_split = self.train_split + self.val_split + self.test_split == 1
+
+        assert self.is_split
         
         if video['csv_out']: make_dir(video['csv_out'])
         if video['src']: make_dir(video['src'])
