@@ -3,15 +3,9 @@ Generate training mask for moves with videos, and validation and testing for nod
 Only need for training if using video features.
 '''
 import os
-import sys
-import json
-import math
 import pandas as pd
-import networkx as nx
-from networkx.readwrite import json_graph
 
 from tqdm import tqdm
-from preproc import relational as rel
 
 class PruneGraphMask(object):
 	def __init__(self, config):
@@ -21,8 +15,6 @@ class PruneGraphMask(object):
 	def run(self):
 		videos = pd.read_csv(self.cfg.video_csv, header=0, sep='\t')
 		moves = pd.read_csv(self.cfg.move_csv, header=0, sep='\t')
-		start_len = len(moves)
-		G = rel.dataframe_to_graph(moves)
 
 		df = pd.merge(moves, videos, on='id')
 		train_mask = df['link'].notnull()
@@ -52,6 +44,3 @@ class PruneGraphMask(object):
 		train_mask.to_csv(os.path.join(self.cfg.video_csv_out, 'train_mask.tsv'), sep='\t', index=False)
 		validation_mask.to_csv(os.path.join(self.cfg.video_csv_out, 'validation_mask.tsv'), sep='\t', index=False)
 		test_mask.to_csv(os.path.join(self.cfg.video_csv_out, 'test_mask.tsv'), sep='\t', index=False)
-
-		with open(os.path.join(self.cfg.video_csv_out, 'adjlist'), 'w') as file:
-			json.dump(nx.to_dict_of_lists(G), file, ensure_ascii=False, indent=4)
