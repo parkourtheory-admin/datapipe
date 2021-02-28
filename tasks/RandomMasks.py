@@ -3,6 +3,7 @@ Generate random training, validation, and testing masks.
 '''
 import os
 import numpy as np
+import networkx as nx
 
 class RandomMasks(object):
 	def __init__(self, config):
