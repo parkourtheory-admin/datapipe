@@ -1,0 +1,35 @@
+[DEFAULT]
+whitelist = no
+parallel  = yes
+pipe      = BagOfWordsMultihot, BagOfWordsOnehot, CollectVideos, CsvToGraph, DataframeToGraph, DuplicateEdges, DuplicateNodes, ExtractThumbnails, ExtrapolationMask, FixEmbed, FixExtensions, FormatVideos, GenerateGraph, GraphEigens, Incomplete, InvalidIDs, LabelDistribution, LabelDistributionPerComponent, MoveTypes, Name2Int, Nx2Neo, PruneGraph, PruneGraphMask, RandomMasks, RelabelGraph, RenameVideos, SiteMap, SortEdges, Symmetry, UnavailableEmbed, UnavailableThumbnail, VisualizeGraph
+
+[moves]
+csv  = /media/ch3njus/Seagate4TB/research/parkourtheory/data/database/latest/moves.tsv
+map  = name2int.json
+
+[videos]
+src      = /media/ch3njus/Seagate4TB/research/parkourtheory/data/videos/production
+dst      = /media/ch3njus/Seagate4TB/research/parkourtheory/data/videos/test
+csv      = /media/ch3njus/Seagate4TB/research/parkourtheory/data/database/latest/videos.tsv
+csv_out  = /media/ch3njus/Seagate4TB/research/parkourtheory/data/output
+height   = 150
+width    = 150
+
+[thumbnails]
+height = 300
+width  = 168
+dst    = /media/ch3njus/Seagate4TB/research/parkourtheory/data/thumbnails
+
+[dataset]
+dataset = bag-of-words.json
+train_split = .8
+val_split   = .1
+test_split  = .1
+
+[shared_files]
+graph = adj
+features = features
+labels = labels
+train_mask = train_mask
+val_mask = val_mask
+test_mask = test_mask
