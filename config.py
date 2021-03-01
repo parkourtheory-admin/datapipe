@@ -3,6 +3,7 @@ If properties are added to or removed from configuration files, change this obje
 them available to all tasks.
 '''
 import os
+import sys
 import configparser
 
 from utils import *
@@ -14,6 +15,7 @@ class Configuration(object):
 
         # default configuration
         default = cfg['DEFAULT']
+        self.warning = default['warning']
         self.whitelist = self.get_whitelist() if default.getboolean('whitelist') else []
         self.parallel = default.getboolean('parallel')
         self.pipe = default['pipe']
@@ -61,6 +63,10 @@ class Configuration(object):
         if video['src']: make_dir(video['src'])
         if video['dst']: make_dir(video['dst'])
         if thumb['dst']: make_dir(thumb['dst'])
+
+        # all tasks should save their outputs to their own dir
+        self.output_tasks_dir = os.path.join(default['output'], 'tasks')
+        make_dir(self.output_tasks_dir)
 
 
     '''

@@ -10,14 +10,18 @@ from matplotlib import pylab
 import numpy as np
 from tqdm import tqdm
 
+from utils import make_dir
 from preproc import relational as rel
 
 class VisualizeGraph(object):
 	def __init__(self, config):
 		self.cfg = config
+		self.task_dir = os.path.join(self.cfg.output_tasks_dir, 'visualize_graph')
 
 
 	def run(self):
+		make_dir(self.task_dir)
+
 		moves = pd.read_csv(self.cfg.move_csv, header=0, sep='\t')
 		G = rel.dataframe_to_graph(moves)
 		# self.plot(G, 'Parkour Theory')
@@ -67,9 +71,8 @@ class VisualizeGraph(object):
 		nx.draw_networkx_nodes(G, pos, nodelist=degrees.keys(), node_size=node_size, alpha=0.25)
 		nx.draw_networkx_edges(G, pos, alpha=0.1)
 		nx.draw_networkx_labels(G, pos, labels, font_size=8)
-		save_path = os.path.join(self.cfg.output_dir, f"{title.lower().replace(' ', '_')}.pdf")
-
+		
+		save_path = os.path.join(self.task_dir, f"{title.lower().replace(' ', '_')}.pdf")
 		plt.savefig(save_path, bbox_inches="tight")
-		plt.show()
 		pylab.close()
 		del fig

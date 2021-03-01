@@ -12,17 +12,20 @@ from collections import defaultdict
 import pandas as pd
 import networkx as nx
 import matplotlib.pyplot as plt
-from pprint import pprint
 
+from utils import make_dir
 from preproc import relational as rel
 
 
 class LabelDistributionPerComponent(object):
 	def __init__(self, config):
 		self.cfg = config
+		self.task_dir = os.path.join(self.cfg.output_tasks_dir, 'label_distribution_per_component')
 
 
 	def run(self):
+		make_dir(self.task_dir)
+		
 		moves = pd.read_csv(self.cfg.move_csv, header=0, sep='\t')
 		G = rel.dataframe_to_graph(moves)
 
@@ -59,5 +62,4 @@ class LabelDistributionPerComponent(object):
 		plt.ylabel(ylabel)
 		plt.title(title)
 		plt.subplots_adjust(left=0.1, bottom=0.3)
-		plt.savefig(os.path.join(self.cfg.output_dir, f'{title}.pdf'))
-		plt.show()
+		plt.savefig(os.path.join(self.task_dir, f'{title}.pdf'))
