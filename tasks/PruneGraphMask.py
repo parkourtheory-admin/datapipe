@@ -41,6 +41,6 @@ class PruneGraphMask(object):
 		assert total == len(df)
 		print(f'train mask: {train_size}\tvalidation mask: {val_size}\ttest mask: {test_size}\ttotal: {total}')
 
-		train_mask.to_csv(os.path.join(self.cfg.video_csv_out, 'train_mask.tsv'), sep='\t', index=False)
-		validation_mask.to_csv(os.path.join(self.cfg.video_csv_out, 'validation_mask.tsv'), sep='\t', index=False)
-		test_mask.to_csv(os.path.join(self.cfg.video_csv_out, 'test_mask.tsv'), sep='\t', index=False)
+		train_mask.to_csv(os.path.join(self.cfg.output_dir, 'train_mask.tsv'), sep='\t', index=False)
+		validation_mask.to_csv(os.path.join(self.cfg.output_dir, 'validation_mask.tsv'), sep='\t', index=False)
+		test_mask.to_csv(os.path.join(self.cfg.output_dir, 'test_mask.tsv'), sep='\t', index=False)

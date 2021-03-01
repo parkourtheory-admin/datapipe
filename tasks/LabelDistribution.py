@@ -44,6 +44,6 @@ class LabelDistribution(object):
 		plt.ylabel(ylabel)
 		plt.title(title)
 		plt.subplots_adjust(left=0.1, bottom=0.3)
-		plt.savefig(os.path.join(self.cfg.video_csv_out, f'{title}.pdf'))
+		plt.savefig(os.path.join(self.cfg.output_dir, f'{title}.pdf'))
 		plt.show()
 		

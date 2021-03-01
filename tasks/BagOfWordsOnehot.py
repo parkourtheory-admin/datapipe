@@ -31,5 +31,12 @@ class BagOfWordsOnehot(object):
 		
 		desc = 'One-hot classification of move types using bag-of-words of move names as features.'
 
-		with open(os.path.join(self.cfg.video_csv_out, 'bag-of-words.json'), 'w') as file:
-			json.dump({'task': 'onehot', 'features': features, 'label_map': type2id, 'desc': desc}, file, ensure_ascii=False, indent=4)
+		with open(os.path.join(self.cfg.output_dir, 'bag-of-words.json'), 'w') as file:
+			data = {'task': 'onehot', 'label_map': type2id, 'desc': desc}
+
+			if self.cfg.is_split:
+				data.update({'train': , 'validation': , 'test': })
+			else:	
+				data['features'] = features
+			
+			json.dump(data, file, ensure_ascii=False, indent=4)

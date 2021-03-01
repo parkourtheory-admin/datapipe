@@ -67,7 +67,7 @@ class VisualizeGraph(object):
 		nx.draw_networkx_nodes(G, pos, nodelist=degrees.keys(), node_size=node_size, alpha=0.25)
 		nx.draw_networkx_edges(G, pos, alpha=0.1)
 		nx.draw_networkx_labels(G, pos, labels, font_size=8)
-		save_path = os.path.join(self.cfg.video_csv_out, f"{title.lower().replace(' ', '_')}.pdf")
+		save_path = os.path.join(self.cfg.output_dir, f"{title.lower().replace(' ', '_')}.pdf")
 
 		plt.savefig(save_path, bbox_inches="tight")
 		plt.show()

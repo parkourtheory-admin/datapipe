@@ -17,6 +17,7 @@ class Configuration(object):
         self.whitelist = self.get_whitelist() if default.getboolean('whitelist') else []
         self.parallel = default.getboolean('parallel')
         self.pipe = default['pipe']
+        self.cfg.output_dir = default['output']
 
         # move configuration
         move = cfg['moves']
@@ -28,7 +29,6 @@ class Configuration(object):
         self.video_src = video['src']
         self.video_dst = video['dst']
         self.video_csv = video['csv']
-        self.video_csv_out = video['csv_out']
         self.video_height = int(video['height']) if video['height'] else 0
         self.video_width = int(video['width']) if video['width'] else 0
             

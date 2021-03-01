@@ -14,7 +14,7 @@ class CollectVideos(object):
         log = {}
 
         una, miss, cta = clt.find_missing(self.cfg.move_csv, self.cfg.video_csv, 
-                                          self.cfg.video_csv_out)
+                                          self.cfg.output_dir)
     
         log['missing'] = {
             'unavailable': len(una),
@@ -22,15 +22,15 @@ class CollectVideos(object):
             'call_to_action': len(cta)
         }
 
-        miss.to_csv(os.path.join(self.cfg.video_csv_out, 'missing.csv'), sep='\t')
-        una, found = clt.collect(miss, self.cfg.video_dst, self.cfg.video_csv_out)
+        miss.to_csv(os.path.join(self.cfg.output_dir, 'missing.csv'), sep='\t')
+        una, found = clt.collect(miss, self.cfg.video_dst, self.cfg.output_dir)
 
         log['collect'] = {
             'unavailable': len(una),
             'found': len(found)
         }
 
-        update_path = os.path.join(self.cfg.video_csv_out, 'updated.csv')
+        update_path = os.path.join(self.cfg.output_dir, 'updated.csv')
         updated, err = clt.update_videos(self.cfg.move_csv, self.cfg.video_csv, found, 
                                          self.cfg.video_src, update_path)
         write('no_videos_clt.txt', err)

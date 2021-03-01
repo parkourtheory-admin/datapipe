@@ -14,11 +14,11 @@ class RelabelGraph(object):
 
 	def run(self):
 		node_map = None
-		with open(os.path.join(self.cfg.video_csv_out, self.cfg.node_map), 'r') as file:
+		with open(os.path.join(self.cfg.output_dir, self.cfg.node_map), 'r') as file:
 			node_map = json.load(file)
 
 		re_G = None
-		with open(os.path.join(self.cfg.video_csv_out, 'adjlist.json'), 'r') as file:
+		with open(os.path.join(self.cfg.output_dir, 'adjlist.json'), 'r') as file:
 			G = nx.Graph(json.load(file))
 
 			'''
@@ -38,5 +38,5 @@ class RelabelGraph(object):
 			assert G.edges() == undo.edges()
 
 
-		with open(os.path.join(self.cfg.video_csv_out, 'adjlist.json'), 'w') as file:
+		with open(os.path.join(self.cfg.output_dir, 'adjlist.json'), 'w') as file:
 			json.dump(nx.to_dict_of_lists(re_G), file)

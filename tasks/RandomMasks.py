@@ -54,11 +54,11 @@ class RandomMasks(object):
 
 
 	def run(self):
-		with open(os.path.join(self.cfg.video_csv_out, 'adjlist'), 'r') as file:
+		with open(os.path.join(self.cfg.output_dir, 'adjlist'), 'r') as file:
 			G = nx.Graph(json.load(file))
 
 			train_mask, val_mask, test_mask = self.get_random_mask(len(G), self.train_split, self.val_split, self.test_split)
 			
-			self.save(train_mask, os.path.join(self.cfg.video_csv_out, 'train_mask.json'))
-			self.save(val_mask, os.path.join(self.cfg.video_csv_out, 'val_mask.json'))
-			self.save(test_mask, os.path.join(self.cfg.video_csv_out, 'test_mask.json'))
+			self.save(train_mask, os.path.join(self.cfg.output_dir, 'train_mask.json'))
+			self.save(val_mask, os.path.join(self.cfg.output_dir, 'val_mask.json'))
+			self.save(test_mask, os.path.join(self.cfg.output_dir, 'test_mask.json'))

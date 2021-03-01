@@ -23,5 +23,5 @@ class Name2Int(object):
 		
 		name2int = {n:i for i, n in enumerate(df['name'].tolist())}
 
-		with open(os.path.join(self.cfg.video_csv_out, 'name2int.json'), 'w') as file:
+		with open(os.path.join(self.cfg.output_dir, 'name2int.json'), 'w') as file:
 			json.dump(name2int, file, ensure_ascii=False, indent=4)

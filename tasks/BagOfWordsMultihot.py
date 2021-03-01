@@ -36,5 +36,5 @@ class BagOfWordsMultihot(object):
 
 		desc = 'Multi-hot classification of move types using bag-of-words of move names as features.'
 
-		with open(os.path.join(self.cfg.video_csv_out, 'bag-of-words-multi-binary-label.json'), 'w') as file:
+		with open(os.path.join(self.cfg.output_dir, 'bag-of-words-multi-binary-label.json'), 'w') as file:
 			json.dump({'task': 'multihot', 'features':features, 'label_map': type2id, 'desc': desc}, file, ensure_ascii=False, indent=4) 
