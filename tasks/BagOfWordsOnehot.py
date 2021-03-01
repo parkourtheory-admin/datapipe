@@ -6,6 +6,8 @@ import json
 import pandas as pd
 from collections import defaultdict
 
+from preproc import relational as rel
+
 class BagOfWordsOnehot(object):
 	def __init__(self, config):
 		self.cfg = config
@@ -31,11 +33,17 @@ class BagOfWordsOnehot(object):
 		
 		desc = 'One-hot classification of move types using bag-of-words of move names as features.'
 
-		with open(os.path.join(self.cfg.output_dir, 'bag-of-words.json'), 'w') as file:
+		with open(os.path.join(self.cfg.output_dir, 'bag-of-words-onehot.json'), 'w') as file:
 			data = {'task': 'onehot', 'label_map': type2id, 'desc': desc}
+			
+			train_mask_path = os.path.join(self.cfg.output_dir, self.cfg.train_mask)
+			val_mask_path = os.path.join(self.cfg.output_dir, self.cfg.val_mask)
+			test_mask_path = os.path.join(self.cfg.output_dir, self.cfg.test_mask)
+
+			train_set, val_set, test_set = rel.split_dataset_on_masks(features, train_mask_path, val_mask_path, test_mask_path)
 
 			if self.cfg.is_split:
-				data.update({'train': , 'validation': , 'test': })
+				data.update({'train': train_set, 'validation': val_set, 'test': test_set})
 			else:	
 				data['features'] = features
 			

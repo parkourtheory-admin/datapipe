@@ -17,7 +17,7 @@ class Configuration(object):
         self.whitelist = self.get_whitelist() if default.getboolean('whitelist') else []
         self.parallel = default.getboolean('parallel')
         self.pipe = default['pipe']
-        self.cfg.output_dir = default['output']
+        self.output_dir = default['output']
 
         # move configuration
         move = cfg['moves']
@@ -47,8 +47,17 @@ class Configuration(object):
         self.is_split = self.train_split + self.val_split + self.test_split == 1
 
         assert self.is_split
+
+        # files used across tasks
+        files = cfg['files']
+        self.graph = files['graph']
+        self.features = files['features']
+        self.labels = files['labels']
+        self.train_mask = files['train_mask']
+        self.val_mask = files['val_mask']
+        self.test_mask = files['test_mask']
         
-        if video['csv_out']: make_dir(video['csv_out'])
+        if default['output']: make_dir(default['output'])
         if video['src']: make_dir(video['src'])
         if video['dst']: make_dir(video['dst'])
         if thumb['dst']: make_dir(thumb['dst'])

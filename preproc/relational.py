@@ -482,3 +482,31 @@ def get_files(directory, sort_by_size=True, last_index=None):
 	sizes = sorted(sizes, key=lambda x:x[1])
 	files = list(zip(*sizes))[0]
 	return files[:last_index]
+
+
+'''
+Split data set using masks
+
+inputs:
+dataset 		(dict) Dictionary containing task information, feature vectors, and labels generated from BagOfWordsOneHot or BagOfWordsMultihot.
+train_mask_path (str)  Path to train mask generated from ExtrapolationMasks, PruneGraphMask, or RandomMasks.
+val_mask_path   (str)  Path to validation mask generated from ExtrapolationMasks, PruneGraphMask, or RandomMasks.
+test_mask_path  (str)  Path to test mask generated from ExtrapolationMasks, PruneGraphMask, or RandomMasks.
+
+outputs:
+train_set (dict) Subset of feature and label vectors from dataset input for train set.
+val_set   (dict) Subset of feature and label vectors from dataset input for validation set.
+test_set  (dict) Subset of feature and label vectors from dataset input for test set.
+'''
+def split_dataset_on_masks(dataset, train_mask_path, val_mask_path, test_mask_path):
+	features = dataset['features']
+
+	train_mask = pd.read_csv(train_mask_path, sep='\t', header=0)['link'].tolist()
+	val_mask = pd.read_csv(val_mask_path, sep='\t', header=0)['link'].tolist()
+	test_mask = pd.read_csv(test_mask_path, sep='\t', header=0)['link'].tolist()
+
+	train_set = {i:features[str(i)] for i, e in enumerate(train_mask) if e}
+	val_set = {i:features[str(i)] for i, e in enumerate(val_mask) if e}
+	test_set = {i:features[str(i)] for i, e in enumerate(test_mask) if e}
+
+	return train_set, val_set, test_set
