@@ -36,6 +36,7 @@ class BagOfWordsMultihot(object):
 			features[i] = (move, bag, label)
 
 		desc = 'Multi-hot classification of move types using bag-of-words of move names as features.'
+		filename = 'bag-of-words-multi-binary-label-split.json' if self.cfg.is_split else 'bag-of-words-multi-binary-label.json'
 
 		with open(os.path.join(self.cfg.output_dir, 'bag-of-words-multi-binary-label.json'), 'w') as file:
 			data = {'task': 'multihot', 'label_map': type2id, 'desc': desc}

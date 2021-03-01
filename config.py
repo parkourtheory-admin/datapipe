@@ -46,7 +46,7 @@ class Configuration(object):
         self.test_split = float(ds['test_split'] or 0)
         self.is_split = self.train_split + self.val_split + self.test_split == 1
 
-        assert self.is_split
+        if self.train_split or self.val_split or self.test_split: assert self.is_split
 
         # files used across tasks
         files = cfg['files']
