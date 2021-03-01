@@ -39,10 +39,11 @@ class Configuration(object):
         self.thumb_dst = thumb['dst']
 
         # dataset configuration
-        split = cfg['dataset']
-        self.train_split = float(split['train_split'] or 0)
-        self.val_split = float(split['val_split'] or 0)
-        self.test_split = float(split['test_split'] or 0)
+        ds = cfg['dataset']
+        self.dataset = ds['dataset']
+        self.train_split = float(ds['train_split'] or 0)
+        self.val_split = float(ds['val_split'] or 0)
+        self.test_split = float(ds['test_split'] or 0)
         self.is_split = self.train_split + self.val_split + self.test_split == 1
 
         assert self.is_split
