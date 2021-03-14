@@ -92,6 +92,19 @@ def notice():
 
 
 '''
+Prompt user if they would like to continue. Guarda against running too many tasks accidentally.
+
+inputs:
+cfg (config.Configuration) Configuration instance of config file
+'''
+def prompt(cfg, tasks):
+    if cfg.warning:
+        resp = input(f'{Fore.GREEN}{len(tasks)} tasks in pipeline{Style.RESET_ALL}\nProceed ([y]/n)? ')
+        if resp.lower() in ('ie', 'no', 'n'):
+            sys.exit(0)
+
+
+'''
 Dynamically import tasks and build pipeline
 
 inputs:
@@ -102,6 +115,7 @@ pipe (list) List of task objects
 '''
 def build(cfg):
     tasks = unique(cfg.pipe.split(', '))
+    prompt(cfg, tasks)
     exists(tasks)
 
     pipe = []

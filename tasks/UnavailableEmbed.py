@@ -17,5 +17,5 @@ class UnavailableEmbed(object):
 			if not os.path.exists(os.path.join(self.cfg.video_src, row['embed'])):
 				df.loc[i, 'embed'] = 'unavailable.mp4'
 
-		file = os.path.join(self.cfg.video_csv_out, 'video.tsv')
+		file = os.path.join(self.cfg.output_dir, 'video.tsv')
 		df.to_csv(file, index=False, sep='\t')

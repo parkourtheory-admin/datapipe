@@ -23,8 +23,8 @@ class ExtractThumbnails(object):
 
         df, err = clt.update_thumbnail(df, res)
         
-        missing_dst = os.path.join(self.cfg.video_csv_out, 'missing_thumbnails.tsv')
-        updated_dst = os.path.join(self.cfg.video_csv_out, 'updated.tsv')
+        missing_dst = os.path.join(self.cfg.output_dir, 'missing_thumbnails.tsv')
+        updated_dst = os.path.join(self.cfg.output_dir, 'updated.tsv')
 
         print(f'thumbnails:\nmissing: {len(missing_dst)}\nupdated: {len(updated_dst)}')
 
