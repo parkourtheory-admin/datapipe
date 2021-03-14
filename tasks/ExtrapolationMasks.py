@@ -3,7 +3,7 @@ Generate graph masks for extrapolation task. Here the traininig mask is the larg
 This is supposed to simulate new node entering the graph that have no prerequisite moves.
 
 Note:
-1. Execute GenerateGraph and RelabelGraph tasks before executing this to get nodes relabeled as consecutive intgers. 
+1. Execute Name2Int, GenerateGraph and RelabelGraph tasks before executing this to get nodes relabeled as consecutive intgers. 
 2. Whenever generating masks, must also generate labels which is canonical ordering for masks.
 '''
 import os
