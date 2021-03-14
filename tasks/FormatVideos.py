@@ -26,7 +26,7 @@ class FormatVideos(object):
                 args = (self.cfg.video_height, 
                         self.cfg.video_width, 
                         os.path.join(self.cfg.video_src, video), 
-                        os.path.join(self.cfg.video_csv_out, video),
+                        os.path.join(self.cfg.output_dir, video),
                         res)
                 procs.append(mp.Process(target=v.resize, args=args))
 

@@ -5,7 +5,8 @@ import os
 import json
 import pandas as pd
 from collections import defaultdict
-from pprint import pprint
+
+from preproc import relational as rel
 
 class BagOfWordsMultihot(object):
 	def __init__(self, config):
@@ -18,11 +19,11 @@ class BagOfWordsMultihot(object):
 
 		# build bag-of-words map
 		terms = set(term for move in df['name'] for term in move.split())
-		term2index = {term: i for i, term in enumerate(list(terms))}
+		term2index = {term: i for i, term in enumerate(terms)}
 
 		# single label classification
 		unique_labels = set(label for type_ in df['type'] for label in str(type_).split('/'))
-		type2id = {str(m):i for i, m in enumerate(list(set(unique_labels)))}
+		type2id = {str(m):i for i, m in enumerate(set(unique_labels))}
 		
 		for i, sample in enumerate(zip(df['name'], df['type'])):
 			move, type_ = sample
@@ -34,5 +35,21 @@ class BagOfWordsMultihot(object):
 
 			features[i] = (move, bag, label)
 
-		with open(os.path.join(self.cfg.video_csv_out, 'bag-of-words-multi-binary-label.json'), 'w') as file:
-			json.dump({'task': 'multihot', 'features':features}, file, ensure_ascii=False, indent=4)
+		desc = 'Multi-hot classification of move types using bag-of-words of move names as features.'
+		filename = 'bag-of-words-multi-binary-label-split.json' if self.cfg.is_split else 'bag-of-words-multi-binary-label.json'
+
+		with open(os.path.join(self.cfg.output_dir, 'bag-of-words-multi-binary-label.json'), 'w') as file:
+			data = {'task': 'multihot', 'label_map': type2id, 'desc': desc}
+			
+			train_mask_path = os.path.join(self.cfg.output_dir, self.cfg.train_mask)
+			val_mask_path = os.path.join(self.cfg.output_dir, self.cfg.val_mask)
+			test_mask_path = os.path.join(self.cfg.output_dir, self.cfg.test_mask)
+
+			train_set, val_set, test_set = rel.split_dataset_on_masks(features, train_mask_path, val_mask_path, test_mask_path)
+
+			if self.cfg.is_split:
+				data.update({'train': train_set, 'validation': val_set, 'test': test_set})
+			else:	
+				data['features'] = features
+			
+			json.dump(data, file, ensure_ascii=False, indent=4)

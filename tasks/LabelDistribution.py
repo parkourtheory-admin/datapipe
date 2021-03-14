@@ -5,19 +5,21 @@ import os
 from collections import OrderedDict, defaultdict
 
 import pandas as pd
-from stats import label_dist
-from utils import write
+from stats import label_dist, label_percentages
+from utils import write, make_dir
 
 import matplotlib.pyplot as plt
 from preproc import relational as rel
-from pprint import pprint
 
 class LabelDistribution(object):
 	def __init__(self, config):
 		self.cfg = config
+		self.task_dir = os.path.join(self.cfg.output_tasks_dir, 'label_distribution')
 
 
 	def run(self):
+		make_dir(self.task_dir)
+
 		moves = pd.read_csv(self.cfg.move_csv, header=0, sep='\t')
 		multi_hot = label_dist(moves, multihot=True)
 		one_hot = label_dist(moves, multihot=False)
@@ -44,6 +46,4 @@ class LabelDistribution(object):
 		plt.ylabel(ylabel)
 		plt.title(title)
 		plt.subplots_adjust(left=0.1, bottom=0.3)
-		plt.savefig(os.path.join(self.cfg.video_csv_out, f'{title}.pdf'))
-		plt.show()
-		
+		plt.savefig(os.path.join(self.task_dir, f'{title}.pdf'))		

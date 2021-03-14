@@ -14,16 +14,42 @@ sudo python setup.py install
 ### Basic configuration setup
 Change the move and video configurations to match your directory structure.
 
+If `dataset` parameters are set, then `BagOfWordsMultihot` and `BagOfWordsOnehot` will output separate files for each split. Else, they will output a single json
+of the entire data set without splits.
+
 ```
 [DEFAULT]
 whitelist = yes
 parallel  = no
 pipe      = FixEmbed, CheckMoves
+
+[moves]
+csv  = data/database/latest/moves.tsv
+
+[videos]
+src      = data/videos/production
+dst      = data/videos/test
+csv      = data/database/latest/videos.tsv
+csv_out  = data/output
+height   = 150
+width    = 150
+
+[thumbnails]
+height = 300
+width  = 168
+dst    = data/thumbnails
+
+[dataset]
+train_split = .8
+val_split   = .1
+test_split  = .1
 ```
 
 ### Usage
 ```
---config -cfg 	Configuration file (available: production, test)
+--config  -cfg 	Configuration file (available: production, test)
+--clean   -c    Clean out old logs
+--verbose -v    Display stack trace if errors occur
 ```
 
 ### Example usage

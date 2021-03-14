@@ -66,9 +66,9 @@ class PruneGraph(object):
 			nodes: {len(G.nodes())}\
 			components: {nx.number_connected_components(G)}')
 	
-		moves.to_csv(os.path.join(self.cfg.video_csv_out, 'pruned_moves.tsv'), sep='\t', index=False)
-		videos.to_csv(os.path.join(self.cfg.video_csv_out, 'pruned_videos.tsv'), sep='\t', index=False)
+		moves.to_csv(os.path.join(self.cfg.output_dir, 'pruned_moves.tsv'), sep='\t', index=False)
+		videos.to_csv(os.path.join(self.cfg.output_dir, 'pruned_videos.tsv'), sep='\t', index=False)
 
 	
-		with open(os.path.join(self.cfg.video_csv_out, 'adjlist'), 'w') as file:
+		with open(os.path.join(self.cfg.output_dir, 'adjlist'), 'w') as file:
 			json.dump(nx.to_dict_of_lists(G), file, ensure_ascii=False, indent=4)
