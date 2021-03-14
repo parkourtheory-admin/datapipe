@@ -19,11 +19,11 @@ class BagOfWordsMultihot(object):
 
 		# build bag-of-words map
 		terms = set(term for move in df['name'] for term in move.split())
-		term2index = {term: i for i, term in enumerate(list(terms))}
+		term2index = {term: i for i, term in enumerate(terms)}
 
 		# single label classification
 		unique_labels = set(label for type_ in df['type'] for label in str(type_).split('/'))
-		type2id = {str(m):i for i, m in enumerate(list(set(unique_labels)))}
+		type2id = {str(m):i for i, m in enumerate(set(unique_labels))}
 		
 		for i, sample in enumerate(zip(df['name'], df['type'])):
 			move, type_ = sample

@@ -19,10 +19,10 @@ class BagOfWordsOnehot(object):
 
 		# build bag-of-words map
 		terms = set(term for move in df['name'] for term in move.split())
-		term2index = {term: i for i, term in enumerate(list(terms))}
+		term2index = {term: i for i, term in enumerate(terms)}
 
-		# single label classification. this is also the ordering of masks.
-		type2id = {str(m):i for i, m in enumerate(list(set(df['type'])))}
+		# single label classification
+		type2id = {str(m):i for i, m in enumerate(set(df['type']))}
 		
 		for i, sample in enumerate(zip(df['name'], df['type'])):
 			move, type_ = sample
