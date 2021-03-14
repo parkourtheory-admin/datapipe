@@ -33,7 +33,7 @@ class ExtrapolationMask(object):
 	'''
 	def run(self):
 		G, node_map = None, None
-		with open(os.path.join(self.cfg.output_dir, 'adjlist.json'), 'r') as file:
+		with open(os.path.join(self.cfg.output_dir, self.cfg.graph), 'r') as file:
 			G = nx.Graph(json.load(file))
 
 		with open(os.path.join(self.cfg.output_dir, self.cfg.node_map), 'r') as file:

@@ -66,6 +66,6 @@ class RandomMasks(object):
 
 			train_mask, val_mask, test_mask = self.get_random_mask(len(G), self.cfg.train_split, self.cfg.val_split, self.cfg.test_split, as_list=True)
 
-			self.save(train_mask, os.path.join(self.cfg.output_dir, 'train_mask.json'))
-			self.save(val_mask, os.path.join(self.cfg.output_dir, 'val_mask.json'))
-			self.save(test_mask, os.path.join(self.cfg.output_dir, 'test_mask.json'))
+			self.save(train_mask, os.path.join(self.cfg.output_dir, self.cfg.train_mask))
+			self.save(val_mask, os.path.join(self.cfg.output_dir, self.cfg.val_mask))
+			self.save(test_mask, os.path.join(self.cfg.output_dir, self.cfg.test_mask))
