@@ -21,6 +21,10 @@ class Configuration(object):
         self.pipe = default['pipe']
         self.output_dir = default['output']
 
+        # all tasks should save their outputs to their own dir
+        self.output_tasks_dir = os.path.join(default['output'], 'tasks')
+        make_dir(self.output_tasks_dir)
+
         # move configuration
         move = cfg['moves']
         self.move_csv = move['csv']
@@ -63,10 +67,6 @@ class Configuration(object):
         if video['src']: make_dir(video['src'])
         if video['dst']: make_dir(video['dst'])
         if thumb['dst']: make_dir(thumb['dst'])
-
-        # all tasks should save their outputs to their own dir
-        self.output_tasks_dir = os.path.join(default['output'], 'tasks')
-        make_dir(self.output_tasks_dir)
 
 
     '''

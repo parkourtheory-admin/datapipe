@@ -6,7 +6,7 @@ import json
 import numpy as np
 import networkx as nx
 
-import sys
+from utils import *
 
 class RandomMasks(object):
 	def __init__(self, config):
@@ -66,6 +66,9 @@ class RandomMasks(object):
 
 			train_mask, val_mask, test_mask = self.get_random_mask(len(G), self.cfg.train_split, self.cfg.val_split, self.cfg.test_split, as_list=True)
 
-			self.save(train_mask, os.path.join(self.cfg.output_dir, self.cfg.train_mask))
-			self.save(val_mask, os.path.join(self.cfg.output_dir, self.cfg.val_mask))
-			self.save(test_mask, os.path.join(self.cfg.output_dir, self.cfg.test_mask))
+			task_dir = os.path.join(self.cfg.output_tasks_dir, self.__class__.__name__)
+			make_dir(task_dir)
+
+			self.save(train_mask, os.path.join(task_dir, self.cfg.train_mask))
+			self.save(val_mask, os.path.join(task_dir, self.cfg.val_mask))
+			self.save(test_mask, os.path.join(task_dir, self.cfg.test_mask))

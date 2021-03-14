@@ -7,6 +7,8 @@ import pandas as pd
 import numpy as np
 from tqdm import tqdm
 
+from utils import *
+
 class PruneGraphMask(object):
 	def __init__(self, config):
 		self.cfg = config
@@ -40,6 +42,9 @@ class PruneGraphMask(object):
 		# check that splits match total number of nodes
 		assert total == len(df)
 
-		train_mask.to_csv(os.path.join(self.cfg.output_dir, self.cfg.train_mask), sep='\t', index=False)
-		val_mask.to_csv(os.path.join(self.cfg.output_dir, self.cfg.val_mask), sep='\t', index=False)
-		test_mask.to_csv(os.path.join(self.cfg.output_dir, self.cfg.test_mask), sep='\t', index=False)
+		task_dir = os.path.join(self.cfg.output_tasks_dir, self.__class__.__name__)
+		make_dir(task_dir)
+
+		train_mask.to_csv(os.path.join(task_dir, self.cfg.train_mask), sep='\t', index=False)
+		val_mask.to_csv(os.path.join(task_dir, self.cfg.val_mask), sep='\t', index=False)
+		test_mask.to_csv(os.path.join(task_dir, self.cfg.test_mask), sep='\t', index=False)

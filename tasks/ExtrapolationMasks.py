@@ -7,14 +7,20 @@ Note:
 2. Whenever generating masks, must also generate labels which is canonical ordering for masks.
 '''
 import os
-import sys
 import json
 import numpy as np
 import networkx as nx
 
+from utils import *
+
 class ExtrapolationMask(object):
 	def __init__(self, config):
 		self.cfg = config
+
+
+	def save(self, data, save_path):
+		with open(save_path, 'w') as file:
+			json.dump(data, file, ensure_ascii=False, indent=4)
 
 
 	'''
@@ -63,8 +69,13 @@ class ExtrapolationMask(object):
 			val_idx = np.where(val_mask == 1)[0]
 			test_idx = np.random.choice(val_idx, int(self.cfg.test_split*num_nodes))
 			test_mask[test_idx] = 1
-			val_mask -= test_mask
+			val_mask[test_idx] = 0
 
 		assert sum(train_mask) + sum(val_mask) + sum(test_mask) == num_nodes
 
-		return train_mask, val_mask, test_mask
+		task_dir = os.path.join(self.cfg.output_tasks_dir, self.__class__.__name__)
+		make_dir(task_dir)
+
+		self.save(train_mask.tolist(), os.path.join(task_dir, self.cfg.train_mask))
+		self.save(val_mask.tolist(), os.path.join(task_dir, self.cfg.val_mask))
+		self.save(test_mask.tolist(), os.path.join(task_dir, self.cfg.test_mask))
