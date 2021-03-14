@@ -1,5 +1,5 @@
 '''
-Bag of words
+Bag of words. Need generate masks with ExtrapolationMasks, PruneGraphMask, or RandomMasks before running this task.
 '''
 import os
 import json

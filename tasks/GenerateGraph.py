@@ -18,5 +18,5 @@ class GenerateGraph(object):
 
 		assert len(moves) == len(G.nodes())
 
-		with open(os.path.join(self.cfg.output_dir, 'adjlist.json'), 'w') as file:
+		with open(os.path.join(self.cfg.output_dir, self.cfg.graph), 'w') as file:
 			json.dump(nx.to_dict_of_lists(G), file, ensure_ascii=False, indent=4)
