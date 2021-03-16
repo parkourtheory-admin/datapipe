@@ -504,7 +504,7 @@ def split_dataset_on_masks(features, train_mask_path, val_mask_path, test_mask_p
 	
 	def to_list(path):
 		with open(path, 'r') as file:
-			return json.load(file)
+			return pd.read_csv(file, header=0, sep='\t').to_numpy(int).flatten()
 
 	train_mask = to_list(train_mask_path)
 	val_mask = to_list(val_mask_path)
