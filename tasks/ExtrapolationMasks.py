@@ -9,6 +9,7 @@ Note:
 import os
 import json
 import numpy as np
+import pandas as pd
 import networkx as nx
 
 from utils import *
@@ -16,11 +17,6 @@ from utils import *
 class ExtrapolationMasks(object):
 	def __init__(self, config):
 		self.cfg = config
-
-
-	def save(self, data, save_path):
-		with open(save_path, 'w') as file:
-			json.dump(data, file, ensure_ascii=False, indent=4)
 
 
 	'''
@@ -76,6 +72,10 @@ class ExtrapolationMasks(object):
 
 		assert num_nodes == sum(map(sum, [train_mask, val_mask, test_mask]))
 
-		self.save(train_mask.tolist(), save_path(self.cfg.train_mask))
-		self.save(val_mask.tolist(), save_path(self.cfg.val_mask))
-		self.save(test_mask.tolist(), save_path(self.cfg.test_mask))
+		train_mask = pd.Series(train_mask, dtype=bool)
+		val_mask = pd.Series(val_mask, dtype=bool)
+		test_mask = pd.Series(test_mask, dtype=bool)
+
+		train_mask.to_csv(save_path(self.cfg.train_mask), sep='\t', index=False)
+		val_mask.to_csv(save_path(self.cfg.val_mask), sep='\t', index=False)
+		test_mask.to_csv(save_path(self.cfg.test_mask), sep='\t', index=False)

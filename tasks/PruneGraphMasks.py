@@ -3,8 +3,8 @@ Generate training mask for moves with videos, and validation and testing for nod
 Only need for training if using video features.
 '''
 import os
-import pandas as pd
 import numpy as np
+import pandas as pd
 from tqdm import tqdm
 
 from utils import *

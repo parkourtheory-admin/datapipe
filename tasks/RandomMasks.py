@@ -4,6 +4,7 @@ Generate random training, validation, and testing masks.
 import os
 import json
 import numpy as np
+import pandas as pd
 import networkx as nx
 
 from utils import *
@@ -21,7 +22,7 @@ class RandomMasks(object):
 	train_split (float) 		 Training split percentage
 	val_split   (float) 		 Validation split percentage
 	test_split  (float) 		 Test split percentage
-	as_list     (bool, optional) If True, return as list
+	as_list     (bool, optional) If True, return as list else ndarry
 
 	outputs:
 	train_mask (ndarray) Binary mask containing 1 at positions corresponding to nodes to train on
@@ -57,11 +58,6 @@ class RandomMasks(object):
 		return train_mask, val_mask, test_mask
 
 
-	def save(self, data, save_path):
-		with open(save_path, 'w') as file:
-			json.dump(data, file, ensure_ascii=False, indent=4)
-
-
 	def run(self):
 		task_dir = os.path.join(self.cfg.output_tasks_dir, self.__class__.__name__)
 		save_path = lambda path: os.path.join(task_dir, path)
@@ -71,6 +67,10 @@ class RandomMasks(object):
 
 			train_mask, val_mask, test_mask = self.get_random_mask(len(G), self.cfg.train_split, self.cfg.val_split, self.cfg.test_split, as_list=True)
 
-			self.save(train_mask, save_path(self.cfg.train_mask))
-			self.save(val_mask, save_path(self.cfg.val_mask))
-			self.save(test_mask, save_path(self.cfg.test_mask))
+			train_mask = pd.Series(train_mask, dtype=bool)
+			val_mask = pd.Series(val_mask, dtype=bool)
+			test_mask = pd.Series(test_mask, dtype=bool)
+
+			train_mask.to_csv(save_path(self.cfg.train_mask), sep='\t', index=False)
+			val_mask.to_csv(save_path(self.cfg.val_mask), sep='\t', index=False)
+			test_mask.to_csv(save_path(self.cfg.test_mask), sep='\t', index=False)
