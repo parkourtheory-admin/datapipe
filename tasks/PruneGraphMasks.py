@@ -9,12 +9,15 @@ from tqdm import tqdm
 
 from utils import *
 
-class PruneGraphMask(object):
+class PruneGraphMasks(object):
 	def __init__(self, config):
 		self.cfg = config
 
 
 	def run(self):
+		task_dir = os.path.join(self.cfg.output_tasks_dir, self.__class__.__name__)
+		save_path = lambda path: os.path.join(task_dir, path)
+		
 		videos = pd.read_csv(self.cfg.video_csv, header=0, sep='\t')
 		moves = pd.read_csv(self.cfg.move_csv, header=0, sep='\t')
 
@@ -34,17 +37,9 @@ class PruneGraphMask(object):
 		val_mask = pd.Series(val_mask, dtype=bool)
 		test_mask = pd.Series(test_mask, dtype=bool)
 
-		train_size = len(df[train_mask])
-		val_size = len(df[val_mask])
-		test_size = len(df[test_mask])
-		total = train_size+val_size+test_size
-
 		# check that splits match total number of nodes
-		assert total == len(df)
+		assert len(df) == sum(map(sum, [train_mask, val_mask, test_mask]))
 
-		task_dir = os.path.join(self.cfg.output_tasks_dir, self.__class__.__name__)
-		make_dir(task_dir)
-
-		train_mask.to_csv(os.path.join(task_dir, self.cfg.train_mask), sep='\t', index=False)
-		val_mask.to_csv(os.path.join(task_dir, self.cfg.val_mask), sep='\t', index=False)
-		test_mask.to_csv(os.path.join(task_dir, self.cfg.test_mask), sep='\t', index=False)
+		train_mask.to_csv(save_path(self.cfg.train_mask), sep='\t', index=False)
+		val_mask.to_csv(save_path(self.cfg.val_mask), sep='\t', index=False)
+		test_mask.to_csv(save_path(self.cfg.test_mask), sep='\t', index=False)

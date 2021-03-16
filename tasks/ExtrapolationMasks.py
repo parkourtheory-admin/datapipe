@@ -13,7 +13,7 @@ import networkx as nx
 
 from utils import *
 
-class ExtrapolationMask(object):
+class ExtrapolationMasks(object):
 	def __init__(self, config):
 		self.cfg = config
 
@@ -38,11 +38,14 @@ class ExtrapolationMask(object):
 	test_mask   (ndarray) Binary mask containing 1 at positions correpsonding to nodes to test on
 	'''
 	def run(self):
+		task_dir = os.path.join(self.cfg.output_tasks_dir, self.__class__.__name__)
+		save_path = lambda path: os.path.join(task_dir, path)
+
 		G, node_map = None, None
-		with open(os.path.join(self.cfg.output_dir, self.cfg.graph), 'r') as file:
+		with open(os.path.join(self.cfg.output_tasks_dir, 'GenerateGraph', self.cfg.graph), 'r') as file:
 			G = nx.Graph(json.load(file))
 
-		with open(os.path.join(self.cfg.output_dir, self.cfg.node_map), 'r') as file:
+		with open(os.path.join(self.cfg.output_tasks_dir, 'Name2Int', self.cfg.node_map), 'r') as file:
 			node_map = {k: v for k, v in json.load(file).items()}
 
 		'''
@@ -71,11 +74,8 @@ class ExtrapolationMask(object):
 			test_mask[test_idx] = 1
 			val_mask[test_idx] = 0
 
-		assert sum(train_mask) + sum(val_mask) + sum(test_mask) == num_nodes
+		assert num_nodes == sum(map(sum, [train_mask, val_mask, test_mask]))
 
-		task_dir = os.path.join(self.cfg.output_tasks_dir, self.__class__.__name__)
-		make_dir(task_dir)
-
-		self.save(train_mask.tolist(), os.path.join(task_dir, self.cfg.train_mask))
-		self.save(val_mask.tolist(), os.path.join(task_dir, self.cfg.val_mask))
-		self.save(test_mask.tolist(), os.path.join(task_dir, self.cfg.test_mask))
+		self.save(train_mask.tolist(), save_path(self.cfg.train_mask))
+		self.save(val_mask.tolist(), save_path(self.cfg.val_mask))
+		self.save(test_mask.tolist(), save_path(self.cfg.test_mask))

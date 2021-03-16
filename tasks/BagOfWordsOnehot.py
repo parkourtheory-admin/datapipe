@@ -34,12 +34,13 @@ class BagOfWordsOnehot(object):
 		desc = 'One-hot classification of move types using bag-of-words of move names as features.'
 		filename = 'bag-of-words-onehot-split.json' if self.cfg.is_split else 'bag-of-words-onehot.json'
 
-		with open(os.path.join(self.cfg.output_dir, filename), 'w') as file:
+		with open(os.path.join(self.cfg.output_tasks_dir, self.__class__.__name__, filename), 'w') as file:
 			data = {'task': 'onehot', 'label_map': type2id, 'desc': desc}
+			task_dir = lambda f: os.path.join(self.cfg.output_tasks_dir, f)
 			
-			train_mask_path = os.path.join(self.cfg.output_dir, self.cfg.train_mask)
-			val_mask_path = os.path.join(self.cfg.output_dir, self.cfg.val_mask)
-			test_mask_path = os.path.join(self.cfg.output_dir, self.cfg.test_mask)
+			train_mask_path = task_dir(self.cfg.train_mask)
+			val_mask_path = task_dir(self.cfg.val_mask)
+			test_mask_path = task_dir(self.cfg.test_mask)
 
 			train_set, val_set, test_set = rel.split_dataset_on_masks(features, train_mask_path, val_mask_path, test_mask_path)
 

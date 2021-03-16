@@ -38,16 +38,18 @@ class RandomMasks(object):
 		train_mask = np.zeros(num_nodes)
 		train_mask[:int(num_nodes*train_split)] = 1
 		np.random.shuffle(train_mask)
-		val_mask = train_mask - 1
+		val_mask = np.logical_not(train_mask).astype(int)
 
-		val_idx = [i for i, item in enumerate(train_mask-1) if item]
+		val_idx = [i for i, item in enumerate(val_mask) if item]
 		test_idx = np.random.choice(val_idx, int(test_split*num_nodes))
 
 		val_mask = np.array(val_mask.tolist(), dtype=float)
 		test_mask = np.zeros(num_nodes)
 
 		test_mask[test_idx] = 1
-		val_mask -= test_mask
+		val_mask[test_idx] = 0
+
+		assert num_nodes == sum(map(sum, [train_mask, val_mask, test_mask]))
 
 		if as_list:
 			return train_mask.tolist(), val_mask.tolist(), test_mask.tolist()
@@ -61,14 +63,14 @@ class RandomMasks(object):
 
 
 	def run(self):
-		with open(os.path.join(self.cfg.output_dir, self.cfg.graph), 'r') as file:
+		task_dir = os.path.join(self.cfg.output_tasks_dir, self.__class__.__name__)
+		save_path = lambda path: os.path.join(task_dir, path)
+
+		with open(os.path.join(self.cfg.output_tasks_dir, 'GenerateGraph', self.cfg.graph), 'r') as file:
 			G = nx.Graph(json.load(file))
 
 			train_mask, val_mask, test_mask = self.get_random_mask(len(G), self.cfg.train_split, self.cfg.val_split, self.cfg.test_split, as_list=True)
 
-			task_dir = os.path.join(self.cfg.output_tasks_dir, self.__class__.__name__)
-			make_dir(task_dir)
-
-			self.save(train_mask, os.path.join(task_dir, self.cfg.train_mask))
-			self.save(val_mask, os.path.join(task_dir, self.cfg.val_mask))
-			self.save(test_mask, os.path.join(task_dir, self.cfg.test_mask))
+			self.save(train_mask, save_path(self.cfg.train_mask))
+			self.save(val_mask, save_path(self.cfg.val_mask))
+			self.save(test_mask, save_path(self.cfg.test_mask))

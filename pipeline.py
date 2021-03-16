@@ -12,7 +12,7 @@ from collections import OrderedDict
 from tasks import *
 
 from colorama import Fore, Style
-from utils import timer
+from utils import timer, make_dir
 
 '''
 Parallel task execution
@@ -123,5 +123,6 @@ def build(cfg):
     for t in tasks:
         cl = inspect.getmembers(globals()[t], inspect.isclass) # cl is a tuple
         pipe.append(cl[0][1](cfg)) # index 0 is class name and index 1 is object
+        make_dir(os.path.join(cfg.output_tasks_dir, t))
 
     return pipe

@@ -5,6 +5,7 @@ Author: Justin Chen
 Date: 5/24/2020
 '''
 import os
+import json
 import math
 import numbers
 import numpy as np
@@ -499,15 +500,20 @@ val_set   (dict) Subset of feature and label vectors from dataset input for vali
 test_set  (dict) Subset of feature and label vectors from dataset input for test set.
 '''
 def split_dataset_on_masks(features, train_mask_path, val_mask_path, test_mask_path):
+	# to_list = lambda path: list(chain.from_iterable(pd.read_csv(path, sep='\t').to_numpy().tolist()))
+	
+	def to_list(path):
+		with open(path, 'r') as file:
+			return json.load(file)
 
-	train_mask = list(chain.from_iterable(pd.read_csv(train_mask_path, sep='\t').to_numpy().tolist()))
-	val_mask = list(chain.from_iterable(pd.read_csv(val_mask_path, sep='\t').to_numpy().tolist()))
-	test_mask = list(chain.from_iterable(pd.read_csv(test_mask_path, sep='\t').to_numpy().tolist()))
+	train_mask = to_list(train_mask_path)
+	val_mask = to_list(val_mask_path)
+	test_mask = to_list(test_mask_path)
 
 	train_set = {i:features[i] for i, e in enumerate(train_mask) if e}
 	val_set = {i:features[i] for i, e in enumerate(val_mask) if e}
 	test_set = {i:features[i] for i, e in enumerate(test_mask) if e}
 
-	assert len(features) == sum(len(i) for i in [train_set, val_set, test_set])
+	assert len(features) == sum(map(len, [train_set, val_set, test_set]))
 
 	return train_set, val_set, test_set
