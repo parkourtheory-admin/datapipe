@@ -7,26 +7,20 @@ import os
 import json
 import networkx as nx
 
-class RelabelGraph(object):
+class GenerateGraphIntLabels(object):
 	def __init__(self, config):
 		self.cfg = config
 
 
 	def run(self):
 		node_map = None
-		with open(os.path.join(self.cfg.output_dir, self.cfg.node_map), 'r') as file:
+		with open(os.path.join(self.cfg.output_tasks_dir, 'Name2Int', self.cfg.node_map), 'r') as file:
 			node_map = json.load(file)
 
 		re_G = None
-		with open(os.path.join(self.cfg.output_dir, 'adjlist.json'), 'r') as file:
+		with open(os.path.join(self.cfg.output_tasks_dir, 'GenerateGraph', 'adjlist.json'), 'r') as file:
 			G = nx.Graph(json.load(file))
-
-			'''
-			convert string names to int ids. however, this first line only converts string int ids.
-			then convert the string int ids to ints
-			'''
 			re_G = nx.relabel_nodes(G, node_map)
-			re_G = nx.relabel_nodes(re_G, {i:int(i) for i in re_G.nodes()})
 
 			'''
 			invert the original dictionary, convert the int id node version back to the original strings
@@ -38,5 +32,5 @@ class RelabelGraph(object):
 			assert G.edges() == undo.edges()
 
 
-		with open(os.path.join(self.cfg.output_dir, 'adjlist.json'), 'w') as file:
+		with open(os.path.join(self.cfg.output_tasks_dir, self.__class__.__name__, 'adjlist.json'), 'w') as file:
 			json.dump(nx.to_dict_of_lists(re_G), file)

@@ -1,5 +1,5 @@
 '''
-Generate graph and save.
+Generate graph with original string labels and save.
 '''
 import os
 import json
